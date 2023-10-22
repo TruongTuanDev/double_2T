@@ -1,0 +1,185 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+
+:root {
+    --color-origin: rgb(255, 125, 85);
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    font-size: 15px;
+}
+
+header {
+    background: linear-gradient(270deg, rgb(0, 90, 255) 0%, rgb(0, 23, 68) 100%);
+}
+
+.nav-link {
+    color: #fff;
+    padding: 0;
+    transition: all .25s ease;
+}
+
+.nav-link:hover {
+    color: var(--color-origin);
+}
+
+.navbar-nav .nav-link.active, .navbar-nav .nav-link.show {
+    color: var(--color-origin);
+}
+
+.dropdown:hover>.dropdown-menu {
+    display: block;
+}
+
+.dropdown>.dropdown-toggle:active {
+    pointer-events: none;
+}
+
+.dropdown-menu {
+    padding: 1rem;
+}
+
+.dropdown-item {
+    padding-right: 3rem;
+}
+
+.navbar-toggler {
+    color: #fff;
+    border: 0;
+}
+
+.navbar-toggler:focus {
+    box-shadow: none;
+}
+
+.menubar-item {
+    color: #e3f4ff;
+    text-decoration: none;
+    transition: all .25s ease;
+}
+
+.menubar-item:hover {
+    color: #fff;
+}
+
+.btn-login {
+    width: 7.5rem;
+    height: 2.75rem;
+    padding: 0 .25rem 0 0;
+    color: #d4d4d4;
+    border: 1px solid #d4d4d4;
+}
+
+.btn-login:hover {
+    border: 1px solid #84b1fa;
+}
+
+.btn-login.active, .btn-login.show, .btn-login:first-child:active, :not(.btn-login-check)+.btn-login:active {
+    color: #fff;
+    border: 1px solid #fff;
+}
+
+.social-login {
+    width: 10rem;
+    text-decoration: none;
+    border: 1px solid #cccccc;
+    color: #555;
+    padding: 5px;
+    font-weight: 600;
+    transition: all .2s ease-in;
+}
+
+.social-login:hover {
+    background-color: #eeeeee;
+}
+
+.social-login-google {
+    margin-left: 1rem;
+}
+
+.account-item {
+    width: 100%;
+}
+
+.account-link {
+    text-decoration: none;
+    color: #333;
+    padding: .5rem 0;
+}
+
+.account-link:hover {
+    background-color: #efefef;
+}
+
+.btn-search {
+    color: #fff;
+    font-weight: 600;
+    background-color: var(--color-origin);
+}
+
+.btn-search:hover {
+    color: #fff;
+    background-color: rgb(255, 103, 57);
+}
+
+.search-bar {
+    width: 80%;
+}
+
+.login-box {
+    right: 0;
+}
+
+.job-item-container {
+    background-color: #F0F7FF;
+    border: 1px solid #98BDFF;
+    border-radius: 6px;
+}
+
+.job-info a {
+    text-decoration: none;
+}
+
+.jobs-container {
+    width: 60%;
+}
+
+.salary {
+    color: var(--color-origin);
+}
+
+.link-item {
+    font-weight: 600;
+    color: #333;
+    transition: all .25s ease;
+}
+
+.link-item:hover {
+    color: var(--color-origin);
+}
+
+.company-link {
+    font-weight: 500;
+}
+
+.location {
+    color: #555;
+}
+
+.time-update {
+    color: #555;
+}
+
+@media only screen and (max-width: 768px) {
+    .btn-login {
+        width: 3rem;
+    }
+
+    .search-bar {
+        width: 100%;
+    }
+
+    .jobs-container {
+        width: 100%;
+    }
+}

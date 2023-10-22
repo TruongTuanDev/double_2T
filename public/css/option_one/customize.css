@@ -1,0 +1,99 @@
+.error-message{
+  color: red;
+  font-size: 12px;
+  margin-top: 5px;
+  font-style: italic;
+}
+input::placeholder{
+  font-size: 13px;
+}
+.mb20{
+  margin-bottom: 20px;
+}
+.mt20{
+  margin-top: 20px;
+}
+h5{
+  text-transform: uppercase;
+  font-weight: normal;
+}
+.img-cover img{
+  width: 100px;
+  height: 100%;
+  object-fit: cover;
+}
+table .image{
+  height: 100px;
+  display: block;
+}
+.table > thead > tr > th,
+.table > tbody > tr > th,
+.table > tfoot > tr > th,
+.table > thead > tr > td,
+.table > tbody > tr > td,
+.table > tfoot > tr > td{
+  vertical-align: middle;
+}
+.uk-flex-space-between{
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+}
+.uk-flex-middle{
+  -ms-flex-align: center;
+  align-items: center;
+}
+.uk-flex{
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+}
+.filter .form-control{
+  height: 32px;
+  max-width: 300px;
+}
+.input-group .form-control:first-child{
+  min-width: 200px
+}
+.btn{
+  height: 32px;
+}
+.mr10{
+  margin-right: 10px;
+}
+
+.pagination {
+  justify-content: center;
+}
+
+.page-item {
+  margin: 0 5px;
+}
+
+.page-link {
+  color: #007bff;
+  background-color: #fff;
+  border: 1px solid #007bff;
+}
+
+.page-link:hover {
+  background-color: #007bff;
+  color: #fff;
+}
+.box .ibox{
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+.mb15{
+  margin-bottom: 15px;
+}
+.control-lable{
+  display: block;
+}
+.panel-title{
+  font-size: 20px;
+  margin-bottom: 15px;
+  font-weight: 700;
+  color: #000;
+}
+.panel-description{
+  font-size: 15px;
+}

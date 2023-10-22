@@ -1,0 +1,101 @@
+:root {
+    --color-origin: rgb(255, 125, 85);
+    --color-light-blue: rgb(134, 190, 230);
+}
+
+body {
+    font-family: "Inter", sans-serif;
+    font-size: 15px;
+}
+
+nav {
+    background: linear-gradient(270deg, rgb(0, 90, 255) 0%, rgb(0, 23, 68) 100%);
+}
+
+.navbar-toggler {
+    border: 0;
+}
+
+.navbar-toggler:focus {
+    box-shadow: none;
+}
+
+.nav-link {
+    color: #fff;
+}
+
+.nav-link:hover {
+    color: var(--color-origin);
+}
+
+.nav-link:focus {
+    color: var(--color-origin);
+}
+
+.navbar-nav .nav-link.active, .navbar-nav .nav-link.show {
+    color: var(--color-origin);
+}
+
+.dropdown-menu {
+    padding: 1rem;
+}
+
+.dropdown-item {
+    color: #555;
+    margin: .25rem 0;
+}
+
+.dropdown-item:active {
+    color: #555;
+    background-color: #fff;
+}
+
+.btn-login {
+    width: 7.5rem;
+    height: 2.75rem;
+    padding: 0 .25rem 0 0;
+    color: #eeeeee;
+    border: 1px solid var(--color-light-blue);
+}
+
+.btn-login:hover {
+    color: #fff;
+    border: 1px solid #fff;
+}
+
+.btn-login.active, .btn-login.show, .btn-login:first-child:active, :not(.btn-login-check)+.btn-login:active {
+    color: #fff;
+    border: 1px solid #fff;
+}
+
+.social-login {
+    width: 10rem;
+    text-decoration: none;
+    border: 1px solid #CCC;
+    color: #555;
+    padding: 5px;
+    font-weight: 600;
+    transition: all .2s ease-in;
+}
+
+.social-login:hover {
+    background-color: #eeeeee;
+}
+
+.social-login-google {
+    margin-left: 1rem;
+}
+
+.account-item {
+    width: 100%;
+}
+
+.account-link {
+    text-decoration: none;
+    color: #333;
+    padding: .5rem 0;
+}
+
+.account-link:hover {
+    background-color: #efefef;
+}
