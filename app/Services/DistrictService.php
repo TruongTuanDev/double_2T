@@ -3,25 +3,19 @@
 namespace App\Services;
 
 use App\Repositories\DistrictRepository;
-use App\Services\Interfaces\ProvinceServiceInterface;
+use App\Services\Interfaces\DistrictServiceInterface;
 
 /**
  * Class UserService
  * @package App\Services
  */
-class ProvinceService implements ProvinceServiceInterface
+class DistrictService implements DistrictServiceInterface
 {
   protected $districtRepository;
 
-  public function __construct(DistrictRepository $provinceRepository)
+  public function __construct(DistrictRepository $districtRepository)
   {
-    $this->provinceRepository = $provinceRepository;
+    $this->districtRepository = $districtRepository;
   }
-  public function allProvince()
-  {
-    $provinces = $this->provinceRepository->getAllProvince();
-    return $provinces;
-  }
-  
-
+ 
 }

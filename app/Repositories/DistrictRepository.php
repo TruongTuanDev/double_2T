@@ -4,15 +4,18 @@ namespace App\Repositories;
 
 use App\Models\District;
 use App\Repositories\Interfaces\DistrictRepositoryInterface;
+use Illuminate\Database\Eloquent\Model;
 
 /**
  * Class UserService
  * @package App\Services
  */
-class DistrictRepository implements DistrictRepositoryInterface
+class DistrictRepository extends BaseRepository implements DistrictRepositoryInterface
 {
-  public function getAllDistrict()
-  {
-    District::all();
+  protected $model;
+  public function __construct(District $model){
+    $this->model = $model;
   }
+ 
+
 }

@@ -54,9 +54,7 @@ table .image{
 .input-group .form-control:first-child{
   min-width: 200px
 }
-.btn{
-  height: 32px;
-}
+
 .mr10{
   margin-right: 10px;
 }
@@ -96,4 +94,8 @@ table .image{
 }
 .panel-description{
   font-size: 15px;
+}
+.btn-img{
+  width: 100px !important;
+  height: 46px;
 }

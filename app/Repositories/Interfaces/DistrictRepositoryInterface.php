@@ -6,7 +6,7 @@ namespace App\Repositories\Interfaces;
  * Interface UserRepositoryInterface
  * @package App\Repositories\Interfaces
  */
-interface DistrictRepositoryInterface
+interface DistrictRepositoryInterface 
 {
-  public function getAllDistrict();
+  public function findById(int $id);
 }

@@ -9,9 +9,11 @@ use App\Repositories\Interfaces\ProvinceRepositoryInterface;
  * Class UserService
  * @package App\Services
  */
-class ProvinceRepository implements ProvinceRepositoryInterface
+class ProvinceRepository extends BaseRepository implements ProvinceRepositoryInterface
 {
-  public function getAllProvince(){
-    return Province::all();
+  protected $model;
+  public function __construct(Province $model){
+    $this->model = $model;
   }
+
 }

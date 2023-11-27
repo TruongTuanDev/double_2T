@@ -20,13 +20,14 @@ return new class extends Migration
             $table->string('ward_id',10)->nullable();
             $table->string('address')->nullable();
             $table->dateTime('birthday')->nullable();
-            $table->string('image')->nullable();
+            $table->string('photo')->nullable();
             $table->text('description')->nullable();
-            $table->text('user_agent')->nullable();
-            $table->string('ip')->nullable();
+            $table->text('role')->nullable();
+            $table->string('ipa')->nullable();
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
+            $table->string('status')->nullable();
             $table->rememberToken();
             $table->timestamps();
         });

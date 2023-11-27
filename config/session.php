@@ -197,5 +197,5 @@ return [
     */
 
     'same_site' => 'lax',
-
+    'cookie' => env('SESSION_COOKIE', 'laravel_session'),
 ];

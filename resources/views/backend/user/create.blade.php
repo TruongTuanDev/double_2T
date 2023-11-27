@@ -1,14 +1,25 @@
 @include('backend.dashboard.components.breadcrumb' , ['title' => $config['seo']['create']['title']])
-<form action="" method="" class="box">
+
+@if ($errors->any())
+    <div class="alert alert-danger">
+        <ul>
+            @foreach ($errors->all() as $error)
+                <li>{{ $error }}</li>
+            @endforeach
+        </ul>
+    </div>
+@endif
+<form action="{{Route('user.store')}}" method="post" class="box">
+  @csrf
   <div class="wrapper wrapper-content animated fadeInRight">
     <div class="row">
-      <div class="col-lg-5">
+      <div class="col-lg-4">
         <div class="panel-head">
           <div class="panel-title">Thông báo chung</div>
           <div class="panel-description">Nhập thông tin chung của người sử dụng</div>
         </div>
       </div>
-      <div class="col-lg-7">
+      <div class="col-lg-8">
         <div class="ibox">
           <div class="ibox-content">
             <div class="row mb15">
@@ -18,9 +29,9 @@
                     <span class="text-danger">(*)</span>
                   </label>
                   <input 
-                  type="text"
+                  type="email"
                   name="email"
-                  value=""
+                  value="{{old('email')}}"
                   class="form-control"
                   placeholder="Nhập vào email"
                   autocomplete="off"
@@ -34,8 +45,8 @@
                   </label>
                   <input 
                   type="text"
-                  name="username"
-                  value=""
+                  name="name"
+                  value="{{old('name')}}"
                   class="form-control"
                   placeholder="Nhập vào tên của người dùng"
                   autocomplete="off"
@@ -49,10 +60,11 @@
                   <label for="" class="control-lable text-left">Nhóm thành viên
                     <span class="text-danger">(*)</span>
                   </label>
-                  <select name="user_catalogue_id" id="" class="form-control">
-                    <option value="0">[Chọn Nhóm Thành Viên]</option>
-                    <option value="1">Quản trị viên</option>
-                    <option value="2">Cộng tác viên</option>
+                  <select name="role" id="" class="form-control setupSelect2">
+                    <option value="">[Chọn Nhóm Thành Viên]</option>
+                    <option value="admin">Quản trị viên</option>
+                    <option value="employer">Nhà tuyển dụng</option>
+                    <option value="user">Ứng viên</option>
                   </select>
                 </div>
               </div>
@@ -61,9 +73,9 @@
                   <label for="" class="control-lable text-left">Ngày sinh
                   </label>
                   <input 
-                  type="text"
+                  type="date"
                   name="birthday"
-                  value=""
+                  value="{{old('birthday')}}"
                   class="form-control"
                   placeholder="Nhập vào tên của người dùng"
                   autocomplete="off"
@@ -108,13 +120,26 @@
                 <div class="form-row">
                   <label for="" class="control-lable text-left">Ảnh đại diện
                   </label>
-                  <input 
-                  type="text"
-                  name="image"
-                  value=""
-                  class="form-control"
-                  autocomplete="off"
-                  >
+                  <div class="input-group">
+                    <span class="input-group-btn">
+                      <a id="lfm" data-input="thumbnail" data-preview="holder" class="btn btn-primary">
+                        <i class="fa fa-picture-o"></i> Chọn
+                      </a>
+                    </span>
+                    <input id="thumbnail" class="form-control" type="text" name="photo">
+                  </div>
+                  <img id="holder" style="margin-top:15px;max-height:100px;">
+                </div>
+              </div>
+            </div>
+            <div class="row mb15">
+              <div class="col-lg-12">
+                <div class="form-group">
+                  <label for="status" class="col-form-label">Trạng thái</label>
+                  <select name="status" class="form-control setupSelect2">
+                      <option value="active">Hoạt động</option>
+                      <option value="inactive">Không hoạt động</option>
+                  </select>
                 </div>
               </div>
             </div>
@@ -124,13 +149,13 @@
     </div>
     <hr>
     <div class="row">
-      <div class="col-lg-5">
+      <div class="col-lg-4">
         <div class="panel-head">
           <div class="panel-title">Thông tin liên hệ</div>
           <div class="panel-description">Thông tin liên hệ của người sử dụng</div>
         </div>
       </div>
-      <div class="col-lg-7">
+      <div class="col-lg-8">
         <div class="ibox">
           <div class="ibox-content">
             <div class="row mb15">
@@ -138,8 +163,8 @@
                 <div class="form-row">
                   <label for="" class="control-lable text-left">Thành Phố
                   </label>
-                  <select name="province_id" class="form-control" id="">
-                    <option value="0" disabled>[Chọn Thành Phố]</option>
+                  <select name="province_id" class="form-control setupSelect2 province location" id="" data-target ="districts">
+                    <option value="0">[Chọn Thành Phố]</option>
                     @foreach($provinces as $province)
                       <option value="{{$province->code}}">{{$province->name}}</option>
                     @endforeach
@@ -150,7 +175,7 @@
                 <div class="form-row">
                   <label for="" class="control-lable text-left">Quận/Huyện
                   </label>
-                  <select name="district_id" class="form-control" id="">
+                  <select name="district_id" class="form-control setupSelect2 districts location" data-target ="wards" id="">
                     <option value="0">[Chọn Quận/Huyện]</option>
                   </select>
                 </div>
@@ -159,9 +184,9 @@
             <div class="row mb15">
               <div class="col-lg-6">
                 <div class="form-row">
-                  <label for="" class="control-lable text-left">Phường/Xã
+                  <label for="" class="control-lable text-left ">Phường/Xã
                   </label>
-                  <select name="ward_id" id="" class="form-control">
+                  <select name="ward_id" id="" class="form-control setupSelect2 wards" >
                     <option value="0">[Chọn Phường/Xã]</option>
                   </select>
                 </div>
@@ -173,7 +198,7 @@
                   <input 
                   type="text"
                   name="address"
-                  value=""
+                  value="{{old('address')}}"
                   class="form-control"
                   placeholder=""
                   autocomplete="off"
@@ -190,7 +215,7 @@
                   <input 
                   type="text"
                   name="phone"
-                  value=""
+                  value="{{old('phone')}}"
                   class="form-control"
                   placeholder=""
                   autocomplete="off"
@@ -204,7 +229,7 @@
                   <textarea 
                   type="text"
                   name="note"
-                  value=""
+                  value="{{old('note')}}"
                   class="form-control"
                   placeholder=""
                   autocomplete="off"
@@ -223,5 +248,6 @@
         LƯU LẠI
       </button>
     </div>
-  </div>
+  </div>  
 </form>
+

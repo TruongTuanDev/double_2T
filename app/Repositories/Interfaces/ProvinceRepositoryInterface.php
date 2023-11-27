@@ -8,5 +8,6 @@ namespace App\Repositories\Interfaces;
  */
 interface ProvinceRepositoryInterface
 {
-  public function getAllProvince();
+  public function getAll();
+  public function findById(int $id);
 }

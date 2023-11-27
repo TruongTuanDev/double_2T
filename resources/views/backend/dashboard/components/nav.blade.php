@@ -19,7 +19,7 @@
               <ul class="dropdown-menu dropdown-messages">
                   <li>
                       <div class="dropdown-messages-box">
-                          <a href="profile.html" class="pull-left">
+                          <a href="{{route('admin-profile')}}" class="pull-left">
                               <img alt="image" class="img-circle" src="img/a7.jpg">
                           </a>
                           <div>

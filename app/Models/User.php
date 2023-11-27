@@ -27,9 +27,10 @@ class User extends Authenticatable
         'ward_id',
         'address',
         'birthday',
-        'image',
+        'photo',
         'description',
-        'user_agent',
+        'status',
+        'role',
         'ip'
     ];
     protected $table = 'users'; 

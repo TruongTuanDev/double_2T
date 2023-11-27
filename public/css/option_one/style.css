@@ -29,22 +29,16 @@
     position: relative;
 }
 
-.search-container {
-    height: 4rem;
-}
-
 .search-bar {
     position: absolute;
     width: 70%;
-    top: 30%;
-    left: 50%;
-    transform: translateX(-50%);
 }
 
 .search-container {
     height: 100%;
     padding: 1rem;
     background-color: rgba(0, 0, 0, .4);
+    border-radius: 12px;
 }
 
 .btn-search {

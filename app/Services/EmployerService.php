@@ -1,0 +1,43 @@
+<?php
+
+namespace App\Services;
+
+use App\Repositories\EmployerRepository;
+use App\Services\Interfaces\EmployerServiceInterface;
+use Carbon\Carbon;
+use Exception;
+use Illuminate\Support\Facades\DB;
+
+/**
+ * Class UserService
+ * @package App\Services
+ */
+class EmployerService implements EmployerServiceInterface
+{
+  protected $employerRepository;
+
+  public function __construct(EmployerRepository $employerRepository)
+  {
+    $this->employerRepository = $employerRepository;
+  }
+  public function paginate(){
+    $employers = $this->employerRepository->getAllPaginate(15);
+    return $employers;
+  }
+  public function create($request){
+    DB::beginTransaction();
+    try{
+      $payload = $request->except(['_token', 'send','re_password']);
+      $carbonDate = Carbon::createFromFormat('d/m/Y',$payload['birthday']);
+      $payload['birthday'] = $carbonDate->format('Y-m-d H:i:s');
+      dd($payload);
+      DB::commit();
+      return true;
+    }catch(Exception $e){
+      DB::rollBack();
+      echo $e->getMessage();
+      return false;
+    };
+  }
+
+}

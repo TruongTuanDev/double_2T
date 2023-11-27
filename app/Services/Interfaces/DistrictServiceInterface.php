@@ -8,5 +8,4 @@ namespace App\Services\Interfaces;
  */
 interface DistrictServiceInterface
 {
-  public function allDistrict();
 }

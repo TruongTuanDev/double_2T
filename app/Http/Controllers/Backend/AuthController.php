@@ -7,29 +7,60 @@ use App\Http\Requests\AuthRequest;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 
 class AuthController extends Controller
 {
     public function index(){
-        // dd(Auth::id());
-        return view('backend.auth.login');
+        $config = $this->config();
+        return view('backend.auth.login',compact('config'));
+    }
+    public function register(){
+        $config = $this->config();
+        $template = "backend.auth.home.register";
+        return view('backend.auth.layout',compact('config', 'template'));
+    }
+    private function config(){
+        return [
+            'js' => [
+
+            ],
+            'css' => [
+
+            ]
+            ];
     }
     /**
      * Display a listing of the resource.
      */
-    public function login(AuthRequest $request)
+    public function login(Request $request)
     {
         $credentials = [
             'email' => $request->email,
             'password' => $request->password
         ];
-        if (User::where('email', $request->email)->exists() && User::where('password', $request->password)->exists()) {
+        if (User::where('email', $request->email)->exists() && User::where('password', $request->password)) {
             if (Auth::attempt($credentials)) {
                 return redirect()->route('dashboard.index')->with('success', 'Đăng nhập thành công');
             }
         }
-        return redirect()->route('auth.admin')->with('error','Email hoặc mật khẩu không chính xác');
+        return redirect()->route('admin.login')->with('error','Email hoặc mật khẩu không chính xác');
     }
+    public function changePassword(){
+        return view('backend.layouts.changePassword');
+    }
+    // public function changPasswordStore(Request $request)
+    // {
+    //     $request->validate([
+    //         'current_password' => ['required', new MatchP],
+    //         'new_password' => ['required'],
+    //         'new_confirm_password' => ['same:new_password'],
+    //     ]);
+
+    //     User::find(auth()->user()->id)->update(['password'=> Hash::make($request->new_password)]);
+
+    //     return redirect()->route('admin')->with('success','Password successfully changed');
+    // }
     public function logout(Request $request)
         {
             Auth::logout();
@@ -38,53 +69,7 @@ class AuthController extends Controller
         
             $request->session()->regenerateToken();
         
-            return redirect()->route('auth.admin')->with('info','Bạn đã đăng xuất');
+            return redirect()->route('admin.login')->with('info','Bạn đã đăng xuất');
         }
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     */
-    public function store(Request $request)
-    {
-        //
-    }
-
-    /**
-     * Display the specified resource.
-     */
-    public function show(string $id)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(string $id)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, string $id)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(string $id)
-    {
-        //
-    }
+    
 }

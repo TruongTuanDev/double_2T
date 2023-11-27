@@ -4,6 +4,9 @@ namespace App\Services;
 
 use App\Repositories\UserRepository;
 use App\Services\Interfaces\UserServiceInterface;
+use Carbon\Carbon;
+use Exception;
+use Illuminate\Support\Facades\DB;
 
 /**
  * Class UserService
@@ -20,6 +23,21 @@ class UserService implements UserServiceInterface
   public function paginate(){
     $users = $this->userRepository->getAllPaginate(15);
     return $users;
+  }
+  public function create($request){
+    DB::beginTransaction();
+    try{
+      $payload = $request->except(['_token', 'send','re_password']);
+      $carbonDate = Carbon::createFromFormat('d/m/Y',$payload['birthday']);
+      $payload['birthday'] = $carbonDate->format('Y-m-d H:i:s');
+      dd($payload);
+      DB::commit();
+      return true;
+    }catch(Exception $e){
+      DB::rollBack();
+      echo $e->getMessage();
+      return false;
+    };
   }
 
 }

@@ -36,21 +36,21 @@
                         <li class="nav-item mx-lg-1 mx-xl-3 dropdown">
                             <a class="nav-link" href="#" id="jobsDropdown" role="button" data-bs-toggle="dropdown"
                                 aria-haspopup="true" aria-expanded="false">
-                                Jobs
+                                Việc làm
                             </a>
                             <div class="dropdown-menu" aria-labelledby="jobsDropdown">
-                                <a class="dropdown-item" href="/search-jobs">Newest jobs</a>
-                                <a class="dropdown-item" href="#">Find jobs</a>
-                                <a class="dropdown-item" href="#">Management jobs</a>
+                                <a class="dropdown-item" href="/search-jobs">Việc làm mới nhất</a>
+                                <a class="dropdown-item" href="#">Tìm việc làm</a>
+                                <a class="dropdown-item" href="#">Việc làm quản lý</a>
                             </div>
                         </li>
                         <li class="nav-item mx-lg-1 mx-xl-3">
-                            <a class="nav-link" href="#">Companies</a>
+                            <a class="nav-link" href="#">Công ty</a>
                         </li>
                         <li class="nav-item mx-lg-1 mx-xl-3 dropdown">
                             <a class="nav-link" href="#" id="careerDropdown" role="button" data-bs-toggle="dropdown"
                                 aria-haspopup="true" aria-expanded="false">
-                                Career
+                                Nghề nghiệp
                             </a>
                             <div class="dropdown-menu" aria-labelledby="careerDropdown">
                                 <a class="dropdown-item" href="#">WowCV templates</a>
@@ -61,7 +61,7 @@
                         <li class="nav-item mx-lg-1 mx-xl-3 dropdown">
                             <a class="nav-link" href="#" id="myJobsDropdown" role="button" data-bs-toggle="dropdown"
                                 aria-haspopup="true" aria-expanded="false">
-                                My jobs
+                                Việc làm của tôi
                             </a>
                             <div class="dropdown-menu" aria-labelledby="myJobsDropdown">
                                 <a class="dropdown-item" href="#">Saved jobs</a>
@@ -79,7 +79,7 @@
                     <hr class="d-block d-lg-none" style="height: 1px; color: aqua;">
                     <ul class="navbar-nav">
                         <li class="nav-item mx-lg-1 mx-xl-3">
-                            <a class="nav-link fw-bold" href="/admin/category">FOR EMPLOYERS</a>
+                            <a class="nav-link fw-bold" href="/admin/category">DÀNH CHO NHÀ TUYỂN DỤNG</a>
                         </li>
                         <span class="d-none d-lg-inline-block"
                             style="width: 1px; height: 2.5rem; background-color: rgb(0, 183, 255);"></span>
@@ -144,7 +144,7 @@
                                     </div>
                                     <hr class="m-0">
                                     <div class="account-item">
-                                        <a href="{{route('auth.admin')}}" class="d-block account-link">
+                                        <a href="{{route('auth.login')}}" class="d-block account-link">
                                             <svg width="25" height="25" fill="#555555" class="" stroke="unset"
                                                 xmlns="http://www.w3.org/2000/svg" viewBox="0 0 50 50">
                                                 <path
@@ -156,7 +156,7 @@
                                     </div>
                                     <hr class="m-0">
                                     <div class="account-item">
-                                        <a href="/register" class="d-block account-link">
+                                        <a href="{{route('auth.register')}}" class="d-block account-link">
                                             <svg width="25" height="25" fill="#555555" class="" stroke="unset"
                                                 xmlns="http://www.w3.org/2000/svg" viewBox="0 0 50 50">
                                                 <path
@@ -205,20 +205,18 @@
                 </div>
             </div>
             <div class="search-bar">
-                <h2 class="text-white">Find your dream jobs</h2>
+                <h2 class="text-white">Tìm kiếm công việc mơ ước</h2>
                 <div class="input-group search-container">
                     <span class="input-group-text" id="addon-wrapping"><i
                             class="fa-solid fa-magnifying-glass"></i></span>
                     <input type="text" aria-label="First name" class="form-control"
-                        placeholder="Search for jobs, companies, skills">
-                    <select class="form-select" id="inputGroupSelect01">
-                        <option selected>All Locations</option>
-                        <option value="1">Ha Noi</option>
-                        <option value="2">Da Nang</option>
-                        <option value="3">TP Ho Chi Minh</option>
-                        <option value="4">Hai Phong</option>
-                        <option value="5">Bac Ninh</option>
-                    </select>
+                        placeholder="Nhập vào công ty,nghề nghiệp,kỹ năng">
+                        <select name="province_id" class="form-control setupSelect2 province" id="">
+                            <option value="0">[Chọn Thành Phố]</option>
+                            @foreach($provinces as $province)
+                              <option value="{{$province->code}}">{{$province->name}}</option>
+                            @endforeach
+                        </select>
                     <a class="btn btn-search text-decoration-none" id="button-addon2" href="/search-jobs">Search</a>
                 </div>
             </div>
@@ -227,7 +225,7 @@
     <section class="section-featured-companies mb-4">
         <div class="featured-companies-container">
             <div class="container-fluid p-2 p-sm-3 p-lg-5">
-                <h4 class="mb-3" style="font-weight: 700; color: #333;">Featured Companies</h4>
+                <h4 class="mb-3" style="font-weight: 700; color: #333;">Công Ty Hàng Đầu</h4>
                 <div class="row flex-nowrap overflow-auto">
                     <div class="col-6 col-sm-4 col-md-3 col-lg-2">
                         <div class="card company-card">
@@ -333,8 +331,8 @@
         <div class="container-fluid px-lg-5">
             <div class="sectionBlock">
                 <div class="d-flex justify-content-between align-items-center section-title">
-                    <h4 class="sectionBlock__title" style="font-weight: 700; color: #333;">Featured Jobs</h4>
-                    <div class="sectionBlock__link"><a href="#">View All</a></div>
+                    <h4 class="sectionBlock__title" style="font-weight: 700; color: #333;">Công việc hàng đầu</h4>
+                    <div class="sectionBlock__link"><a href="#">Xem tất cả</a></div>
                 </div>
                 <div class="container-fluid sectionBlock__content d-flex flex-column" style="height: 90%;">
                     <div class="row p-3" style="overflow: auto;">

@@ -79,7 +79,7 @@
                     <hr class="d-block d-lg-none" style="height: 1px; color: aqua;">
                     <ul class="navbar-nav">
                         <li class="nav-item mx-lg-1 mx-xl-3">
-                            <a class="nav-link fw-bold" href="/admin/category">FOR EMPLOYERS</a>
+                            <a class="nav-link fw-bold" href="{{route('')}}">FOR EMPLOYERS</a>
                         </li>
                         <span class="d-none d-lg-inline-block"
                             style="width: 1px; height: 2.5rem; background-color: rgb(0, 183, 255);"></span>

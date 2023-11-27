@@ -51,11 +51,11 @@ nav {
 }
 
 .btn-login {
-    width: 7.5rem;
+    width: 8rem;
     height: 2.75rem;
     padding: 0 .25rem 0 0;
     color: #eeeeee;
-    border: 1px solid var(--color-light-blue);
+    border: 0.01px solid rgb(206, 199, 199);
 }
 
 .btn-login:hover {

@@ -23,3 +23,6 @@
 <link href="css/option_two/style.css" rel="stylesheet">
 <link rel="stylesheet" href="css/option_one/customize.css">
 <script src="js/option_two/jquery-3.1.1.min.js"></script>
+
+<link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.css" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.js"></script>
