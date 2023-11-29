@@ -56,8 +56,12 @@
             <input type="checkbox" class="js-switch" checked>
         </td>
         <td>
-            <a href="{{route('employer.edit')}}" class="btn btn-success"><i class="fa fa-edit"></i></a>
-            <a href="{{route('employer.delete')}}" class="btn btn-danger"><i class="fa fa-trash"></i></a>
+            {{-- <a href="{{route('employer.edit',$employer->id)}}" class="btn btn-success"><i class="fa fa-edit"></i></a> --}}
+            {{-- <form method="POST" action="{{route('employer.destroy',$employer->id)}}">
+                @csrf 
+                @method('delete')
+                    <button class="btn btn-danger dltBtn" data-id={{$employer->id}} data-toggle="tooltip" data-placement="bottom" title="Delete"><i class="fa fa-trash"></i></button>
+            </form> --}}
         </td>
     </tr>
     @endforeach

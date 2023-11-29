@@ -40,8 +40,7 @@ class EAuthController extends Controller
             'email' => $request->email,
             'password' => $request->password
         ];
-        $employer = Employer::where('email', $request->email)->first();
-        if ($employer && Hash::check($request->password, $employer->password)) {
+        if (User::where('email', $request->email)->exists() && User::where('password', $request->password)) {
             if (Auth::attempt($credentials)) {
                 return redirect()->route('dashboard.index')->with('success', 'Đăng nhập thành công');
             }

@@ -5,6 +5,7 @@ use App\Http\Controllers\Backend\AuthController;
 use App\Http\Controllers\Frontend\HomePageController;
 use App\Http\Controllers\Backend\DashboardController;
 use App\Http\Controllers\Backend\EmployerController;
+use App\Http\Controllers\Backend\PostController;
 use App\Http\Controllers\Backend\UserController;
 use App\Http\Controllers\Frontend\AAuthController;
 use App\Http\Controllers\Frontend\EAuthController;
@@ -47,7 +48,7 @@ Route::group(['prefix' => 'admin'], function(){
     Route::post('setting/update', [UserController::class, 'settingsUpdate'])->name('settings.update');
     //Employer
     Route::get('index',[EmployerController::class,'index'])->name('employer.index');
-    Route::resource('employer', 'App\Http\Controllers\Backend\EmployerController;');
+    Route::resource('employer', 'App\Http\Controllers\Backend\EmployerController');
     //USer 
     Route::resource('user', 'App\Http\Controllers\Backend\UserController');
 
@@ -70,15 +71,19 @@ Route::group(['prefix' => 'user'], function(){
 
 
 Route::group(['prefix' => 'employer'], function(){
+    //Employer
    Route::post('register',[EAuthController::class,'store'])->name('employer.register');
-   Route::resource('posts','App\Http\Controllers\Backend\PostController');
    Route::get('register',[EAuthController::class,'index'])->name('employer.register');
    Route::get('login',[EAuthController::class,'loginForm'])->name('employer.login');
    Route::post('login',[EAuthController::class,'login'])->name('employer.login');
+   //Jobs
+   Route::resource('posts','App\Http\Controllers\Backend\PostController');
+   Route::get('post',[PostController::class,'index'])->name('post.index');
+
 });
 
 /* AJAX */
-Route::get('ajax/location/getLocation',[LocationController::class,'getLocation'])->name('location.index')->middleware('admin');
+Route::get('ajax/location/getLocation',[LocationController::class,'getLocation'])->name('location.index');
 
 
 
