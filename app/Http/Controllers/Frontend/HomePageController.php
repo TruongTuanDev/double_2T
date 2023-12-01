@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Banner;
 use App\Services\provinceService;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class HomePageController extends Controller
 {
@@ -25,6 +26,7 @@ class HomePageController extends Controller
     public function index()
     {
        $banners=Banner::orderBy('id','DESC')->paginate(10);
+       
        $provinces = $this->provinceService->allProvince();
        $config = [
         'css' => [

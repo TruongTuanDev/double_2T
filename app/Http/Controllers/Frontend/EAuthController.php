@@ -4,7 +4,6 @@ namespace App\Http\Controllers\Frontend;
 
 use App\Http\Controllers\Controller;
 use App\Models\Employer;
-use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
@@ -40,9 +39,9 @@ class EAuthController extends Controller
             'email' => $request->email,
             'password' => $request->password
         ];
-        if (User::where('email', $request->email)->exists() && User::where('password', $request->password)) {
-            if (Auth::attempt($credentials)) {
-                return redirect()->route('dashboard.index')->with('success', 'Đăng nhập thành công');
+        if (Employer::where('email', $request->email)->exists() && Employer::where('password', $request->password)) {
+            if (Auth::guard('employer')->attempt($credentials)) {
+                return redirect()->route('dashboard.employer')->with('success', 'Đăng nhập thành công');
             }
         }
         return redirect()->route('employer.login')->with('error','Email hoặc mật khẩu không chính xác');
@@ -53,7 +52,7 @@ class EAuthController extends Controller
         [
             'name_compn'=>'string|required',
             'password'=>'string|required',
-            're_password'=>'string|required|same:password',
+            're_password'=>'string|required|same:passw ord',
             'phonenumber'=>'string|required|',
             'email'=>'string|required|unique:employers',
             'website'=>'string|required|',

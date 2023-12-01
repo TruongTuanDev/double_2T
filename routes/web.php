@@ -24,7 +24,8 @@ use Illuminate\Support\Facades\Route;
 
 // Route::get('/',[HomePageController::class,'index'])->name('home.index');
 
-Route::get('dashboard/index',[DashboardController::class,'index'])->name('dashboard.index')->middleware('admin');
+Route::get('dashboard/index',[DashboardController::class,'index'])->name('dashboard.index');
+Route::get('dashboard/employer',[DashboardController::class,'index'])->name('dashboard.employer');
 // ->middleware('admin');
 Route::get('/', [HomePageController::class, 'index'])->name('home');
 

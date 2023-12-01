@@ -18,8 +18,22 @@ class DashboardController extends Controller
     public function index()
     {
         $config = $this->config();
+        $profile = "";
+        if(Auth()->user()!=null){
+            $profile=Auth()->user();
+        }
         $template = "backend.dashboard.home.index";
-        return view('backend.dashboard.layout',compact('template','config'));
+        return view('backend.dashboard.layout',compact('template','config','profile'));
+    }
+    public function employer()
+    {
+        $config = $this->config();
+        $profile = "";
+        if(Auth()->user()!=null){
+            $profile=Auth()->user();
+        }
+        $template = "frontend.dashboard.home.index";
+        return view('frontend.dashboard.layout',compact('template','config','profile'));
     }
     private function config(){
         return [

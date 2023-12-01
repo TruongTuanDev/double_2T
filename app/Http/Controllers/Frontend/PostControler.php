@@ -46,7 +46,7 @@ class PostController extends Controller
     ];
        $config['seo'] = config('apps.user');
        $template = 'backend.post.index';
-       return view('backend.dashboard.layout',compact('template','config','users'));
+       return view('frontend.dashboard.layout',compact('template','config'));
     }
     
     /**
@@ -54,7 +54,6 @@ class PostController extends Controller
      */
     public function create()
     {
-       $profile=Auth()->user();
        $provinces = $this->provinceService->allProvince();
        $config = [
         'css' => [
@@ -67,7 +66,7 @@ class PostController extends Controller
        ];
       //  $config['seo'] = config('apps.user');
        $template = 'backend.post.create';
-       return view('backend.dashboard.layout',
+       return view('frontend.dashboard.layout',
        compact('template','config','provinces'));
     }
     /**
@@ -80,15 +79,13 @@ class PostController extends Controller
     {
         $this->validate($request,
         [
-            'name'=>'string|required|max:30',
-            'phone'=>'string|required|max:12',
-            'province_id'=>'string|required|',
-            'district_id'=>'string|required|',
-            'ward_id'=>'string|required|',
-            'address'=>'string',
+            'title'=>'string|required',
+            'quantity'=>'int',
+            'description'=>'string',
+            
+            'address'=>'string|required',
             'birthday'=>'string',
             'photo'=>'string',
-            'description'=>'string',
             'email'=>'string|required|unique:users',
             'password'=>'string|required',
             're_password'=>'string|required|same:password',
