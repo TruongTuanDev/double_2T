@@ -66,7 +66,7 @@ class EAuthController extends Controller
         $data['status'] = 'active';
         $status=User::create($data);
         if($status){
-            request()->session()->flash('success','Đăng ký thành công');
+            request()->session()->flash('success','Đăng ký thành công nhà tuyển dụng');
         }
         else{
             request()->session()->flash('error','Đăng ký thất bại');
