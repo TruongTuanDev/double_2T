@@ -9,22 +9,16 @@ class Employer extends Model
 {
     use HasFactory;
     protected $fillable = [
-        'name',
-        'email',
-        'website',
         'name_compn',
-        'password',
-        'phone',
-        'province_id',
-        'district_id',
-        'ward_id',
-        'address',
-        'birthday',
-        'photo',
         'description',
-        'status',
-        'role',
-        'ip'
+        'logo',
+        'background',
+        'slogan',
+        'treatment',
+        'website',
+        'address',
+        'scale',
+        'id_user',
     ];
     protected $table = 'employers';
     protected $primaryKey = 'id_emp';

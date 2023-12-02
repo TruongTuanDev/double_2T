@@ -72,18 +72,6 @@
     >
     @csrf
       <div class="form-group row">
-        <label for="name_compn" class="col-12">Tên công ty</label>
-        <div class="col-12">
-          <input
-            id="name_compn"
-            type="text"
-            class="form-control"
-            name="name_compn"
-            value="{{old('name_compn')}}"
-          />
-        </div>
-      </div>
-      <div class="form-group row">
         <label for="phonenumber" class="col-md-12">Số điện thoại</label>
         <div class="col-md-12">
           <input
