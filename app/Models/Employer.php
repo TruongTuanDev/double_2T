@@ -23,5 +23,8 @@ class Employer extends Model
     protected $table = 'employers';
     protected $primaryKey = 'id_emp';
 
+    public function users() {
+        return $this->belongsTo(User::class, 'id','id_emp');
+    }
     
 }

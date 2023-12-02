@@ -19,5 +19,8 @@ class Student extends Model
     protected $table = 'students';
     protected $primaryKey = 'id_stu';
 
+    public function users() {
+        return $this->belongsTo(User::class, 'id','id_stu');
+    }
     
 }
