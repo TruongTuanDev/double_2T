@@ -43,7 +43,7 @@ class EAuthController extends Controller
         ];
         if (User::where('email', $request->email)->exists() && User::where('password', $request->password)) {
             if (Auth::attempt($credentials)) {
-                return redirect()->route('dashboard.index')->with('success', 'Đăng nhập thành công');
+                    return redirect()->route('dashboard.index')->with('success', 'Đăng nhập thành công');
             }
         }
         return redirect()->route('employer.login')->with('error','Email hoặc mật khẩu không chính xác');
