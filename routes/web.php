@@ -9,6 +9,8 @@ use App\Http\Controllers\Backend\PostController;
 use App\Http\Controllers\Backend\UserController;
 use App\Http\Controllers\Frontend\AAuthController;
 use App\Http\Controllers\Frontend\EAuthController;
+use Illuminate\Http\Request;
+use Illuminate\Foundation\Auth\EmailVerificationRequest;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -23,12 +25,27 @@ use Illuminate\Support\Facades\Route;
 */
 
 // Route::get('/',[HomePageController::class,'index'])->name('home.index');
+    Route::get('/email/verify', function () {
+        return view('auth.verify-email');
+    })->middleware('auth')->name('verification.notice');
 
-Route::get('dashboard/index',[DashboardController::class,'index'])->name('dashboard.index')->middleware('admin');
-// ->middleware('admin');
-Route::get('/', [HomePageController::class, 'index'])->name('home');
+    Route::get('/email/verify/{id}/{hash}', function (EmailVerificationRequest $request) {
+        $request->fulfill();
+    
+        return redirect('/home');
+    })->middleware(['auth', 'signed'])->name('verification.verify');
 
-Route::group(['prefix' => 'admin'], function(){
+    Route::post('/email/verification-notification', function (Request $request) {
+        $request->user()->sendEmailVerificationNotification();
+    
+        return back()->with('message', 'Verification link sent!');
+    })->middleware(['auth', 'throttle:6,1'])->name('verification.send');
+
+    Route::get('dashboard/index',[DashboardController::class,'index'])->name('dashboard.index');
+    // ->middleware('admin');
+    Route::get('/', [HomePageController::class, 'index'])->name('home');
+
+    Route::group(['prefix' => 'admin'], function(){
     // Login
     Route::get('login',[AuthController::class,'index'])->name('admin.login');
     Route::post('login',[AuthController::class,'login'])->name('admin.login');
@@ -72,7 +89,7 @@ Route::group(['prefix' => 'user'], function(){
 
 Route::group(['prefix' => 'employer'], function(){
     //Employer
-   Route::post('register',[EAuthController::class,'store'])->name('employer.register');
+   Route::post('register',[EAuthController::class,'register'])->name('employer.register');
    Route::get('register',[EAuthController::class,'index'])->name('employer.register');
    Route::get('login',[EAuthController::class,'loginForm'])->name('employer.login');
    Route::post('login',[EAuthController::class,'login'])->name('employer.login');

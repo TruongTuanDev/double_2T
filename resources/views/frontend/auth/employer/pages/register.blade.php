@@ -71,20 +71,32 @@
       action="{{route('employer.register')}}"
     >
     @csrf
+    <div class="form-group row">
+      <label for="name" class="col-md-12">Tên người đại diện</label>
+      <div class="col-md-12">
+        <input
+          id="name"
+          type="text"
+          class="form-control"
+          name="name"
+          value="{{old('name')}}"
+        />
+      </div>
+    </div>
       <div class="form-group row">
-        <label for="phonenumber" class="col-md-12">Số điện thoại</label>
+        <label for="phone" class="col-md-12">Số điện thoại</label>
         <div class="col-md-12">
           <input
-            id="phonenumber"
+            id="phone"
             type="text"
             class="form-control"
-            name="phonenumber"
-            value="{{old('phonenumber')}}"
+            name="phone"
+            value="{{old('phone')}}"
           />
         </div>
       </div>
       <div class="form-group row">
-        <label for="username" class="col-md-12">Email</label>
+        <label for="email" class="col-md-12">Email</label>
         <div class="col-md-12">
           <input
             id="email"
@@ -93,19 +105,6 @@
             name="email"
             value="{{old('email')}}"
             placeholder="Sử dụng email có thật để xác thực."
-          />
-        </div>
-      </div>
-      <div class="form-group row">
-        <label for="" class="col-md-12">Website</label>
-        <div class="col-md-12">
-          <input
-            id="website"
-            type="text"
-            class="form-control"
-            name="website"
-            value="{{old('website')}}"
-            placeholder="Nhập vào đường dẫn đến website của bạn"
           />
         </div>
       </div>

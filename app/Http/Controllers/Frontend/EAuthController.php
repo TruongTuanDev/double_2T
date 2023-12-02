@@ -8,6 +8,7 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Auth\Events\Registered;
 
 class EAuthController extends Controller
 {
@@ -42,11 +43,38 @@ class EAuthController extends Controller
         ];
         if (User::where('email', $request->email)->exists() && User::where('password', $request->password)) {
             if (Auth::attempt($credentials)) {
-                return redirect()->route('dashboard.index')->with('success', 'Đăng nhập thành công');
+                    return redirect()->route('dashboard.index')->with('success', 'Đăng nhập thành công');
             }
         }
         return redirect()->route('employer.login')->with('error','Email hoặc mật khẩu không chính xác');
     }
+    public function register(Request $request)
+    {
+        $this->validate($request,
+        [
+            'name'=>'string|required',
+            'role' => 'string|in:admin,user,employer',
+            'phone'=>'string|required',
+            'password'=>'string|required',
+            're_password'=>'string|required|same:password',
+            'email'=>'string|required|unique:users',
+            'address'=>'string',
+        ]);
+        $data=$request->all();
+        $data['password']=Hash::make($request->password);
+        $data['role'] = 'employer';
+        $data['status'] = 'active';
+        $status=User::create($data);
+        if($status){
+            request()->session()->flash('success','Đăng ký thành công');
+        }
+        else{
+            request()->session()->flash('error','Đăng ký thất bại');
+        }
+        return redirect()->route('employer.login');
+
+    }
+
     public function store(Request $request)
     {
         $this->validate($request,
@@ -63,6 +91,7 @@ class EAuthController extends Controller
         $data['password']=Hash::make($request->password);
         $status=Employer::create($data);
         if($status){
+            event(new Registered($user));
             request()->session()->flash('success','Đăng ký thành công');
         }
         else{
