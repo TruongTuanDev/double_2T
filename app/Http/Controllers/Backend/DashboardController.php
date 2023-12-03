@@ -21,6 +21,13 @@ class DashboardController extends Controller
         $template = "backend.dashboard.home.index";
         return view('backend.dashboard.layout',compact('template','config'));
     }
+    public function employer()
+    {
+        $config = $this->config();
+        $sidebar = "frontend.dashboard.layouts.sidebaremp";
+        $template = "frontend.dashboard.home.index";
+        return view('frontend.dashboard.index',compact('template','config','sidebar'));
+    }
     private function config(){
         return [
             'js' => [

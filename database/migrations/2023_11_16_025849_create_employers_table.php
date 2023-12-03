@@ -15,11 +15,11 @@ return new class extends Migration
             $table->id('id_emp');
             $table->string('name_compn',70)->nullable();
             $table->text('description')->nullable();
-            $table->string('logo',50)->nullable();
-            $table->string('background',50)->nullable();
+            $table->string('logo',100)->nullable();
+            $table->string('background',100)->nullable();
             $table->string('slodan',100)->nullable();
             $table->text('treatment')->nullable();
-            $table->string('website',50)->nullable();
+            $table->string('website',100)->nullable();
             $table->string('address',100)->nullable();
             $table->integer('scale')->nullable(); 
             $table->integer('id_user')->nullable(); 
