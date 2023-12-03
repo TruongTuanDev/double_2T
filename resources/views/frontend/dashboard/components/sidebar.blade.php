@@ -26,32 +26,18 @@ if (Auth::id() != null) {
               </div>
           </li>
           <li class="active">
-              <a><i class="fa fa-th-large"></i> <span class="nav-label">Quản lý người dùng</span> <span class="fa arrow"></span></a>
+              <a><i class="fa fa-th-large"></i> <span class="nav-label">Quản lý thông tin cá nhân</span> <span class="fa arrow"></span></a>
               <ul class="nav nav-second-level">
-                  <li><a href="{{ route('user.index')}}">Quản lý người dùng</a></li>
-                  <li><a href="">Quản lý nhóm người dùng</a></li>
+                  <li><a href="{{ route('user.information')}}">cập nhật thông tin</a></li>
               </ul>
           </li>
           <li class="">
-            <a href="#"><i class="fa fa-th-large"></i> <span class="nav-label">Quản lý nhà tuyển dụng</span> <span class="fa arrow"></span></a>
-            <ul class="nav nav-second-level">
-                <li><a href="{{ route('employer.index')}}">Quản lý nhà tuyển dụng</a></li>
-            </ul>
-         </li>
-         <li class="">
-            <a href="#"><i class="fa fa-th-large"></i> <span class="nav-label">Quản lý banner</span> <span class="fa arrow"></span></a>
-            <ul class="nav nav-second-level">
-                <li><a href="{{ route('banner.index')}}">Danh sách banner</a></li>
-                <li><a href="{{ route('banner.store')}}">Thêm banner</a></li>
-            </ul>
-        </li>
-        <li class="">
             <a href="#"><i class="fa fa-th-large"></i> <span class="nav-label">Quản lý công việc</span> <span class="fa arrow"></span></a>
             <ul class="nav nav-second-level">
-                <li><a href="">Danh sách công việc</a></li>
-                <li><a href="">Thêm công việc</a></li>
+                <li><a href="{{ route('employer.index')}}">Danh sách công việc đã Apply</a></li>
+                <li><a href="{{ route('employer.index')}}">Danh sách công việc đã thích</a></li>
             </ul>
-        </li>
+         </li>
       </ul>
   </div>
 </nav>

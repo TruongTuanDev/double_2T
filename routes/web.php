@@ -80,10 +80,13 @@ use Illuminate\Support\Facades\Route;
 });
 Route::group(['prefix' => 'user'], function(){
     Route::resource('auth', 'App\Http\Controllers\Frontend\AAuthController');
-    Route::get('login',[AAuthController::class,'index'])->name('user.login');
+    Route::get('login',[AAuthController::class,'loginForm'])->name('user.login');
     Route::post('login',[AAuthController::class,'login'])->name('user.login');
-    // Route::get('register',[AAuthController::class,'registerForm'])->name('user.login')->middleware('login');
-    Route::get('register',[AAuthController::class,'register'])->name('user.register');
+    Route::post('register',[AAuthController::class,'register'])->name('user.register');
+    Route::get('register',[AAuthController::class,'index'])->name('user.register');
+    Route::get('dashboard',[AAuthController::class,'home'])->name('user.dashboard');
+    Route::get('dashboard/information',[AAuthController::class,'UpdateInfor'])->name('user.information');
+    Route::post('dashboard/store',[AAuthController::class,'store'])->name('user.store');
 });
 
 
