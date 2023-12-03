@@ -1,8 +1,9 @@
 <?php
 
-namespace App\Http\Controllers\Backend;
+namespace App\Http\Controllers\Frontend;
 
 use App\Http\Controllers\Controller;
+use App\Models\Employer;
 use App\Models\User;
 use App\Services\UserService;
 use App\Models\Settings;
@@ -12,10 +13,10 @@ use App\Services\provinceService;
 use App\Services\WardService;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 
-class PostController extends Controller
+class EmployerController extends Controller
 {
     protected $userService;
     protected $provinceService;
@@ -25,17 +26,21 @@ class PostController extends Controller
     public function __construct
     (UserService $userService,
     ProvinceService $provinceService,
+    DistrictService $districtService,
+    WardService $wardsService
     )
     {
         $this->userService = $userService;
         $this->provinceService = $provinceService;
+        $this->districtService = $districtService;
+        $this->wardsService = $wardsService;
     }
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-      //  $users = $this->userService->paginate(15);
+       $users = $this->userService->paginate(15);
        $config =  [
         'js' => [
             'js/option_two/plugins/switchery/switchery.js'
@@ -45,17 +50,17 @@ class PostController extends Controller
         ]
     ];
        $config['seo'] = config('apps.user');
-       $template = 'backend.post.index';
-       return view('backend.dashboard.layout',compact('template','config','users'));
+    //    dd($config['seo']);
+       $template = 'frontend.employer.index';
+       return view('frontend.dashboard.index',compact('template','config'));
     }
     
     /**
      * Show the form for creating a new resource.
      */
-    public function create()
+    public function update()
     {
-       $profile=Auth()->user();
-       $provinces = $this->provinceService->allProvince();
+      //  $provinces = $this->provinceService->allProvince();
        $config = [
         'css' => [
             'https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css'
@@ -65,10 +70,11 @@ class PostController extends Controller
             'library/location.js',
             ]
        ];
-      //  $config['seo'] = config('apps.user');
-       $template = 'backend.post.create';
-       return view('backend.dashboard.layout',
-       compact('template','config','provinces'));
+       $config['seo'] = config('apps.user');
+       $template = 'frontend.employer.create';
+       $sidebar = 'frontend.dashboard.layouts.sidebaremp';
+       return view('frontend.dashboard.index',
+       compact('template','config','sidebar'));
     }
     /**
      * Store a newly created resource in storage.
@@ -76,36 +82,31 @@ class PostController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function updateInfor(Request $request)
     {
         $this->validate($request,
         [
-            'name'=>'string|required|max:30',
-            'phone'=>'string|required|max:12',
-            'province_id'=>'string|required|',
-            'district_id'=>'string|required|',
-            'ward_id'=>'string|required|',
-            'address'=>'string',
-            'birthday'=>'string',
-            'photo'=>'string',
+            'name_compn'=>'string|required',
             'description'=>'string',
-            'email'=>'string|required|unique:users',
-            'password'=>'string|required',
-            're_password'=>'string|required|same:password',
-            'role'=>'required|in:admin,user',
-            'status'=>'required|in:active,inactive',
+            'logo'=>'string',
+            'background'=>'string',
+            'slodan'=>'string',
+            'address'=>'string',
+            'treatment'=>'string',
+            'website'=>'string',
+            'scale'=>'integer',
         ]);
         $data=$request->all();
-        $data['password']=Hash::make($request->password);
-        $status=User::create($data);
+        $idUser = Auth()->id();
+        $data['id_user'] =  $idUser;
+        $status=Employer::create($data);
         if($status){
-            request()->session()->flash('success','Thêm thành công');
+            request()->session()->flash('success','Cập nhật thông tin thành công');
         }
         else{
-            request()->session()->flash('error','Thêm thất bại');
+            request()->session()->flash('error','Cập nhật thông tin thất bại');
         }
-        return redirect()->route('user.index');
-
+        return redirect()->route('employer.list');
     }
 
     /**
@@ -152,35 +153,35 @@ class PostController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
-    {
-        $user=User::findOrFail($id);
-        $this->validate($request,
-        [
-            'name'=>'string|required|max:30',
-            'phone'=>'string|required|max:12',
-            'province_id'=>'string|required|',
-            'district_id'=>'string|required|',
-            'ward_id'=>'string|required|',
-            'address'=>'string',
-            'birthday'=>'string',
-            'photo'=>'string',
-            'description'=>'string',
-            'email'=>'string|required|unique:users',
-            'role'=>'required|in:admin,user',
-            'status'=>'required|in:active,inactive',
-        ]);
-        $data=$request->all();
-        $status=$user->fill($data)->save();
-        if($status){
-            request()->session()->flash('success','Cập nhật thành công');
-        }
-        else{
-            request()->session()->flash('error','Cập nhật thất bại');
-        }
-        return redirect()->route('user.index');
+    // public function update(Request $request, $id)
+    // {
+    //     $user=User::findOrFail($id);
+    //     $this->validate($request,
+    //     [
+    //         'name'=>'string|required|max:30',
+    //         'phone'=>'string|required|max:12',
+    //         'province_id'=>'string|required|',
+    //         'district_id'=>'string|required|',
+    //         'ward_id'=>'string|required|',
+    //         'address'=>'string',
+    //         'birthday'=>'string',
+    //         'photo'=>'string',
+    //         'description'=>'string',
+    //         'email'=>'string|required|unique:users',
+    //         'role'=>'required|in:admin,user',
+    //         'status'=>'required|in:active,inactive',
+    //     ]);
+    //     $data=$request->all();
+    //     $status=$user->fill($data)->save();
+    //     if($status){
+    //         request()->session()->flash('success','Cập nhật thành công');
+    //     }
+    //     else{
+    //         request()->session()->flash('error','Cập nhật thất bại');
+    //     }
+    //     return redirect()->route('user.index');
 
-    }
+    // }
 
     /**
      * Remove the specified resource from storage.
@@ -203,6 +204,7 @@ class PostController extends Controller
 
     public function profile(){
         $profile=Auth()->user();
+        dd($profile);
         $config = [
             'css' => [
                 'https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css'

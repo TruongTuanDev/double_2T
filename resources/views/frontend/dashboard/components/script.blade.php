@@ -1,7 +1,12 @@
  <!-- Mainly scripts -->
     <script src="vendor/laravel-filemanager/js/stand-alone-button.js"></script>
     <script>
+
         $('#lfm').filemanager('image');
+
+        $('#lfmbg').filemanager('image');
+        $('#lfmlg').filemanager('image');
+
     </script>
     <script>
         $('#description').summernote({
@@ -18,6 +23,23 @@
             ['view', ['fullscreen', 'codeview', 'help']]
           ]
         });
+
+
+        $('#treatment').summernote({
+          placeholder: 'Nhập đoạn mô tả ngắn....',
+          tabsize: 2,
+          height: 120,
+          toolbar: [
+            ['style', ['style']],
+            ['font', ['bold', 'underline', 'clear']],
+            ['color', ['color']],
+            ['para', ['ul', 'ol', 'paragraph']],
+            ['table', ['table']],
+            ['insert', ['link', 'picture', 'video']],
+            ['view', ['fullscreen', 'codeview', 'help']]
+          ]
+        });
+
       </script>
     
     <script src="js/option_two/bootstrap.min.js"></script>
