@@ -9,17 +9,17 @@
         </ul>
     </div>
 @endif
-<form action="{{Route('user.store')}}" method="post" class="box">
+<form action="{{route('post.store')}}" method="post" class="box">
   @csrf
   <div class="wrapper wrapper-content animated fadeInRight">
     <div class="row">
-      <div class="col-lg-4">
+      <div class="col-lg-3">
         <div class="panel-head">
           <div class="panel-title">Đăng công việc</div>
           <div class="panel-description">Nhập thông tin công việc</div>
         </div>
       </div>
-      <div class="col-lg-8">
+      <div class="col-lg-9">
         <div class="ibox">
           <div class="ibox-content">
             <div class="row mb15">
@@ -55,20 +55,7 @@
               </div>
             </div>
             <div class="row mb15">
-              <div class="col-lg-6">
-                <div class="form-row">
-                  <label for="" class="control-lable text-left">Ngày hết hạn
-                  </label>
-                  <input 
-                  type="date"
-                  name="exp_date"
-                  value="{{old('exp_date')}}"
-                  class="form-control"
-                  autocomplete="off"
-                  >
-                </div>
-              </div>
-              <div class="col-lg-6">
+              <div class="col-lg-12">
                 <div class="form-row">
                   <label for="" class="control-lable text-left">Lương
                   </label>
@@ -130,9 +117,9 @@
               <div class="col-lg-6">
                 <div class="form-group">
                   <label for="status" class="col-form-label">Ngành nghề</label>
-                  <select name="status" class="form-control setupSelect2">
-                      <option value="active">Hoạt động</option>
-                      <option value="inactive">Không hoạt động</option>
+                  <select name="major" class="form-control setupSelect2">
+                      <option value="cntt">Công nghệ thông tin</option>
+                      <option value="tckt">Tài chính kế toán</option>
                   </select>
                 </div>
               </div>

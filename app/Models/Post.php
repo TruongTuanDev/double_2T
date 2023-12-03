@@ -8,7 +8,7 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
 
-class User extends Authenticatable
+class Post extends Authenticatable
 {
     use HasApiTokens, HasFactory, Notifiable;
 
@@ -17,6 +17,7 @@ class User extends Authenticatable
      *
      * @var array<int, string>
      */
+    protected $primaryKey = 'id_emp';
     protected $fillable = [
         'title',
         'post_date',
@@ -28,6 +29,9 @@ class User extends Authenticatable
         'address',
         'position',
         'status',
+        'id_emp',
+        'id_major',
+        'traffic_volume'
     ];
     protected $table = 'posts'; 
   

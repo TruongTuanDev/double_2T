@@ -5,10 +5,11 @@ use App\Http\Controllers\Backend\AuthController;
 use App\Http\Controllers\Frontend\HomePageController;
 use App\Http\Controllers\Backend\DashboardController;
 use App\Http\Controllers\Backend\EmployerController;
-use App\Http\Controllers\Backend\PostController;
 use App\Http\Controllers\Backend\UserController;
 use App\Http\Controllers\Frontend\AAuthController;
 use App\Http\Controllers\Frontend\EAuthController;
+use App\Http\Controllers\Frontend\EmployerController as FrontendEmployerController;
+use App\Http\Controllers\Frontend\PostController;
 use Illuminate\Http\Request;
 use Illuminate\Foundation\Auth\EmailVerificationRequest;
 use Illuminate\Support\Facades\Route;
@@ -94,9 +95,18 @@ Route::group(['prefix' => 'employer'], function(){
    Route::get('login',[EAuthController::class,'loginForm'])->name('employer.login');
    Route::post('login',[EAuthController::class,'login'])->name('employer.login');
    //Jobs
-   Route::resource('posts','App\Http\Controllers\Backend\PostController');
    Route::get('post',[PostController::class,'index'])->name('post.index');
+   Route::get('create',[PostController::class,'create'])->name('post.create');
+   Route::post('store',[PostController::class,'store'])->name('post.store');
+   Route::get('edit',[PostController::class,'edit'])->name('post.edit');
+   Route::post('destroy',[PostController::class,'destroy'])->name('post.destroy');
 
+   Route::get('dashboard',[DashboardController::class,'employer'])->name('employer.dashboard');
+
+   Route::get('update',[FrontendEmployerController::class,'update'])->name('employer.update');
+   Route::post('update',[FrontendEmployerController::class,'updateInfor'])->name('employer.update');
+
+   Route::get('index',[FrontendEmployerController::class,'index'])->name('employer.list');
 });
 
 /* AJAX */
