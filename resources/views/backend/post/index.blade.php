@@ -7,8 +7,8 @@
          </div>
      </div>
     <div class="card-header py-3">
-      <a href="{{route('post.create')}}" class="btn btn-primary btn-sm float-right" data-toggle="tooltip" data-placement="bottom" title="Add banner"><i class="fa fa-plus"></i>Thêm banner</a>
-      <h4 class="m-0 font-weight-bold text-primary float-left">Danh sách banner</h6>
+      <a href="{{route('post.create')}}" class="btn btn-primary btn-sm float-right" data-toggle="tooltip" data-placement="bottom" title="Add banner"><i class="fa fa-plus"></i>Thêm công việc</a>
+      <h4 class="m-0 font-weight-bold text-primary float-left">Danh sách công việc</h6>
     </div>
     <div class="card-body">
       <div class="table-responsive">
@@ -72,7 +72,7 @@
         </table>
         <span style="float:right">{{$posts->links()}}</span>
         @else
-          <h6 class="text-center">Không tìm thấy banner!!! Vui lòng tạo thêm banner</h6>
+          <h6 class="text-center">Không tìm thấy công việc!!! Vui lòng tạo thêm công việc</h6>
         @endif
       </div>
     </div>

@@ -40,7 +40,7 @@ class EmployerController extends Controller
      */
     public function index()
     {
-       $users = $this->userService->paginate(15);
+    //    $users = $this->userService->paginate(15);
        $config =  [
         'js' => [
             'js/option_two/plugins/switchery/switchery.js'
@@ -51,8 +51,9 @@ class EmployerController extends Controller
     ];
        $config['seo'] = config('apps.user');
     //    dd($config['seo']);
+       $sidebar = 'frontend.dashboard.layouts.sidebaremp';
        $template = 'frontend.employer.index';
-       return view('frontend.dashboard.index',compact('template','config'));
+       return view('frontend.dashboard.index',compact('template','config','sidebar'));
     }
     
     /**
@@ -106,7 +107,7 @@ class EmployerController extends Controller
         else{
             request()->session()->flash('error','Cập nhật thông tin thất bại');
         }
-        return redirect()->route('employer.list');
+        return redirect()->route('employer.update');
     }
 
     /**

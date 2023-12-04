@@ -4,19 +4,27 @@ namespace App\Http\Controllers\Frontend;
 
 use App\Http\Controllers\Controller;
 use App\Models\Banner;
+use App\Services\EmployerService;
+use App\Services\PostService;
 use App\Services\provinceService;
 use Illuminate\Http\Request;
 
 class HomePageController extends Controller
 {
     protected $provinceService;
+    protected $employerService;
+    protected $postService;
 
     public function __construct
     (
     ProvinceService $provinceService,
+    EmployerService $employerService,
+    PostService $postService
     )
     {
         $this->provinceService = $provinceService;
+        $this->employerService = $employerService;
+        $this->postService = $postService;
     }
     /**
      * Display a listing of the resource.
@@ -26,6 +34,8 @@ class HomePageController extends Controller
     {
        $banners=Banner::orderBy('id','DESC')->paginate(10);
        $provinces = $this->provinceService->allProvince();
+       $companys = $this->employerService->featuredCompany();
+       $jobs = $this->postService->featuredJob();
        $config = [
         'css' => [
             'https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css'
@@ -35,8 +45,9 @@ class HomePageController extends Controller
             'library/location.js'
             ]
        ];
-       $template = "frontend.pages.index";
-       return view('frontend.layout',compact('config','provinces','template','banners'));
+       $template = "frontend.pages.home";
+       return view('index',
+       compact('config','provinces','template','banners','companys','jobs'));
     }
     
     /**

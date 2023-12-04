@@ -9,4 +9,5 @@ namespace App\Services\Interfaces;
 interface EmployerServiceInterface
 {
   public function paginate();
+  public function featuredCompany();
 }
