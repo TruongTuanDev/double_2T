@@ -10,6 +10,7 @@ use App\Http\Controllers\Frontend\AAuthController;
 use App\Http\Controllers\Frontend\EAuthController;
 use App\Http\Controllers\Frontend\EmployerController as FrontendEmployerController;
 use App\Http\Controllers\Frontend\PostController;
+use App\Http\Controllers\Frontend\StudentController;
 use Illuminate\Http\Request;
 use Illuminate\Foundation\Auth\EmailVerificationRequest;
 use Illuminate\Support\Facades\Route;
@@ -50,7 +51,6 @@ use Illuminate\Support\Facades\Route;
     // Login
     Route::get('login',[AuthController::class,'index'])->name('admin.login');
     Route::post('login',[AuthController::class,'login'])->name('admin.login');
-
     Route::get('register',[AuthController::class,'register'])->name('admin.register');
     Route::get('change-password',[AuthController::class,'changePassword'])->name('change.password.form');
     Route::post('change-password', [AuthController::class, 'changPasswordStore'])->name('change.password');
@@ -85,9 +85,9 @@ Route::group(['prefix' => 'user'], function(){
     Route::post('login',[AAuthController::class,'login'])->name('user.login');
     Route::post('register',[AAuthController::class,'register'])->name('user.register');
     Route::get('register',[AAuthController::class,'index'])->name('user.register');
-    Route::get('dashboard',[AAuthController::class,'home'])->name('user.dashboard');
-    Route::get('dashboard/information',[AAuthController::class,'UpdateInfor'])->name('user.information');
-    Route::post('dashboard/store',[AAuthController::class,'store'])->name('user.store');
+    Route::get('dashboard',[StudentController::class,'home'])->name('user.dashboard');
+    Route::get('dashboard/information/{iduser}',[StudentController::class,'UpdateInfor'])->name('user.information');
+    Route::post('dashboard/store',[StudentController::class,'store'])->name('user.store');
 });
 
 

@@ -28,7 +28,7 @@ if (Auth::id() != null) {
           <li class="active">
               <a><i class="fa fa-th-large"></i> <span class="nav-label">Quản lý người dùng</span> <span class="fa arrow"></span></a>
               <ul class="nav nav-second-level">
-                  <li><a href="{{ route('user.index')}}">Quản lý người dùng</a></li>
+                  <li><a href="{{ route('user.index')}}">Danh sách người dùng</a></li>
                   <li><a href="">Quản lý nhóm người dùng</a></li>
               </ul>
           </li>

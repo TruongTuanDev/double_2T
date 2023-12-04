@@ -28,7 +28,7 @@ if (Auth::id() != null) {
           <li class="active">
               <a><i class="fa fa-th-large"></i> <span class="nav-label">Quản lý thông tin cá nhân</span> <span class="fa arrow"></span></a>
               <ul class="nav nav-second-level">
-                  <li><a href="{{ route('user.information')}}">cập nhật thông tin</a></li>
+                  <li><a href="{{ route('user.information', ['iduser' => $profile->id]) }}">cập nhật thông tin</a></li>
               </ul>
           </li>
           <li class="">

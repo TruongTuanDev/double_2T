@@ -45,6 +45,15 @@ class AAuthController extends Controller
         $status=User::create($data);
         if($status){
             request()->session()->flash('success','Đăng ký thành công');
+            $id_user=$status->id;
+            $datadetail['id_user']=$id_user;
+            $student=Student::create($datadetail);
+            if($student){
+
+            }else
+            {
+                
+            }
         }
         else{
             request()->session()->flash('error','Đăng ký thất bại');
@@ -61,12 +70,7 @@ class AAuthController extends Controller
             ]
             ];
     }
-    public function home()
-    {
-        $config = $this->config();
-        $template = "Frontend.dashboard.home.index";
-        return view('Frontend.dashboard.layout',compact('template','config'));
-    }
+   
     /**
      * Display a listing of the resource.
      */
@@ -83,48 +87,10 @@ class AAuthController extends Controller
         }
         return redirect()->route('user.login')->with('error','Email hoặc mật khẩu không chính xác');
     }
-    public function UpdateInfor(){
-       $config = [
-        'css' => [
-            'https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css'
-        ],
-        'js' => [
-            'https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js',
-            'library/location.js',
-            ]
-       ];
-       $config['seo'] = config('apps.user');
-       $template = 'frontend.dashboard.user.create';
-       return view('frontend.dashboard.layout',
-       compact('template','config'));
-    }
     public function changePassword(){
         return view('backend.layouts.changePassword');
     }
-    public function store(Request $request)
-    {
-        
-        $this->validate($request,
-        [
-            'university'=>'string|required',
-            'major'=>'string|required',
-            'birthday'=>'string',
-            'avatar'=>'string',
-            'description'=>'string',
-            'id_user'=>'integer',
-        ]);
-        $data=$request->all();
-        $data['id_user']=Auth()->user()->id;
-        $status=Student::create($data);
-        if($status){
-            request()->session()->flash('success','Thêm thành công');
-        }
-        else{
-            request()->session()->flash('error','Thêm thất bại');
-        }
-        return view('frontend.dashboard.index');
-
-    }
+    
     // public function changPasswordStore(Request $request)
     // {
     //     $request->validate([

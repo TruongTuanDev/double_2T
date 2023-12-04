@@ -20,7 +20,7 @@
     type : 'GET',
     data : option,
     dataType : 'json',
-    success: function(res){
+    success: function(res){  
       $('.'+option.target).html(res.html);
     },
     error: function(jqXHR, textStatus, errorThrown){
