@@ -56,3 +56,5 @@
     
     <script src="js/option_two/jquery-3.1.1.min.js"></script>
     <script src="js/option_two/bootstrap.min.js"></script>
+    <script src="js/option_one/detail-jobs.js"></script>
+    <script src="js/option_one/swipper-jobs.js"></script>

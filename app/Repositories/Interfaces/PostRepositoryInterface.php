@@ -3,11 +3,13 @@
 namespace App\Repositories\Interfaces;
 
 /**
- * Interface UserRepositoryInterface
  * @package App\Repositories\Interfaces
  */
-interface EmployerRepositoryInterface
+interface PostRepositoryInterface
 {
   public function getAllPaginate($number);
-  public function getFeaturedCompany();
+
+  public function getPostOfCompany($number);
+
+  public function getFeaturedJob();
 }

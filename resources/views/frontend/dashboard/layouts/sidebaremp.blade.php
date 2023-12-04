@@ -34,7 +34,7 @@ if (Auth::id() != null) {
           <li class="">
               <a href="#"><i class="fa fa-th-large"></i> <span class="nav-label">Quản lý công việc</span> <span class="fa arrow"></span></a>
               <ul class="nav nav-second-level">
-                  <li><a href="{{route('post.create')}}">Danh sách công việc</a></li>
+                  <li><a href="{{route('post.index')}}">Danh sách công việc</a></li>
                   <li><a href="{{route('post.create')}}">Thêm công việc</a></li>
               </ul>
           </li>

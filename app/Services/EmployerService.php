@@ -20,6 +20,16 @@ class EmployerService implements EmployerServiceInterface
   {
     $this->employerRepository = $employerRepository;
   }
+  public function getAllCompany()
+  {
+    $employers = $this->employerRepository->getAll();
+    return $employers;
+  }
+  public function featuredCompany()
+  {
+    $companys = $this->employerRepository->getFeaturedCompany();
+    return $companys;
+  }
   public function paginate(){
     $employers = $this->employerRepository->getAllPaginate(15);
     return $employers;
