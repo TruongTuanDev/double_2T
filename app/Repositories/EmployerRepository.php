@@ -25,4 +25,8 @@ class EmployerRepository extends BaseRepository implements EmployerRepositoryInt
     ->take(5)
     ->get();
   }
+  public function findCompanyByIdJob($id)
+  {
+    return Employer::findOrFail($id);
+  }
 }

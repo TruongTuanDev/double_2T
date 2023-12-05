@@ -12,4 +12,6 @@ interface PostRepositoryInterface
   public function getPostOfCompany($number);
 
   public function getFeaturedJob();
+
+  public function findJobById($id);
 }

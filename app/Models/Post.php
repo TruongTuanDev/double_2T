@@ -17,7 +17,7 @@ class Post extends Authenticatable
      *
      * @var array<int, string>
      */
-    protected $primaryKey = 'id_emp';
+    protected $primaryKey = 'id_post';
     protected $fillable = [
         'title',
         'post_date',
@@ -34,5 +34,8 @@ class Post extends Authenticatable
         'traffic_volume'
     ];
     protected $table = 'posts'; 
-  
+
+    public function companys() {
+        return $this->belongsTo(Employer::class, 'id_emp','id_emp');
+    }
 }

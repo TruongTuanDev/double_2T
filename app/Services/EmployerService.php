@@ -34,6 +34,11 @@ class EmployerService implements EmployerServiceInterface
     $employers = $this->employerRepository->getAllPaginate(15);
     return $employers;
   }
+  public function findCompanyByIdJob($id)
+  {
+    $companys = $this->employerRepository->findCompanyByIdJob($id);
+    return $companys;
+  }
   public function create($request){
     DB::beginTransaction();
     try{

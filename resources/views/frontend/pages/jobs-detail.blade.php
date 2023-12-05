@@ -4,28 +4,23 @@
         <div class="header-jobs-detail">
           <div class="container">
             <div class="row">
-
               <div class="product-item">
                 <div class="card jobs-card">
                     <div class="card-body">
                         <div class="view_job_item d-flex align-items-center justify-content-start">
-
                                 <div class="job-img me-3">
-                                    <img class="w-100" src="https://images.vietnamworks.com/pictureofcompany/e8/10424470.png"
+                                    <img class="w-100" src="{{$company->logo}}"
                                         alt="logo" width="78px">
                                 </div>
-
                                 <div class="job-info">
                                     <div class="job-name job-item">
-                                        <a href="#" class="job-link">Security Feature Test (Hybrid Working +
-                                            Salary Up to $2,000 + Relocation Bonus)</a>
+                                        <a href="#" class="job-link">{{$job->title}}</a>
                                     </div>
                                     <div class="company-name job-item">
-                                        <a href="#" class="job-company">LG Vehicle Component Solutions
-                                            Development Center Vietnam (LG VS DCV)</a>
+                                        <a href="#" class="job-company">{{$company->name_compn}}</a>
                                     </div>
-                                    <div class="job-location job-fs">Da Nang</div>
-                                    <div class="job-salary job-item job-fs">$800 - $2000</div>
+                                    <div class="job-location job-fs">{{$job->address}}</div>
+                                    <div class="job-salary job-item job-fs">{{$job->salary}}$</div>
                                     <div class="bonus job-fs"><p>1682 lượt xem - Hết hạn trong 3 ngày</p></div>
                                 </div>
                                 <div class="featured d-flex justify-content-end ms-4" >
@@ -36,8 +31,6 @@
                                       Apply Now
                                     </button>
                                 </div>
-
-
                         </div>
                     </div>
                 </div>
@@ -101,11 +94,11 @@
                         <div class="section-right-one">
                           <div class="summary">
                             <p><span><i class="fa-regular fa-calendar-days"></i></span>Ngày đăng tuyển</p>
-                            <p>13/06/2023</p>
+                            <p>{{$job->post_date}}</p>
                           </div>
                           <div class="summary">
                             <p><span><i class="fa-solid fa-layer-group"></i></span>CẤP BẬC</p>
-                            <p>Giám Đốc và Cấp Cao Hơn</p>
+                            <p>{{$job->position}}</p>
                           </div>
                           <div class="summary">
                             <p><span><i class="fa-solid fa-business-time"></i></span>NGÀNH NGHỀ</p>
@@ -113,7 +106,7 @@
                           </div>
                           <div class="summary">
                             <p><span><i class="fa-regular fa-flag"></i></span>KỸ NĂNG</p>
-                            <p>Quan Hệ Khách Hàng, Kế Hoạch Kinh Doanh, Quản Lý Rủi Ro Tín Dụng, Tư Vấn Tài Chính, Tìm Kiếm Khách Hàng</p>
+                            <p>{{$job->requiment}}</p>
                           </div>
                           <div class="summary">
                             <p><span><i class="fa-solid fa-language"></i></span>Ngôn ngữ trình bày hồ sơ</p>

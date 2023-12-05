@@ -3,19 +3,15 @@
 namespace App\Http\Controllers\Frontend;
 
 use App\Http\Controllers\Controller;
+use App\Models\Banner;
 use App\Models\Post;
 use App\Models\User;
-<<<<<<< HEAD
 use App\Models\Settings;
 use App\Rules\MatchOldPassword;
 use App\Services\DistrictService;
+use App\Services\EmployerService;
 use App\Services\PostService;
-=======
 use App\Services\UserService;
-use App\Models\Settings;
-use App\Rules\MatchOldPassword;
-use App\Services\DistrictService;
->>>>>>> Tuan
 use App\Services\provinceService;
 use App\Services\WardService;
 use Carbon\Carbon;
@@ -25,42 +21,32 @@ use Illuminate\Support\Facades\Hash;
 
 class PostController extends Controller
 {
-<<<<<<< HEAD
     protected $postService;
-=======
     protected $userService;
->>>>>>> Tuan
     protected $provinceService;
     protected $districtService;
     protected $wardsService;
+    protected $employerService;
 
     public function __construct
-<<<<<<< HEAD
     (PostService $postService,
     ProvinceService $provinceService,
+    EmployerService $employerService
     )
     {
         $this->postService = $postService;
-=======
-    (UserService $userService,
-    ProvinceService $provinceService,
-    )
-    {
-        $this->userService = $userService;
->>>>>>> Tuan
         $this->provinceService = $provinceService;
+        $this->employerService = $employerService;
     }
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-<<<<<<< HEAD
       $posts = $this->postService->paginatePostOfComp();
-=======
+
       //  $users = $this->userService->paginate(15);
       $posts =Post::orderBy('id_post','DESC')->paginate(10);
->>>>>>> Tuan
        $config =  [
         'js' => [
             'js/option_two/plugins/switchery/switchery.js'
@@ -129,7 +115,23 @@ class PostController extends Controller
         return redirect()->route('post.index');
 
     }
-
+    public function jobDetail($id){
+       $provinces = $this->provinceService->allProvince();
+       $config = [
+        'css' => [
+            'https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css'
+        ],
+        'js' => [
+            'https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js',
+            'library/location.js'
+            ]
+       ];
+       
+        $job = $this->postService->findJobById($id);
+        $company = $job->companys;
+        $template = 'frontend.pages.jobs-detail';
+        return view('index',compact('config','provinces','job','template','company'));
+    }
     /**
      * Display the specified resource.
      *
@@ -269,53 +271,7 @@ class PostController extends Controller
         return view('backend.dashboard.layout',compact('template','config','data'));
     }
 
-    public function settingsUpdate(Request $request){
-        $this->validate($request,[
-            'short_des'=>'required|string',
-            'description'=>'required|string',
-            'photo'=>'required',
-            'logo'=>'required',
-            'address'=>'required|string',
-            'email'=>'required|email',
-            'phone'=>'required|string',
-        ]);
-        $data=$request->all();
-        // return $data;
-        $settings=Settings::first();
-        // return $settings;
-        $status=$settings->fill($data)->save();
-        if($status){
-            request()->session()->flash('success','Setting successfully updated');
-        }
-        else{
-            request()->session()->flash('error','Please try again');
-        }
-        return redirect()->route('admin');
-    }
 
-    public function changePassword(){
-        $config = [
-            'css' => [
-                'https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css'
-            ],
-            'js' => [
-                'https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js',
-                ]
-        ]; 
-        $config['seo'] = config('apps.user');
-        $template = 'backend.layouts.changePassword';
-        return view('backend.dashboard.layout',compact('template','config','data'));
-    }
-    public function changPasswordStore(Request $request)
-    {
-        $request->validate([
-            'current_password' => ['required', new MatchOldPassword],
-            'new_password' => ['required'],
-            'new_confirm_password' => ['same:new_password'],
-        ]);
 
-        User::find(auth()->user()->id)->update(['password'=> Hash::make($request->new_password)]);
-
-        return redirect()->route('admin')->with('success','Mật khẩu thay đổi thành công');
-    }
+   
 }

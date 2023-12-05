@@ -26,5 +26,8 @@ class Employer extends Model
     public function users() {
         return $this->belongsTo(User::class, 'id','id_emp');
     }
+    public function posts(){
+        return $this->hasMany(Post::class,'id_emp','id_emp');
+    }
     
 }

@@ -31,4 +31,9 @@ class PostRepository extends BaseRepository implements PostRepositoryInterface
     ->take(9)
     ->get();
   }
+  public function findJobById($id)
+  {
+    $job = Post::with('companys')->find($id);
+    return $job;
+  }
 }

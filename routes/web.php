@@ -47,6 +47,9 @@ use Illuminate\Support\Facades\Route;
     // ->middleware('admin');
     Route::get('/', [HomePageController::class, 'index'])->name('home');
 
+    Route::get('job-detail/{id}', [PostController::class, 'jobDetail'])->name('job-detail');
+
+
     Route::group(['prefix' => 'admin'], function(){
     // Login
     Route::get('login',[AuthController::class,'index'])->name('admin.login');

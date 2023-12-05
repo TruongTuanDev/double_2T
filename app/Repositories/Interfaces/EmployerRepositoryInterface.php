@@ -10,4 +10,6 @@ interface EmployerRepositoryInterface
 {
   public function getAllPaginate($number);
   public function getFeaturedCompany();
+
+  public function findCompanyByIdJob($id);
 }

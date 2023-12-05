@@ -10,4 +10,6 @@ interface EmployerServiceInterface
 {
   public function paginate();
   public function featuredCompany();
+
+  public function findCompanyByIdJob($id);
 }
