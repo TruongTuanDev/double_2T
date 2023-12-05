@@ -5,17 +5,11 @@ namespace App\Http\Controllers\Frontend;
 use App\Http\Controllers\Controller;
 use App\Models\Post;
 use App\Models\User;
-<<<<<<< HEAD
 use App\Models\Settings;
 use App\Rules\MatchOldPassword;
 use App\Services\DistrictService;
 use App\Services\PostService;
-=======
 use App\Services\UserService;
-use App\Models\Settings;
-use App\Rules\MatchOldPassword;
-use App\Services\DistrictService;
->>>>>>> Tuan
 use App\Services\provinceService;
 use App\Services\WardService;
 use Carbon\Carbon;
@@ -25,29 +19,17 @@ use Illuminate\Support\Facades\Hash;
 
 class PostController extends Controller
 {
-<<<<<<< HEAD
     protected $postService;
-=======
-    protected $userService;
->>>>>>> Tuan
     protected $provinceService;
     protected $districtService;
     protected $wardsService;
 
     public function __construct
-<<<<<<< HEAD
     (PostService $postService,
     ProvinceService $provinceService,
     )
     {
         $this->postService = $postService;
-=======
-    (UserService $userService,
-    ProvinceService $provinceService,
-    )
-    {
-        $this->userService = $userService;
->>>>>>> Tuan
         $this->provinceService = $provinceService;
     }
     /**
@@ -55,12 +37,9 @@ class PostController extends Controller
      */
     public function index()
     {
-<<<<<<< HEAD
       $posts = $this->postService->paginatePostOfComp();
-=======
       //  $users = $this->userService->paginate(15);
       $posts =Post::orderBy('id_post','DESC')->paginate(10);
->>>>>>> Tuan
        $config =  [
         'js' => [
             'js/option_two/plugins/switchery/switchery.js'
@@ -126,7 +105,7 @@ class PostController extends Controller
         else{
             request()->session()->flash('error','Thêm thất bại');
         }
-        return redirect()->route('post.index');
+        return redirect()->route('post.index');   
 
     }
 

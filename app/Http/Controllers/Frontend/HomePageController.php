@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Frontend;
 use App\Http\Controllers\Controller;
 use App\Models\Banner;
 use App\Services\EmployerService;
+use App\Services\MajorService;
 use App\Services\PostService;
 use App\Services\provinceService;
 use Illuminate\Http\Request;
@@ -14,17 +15,19 @@ class HomePageController extends Controller
     protected $provinceService;
     protected $employerService;
     protected $postService;
-
+    protected $majorService;
     public function __construct
     (
     ProvinceService $provinceService,
     EmployerService $employerService,
-    PostService $postService
+    PostService $postService,
+    MajorService $majorservice,
     )
     {
         $this->provinceService = $provinceService;
         $this->employerService = $employerService;
         $this->postService = $postService;
+        $this->majorService = $majorservice;
     }
     /**
      * Display a listing of the resource.
@@ -36,6 +39,7 @@ class HomePageController extends Controller
        $provinces = $this->provinceService->allProvince();
        $companys = $this->employerService->featuredCompany();
        $jobs = $this->postService->featuredJob();
+       $majors=$this->majorService->featuredMajor();
        $config = [
         'css' => [
             'https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css'
@@ -47,7 +51,7 @@ class HomePageController extends Controller
        ];
        $template = "frontend.pages.home";
        return view('index',
-       compact('config','provinces','template','banners','companys','jobs'));
+       compact('config','provinces','template','banners','companys','jobs','majors'));
     }
     
     /**

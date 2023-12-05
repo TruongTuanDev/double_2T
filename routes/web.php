@@ -48,16 +48,18 @@ use Illuminate\Support\Facades\Route;
     Route::get('/', [HomePageController::class, 'index'])->name('home');
 
     Route::group(['prefix' => 'admin'], function(){
-    // Login
+    Route::get('/',[AuthController::class,'register']);
     Route::get('login',[AuthController::class,'index'])->name('admin.login');
     Route::post('login',[AuthController::class,'login'])->name('admin.login');
     Route::get('register',[AuthController::class,'register'])->name('admin.register');
+    Route::post('register',[AuthController::class,'store'])->name('admin.register');
     Route::get('change-password',[AuthController::class,'changePassword'])->name('change.password.form');
     Route::post('change-password', [AuthController::class, 'changPasswordStore'])->name('change.password');
     Route::get('logout',[AuthController::class,'logout'])->name('auth.logout');
     
     
     Route::resource('banner', 'App\Http\Controllers\Backend\BannerController');
+    Route::resource('major', 'App\Http\Controllers\Backend\MajorController');
     // Profile
     Route::get('/profile', [UserController::class, 'profile'])->name('admin-profile');
     Route::post('/profile/{id}', [UserController::class, 'profileUpdate'])->name('profile-update');
