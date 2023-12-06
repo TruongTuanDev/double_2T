@@ -17,8 +17,32 @@ class AuthController extends Controller
     }
     public function register(){
         $config = $this->config();
-        $template = "backend.auth.home.register";
+        $template = "backend.auth.register";    
         return view('backend.auth.layout',compact('config', 'template'));
+    }
+    public function store(Request $request){
+        $this->validate($request,
+        [
+            'name'=>'string|required',
+            'role' => 'string|in:admin,user,employer',
+            'phone'=>'string|required',
+            'password'=>'string|required',
+            're_password'=>'string|required|same:password',
+            'email'=>'string|required|unique:users',
+            'address'=>'string',
+        ]);
+        $data=$request->all();
+        $data['password']=Hash::make($request->password);
+        $data['role'] = 'admin';
+        $data['status'] = 'active';
+        $status=User::create($data);
+        if($status){
+            request()->session()->flash('success','Đăng ký thành công');
+        }
+        else{
+            request()->session()->flash('error','Đăng ký thất bại');
+        }
+        return redirect()->route('admin.login');
     }
     private function config(){
         return [

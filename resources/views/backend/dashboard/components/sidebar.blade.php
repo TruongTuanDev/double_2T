@@ -32,6 +32,13 @@ if (Auth::id() != null) {
                   <li><a href="">Quản lý nhóm người dùng</a></li>
               </ul>
           </li>
+          <li class="active">
+            <a><i class="fa fa-th-large"></i> <span class="nav-label">Quản lý chuyên ngành</span> <span class="fa arrow"></span></a>
+            <ul class="nav nav-second-level">
+                <li><a href="{{ route('major.index')}}">Danh sách chuyên ngành</a></li>
+                <li><a href="{{ route('major.create')}}">Thêm chuyên ngành</a></li>
+            </ul>
+        </li>
           <li class="">
             <a href="#"><i class="fa fa-th-large"></i> <span class="nav-label">Quản lý nhà tuyển dụng</span> <span class="fa arrow"></span></a>
             <ul class="nav nav-second-level">

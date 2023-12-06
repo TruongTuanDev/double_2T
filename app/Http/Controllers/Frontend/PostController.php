@@ -22,7 +22,10 @@ use Illuminate\Support\Facades\Hash;
 class PostController extends Controller
 {
     protected $postService;
+<<<<<<< HEAD
     protected $userService;
+=======
+>>>>>>> 40a1cdf8104ae419f4c885f3cbcbe346c2e66afb
     protected $provinceService;
     protected $districtService;
     protected $wardsService;
@@ -44,7 +47,10 @@ class PostController extends Controller
     public function index()
     {
       $posts = $this->postService->paginatePostOfComp();
+<<<<<<< HEAD
 
+=======
+>>>>>>> 40a1cdf8104ae419f4c885f3cbcbe346c2e66afb
       //  $users = $this->userService->paginate(15);
       $posts =Post::orderBy('id_post','DESC')->paginate(10);
        $config =  [
@@ -112,7 +118,7 @@ class PostController extends Controller
         else{
             request()->session()->flash('error','Thêm thất bại');
         }
-        return redirect()->route('post.index');
+        return redirect()->route('post.index');   
 
     }
     public function jobDetail($id){
@@ -273,5 +279,13 @@ class PostController extends Controller
 
 
 
+<<<<<<< HEAD
    
 }
+=======
+        User::find(auth()->user()->id)->update(['password'=> Hash::make($request->new_password)]);
+
+        return redirect()->route('admin')->with('success','Mật khẩu thay đổi thành công');
+    }
+}
+>>>>>>> 40a1cdf8104ae419f4c885f3cbcbe346c2e66afb
