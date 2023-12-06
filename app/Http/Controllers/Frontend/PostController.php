@@ -10,6 +10,7 @@ use App\Models\Settings;
 use App\Rules\MatchOldPassword;
 use App\Services\DistrictService;
 use App\Services\EmployerService;
+use App\Services\MajorService;
 use App\Services\PostService;
 use App\Services\UserService;
 use App\Services\provinceService;
@@ -22,24 +23,24 @@ use Illuminate\Support\Facades\Hash;
 class PostController extends Controller
 {
     protected $postService;
-<<<<<<< HEAD
     protected $userService;
-=======
->>>>>>> 40a1cdf8104ae419f4c885f3cbcbe346c2e66afb
     protected $provinceService;
     protected $districtService;
     protected $wardsService;
     protected $employerService;
+    protected $majorService;
 
     public function __construct
     (PostService $postService,
     ProvinceService $provinceService,
-    EmployerService $employerService
+    EmployerService $employerService,
+    MajorService $majorService
     )
     {
         $this->postService = $postService;
         $this->provinceService = $provinceService;
         $this->employerService = $employerService;
+        $this->majorService = $majorService;
     }
     /**
      * Display a listing of the resource.
@@ -47,10 +48,7 @@ class PostController extends Controller
     public function index()
     {
       $posts = $this->postService->paginatePostOfComp();
-<<<<<<< HEAD
 
-=======
->>>>>>> 40a1cdf8104ae419f4c885f3cbcbe346c2e66afb
       //  $users = $this->userService->paginate(15);
       $posts =Post::orderBy('id_post','DESC')->paginate(10);
        $config =  [
@@ -73,6 +71,7 @@ class PostController extends Controller
     public function create()
     {
        $provinces = $this->provinceService->allProvince();
+       $majors = $this->majorService->allMajor();
        $config = [
         'css' => [
             'https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css'
@@ -86,7 +85,7 @@ class PostController extends Controller
        $sidebar = 'frontend.dashboard.layouts.sidebaremp';
        $template = 'backend.post.create';
        return view('frontend.dashboard.index',
-       compact('template','config','sidebar','provinces'));
+       compact('template','config','sidebar','provinces','majors'));
     }
     /**
      * Store a newly created resource in storage.
@@ -279,13 +278,4 @@ class PostController extends Controller
 
 
 
-<<<<<<< HEAD
-   
 }
-=======
-        User::find(auth()->user()->id)->update(['password'=> Hash::make($request->new_password)]);
-
-        return redirect()->route('admin')->with('success','Mật khẩu thay đổi thành công');
-    }
-}
->>>>>>> 40a1cdf8104ae419f4c885f3cbcbe346c2e66afb

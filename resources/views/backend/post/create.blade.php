@@ -118,8 +118,10 @@
                 <div class="form-group">
                   <label for="status" class="col-form-label">Ngành nghề</label>
                   <select name="major" class="form-control setupSelect2">
-                      <option value="cntt">Công nghệ thông tin</option>
+                    @foreach($majors as $major)
+                      <option value="{{$major->id_major}}">{{$major->name}}</option>
                       <option value="tckt">Tài chính kế toán</option>
+                    @endforeach
                   </select>
                 </div>
               </div>

@@ -9,4 +9,5 @@ namespace App\Services\Interfaces;
 interface MajorServiceInterface
 {
   public function featuredMajor();
+  public function allMajor();
 }
