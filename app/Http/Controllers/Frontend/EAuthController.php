@@ -68,6 +68,9 @@ class EAuthController extends Controller
         $data['status'] = 'active';
         $status=User::create($data);
         if($status){
+            $id_user=$status->id;
+            $datadetail['id_user']=$id_user;
+            $employer=Employer::create($datadetail);
             request()->session()->flash('success','Đăng ký thành công nhà tuyển dụng');
         }
         else{

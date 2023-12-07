@@ -44,10 +44,10 @@ class AAuthController extends Controller
         $data['status'] = 'active';
         $status=User::create($data);
         if($status){
-            request()->session()->flash('success','Đăng ký thành công');
             $id_user=$status->id;
             $datadetail['id_user']=$id_user;
             $student=Student::create($datadetail);
+            request()->session()->flash('success','Đăng ký thành công');
             if($student){
 
             }else
@@ -82,7 +82,7 @@ class AAuthController extends Controller
         ];
         if (User::where('email', $request->email)->exists() && User::where('password', $request->password)) {
             if (Auth::attempt($credentials)) {
-                return redirect()->route('user.dashboard')->with('success', 'Đăng nhập thành công');
+                return redirect()->route('home')->with('success', 'Đăng nhập thành công');
             }
         }
         return redirect()->route('user.login')->with('error','Email hoặc mật khẩu không chính xác');

@@ -11,7 +11,12 @@ body {
 nav {
     background: linear-gradient(270deg, rgb(0, 90, 255) 0%, rgb(0, 23, 68) 100%);
 }
-
+.visible {
+  display: block;
+}
+.hidden {
+  display: none;
+}
 .navbar-toggler {
     border: 0;
 }

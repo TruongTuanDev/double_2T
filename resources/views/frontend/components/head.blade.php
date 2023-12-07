@@ -17,7 +17,6 @@
     <link rel="stylesheet" href="css/option_one/home.css">
     <link rel="stylesheet" href="css/option_one/customize.css">
     <link rel="stylesheet" href="css/option_one/detailjob.css">
-
     <!-- Link Swiper's CSS -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css" />
     @if(isset($config['css']) && is_array($config['css']))
