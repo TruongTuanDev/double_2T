@@ -16,7 +16,7 @@ class MajorController extends Controller
     }
     public function index()
     {
-        $majors = $this->majorService->paginate(15);
+       $majors = $this->majorService->allMajor();
        $config =  [
         'js' => [
             'js/option_two/plugins/switchery/switchery.js'

@@ -6,6 +6,7 @@ use App\Http\Controllers\Frontend\HomePageController;
 use App\Http\Controllers\Backend\DashboardController;
 use App\Http\Controllers\Backend\EmployerController;
 use App\Http\Controllers\Backend\UserController;
+use App\Http\Controllers\FavJobController;
 use App\Http\Controllers\Frontend\AAuthController;
 use App\Http\Controllers\Frontend\EAuthController;
 use App\Http\Controllers\Frontend\EmployerController as FrontendEmployerController;
@@ -47,7 +48,10 @@ use Illuminate\Support\Facades\Route;
     // ->middleware('admin');
     Route::get('/', [HomePageController::class, 'index'])->name('home');
 
-    Route::get('job-detail/{id}', [PostController::class, 'jobDetail'])->name('job-detail');
+    Route::get('/{id}', [PostController::class, 'jobDetail'])->name('job-detail');
+    Route::get('add-to-favorites', 'FavJobController@addToCart');
+    
+    Route::get('fav-job/{id}', [PostController::class, 'addToCart'])->name('fav-job');
 
 
     Route::group(['prefix' => 'admin'], function(){
@@ -119,6 +123,7 @@ Route::group(['prefix' => 'employer'], function(){
 
 /* AJAX */
 Route::get('ajax/location/getLocation',[LocationController::class,'getLocation'])->name('location.index');
+// Route::get('/check-auth', 'AuthController@checkAuth');
 
 
 

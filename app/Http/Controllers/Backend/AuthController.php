@@ -70,6 +70,11 @@ class AuthController extends Controller
         }
         return redirect()->route('admin.login')->with('error','Email hoặc mật khẩu không chính xác');
     }
+    // public function checkAuth()
+    // {
+    //     $authId = auth()->id();
+    //     return response()->json(['authId' => $authId]);
+    // }
     public function changePassword(){
         return view('backend.layouts.changePassword');
     }
