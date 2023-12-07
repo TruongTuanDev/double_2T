@@ -38,7 +38,7 @@
                       </span>
                   </div>
               </div>
-              <a href="{{route('employer.create')}}" class="btn btn-danger">
+              <a href="{{route('user.create')}}" class="btn btn-danger">
                   <i class="fa fa-plus">
                       Thêm mới thành viên
                   </i>

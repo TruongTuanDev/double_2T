@@ -104,7 +104,8 @@ class EmployerController extends Controller
         $data=$request->all();
         $idUser = Auth()->id();
         $data['id_user'] =  $idUser;
-        $status=Employer::create($data);
+        $employer=Employer::where('id_user', Auth()->user()->id)->first();
+        $status=$employer->fill($data)->save();
         if($status){
             request()->session()->flash('success','Cập nhật thông tin thành công');
         }

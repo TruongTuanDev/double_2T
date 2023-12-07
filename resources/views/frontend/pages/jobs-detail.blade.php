@@ -24,9 +24,9 @@
                                     <div class="bonus job-fs"><p>1682 lượt xem - Hết hạn trong 3 ngày</p></div>
                                 </div>
                                 <div class="featured d-flex justify-content-end ms-4" >
-                                    <button class="btn-one">
+                                    <a class="btn-one" id="addtocart" href="" data-post-id="{{$job->id_post}}">
                                       <i class="fa-regular fa-heart"></i>
-                                    </button>
+                                    </a>
                                     <button class="btn-two">
                                       Apply Now
                                     </button>

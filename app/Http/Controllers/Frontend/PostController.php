@@ -10,6 +10,7 @@ use App\Models\Settings;
 use App\Rules\MatchOldPassword;
 use App\Services\DistrictService;
 use App\Services\EmployerService;
+use App\Services\MajorService;
 use App\Services\PostService;
 use App\Services\UserService;
 use App\Services\provinceService;
@@ -27,16 +28,19 @@ class PostController extends Controller
     protected $districtService;
     protected $wardsService;
     protected $employerService;
+    protected $majorService;
 
     public function __construct
     (PostService $postService,
     ProvinceService $provinceService,
-    EmployerService $employerService
+    EmployerService $employerService,
+    MajorService $majorService
     )
     {
         $this->postService = $postService;
         $this->provinceService = $provinceService;
         $this->employerService = $employerService;
+        $this->majorService = $majorService;
     }
     /**
      * Display a listing of the resource.
@@ -67,6 +71,7 @@ class PostController extends Controller
     public function create()
     {
        $provinces = $this->provinceService->allProvince();
+       $majors = $this->majorService->allMajor();
        $config = [
         'css' => [
             'https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css'
@@ -80,7 +85,7 @@ class PostController extends Controller
        $sidebar = 'frontend.dashboard.layouts.sidebaremp';
        $template = 'backend.post.create';
        return view('frontend.dashboard.index',
-       compact('template','config','sidebar','provinces'));
+       compact('template','config','sidebar','provinces','majors'));
     }
     /**
      * Store a newly created resource in storage.
@@ -271,4 +276,9 @@ class PostController extends Controller
         return view('backend.dashboard.layout',compact('template','config','data'));
     }
 
+<<<<<<< HEAD
+=======
+
+
+>>>>>>> 76ca51760944dad1c202a75fa55cdb193af36ebe
 }

@@ -16,7 +16,7 @@
       <div class="col-lg-4">
         <div class="panel-head">
           <div class="panel-title">Thông báo chung</div>
-          <div class="panel-description">Nhập thông tin chung của nhà tuyển dụng</div>
+          <div class="panel-description">Nhập thông tin chung của người sử dụng</div>
         </div>
       </div>
       <div class="col-lg-8">

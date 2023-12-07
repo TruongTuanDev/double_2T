@@ -17,7 +17,7 @@ class MajorRepository extends BaseRepository implements MajorRepositoryInterface
   }
   public function getFeaturedMajor()
   {
-    return Major::orderBy('traffic_volume', 'desc')
+    return Major::orderBy('job_quantity','desc')
     ->get();
   }
 }

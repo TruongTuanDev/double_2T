@@ -11,11 +11,11 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('majors', function (Blueprint $table) {
-            $table->id('id_maj');
-            $table->string('name',50);
-            $table->integer('job_quantity')->nullable();
-            $table->rememberToken();
+        Schema::create('favjobs', function (Blueprint $table) {
+            $table->id();
+            $table->bigInteger('post_id');
+            $table->bigInteger('student_id');
+            $table->enum('status',['active','inactive'])->default('active');
             $table->timestamps();
         });
     }
@@ -25,6 +25,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('majors');
+        Schema::dropIfExists('favjobs');
     }
 };
