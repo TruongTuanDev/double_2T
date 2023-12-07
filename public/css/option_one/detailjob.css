@@ -2,6 +2,7 @@
 
 :root{
   --color-origin: rgb(255, 125, 85);
+  
 }
 
 body {
@@ -11,9 +12,13 @@ body {
 body a{
   text-decoration: none;
 }
+.section{
+  position: relative;
+}
 .section-jobs-detail{
   background-color: #f5f5f5;
   position: relative;
+  z-index: 1;
 }
 .content-jobs-detail{
   position: absolute;
@@ -191,9 +196,6 @@ body a{
   margin-right: 5px;
 }
 
-}
-
- 
 /* small mobile :320px. */
 @media (max-width: 767px) {
 
@@ -205,3 +207,4 @@ body a{
  
 }
 
+}

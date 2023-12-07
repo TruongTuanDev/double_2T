@@ -20,7 +20,7 @@
                                       </div>
                                       <div class="job-info mx-2">
                                           <div class="job-name job-item">
-                                              <a href="{{ route('job-detail',['id' => $job->id_post])}}" class="job-link">{{$job->title}}</a>
+                                              <a href="{{route('job-detail',$job->id_post)}}" class="job-link">{{$job->title}}</a>
                                           </div>
                                           <div class="company-name job-item">
                                               <a href="detail-jobs.html " class="job-conpany">FPT</a>

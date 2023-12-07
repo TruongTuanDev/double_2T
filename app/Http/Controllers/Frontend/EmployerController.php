@@ -9,6 +9,7 @@ use App\Services\UserService;
 use App\Models\Settings;
 use App\Rules\MatchOldPassword;
 use App\Services\DistrictService;
+use App\Services\EmployerService;
 use App\Services\provinceService;
 use App\Services\WardService;
 use Carbon\Carbon;
@@ -22,18 +23,21 @@ class EmployerController extends Controller
     protected $provinceService;
     protected $districtService;
     protected $wardsService;
+    protected $employersService;
 
     public function __construct
     (UserService $userService,
     ProvinceService $provinceService,
     DistrictService $districtService,
-    WardService $wardsService
+    WardService $wardsService,
+    EmployerService $employersService
     )
     {
         $this->userService = $userService;
         $this->provinceService = $provinceService;
         $this->districtService = $districtService;
         $this->wardsService = $wardsService;
+        $this->employersService = $employersService;
     }
     /**
      * Display a listing of the resource.
@@ -299,4 +303,22 @@ class EmployerController extends Controller
 
         return redirect()->route('admin')->with('success','Mật khẩu thay đổi thành công');
     }
+
+    public function jobDetail($id){
+        $provinces = $this->provinceService->allProvince();
+        $config = [
+         'css' => [
+             'https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css'
+         ],
+         'js' => [
+             'https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js',
+             'library/location.js'
+             ]
+        ];
+        
+         $company = $this->employersService->findCompanyById($id);
+         $job = $company->posts->all();
+         $template = 'frontend.pages.companys-detail';
+         return view('index',compact('config','provinces','job','template','company'));
+     }
 }

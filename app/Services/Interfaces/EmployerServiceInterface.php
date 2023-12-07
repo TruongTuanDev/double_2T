@@ -12,4 +12,5 @@ interface EmployerServiceInterface
   public function featuredCompany();
 
   public function findCompanyByIdJob($id);
+  public function findCompanyById($id);
 }

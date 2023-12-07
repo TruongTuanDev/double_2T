@@ -29,4 +29,9 @@ class EmployerRepository extends BaseRepository implements EmployerRepositoryInt
   {
     return Employer::findOrFail($id);
   }
+  public function findCompanyById($id)
+  {
+    $company = Employer::with('posts')->find($id);
+    return $company;
+  }
 }

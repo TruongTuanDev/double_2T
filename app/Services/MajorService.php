@@ -26,7 +26,10 @@ class MajorService implements MajorServiceInterface
     $companys = $this->majorRepository->getFeaturedMajor();
     return $companys;
   }
-
+  public function allMajor()
+  {
+    $majors = $this->majorRepository->getAll();
+  }
   public function create($request){
     DB::beginTransaction();
     try{

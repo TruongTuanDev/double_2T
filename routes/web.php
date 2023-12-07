@@ -11,6 +11,7 @@ use App\Http\Controllers\Frontend\EAuthController;
 use App\Http\Controllers\Frontend\EmployerController as FrontendEmployerController;
 use App\Http\Controllers\Frontend\PostController;
 use App\Http\Controllers\Frontend\StudentController;
+use App\Models\Employer;
 use Illuminate\Http\Request;
 use Illuminate\Foundation\Auth\EmailVerificationRequest;
 use Illuminate\Support\Facades\Route;
@@ -48,6 +49,7 @@ use Illuminate\Support\Facades\Route;
     Route::get('/', [HomePageController::class, 'index'])->name('home');
 
     Route::get('job-detail/{id}', [PostController::class, 'jobDetail'])->name('job-detail');
+    Route::get('companydetail/{id}', [FrontendEmployerController::class, 'jobDetail'])->name('companydetail');
 
 
     Route::group(['prefix' => 'admin'], function(){

@@ -8,7 +8,7 @@
               <div class="col-6 col-sm-4 col-md-3 col-lg-2">
                   <div class="card company-card">
                       <div class="card-body card-companies">
-                          <a href="#" class="company-link">
+                          <a href="{{ route('companydetail',$company->id_emp) }}" class="company-link">
                               <div class="img">
                                   <img src="{{$company->logo}}"
                                       alt="#" class="mb-4" width="130px">
@@ -16,7 +16,7 @@
                               <div class="companyBlock__content">
                                   <div class="companyBlock__name">{{$company->name_compn}}</div>
                               </div>
-                              <div class="companyBlock__tag">New jobs</div>
+                              <div class="companyBlock__tag" >New Jobs</div>
                           </a>
                       </div>
                   </div>

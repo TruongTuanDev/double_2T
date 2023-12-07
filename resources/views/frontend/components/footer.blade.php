@@ -44,7 +44,6 @@
               </ul>
           </div>
       </div>
-      <hr>
       <div class="row">
           <div class="col-12 d-flex align-items-center justify-content-between">
               <div class="logo">

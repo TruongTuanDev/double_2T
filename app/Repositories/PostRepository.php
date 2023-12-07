@@ -25,6 +25,13 @@ class PostRepository extends BaseRepository implements PostRepositoryInterface
     $posts = Post::orderBy('id_post', 'desc')->where('id_emp', $idEmp)->paginate($number);
     return $posts;
   }
+  public function getPostOfCompanyBy2($id_emp)
+  {
+    $idEmp = $id_emp;
+    $posts = Post::orderBy('id_post', 'desc')->where('id_emp', $idEmp)->paginate($id_emp);
+    return $posts;
+  }
+
   public function getFeaturedJob()
   {
     return Post::orderBy('salary', 'desc')
