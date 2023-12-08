@@ -67,7 +67,7 @@
                           width="25px">
                   </a>
               </li>
-              <li id="login" class="nav-item mx-lg-1 mx-xl-3 my-2 m-lg-0 d-flex flex-lg-row hidden">
+              <li id="login" class="nav-item mx-lg-1 mx-xl-3 my-2 m-lg-0 d-flex flex-lg-row">
                   <div class="dropdown">
                       <a class="btn btn-login dropdown-toggle d-flex align-items-center justify-content-between"
                           href="{{route('user.dashboard')}}" role="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -143,18 +143,22 @@
                       </div>
                   </div>
               </li>
-              <li id="profile" class="nav-item mx-lg-1 mx-xl-3 my-2 m-lg-0 d-flex flex-lg-row visible">
+              <li id="profile" class="nav-item mx-lg-1 mx-xl-3 my-2 m-lg-0 d-flex flex-lg-row">
                 <div class="dropdown">
                     <a class="btn btn-login dropdown-toggle d-flex align-items-center justify-content-between"
                         href="{{route('user.dashboard')}}" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                         <i class="fa fa-user d-flex align-items-center justify-content-center"
                             aria-hidden="true"
                             style="background-color: rgb(0, 183, 255); width: 2.25rem; height: 100%; border-radius: 5px;"></i>
-                        <span></span>
+                        <span>
+                            @if($user != null)
+                            {{$user->name}}
+                            @endif
+                        </span>
                     </a>
                     <div class="dropdown-menu dropdown-menu-end">
                         <div class="title mb-3 fs-5" style="color: #333; font-weight: 500;"><span
-                                class="ask">Job Seeker Login</span></div>
+                                class="ask">Chào bạn</span></div>
                         <hr class="m-0">
                         <div class="account-item">
                             <a href="{{route('user.dashboard')}}" class="d-block account-link">

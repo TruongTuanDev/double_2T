@@ -5,8 +5,6 @@ namespace App\Repositories;
 use App\Repositories\Interfaces\BaseRepositoryInterface;
 use Illuminate\Database\Eloquent\Model;
 /**
- * Class UserService
- * @package App\Services
  */
 class BaseRepository implements BaseRepositoryInterface
 {
@@ -17,12 +15,9 @@ class BaseRepository implements BaseRepositoryInterface
   public function getAll(){
     return $this->model->all();
   }
-  public function findById(
-    int $modelId,
-    array $colunm = ['*'],
-    array $relation = []
-    )
+  public function findById($id)
   {
-    return $this->model->select($colunm)->with($relation)->findOrFail($modelId);
+    $model=$this->model::find($id);
+    return $model;
   }
 }

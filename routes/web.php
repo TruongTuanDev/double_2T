@@ -35,7 +35,6 @@ use Illuminate\Support\Facades\Route;
 
     Route::get('/email/verify/{id}/{hash}', function (EmailVerificationRequest $request) {
         $request->fulfill();
-    
         return redirect('/home');
     })->middleware(['auth', 'signed'])->name('verification.verify');
 
@@ -49,15 +48,11 @@ use Illuminate\Support\Facades\Route;
     // ->middleware('admin');
     Route::get('/', [HomePageController::class, 'index'])->name('home');
 
-<<<<<<< HEAD
     Route::get('job-detail/{id}', [PostController::class, 'jobDetail'])->name('job-detail');
     Route::get('companydetail/{id}', [FrontendEmployerController::class, 'jobDetail'])->name('companydetail');
-=======
-    Route::get('/{id}', [PostController::class, 'jobDetail'])->name('job-detail');
     Route::get('add-to-favorites', 'FavJobController@addToCart');
     
     Route::get('fav-job/{id}', [PostController::class, 'addToCart'])->name('fav-job');
->>>>>>> 76ca51760944dad1c202a75fa55cdb193af36ebe
 
 
     Route::group(['prefix' => 'admin'], function(){
@@ -129,7 +124,7 @@ Route::group(['prefix' => 'employer'], function(){
 
 /* AJAX */
 Route::get('ajax/location/getLocation',[LocationController::class,'getLocation'])->name('location.index');
-// Route::get('/check-auth', 'AuthController@checkAuth');
+Route::get('/check-auth',[AuthController::class,'checkAuth' ])->name('check-auth');
 
 
 

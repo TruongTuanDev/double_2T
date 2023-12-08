@@ -13,10 +13,10 @@ nav {
     background: linear-gradient(270deg, rgb(0, 90, 255) 0%, rgb(0, 23, 68) 100%);
 }
 .visible {
-  display: block;
+  display: block !important;
 }
 .hidden {
-  display: none;
+  display: none !important;
 }
 .navbar-toggler {
     border: 0;

@@ -29,10 +29,12 @@ class MajorService implements MajorServiceInterface
   public function allMajor()
   {
     $majors = $this->majorRepository->getAll();
-<<<<<<< HEAD
-=======
     return $majors;
->>>>>>> 76ca51760944dad1c202a75fa55cdb193af36ebe
+  }
+  public function findMajorById($id)
+  {
+    $majors = $this->majorRepository->findById($id);
+    return $majors;
   }
   public function create($request){
     DB::beginTransaction();

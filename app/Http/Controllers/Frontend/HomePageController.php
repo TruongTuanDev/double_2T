@@ -8,6 +8,7 @@ use App\Services\EmployerService;
 use App\Services\MajorService;
 use App\Services\PostService;
 use App\Services\provinceService;
+use App\Services\UserService;
 use Illuminate\Http\Request;
 
 class HomePageController extends Controller
@@ -16,18 +17,22 @@ class HomePageController extends Controller
     protected $employerService;
     protected $postService;
     protected $majorService;
+    protected $userService;
     public function __construct
     (
     ProvinceService $provinceService,
     EmployerService $employerService,
     PostService $postService,
     MajorService $majorservice,
+    UserService $userService
     )
     {
         $this->provinceService = $provinceService;
         $this->employerService = $employerService;
         $this->postService = $postService;
         $this->majorService = $majorservice;
+        $this->userService = $userService;
+
     }
     /**
      * Display a listing of the resource.
@@ -35,11 +40,15 @@ class HomePageController extends Controller
     
     public function index()
     {
+       $id_user = Auth()->id();
        $banners=Banner::orderBy('id','DESC')->paginate(10);
        $provinces = $this->provinceService->allProvince();
        $companys = $this->employerService->featuredCompany();
        $jobs = $this->postService->featuredJob();
-       $majors=$this->majorService->featuredMajor();
+       $majors=$this-> majorService->featuredMajor();
+       $user = $this->userService->findById($id_user);
+    //    dd($jobs);
+    //    dd($user);
        $config = [
         'css' => [
             'https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css'
@@ -51,7 +60,7 @@ class HomePageController extends Controller
        ];
        $template = "frontend.pages.home";
        return view('index',
-       compact('config','provinces','template','banners','companys','jobs','majors'));
+       compact('config','provinces','template','banners','companys','jobs','majors','user'));
     }
     
     /**

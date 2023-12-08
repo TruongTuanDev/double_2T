@@ -58,7 +58,7 @@ class MajorController extends Controller
         // return $request->all();
         $this->validate($request,[
             'name'=>'string|required|max:50',
-            'traffic_volum'=>'integer|nullable',
+            'job_quantity'=>'integer|nullable',
         ]);
         $data=$request->all();
         $status=Major::create($data);
