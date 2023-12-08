@@ -49,15 +49,14 @@ use Illuminate\Support\Facades\Route;
     // ->middleware('admin');
     Route::get('/', [HomePageController::class, 'index'])->name('home');
 
-<<<<<<< HEAD
+
     Route::get('job-detail/{id}', [PostController::class, 'jobDetail'])->name('job-detail');
     Route::get('companydetail/{id}', [FrontendEmployerController::class, 'jobDetail'])->name('companydetail');
-=======
     Route::get('/{id}', [PostController::class, 'jobDetail'])->name('job-detail');
     Route::get('add-to-favorites', 'FavJobController@addToCart');
     
     Route::get('fav-job/{id}', [PostController::class, 'addToCart'])->name('fav-job');
->>>>>>> 76ca51760944dad1c202a75fa55cdb193af36ebe
+
 
 
     Route::group(['prefix' => 'admin'], function(){
