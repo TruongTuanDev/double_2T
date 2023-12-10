@@ -1,5 +1,4 @@
 @include('backend.dashboard.components.breadcrumb' , ['title' => $config['seo']['create']['title']])
-
 @if ($errors->any())
     <div class="alert alert-danger">
         <ul>
@@ -16,7 +15,7 @@
       <div class="col-lg-4">
         <div class="panel-head">
           <div class="panel-title">Thông báo chung</div>
-          <div class="panel-description">Nhập thông tin chung của người sử dụng</div>
+          <div class="panel-description">Cập nhật thông tin của quản lý</div>
         </div>
       </div>
       <div class="col-lg-8">

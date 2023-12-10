@@ -3,12 +3,33 @@
 namespace App\Http\Controllers\Backend;
 
 use App\Http\Controllers\Controller;
+use App\Services\PostService;
 use Illuminate\Http\Request;
 
 class PostController extends Controller
 {
-    public function login(){
-        echo 1;die();
+    protected $postService;
+    public function __construct
+    (
+    PostService $postService,
+    )
+    {
+        $this->postService = $postService;
+
+    }
+    public function listPost(){
+        $posts = $this->postService->paginatePostOfComp();
+        $config =  [
+            'js' => [
+                
+            ],
+            'css' => [
+                
+            ]
+        ];
+        $config['seo'] = config('apps.post');
+        $template = 'backend.post.index';
+        return view('backend.dashboard.layout',compact('template','config','posts'));
     }
     /**
      * Display a listing of the resource.

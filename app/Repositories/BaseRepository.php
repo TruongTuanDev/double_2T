@@ -20,4 +20,7 @@ class BaseRepository implements BaseRepositoryInterface
     $model=$this->model::find($id);
     return $model;
   }
+  public function paginate($number){
+    return $this->model->paginate($number);
+  }
 }

@@ -25,8 +25,17 @@ class UserService implements UserServiceInterface
     $users = $this->userRepository->findById($id);
     return $users;
   }
+  public function findUserById($id)
+  {
+    $users = $this->userRepository->findUserById($id);
+    return $users;
+  }
   public function paginate(){
-    $users = $this->userRepository->getAllPaginate(15);
+    $users = $this->userRepository->paginate(15);
+    return $users;
+  }
+  public function allAdmin(){
+    $users = $this->userRepository->getAll();
     return $users;
   }
   public function create($request){

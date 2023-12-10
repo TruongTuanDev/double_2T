@@ -21,6 +21,7 @@ return new class extends Migration
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password',100);
             $table->string('status')->nullable();
+            $table->int('id_privince')->nullable();
             $table->rememberToken();
             $table->timestamps();
         });

@@ -3,20 +3,14 @@
       <div class="perpage">
           <div class="uk-flex uk-flex-middle uk-flex-space-between">
               <select name="perpage" class="form-control input-sm perpage filter mr10">
-                  @for($i = 20;$i <= 200;$i++)
-                  <option value="{{$i}}">{{$i}} bản ghi</option>
-                  @endfor
+                @foreach ($userss as $index => $item)
+                <option value="{{$index}}">{{$index}} bản ghi</option>
+                @endforeach
               </select>
           </div>
       </div>
       <div class="action">
           <div class="uk-flex uk-flex-middle">
-              <select name="user_catelogue_id" class="form-control mr10" id="">
-                  <option value="0" selected="selected">
-                      Chọn Nhóm Thành Viên
-                  </option>
-                  <option value="1">Quản trị viên</option>
-              </select>
               <div class="uk-search uk-flex uk-flex-midle mr10">
                   <div class="input-group">
                       <input 

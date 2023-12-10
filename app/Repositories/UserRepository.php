@@ -2,6 +2,7 @@
 
 namespace App\Repositories;
 
+use App\Models\Admin;
 use App\Models\User;
 use App\Repositories\Interfaces\UserRepositoryInterface;
 
@@ -12,10 +13,19 @@ use App\Repositories\Interfaces\UserRepositoryInterface;
 class UserRepository extends BaseRepository implements UserRepositoryInterface 
 {
   protected $model;
-  public function __construct(User $model){
+  public function __construct(Admin $model){
     $this->model = $model;
   }
   public function getAllPaginate($number){
-    return User::paginate($number);
+    return Admin::paginate($number);
   }
+
+  public function findUserById($id)
+  {
+  {
+    $admin = User::with('admins')->find($id);
+    return $admin;
+  }
+}
+    
 }

@@ -6,6 +6,9 @@
     ],
     'create' => [
       'title' => 'Thêm mới nhà tuyển dụng'
+    ],
+    'update' => [
+      'title' => 'Cập nhật nhà tuyển dụng'
     ]
   ];
 ?>

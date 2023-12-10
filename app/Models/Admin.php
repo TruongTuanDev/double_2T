@@ -9,10 +9,12 @@ class Admin extends Model
 {
     use HasFactory;
     protected $fillable = [
-      
+      'avatar'
     ];
     protected $table = 'admins';
-    protected $primaryKey = 'id_admin';
-
+    protected $primaryKey = 'id';
+    public function users() {
+        return $this->belongsTo(User::class, 'id','id_user');
+    }
    
 }

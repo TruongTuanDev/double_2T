@@ -151,8 +151,9 @@
                             aria-hidden="true"
                             style="background-color: rgb(0, 183, 255); width: 2.25rem; height: 100%; border-radius: 5px;"></i>
                         <span>
-                            @if($user != null)
-                            {{$user->name}}
+                            @if(Auth()->id() != null)
+                                {{Auth()->user()->name}}
+                            
                             @endif
                         </span>
                     </a>

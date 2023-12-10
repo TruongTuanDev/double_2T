@@ -17,8 +17,9 @@ class Employer extends Model
         'treatment',
         'website',
         'address',
-        'scale',
+        'staff_number',
         'id_user',
+        'job_quantity',
     ];
     protected $table = 'employers';
     protected $primaryKey = 'id_emp';
