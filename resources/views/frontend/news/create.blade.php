@@ -9,9 +9,8 @@
         </ul>
     </div>
 @endif
-<form action="{{Route('major.update',$major->id_maj)}}" class="box" method="post">
+<form action="{{Route('major.store')}}" method="post" class="box">
   @csrf
-  @method('PATCH')
   <div class="wrapper wrapper-content animated fadeInRight">
     <div class="row">
       <div class="col-lg-4">
@@ -31,7 +30,7 @@
                   <input 
                   type="text"
                   name="name"
-                  value="{{$major->name}}"
+                  value="{{old('name')}}"
                   class="form-control"
                   placeholder=""
                   autocomplete="off"
@@ -48,7 +47,7 @@
                         <i class="fa fa-picture-o"></i> Chọn
                         </a>
                     </span>
-                  <input id="thumbnail" class="form-control" type="text" name="image" value="{{$major->image}}">
+                  <input id="thumbnail" class="form-control" type="text" name="image" value="{{old('photo')}}">
                 </div>
                 <div id="holder" style="margin-top:15px;max-height:100px;"></div>
             </div>
@@ -61,7 +60,7 @@
                   <input 
                   type="number"
                   name="job_quantity"
-                  value="{{$major->job_quantity}}"
+                  value="0"
                   class="form-control"
                   placeholder=""
                   autocomplete="off"
@@ -70,7 +69,6 @@
                 </div>
               </div>
             </div>
-          </div>
         </div>
       </div>
     </div>

@@ -5,6 +5,7 @@ use App\Http\Controllers\Backend\AuthController;
 use App\Http\Controllers\Frontend\HomePageController;
 use App\Http\Controllers\Backend\DashboardController;
 use App\Http\Controllers\Backend\EmployerController;
+use App\Http\Controllers\Backend\NewsController;
 use App\Http\Controllers\Backend\PostController as BackendPostController;
 use App\Http\Controllers\Backend\UserController;
 use App\Http\Controllers\Frontend\AAuthController;
@@ -47,11 +48,13 @@ use Illuminate\Support\Facades\Route;
     // ->middleware('admin');
     Route::get('/', [HomePageController::class, 'index'])->name('home');
 
+
+
+    
+
     Route::get('job-detail/{id}', [PostController::class, 'jobDetail'])->name('job-detail');
     Route::get('companydetail/{id}', [FrontendEmployerController::class, 'jobDetail'])->name('companydetail');
     Route::get('add-to-favorites', 'FavJobController@addToCart');
-    
-
 
     Route::group(['prefix' => 'admin'], function(){
     Route::get('/',[AuthController::class,'register']);
@@ -84,6 +87,11 @@ use Illuminate\Support\Facades\Route;
     Route::get('index',[EmployerController::class,'index'])->name('employer.index');
 
     Route::resource('employer', 'App\Http\Controllers\Backend\EmployerController');
+    //USer 
+    Route::resource('user', 'App\Http\Controllers\Backend\UserController');
+    Route::get('news/active', [NewsController::class, 'active'])->name('news.active');
+    Route::get('news/inactive', [NewsController::class, 'inactive'])->name('news.inactive');
+    Route::get('news/updateactive/{id_news}', [NewsController::class, 'updateactive'])->name('news.updateactive');
     Route::post('employer/{id}',[EmployerController::class,'update'])->name('admin.employer.update');
     //USer admin.
     Route::resource('admin', 'App\Http\Controllers\Backend\UserController');
@@ -128,6 +136,7 @@ Route::group(['prefix' => 'employer'], function(){
    Route::post('update',[FrontendEmployerController::class,'updateInfor'])->name('employer.updatei');
 
    Route::get('index',[FrontendEmployerController::class,'index'])->name('employer.list');
+   Route::resource('news', 'App\Http\Controllers\Frontend\NewsController');
 });
 
 /* AJAX */

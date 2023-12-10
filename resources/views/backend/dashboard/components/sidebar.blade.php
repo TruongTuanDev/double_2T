@@ -46,16 +46,24 @@ if (Auth::id() != null) {
             </ul>
          </li>
          <li class="">
-            <a href="#"><i class="fa fa-th-large"></i> <span class="nav-label">Quản lý banner</span> <span class="fa arrow"></span></a>
+            <a href="{{ route('banner.index')}}"><i class="fa fa-th-large"></i> <span class="nav-label">Quản lý banner</span> <span class="fa arrow"></span></a>
             <ul class="nav nav-second-level">
                 <li><a href="{{ route('banner.index')}}">Danh sách banner</a></li>
                 <li><a href="{{ route('banner.store')}}">Thêm banner</a></li>
             </ul>
         </li>
-        <li class="">
-            <a href="#"><i class="fa fa-th-large"></i> <span class="nav-label">Quản lý công việc</span> <span class="fa arrow"></span></a>
+         <li class="">
+            <a href="{{ route('news.index') }}"><i class="fa fa-th-large"></i> <span class="nav-label">Quản lý công việc</span> <span class="fa arrow"></span></a>
             <ul class="nav nav-second-level">
+
                 <li><a href="{{route('post.list')}}">Danh sách công việc</a></li>
+            </ul>
+        </li>
+        <li class="">
+            <a href="{{ route('news.index') }}"><i class="fa fa-th-large"></i> <span class="nav-label">Quản lý tin tức</span> <span class="fa arrow"></span></a>
+            <ul class="nav nav-second-level">
+                <li><a href="{{ route('news.active') }}">Danh sách đã duyệt</a></li>
+                <li><a href="{{ route('news.inactive') }}">Danh sách tin tức chờ duyệt</a></li>
             </ul>
         </li>
       </ul>

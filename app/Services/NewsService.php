@@ -2,8 +2,8 @@
 
 namespace App\Services;
 
-use App\Repositories\MajorRepository;
-use App\Services\Interfaces\MajorServiceInterface;
+use App\Repositories\NewsRepository;
+use App\Services\Interfaces\NewsServiceInterface;
 use Carbon\Carbon;
 use Exception;
 use Illuminate\Support\Facades\DB;
@@ -12,30 +12,30 @@ use Illuminate\Support\Facades\DB;
  * Class UserService
  * @package App\Services
  */
-class MajorService implements MajorServiceInterface
+class NewsService implements NewsServiceInterface
 {
-  protected $majorRepository;
+  protected $newsRepository;
 
-  public function __construct(MajorRepository $majorRepository)
+  public function __construct(NewsRepository $newsRepository)
   {
-    $this->majorRepository = $majorRepository;
+    $this->newsRepository = $newsRepository;
   }
 
-  public function featuredMajor()
+  public function featuredNews()
   {
-    $companys = $this->majorRepository->getFeaturedMajor();
-    return $companys;
+    $news = $this->newsRepository->getFeaturedNews();
+    return $news;
   }
-  public function allMajor()
+  public function allNews()
   {
-    $majors = $this->majorRepository->getAll();
-    return $majors;
+    $news = $this->newsRepository->getAll();
+    return $news;
 
   }
-  public function findMajorById($id)
+  public function findNewsById($id)
   {
-    $majors = $this->majorRepository->findById($id);
-    return $majors;
+    $news = $this->newsRepository->findById($id);
+    return $news;
   }
   public function create($request){
     DB::beginTransaction();

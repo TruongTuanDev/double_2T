@@ -8,6 +8,7 @@ use App\Services\EmployerService;
 use App\Services\MajorService;
 use App\Services\PostService;
 use App\Services\provinceService;
+use App\Services\NewsService;
 use App\Services\UserService;
 use Illuminate\Http\Request;
 
@@ -18,13 +19,15 @@ class HomePageController extends Controller
     protected $postService;
     protected $majorService;
     protected $userService;
+    protected $newsService;
     public function __construct
     (
     ProvinceService $provinceService,
     EmployerService $employerService,
     PostService $postService,
     MajorService $majorservice,
-    UserService $userService
+    UserService $userService,
+    NewsService $newsService,
     )
     {
         $this->provinceService = $provinceService;
@@ -32,7 +35,7 @@ class HomePageController extends Controller
         $this->postService = $postService;
         $this->majorService = $majorservice;
         $this->userService = $userService;
-
+        $this->newsService = $newsService;
     }
     /**
      * Display a listing of the resource.
@@ -47,6 +50,7 @@ class HomePageController extends Controller
        $jobs = $this->postService->featuredJob();
        $majors=$this-> majorService->featuredMajor();
        $user = $this->userService->findById($id_user);
+       $news=$this->newsService->featuredNews();
     //    dd($jobs);
     //    dd($user);
        $config = [
@@ -60,7 +64,7 @@ class HomePageController extends Controller
        ];
        $template = "frontend.pages.home";
        return view('index',
-       compact('config','provinces','template','banners','companys','jobs','majors','user'));
+       compact('config','provinces','template','banners','companys','jobs','majors','user','news'));
     }
     
     /**

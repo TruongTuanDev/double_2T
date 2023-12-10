@@ -19,6 +19,7 @@ class Major extends Authenticatable
      */
     protected $fillable = [
         'name',
+        'image',
         'job_quantity',
     ];
     protected $primaryKey = 'id_maj';

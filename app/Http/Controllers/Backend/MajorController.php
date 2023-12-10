@@ -58,6 +58,7 @@ class MajorController extends Controller
         // return $request->all();
         $this->validate($request,[
             'name'=>'string|required|max:50',
+            'image'=>'string|required|max:150',
             'job_quantity'=>'integer|nullable',
         ]);
         $data=$request->all();
@@ -115,14 +116,18 @@ class MajorController extends Controller
     public function update(Request $request, $id_maj)
     {
         $major=Major::where('id_maj',$id_maj)->first();
+
+        $major->image =$request->image; 
+     
         $major->name =$request->name; // Cập nhật giá trị thuộc tính 'name' của đối tượng
         $major->job_quantity = $request->job_quantity;    
+
         $status=$major->save();
         if($status){
-            request()->session()->flash('success','major successfully updated');
+            request()->session()->flash('success','Major cập nhật thành công');
         }
         else{
-            request()->session()->flash('error','Error occurred while updating major');
+            request()->session()->flash('error','Major cập nhật không thành công');
         }
         return redirect()->route('major.index');
     }
@@ -135,13 +140,13 @@ class MajorController extends Controller
      */
     public function destroy($id)
     {
-        $banner=Major::findOrFail($id);
-        $status=$banner->delete();
+        $major=Major::findOrFail($id);
+        $status=$major->delete();
         if($status){
-            request()->session()->flash('success','Major successfully deleted');
+            request()->session()->flash('success','Major đã được xóa thành công');
         }
         else{
-            request()->session()->flash('error','Error occurred while deleting major');
+            request()->session()->flash('error','Lỗi khi xóa major');
         }
         return redirect()->route('major.index');
     }
