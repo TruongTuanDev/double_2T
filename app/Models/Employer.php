@@ -13,7 +13,7 @@ class Employer extends Model
         'description',
         'logo',
         'background',
-        'slogan',
+        'slodan',
         'treatment',
         'website',
         'address',

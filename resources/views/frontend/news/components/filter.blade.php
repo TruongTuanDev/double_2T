@@ -40,7 +40,7 @@
               </div>
               <a href="{{route('major.create')}}" class="btn btn-danger">
                   <i class="fa fa-plus">
-                      Thêm mới chuyên ngành
+                      Thêm mới tin tức
                   </i>
               </a>
           </div>

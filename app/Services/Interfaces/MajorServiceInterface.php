@@ -10,4 +10,5 @@ interface MajorServiceInterface
 {
   public function featuredMajor();
   public function allMajor();
+  public function findMajorById($id);
 }

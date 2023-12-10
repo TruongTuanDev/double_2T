@@ -5,6 +5,7 @@ use App\Http\Controllers\Backend\AuthController;
 use App\Http\Controllers\Frontend\HomePageController;
 use App\Http\Controllers\Backend\DashboardController;
 use App\Http\Controllers\Backend\EmployerController;
+use App\Http\Controllers\Backend\NewsController;
 use App\Http\Controllers\Backend\UserController;
 use App\Http\Controllers\FavJobController;
 use App\Http\Controllers\Frontend\AAuthController;
@@ -35,7 +36,6 @@ use Illuminate\Support\Facades\Route;
 
     Route::get('/email/verify/{id}/{hash}', function (EmailVerificationRequest $request) {
         $request->fulfill();
-    
         return redirect('/home');
     })->middleware(['auth', 'signed'])->name('verification.verify');
 
@@ -50,14 +50,12 @@ use Illuminate\Support\Facades\Route;
     Route::get('/', [HomePageController::class, 'index'])->name('home');
 
 
+
+    
+
     Route::get('job-detail/{id}', [PostController::class, 'jobDetail'])->name('job-detail');
     Route::get('companydetail/{id}', [FrontendEmployerController::class, 'jobDetail'])->name('companydetail');
-    Route::get('/{id}', [PostController::class, 'jobDetail'])->name('job-detail');
     Route::get('add-to-favorites', 'FavJobController@addToCart');
-    
-    Route::get('fav-job/{id}', [PostController::class, 'addToCart'])->name('fav-job');
-
-
 
     Route::group(['prefix' => 'admin'], function(){
     Route::get('/',[AuthController::class,'register']);
@@ -83,7 +81,9 @@ use Illuminate\Support\Facades\Route;
     Route::resource('employer', 'App\Http\Controllers\Backend\EmployerController');
     //USer 
     Route::resource('user', 'App\Http\Controllers\Backend\UserController');
-
+    Route::get('news/active', [NewsController::class, 'active'])->name('news.active');
+    Route::get('news/inactive', [NewsController::class, 'inactive'])->name('news.inactive');
+    Route::get('news/updateactive/{id_news}', [NewsController::class, 'updateactive'])->name('news.updateactive');
 
     // Notification
     // Route::get('/notification/{id}', [UserController::class, 'show'])->name('admin.notification');
@@ -124,11 +124,12 @@ Route::group(['prefix' => 'employer'], function(){
    Route::post('update',[FrontendEmployerController::class,'updateInfor'])->name('employer.update');
 
    Route::get('index',[FrontendEmployerController::class,'index'])->name('employer.list');
+   Route::resource('news', 'App\Http\Controllers\Frontend\NewsController');
 });
 
 /* AJAX */
 Route::get('ajax/location/getLocation',[LocationController::class,'getLocation'])->name('location.index');
-// Route::get('/check-auth', 'AuthController@checkAuth');
+Route::get('/check-auth',[AuthController::class,'checkAuth' ])->name('check-auth');
 
 
 

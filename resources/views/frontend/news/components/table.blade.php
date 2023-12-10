@@ -1,10 +1,12 @@
 <table class="table table-striped table-bordered">
   <thead>
   <tr>
-      <th>Tên chuyên Ngành</th>
+      <th>Tên Tin tức</th>
+      <th>Nội dung</th>
       <th>Hình Ảnh</th>
-      <th>Số lượng công việc</th>
-      <th>Hành động</th>
+      <th>Lượt xem</th>
+      <th>Tên Người Đăng</th>
+      <th>Trạng thái</th>
   </tr> 
   </thead>
   <tbody>

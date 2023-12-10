@@ -2,8 +2,8 @@
 
 namespace App\Services;
 
-use App\Repositories\UserRepository;
-use App\Services\Interfaces\UserServiceInterface;
+use App\Repositories\NewsRepository;
+use App\Services\Interfaces\NewsServiceInterface;
 use Carbon\Carbon;
 use Exception;
 use Illuminate\Support\Facades\DB;
@@ -12,22 +12,30 @@ use Illuminate\Support\Facades\DB;
  * Class UserService
  * @package App\Services
  */
-class UserService implements UserServiceInterface
+class NewsService implements NewsServiceInterface
 {
-  protected $userRepository;
+  protected $newsRepository;
 
-  public function __construct(UserRepository $userRepository)
+  public function __construct(NewsRepository $newsRepository)
   {
-    $this->userRepository = $userRepository;
+    $this->newsRepository = $newsRepository;
   }
-  public function findById($id)
+
+  public function featuredNews()
   {
-    $users = $this->userRepository->findById($id);
-    return $users;
+    $news = $this->newsRepository->getFeaturedNews();
+    return $news;
   }
-  public function paginate(){
-    $users = $this->userRepository->getAllPaginate(15);
-    return $users;
+  public function allNews()
+  {
+    $news = $this->newsRepository->getAll();
+    return $news;
+
+  }
+  public function findNewsById($id)
+  {
+    $news = $this->newsRepository->findById($id);
+    return $news;
   }
   public function create($request){
     DB::beginTransaction();

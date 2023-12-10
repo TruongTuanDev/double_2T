@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Frontend;
 
 use App\Http\Controllers\Controller;
 use App\Models\Banner;
+use App\Models\Major;
 use App\Models\Post;
 use App\Models\User;
 use App\Models\Settings;
@@ -107,9 +108,16 @@ class PostController extends Controller
             'status'=>'in:active,inactive',
         ]);
         $data=$request->all();
+        // dd($data);
         $idUser = Auth()->id();
+        $id_major = $data['id_major'];
         $data['id_emp'] = $idUser;
         $data['exp_date'] = now()->addDays(30);
+        $major= $this->majorService->findMajorById($id_major);
+        if ($major) {
+            $major->job_quantity += 1;
+            $major->save();
+        }
         $status=Post::create($data);
         if($status){
             request()->session()->flash('success','Thêm thành công');
@@ -275,10 +283,4 @@ class PostController extends Controller
         $template = 'backend.user.setting';
         return view('backend.dashboard.layout',compact('template','config','data'));
     }
-
-<<<<<<< HEAD
-=======
-
-
->>>>>>> 76ca51760944dad1c202a75fa55cdb193af36ebe
 }

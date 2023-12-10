@@ -54,37 +54,30 @@
         });
       </script>
     
-<<<<<<< HEAD
-    <script src="{{ asset('js/option_two/jquery-3.1.1.min.js') }}"></script>
+
+   
     <script src="{{ asset('js/option_two/bootstrap.min.js')}}"></script>
     <script src="{{ asset('js/option_one/detail-jobs.js')}}"></script>
     <script src="{{ asset('js/option_one/swipper.js')}}"></script>
-=======
-    {{-- <script src="js/option_two/jquery-3.1.1.min.js"></script> --}}
-    
-    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script> 
-    <script src="js/option_two/bootstrap.min.js"></script>
-    <script src="js/option_one/detail-jobs.js"></script>
-    <script src="js/option_one/swipper-jobs.js"></script>
-    <script src="js/option_one/cart.js"></script>
-    {{-- <script>
+    <script src="{{ asset('js/option_one/cart.js')}}"></script>
+    <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.js"></script>
+    <script>
       $.ajax({
         url: '/check-auth',
         type: 'GET',
         dataType: 'json',
         success: function(response) {
-          // Toggle visibility based on the authentication status
           if (response.authId != null) {
-            $('#login').addClass('visible').removeClass('hidden');
-            $('#profile').addClass('hidden').removeClass('visible');
-          } else {
-            $('#login').addClass('hidden').removeClass('visible');
             $('#profile').addClass('visible').removeClass('hidden');
+            $('#login').addClass('hidden').removeClass('visible');
+          } else {
+            $('#profile').addClass('hidden').removeClass('visible');
+            $('#login').addClass('visible').removeClass('hidden');
           }
         },
         error: function(error) {
           console.error('Error checking authentication status:', error);
         }
       });
-    </script> --}}
->>>>>>> 76ca51760944dad1c202a75fa55cdb193af36ebe
+    </script>
+

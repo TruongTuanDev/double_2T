@@ -44,8 +44,8 @@ class StudentController extends Controller
     {
         $this->validate($request,
         [
-            'university'=>'string|required',
-            'major'=>'string|required',
+            'university'=>'string',
+            'major'=>'string',
             'birthday'=>'string',
             'avatar'=>'string',
             'description'=>'string',

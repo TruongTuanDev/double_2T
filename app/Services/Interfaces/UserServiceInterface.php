@@ -9,4 +9,5 @@ namespace App\Services\Interfaces;
 interface UserServiceInterface
 {
   public function paginate();
+  public function findById($id);
 }

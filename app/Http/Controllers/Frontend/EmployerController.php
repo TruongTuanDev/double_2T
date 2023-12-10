@@ -101,11 +101,16 @@ class EmployerController extends Controller
             'website'=>'string',
             'scale'=>'integer',
         ]);
+
         $data=$request->all();
+
+        $data = $request->except(['_token', 'files','send']);
+        // dd($data);
         $idUser = Auth()->id();
         $data['id_user'] =  $idUser;
-        $employer=Employer::where('id_user', Auth()->user()->id)->first();
-        $status=$employer->fill($data)->save();
+        $status = Employer::where('id_user', $idUser)->update($data);
+        // $employer=Employer::where('id_user', Auth()->user()->id)->first();
+        // $status=$employer->fill($data)->save();
         if($status){
             request()->session()->flash('success','Cập nhật thông tin thành công');
         }

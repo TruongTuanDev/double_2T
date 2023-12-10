@@ -7,68 +7,67 @@
          </div>
      </div>
     <div class="card-header py-3">
-      <a href="{{route('banner.create')}}" class="btn btn-primary btn-sm float-right" data-toggle="tooltip" data-placement="bottom" title="Add banner"><i class="fa fa-plus"></i>Thêm banner</a>
-      <h4 class="m-0 font-weight-bold text-primary float-left">Danh sách banner</h6>
+      <a href="{{route('post.create')}}" class="btn btn-primary btn-sm float-right" data-toggle="tooltip" data-placement="bottom" title="Add banner"><i class="fa fa-plus"></i>Thêm tin tức</a>
+      <h4 class="m-0 font-weight-bold text-primary float-left">Danh sách tin tức</h6>
     </div>
     <div class="card-body">
       <div class="table-responsive">
-        @if(count($banners)>0)
+        @if(count($news)>0)
         <table class="table table-bordered" id="banner-dataTable" width="100%" cellspacing="0">
           <thead>
             <tr>
               <th>STT</th>
               <th>Tiêu đề</th>
-              <th>Biểu ngữ</th>
-              <th>Ảnh</th>
+              <th>Nội dung</th>
+              <th>Hình ảnh</th>
+              <th>Ngày đăng</th>
+              <th>Lượt xem</th>
               <th>Trạng thái</th>
-              <th>Hành động</th>
             </tr>
           </thead>
           <tfoot>
             <tr>
-              <th>STT</th>
-              <th>Tiêu đề</th>
-              <th>Biểu ngữ</th>
-              <th>Ảnh</th>
-              <th>Trạng thái</th>
-              <th>Hành động</th>
+                <th>STT</th>
+                <th>Tiêu đề</th>
+                <th>Nội dung</th>
+                <th>Hình ảnh</th>
+                <th>Ngày đăng</th>
+                <th>Lượt xem</th>
+                <th>Trạng thái</th>
               </tr>
           </tfoot>
           <tbody>
-            @foreach($banners as $banner)   
+            @foreach($news as $new)   
                 <tr>
-                    <td>{{$banner->id}}</td>
-                    <td>{{$banner->title}}</td>
-                    <td>{{$banner->slug}}</td>
+                    <td>{{$new->id_news}}</td>
+                    <td>{{$new->title}}</td>
+                    <td>{{$new->content}}</td>
+                    <td>{{$new->image}}</td>
+                    <td>{{$new->create_date}}</td>
+                    <td>{{$new->view}}</td>
                     <td>
-                        @if($banner->photo)
-                            <img src="{{$banner->photo}}" class="img-fluid zoom" style="max-width:80px" alt="{{$banner->photo}}">
+                        @if($new->status=='active')
+                            <span class="badge badge-success">Đã duyệt</span>
                         @else
-                            <img src="{{asset('backend/img/thumbnail-default.jpg')}}" class="img-fluid zoom" style="max-width:100%" alt="avatar.png">
+                            <span class="badge badge-warning">Chờ duyệt</span>
                         @endif
                     </td>
                     <td>
-                        @if($banner->status=='active')
-                            <span class="badge badge-success">{{$banner->status}}</span>
-                        @else
-                            <span class="badge badge-warning">{{$banner->status}}</span>
-                        @endif
-                    </td>
-                    <td>
-                        <a href="{{route('banner.edit',$banner->id)}}" class="btn btn-primary float-left mr-1"  data-toggle="tooltip" title="edit" data-placement="bottom"><i class="fa fa-edit"></i></a>
-                        <form method="POST" action="{{route('banner.destroy',[$banner->id])}}">
+                        <a href="{{route('news.edit',[$new->id_news])}}" class="btn btn-primary float-left mr-1"  data-toggle="tooltip" title="edit" data-placement="bottom"><i class="fa fa-edit"></i></a>
+                        <form method="POST" action="{{route('news.destroy',[$new->id_news])}}">
                           @csrf 
                           @method('delete')
-                              <button class="btn btn-danger dltBtn" data-id={{$banner->id}}  data-toggle="tooltip" data-placement="bottom" title="Delete"><i class="fa fa-trash"></i></button>
+                              <button class="btn btn-danger dltBtn" data-id={{$new->id}}  data-toggle="tooltip" data-placement="bottom" title="Delete"><i class="fa fa-trash"></i></button>
                         </form>
+                        
                     </td>
+                   
                 </tr>  
             @endforeach
           </tbody>
         </table>
-        <span style="float:right">{{$banners->links()}}</span>
         @else
-          <h6 class="text-center">Không tìm thấy banner!!! Vui lòng tạo thêm banner</h6>
+          <h6 class="text-center">Không tìm thấy công việc!!! Vui lòng tạo thêm công việc</h6>
         @endif
       </div>
     </div>

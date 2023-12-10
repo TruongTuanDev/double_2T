@@ -31,13 +31,20 @@ if (Auth::id() != null) {
                   <li><a href="{{ route('employer.update')}}">Cập nhật thông tin công ty</a></li>
               </ul>
           </li>
-          <li class="">
+          <li class="active">
               <a href="#"><i class="fa fa-th-large"></i> <span class="nav-label">Quản lý công việc</span> <span class="fa arrow"></span></a>
               <ul class="nav nav-second-level">
                   <li><a href="{{route('post.index')}}">Danh sách công việc</a></li>
                   <li><a href="{{route('post.create')}}">Thêm công việc</a></li>
               </ul>
           </li>
+          <li class="active">
+            <a href="#"><i class="fa fa-th-large"></i> <span class="nav-label">Quản lý tin tức</span> <span class="fa arrow"></span></a>
+            <ul class="nav nav-second-level">
+                <li><a href="{{route('news.index')}}">Danh sách tin tức</a></li>
+                <li><a href="{{route('news.create')}}">Thêm tin tức</a></li>
+            </ul>
+        </li>
       </ul>
   </div>
 </nav>
