@@ -21,10 +21,10 @@ return new class extends Migration
             $table->text('treatment')->nullable();
             $table->string('website',100)->nullable();
             $table->string('address',100)->nullable();
-            $table->integer('scale')->nullable(); 
+            $table->integer('staff_number')->nullable(); 
             $table->integer('id_user')->nullable(); 
+            $table->integer('job_quantity')->nullable(); 
             $table->timestamps();
-            $table->timestamp('email_verified_at')->nullable();
             $table->rememberToken()->nullable();
         });
     }

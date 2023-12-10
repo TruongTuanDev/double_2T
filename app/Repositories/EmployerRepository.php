@@ -21,7 +21,7 @@ class EmployerRepository extends BaseRepository implements EmployerRepositoryInt
 
   public function getFeaturedCompany()
   {
-    return Employer::orderBy('scale', 'desc')
+    return Employer::orderBy('staff_number', 'desc')
     ->take(5)
     ->get();
   }

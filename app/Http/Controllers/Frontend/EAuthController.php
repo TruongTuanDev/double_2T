@@ -70,8 +70,11 @@ class EAuthController extends Controller
         if($status){
             $id_user=$status->id;
             $datadetail['id_user']=$id_user;
+            $datadetail['job_quantity']=0;
             $employer=Employer::create($datadetail);
-            request()->session()->flash('success','Đăng ký thành công nhà tuyển dụng');
+            if($employer){
+                request()->session()->flash('success','Đăng ký thành công nhà tuyển dụng');
+            }
         }
         else{
             request()->session()->flash('error','Đăng ký thất bại');

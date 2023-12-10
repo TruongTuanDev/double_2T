@@ -4,10 +4,10 @@
       <th>
           <input type="checkbox" id="checkAll" value="" class="input-checkbox ">
       </th>
+      <th>STT</th>
       <th>Avatar</th>
-      <th>Họ tên</th>
+      <th>Họ và tên</th>
       <th>Email</th>
-      <th>Số điện thoại</th>
       <th>Địa chỉ</th>
       <th>Trạng thái</th>
       <th>Thao tác</th>
@@ -21,36 +21,38 @@
             <input type="checkbox"  value="" class="input-checkbox checkBoxItem">
         </td>
         <td>
+            <div class="info-item stt">
+                @foreach ($userss as $index => $item)
+                {{$index}}
+                @endforeach
+            </div>
+        </td>
+        <td>
             <span class="image img-cover">
-                <img src="{{$user->photo}}" alt="">
+                <img src="{{$userById->avatar}}" alt="">
             </span>
         </td>
         <td>
             <div class="info-item name">
-                {{$user->name;}}
+                {{$userById->name;}}
             </div>
         </td>
         <td>
             <div class="info-item email">
-                {{$user->email;}}
-            </div>
-        </td>
-        <td>
-            <div class="info-item phonenumber">
-                {{$user->phone;}}
+                {{$userById->email;}}
             </div>
         </td>
         <td>
             <div class="address-item address">
-              {{$user->address;}}
+              {{$userById->address;}}
             </div>
         </td>
         <td>
             <input type="checkbox" class="js-switch" checked>
         </td>
         <td>
-            <a href="{{route('user.edit',$user->id)}}" class="btn btn-success"><i class="fa fa-edit"></i></a>
-            <form method="POST" action="{{route('user.destroy',$user->id)}}">
+            <a href="{{route('admin.edit',$user->id)}}" class="btn btn-success"><i class="fa fa-edit"></i></a>
+            <form method="POST" action="{{route('admin.destroy',$user->id)}}">
                 @csrf 
                 @method('delete')
                     <button class="btn btn-danger dltBtn" data-id={{$user->id}} data-toggle="tooltip" data-placement="bottom" title="Delete"><i class="fa fa-trash"></i></button>

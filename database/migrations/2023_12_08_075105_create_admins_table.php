@@ -11,12 +11,10 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('majors', function (Blueprint $table) {
-            $table->id('id_maj');
-            $table->string('name',50);
-            $table->string('logo',100);
-            $table->string('job_quantity')->nullable();
-            $table->rememberToken();
+        Schema::create('admins', function (Blueprint $table) {
+            $table->id();
+            $table->bigInteger('id_user');
+            $table->string('avatar');
             $table->timestamps();
         });
     }
@@ -26,6 +24,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('majors');
+        Schema::dropIfExists('admins');
     }
 };

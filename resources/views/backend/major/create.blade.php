@@ -16,7 +16,7 @@
       <div class="col-lg-4">
         <div class="panel-head">
           <div class="panel-title">Thông báo chung</div>
-          <div class="panel-description">Nhập thông tin chung của nhà tuyển dụng</div>
+          <div class="panel-description">Nhập thông tin chung của ngành</div>
         </div>
       </div>
       <div class="col-lg-8">
@@ -55,17 +55,18 @@
             <div class="row mb15">
               <div class="col-lg-12">
                 <div class="form-row">
-                  <label for="" class="control-lable text-left">Số lượng truy cập
+                  <label for="" class="control-lable text-left">Logo
                   </label>
-                  <input 
-                  type="number"
-                  name="job_quantity"
-                  value="0"
-                  class="form-control"
-                  placeholder=""
-                  autocomplete="off"
-                  min=0
-                  >
+
+                  <div class="input-group">
+                    <span class="input-group-btn">
+                      <a id="lfmlg" data-input="thumbnaillg" data-preview="holderlg" class="btn btn-primary">
+                        <i class="fa fa-picture-o"></i> Chọn
+                      </a>
+                    </span>
+                    <input id="thumbnaillg" class="form-control" type="text" name="logo">
+                  </div>
+                  <img id="holderlg" style="margin-top:15px;max-height:100px;">
                 </div>
               </div>
             </div>

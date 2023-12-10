@@ -1,10 +1,25 @@
  <!-- Mainly scripts -->
     <script src="vendor/laravel-filemanager/js/stand-alone-button.js"></script>
     <script>
-        $('#lfm').filemanager('image');
+        $('#lfmlg').filemanager('image');
+        $('#lfmbg').filemanager('image');
     </script>
     <script>
         $('#description').summernote({
+          placeholder: 'Nhập đoạn mô tả ngắn....',
+          tabsize: 2,
+          height: 120,
+          toolbar: [
+            ['style', ['style']],
+            ['font', ['bold', 'underline', 'clear']],
+            ['color', ['color']],
+            ['para', ['ul', 'ol', 'paragraph']],
+            ['table', ['table']],
+            ['insert', ['link', 'picture', 'video']],
+            ['view', ['fullscreen', 'codeview', 'help']]
+          ]
+        });
+        $('#treatment').summernote({
           placeholder: 'Nhập đoạn mô tả ngắn....',
           tabsize: 2,
           height: 120,
@@ -196,3 +211,14 @@
             });
         });
     </script>
+  <script>
+    $(document).ready(function(){
+        $('#keyword').on('keyup', function(){
+            var keyword = $(this).val().toLowerCase();
+            $('#employerTableBody tbody tr').filter(function(){
+                $(this).toggle($(this).text().toLowerCase().indexOf(keyword) > -1);
+            });
+        });
+    });
+</script>
+    

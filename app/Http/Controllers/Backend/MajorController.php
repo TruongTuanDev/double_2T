@@ -116,9 +116,12 @@ class MajorController extends Controller
     public function update(Request $request, $id_maj)
     {
         $major=Major::where('id_maj',$id_maj)->first();
-        $major->name =$request->name;
+
         $major->image =$request->image; 
-        $major->job_quantity = $request->job_quantity;  
+     
+        $major->name =$request->name; // Cập nhật giá trị thuộc tính 'name' của đối tượng
+        $major->job_quantity = $request->job_quantity;    
+
         $status=$major->save();
         if($status){
             request()->session()->flash('success','Major cập nhật thành công');

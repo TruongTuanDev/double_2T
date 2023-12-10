@@ -3,7 +3,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Trang quản lý admin</title>
+<title>Trang quản lý của nhà tuyến</title>
 
 @if(isset($config['css']) && is_array($config['css']))
 @foreach ($config['css'] as $key => $val)

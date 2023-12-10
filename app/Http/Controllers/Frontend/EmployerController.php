@@ -75,7 +75,7 @@ class EmployerController extends Controller
             'library/location.js',
             ]
        ];
-       $config['seo'] = config('apps.user');
+       $config['seo'] = config('apps.employer');
        $template = 'frontend.employer.create';
        $sidebar = 'frontend.dashboard.layouts.sidebaremp';
        return view('frontend.dashboard.index',
@@ -87,6 +87,7 @@ class EmployerController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
+    
     public function updateInfor(Request $request)
     {
         $this->validate($request,
@@ -164,36 +165,7 @@ class EmployerController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    // public function update(Request $request, $id)
-    // {
-    //     $user=User::findOrFail($id);
-    //     $this->validate($request,
-    //     [
-    //         'name'=>'string|required|max:30',
-    //         'phone'=>'string|required|max:12',
-    //         'province_id'=>'string|required|',
-    //         'district_id'=>'string|required|',
-    //         'ward_id'=>'string|required|',
-    //         'address'=>'string',
-    //         'birthday'=>'string',
-    //         'photo'=>'string',
-    //         'description'=>'string',
-    //         'email'=>'string|required|unique:users',
-    //         'role'=>'required|in:admin,user',
-    //         'status'=>'required|in:active,inactive',
-    //     ]);
-    //     $data=$request->all();
-    //     $status=$user->fill($data)->save();
-    //     if($status){
-    //         request()->session()->flash('success','Cập nhật thành công');
-    //     }
-    //     else{
-    //         request()->session()->flash('error','Cập nhật thất bại');
-    //     }
-    //     return redirect()->route('user.index');
-
-    // }
-
+    
     /**
      * Remove the specified resource from storage.
      *
@@ -260,29 +232,7 @@ class EmployerController extends Controller
         return view('backend.dashboard.layout',compact('template','config','data'));
     }
 
-    public function settingsUpdate(Request $request){
-        $this->validate($request,[
-            'short_des'=>'required|string',
-            'description'=>'required|string',
-            'photo'=>'required',
-            'logo'=>'required',
-            'address'=>'required|string',
-            'email'=>'required|email',
-            'phone'=>'required|string',
-        ]);
-        $data=$request->all();
-        // return $data;
-        $settings=Settings::first();
-        // return $settings;
-        $status=$settings->fill($data)->save();
-        if($status){
-            request()->session()->flash('success','Setting successfully updated');
-        }
-        else{
-            request()->session()->flash('error','Please try again');
-        }
-        return redirect()->route('admin');
-    }
+    
 
     public function changePassword(){
         $config = [
