@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Backend;
 
 use App\Http\Controllers\Controller;
+use App\Models\Employer;
 use App\Services\DistrictService;
 use App\Services\EmployerService;
 use App\Services\provinceService;
@@ -34,6 +35,8 @@ class EmployerController extends Controller
     public function index()
     {
        $employers = $this->employerService->paginate(15);
+       $employerss = $this->employerService->getAllCompany();
+       $count = count($employers);
        $config =  [
         'js' => [
             'js/option_two/plugins/switchery/switchery.js'
@@ -45,7 +48,7 @@ class EmployerController extends Controller
        $config['seo'] = config('apps.employer');
     //    dd($config['seo']);
        $template = 'backend.employer.index';
-       return view('backend.dashboard.layout',compact('template','config','employers'));
+       return view('backend.dashboard.layout',compact('template','config','employers','count'));
     }
     /**
      * Show the form for creating a new resource.
@@ -91,24 +94,77 @@ class EmployerController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit($id)
     {
-        //
+        $employer=Employer::findOrFail($id);
+        $config =  [
+            'css' => [
+                'https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css',
+                ''
+            ],
+            'js' => [
+                'https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js',
+                ]
+        ];
+        $config['seo'] = config('apps.employer');
+        $template = 'backend.employer.edit';
+        return view('backend.dashboard.layout',compact('template','config','employer'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Request $request,$id)
     {
-        //
+        $employer = $this->employerService->findCompanyById($id);
+        $this->validate($request,
+        [
+            'name_compn'=>'string|required',
+            'description'=>'string',
+            'logo'=>'string',
+            'background'=>'string',
+            'slodan'=>'string',
+            'address'=>'string',
+            'treatment'=>'string',
+            'website'=>'string',
+            'scale'=>'integer',
+        ]);
+        $data=$request->all();
+        $data = $request->except(['_token', 'files','send']);
+        // dd($data);
+        // $status =$employer->update($data);
+        // $employer=Employer::where('id_user', Auth()->user()->id)->first();
+        $status=$employer->fill($data)->save();
+        if($status){
+            request()->session()->flash('success','Cập nhật thông tin thành công');
+        }
+        else{
+            request()->session()->flash('error','Cập nhật thông tin thất bại');
+        }
+        return redirect()->route('employer.index');
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function filter(Request $request)
+{
+    $searchText = $request->input('searchText');
+    $employers = Employer::where('name_compn', 'like', '%' . $searchText . '%')
+                        ->orWhere('address', 'like', '%' . $searchText . '%')
+                        ->get();
+    return view('employer.index', ['employers' => $employers])->render();
+}
+    public function destroy($id)
     {
-        //
+        $employer=$this->employerService->findCompanyById($id);
+        $status=$employer->delete();
+        if($status){
+            request()->session()->flash('success','Xóa nhà tuyển dụng thành công');
+        }
+        else{
+            request()->session()->flash('error','Xóa nhà tuyển dụng thất bại');
+        }
+        return redirect()->route('employer.index');
     }
 }

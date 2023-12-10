@@ -10,4 +10,5 @@ interface UserServiceInterface
 {
   public function paginate();
   public function findById($id);
+  public function findUserById($id);
 }

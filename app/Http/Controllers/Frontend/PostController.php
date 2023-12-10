@@ -60,7 +60,7 @@ class PostController extends Controller
             'css/option_two/plugins/switchery/switchery.css'
         ]
     ];
-       $config['seo'] = config('apps.user');
+       $config['seo'] = config('apps.post');
        $sidebar = 'frontend.dashboard.layouts.sidebaremp';
        $template = 'backend.post.index';
        return view('frontend.dashboard.index',compact('template','config','sidebar','posts'));
@@ -82,7 +82,7 @@ class PostController extends Controller
             'library/location.js',
             ]
        ];
-       $config['seo'] = config('apps.user');
+       $config['seo'] = config('apps.post');
        $sidebar = 'frontend.dashboard.layouts.sidebaremp';
        $template = 'backend.post.create';
        return view('frontend.dashboard.index',
@@ -175,7 +175,7 @@ class PostController extends Controller
             
                 ]
         ];
-        $config['seo'] = config('apps.user');
+        $config['seo'] = config('apps.post');
         $template = 'backend.user.edit';
         $user = User::findOrFail($id);
         $user->birthday = Carbon::parse($user->birthday)->format('Y-m-d');

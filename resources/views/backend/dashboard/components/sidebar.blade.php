@@ -26,10 +26,10 @@ if (Auth::id() != null) {
               </div>
           </li>
           <li class="active">
-              <a><i class="fa fa-th-large"></i> <span class="nav-label">Quản lý người dùng</span> <span class="fa arrow"></span></a>
+              <a><i class="fa fa-th-large"></i> <span class="nav-label">Quản lý admin</span> <span class="fa arrow"></span></a>
               <ul class="nav nav-second-level">
-                  <li><a href="{{ route('user.index')}}">Danh sách người dùng</a></li>
-                  <li><a href="">Quản lý nhóm người dùng</a></li>
+                  <li><a href="{{ route('admin.index')}}">Danh sách admin</a></li>
+                  <li><a href="{{route('admin.create')}}">Thêm admin</a></li>
               </ul>
           </li>
           <li class="active">
@@ -55,8 +55,7 @@ if (Auth::id() != null) {
         <li class="">
             <a href="#"><i class="fa fa-th-large"></i> <span class="nav-label">Quản lý công việc</span> <span class="fa arrow"></span></a>
             <ul class="nav nav-second-level">
-                <li><a href="">Danh sách công việc</a></li>
-                <li><a href="">Thêm công việc</a></li>
+                <li><a href="{{route('post.list')}}">Danh sách công việc</a></li>
             </ul>
         </li>
       </ul>

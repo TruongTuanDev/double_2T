@@ -5,14 +5,13 @@ use App\Http\Controllers\Backend\AuthController;
 use App\Http\Controllers\Frontend\HomePageController;
 use App\Http\Controllers\Backend\DashboardController;
 use App\Http\Controllers\Backend\EmployerController;
+use App\Http\Controllers\Backend\PostController as BackendPostController;
 use App\Http\Controllers\Backend\UserController;
-use App\Http\Controllers\FavJobController;
 use App\Http\Controllers\Frontend\AAuthController;
 use App\Http\Controllers\Frontend\EAuthController;
 use App\Http\Controllers\Frontend\EmployerController as FrontendEmployerController;
 use App\Http\Controllers\Frontend\PostController;
 use App\Http\Controllers\Frontend\StudentController;
-use App\Models\Employer;
 use Illuminate\Http\Request;
 use Illuminate\Foundation\Auth\EmailVerificationRequest;
 use Illuminate\Support\Facades\Route;
@@ -52,7 +51,6 @@ use Illuminate\Support\Facades\Route;
     Route::get('companydetail/{id}', [FrontendEmployerController::class, 'jobDetail'])->name('companydetail');
     Route::get('add-to-favorites', 'FavJobController@addToCart');
     
-    Route::get('fav-job/{id}', [PostController::class, 'addToCart'])->name('fav-job');
 
 
     Route::group(['prefix' => 'admin'], function(){
@@ -64,6 +62,14 @@ use Illuminate\Support\Facades\Route;
     Route::get('change-password',[AuthController::class,'changePassword'])->name('change.password.form');
     Route::post('change-password', [AuthController::class, 'changPasswordStore'])->name('change.password');
     Route::get('logout',[AuthController::class,'logout'])->name('auth.logout');
+
+
+    
+    Route::get('list',[UserController::class,'index'])->name('admin.index');
+
+    Route::get('listPost',[BackendPostController::class,'listPost'])->name('post.list');
+
+    Route::get('admin/create',[UserController::class,'create'])->name('admin.create');
     
     
     Route::resource('banner', 'App\Http\Controllers\Backend\BannerController');
@@ -76,9 +82,11 @@ use Illuminate\Support\Facades\Route;
     Route::post('setting/update', [UserController::class, 'settingsUpdate'])->name('settings.update');
     //Employer
     Route::get('index',[EmployerController::class,'index'])->name('employer.index');
+
     Route::resource('employer', 'App\Http\Controllers\Backend\EmployerController');
-    //USer 
-    Route::resource('user', 'App\Http\Controllers\Backend\UserController');
+    Route::post('employer/{id}',[EmployerController::class,'update'])->name('admin.employer.update');
+    //USer admin.
+    Route::resource('admin', 'App\Http\Controllers\Backend\UserController');
 
 
     // Notification
@@ -117,7 +125,7 @@ Route::group(['prefix' => 'employer'], function(){
    Route::get('dashboard',[DashboardController::class,'employer'])->name('employer.dashboard');
 
    Route::get('update',[FrontendEmployerController::class,'update'])->name('employer.update');
-   Route::post('update',[FrontendEmployerController::class,'updateInfor'])->name('employer.update');
+   Route::post('update',[FrontendEmployerController::class,'updateInfor'])->name('employer.updatei');
 
    Route::get('index',[FrontendEmployerController::class,'index'])->name('employer.list');
 });
@@ -125,6 +133,7 @@ Route::group(['prefix' => 'employer'], function(){
 /* AJAX */
 Route::get('ajax/location/getLocation',[LocationController::class,'getLocation'])->name('location.index');
 Route::get('/check-auth',[AuthController::class,'checkAuth' ])->name('check-auth');
+Route::post('/filter-employers', [EmployerController::class, 'filter'])->name('filter-employers');
 
 
 

@@ -43,6 +43,10 @@ class UserController extends Controller
     public function index()
     {
        $users = $this->userService->paginate(15);
+       $userss = $this->userService->allAdmin();
+       foreach ($userss as $user){
+           $userById = $this->userService->findUserById($user->id_user);
+       }
        $config =  [
         'js' => [
             'js/option_two/plugins/switchery/switchery.js'
@@ -51,10 +55,9 @@ class UserController extends Controller
             'css/option_two/plugins/switchery/switchery.css'
         ]
     ];
-       $config['seo'] = config('apps.user');
-    //    dd($config['seo']);
-       $template = 'backend.user.index';
-       return view('backend.dashboard.layout',compact('template','config','users'));
+       $config['seo'] = config('apps.admin');
+       $template = 'backend.admin.index';
+       return view('backend.dashboard.layout',compact('template','config','users','userss','userById'));
     }
     
     /**

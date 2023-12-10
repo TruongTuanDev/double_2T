@@ -116,7 +116,7 @@ class MajorController extends Controller
     {
         $major=Major::where('id_maj',$id_maj)->first();
         $major->name =$request->name; // Cập nhật giá trị thuộc tính 'name' của đối tượng
-        $major->traffic_volume = $request->traffic_volume;    
+        $major->job_quantity = $request->job_quantity;    
         $status=$major->save();
         if($status){
             request()->session()->flash('success','major successfully updated');

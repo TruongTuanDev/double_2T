@@ -3,23 +3,54 @@
 namespace App\Http\Controllers\Backend;
 
 use App\Http\Controllers\Controller;
+use App\Services\EmployerService;
+use App\Services\MajorService;
+use App\Services\PostService;
+use App\Services\ProvinceService;
+use App\Services\StudentService;
+use App\Services\UserService;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
 class DashboardController extends Controller
 {
-    public function __construct()
+    protected $provinceService;
+    protected $employerService;
+    protected $postService;
+    protected $majorService;
+    protected $userService;
+    protected $studentService;
+    public function __construct
+    (
+    ProvinceService $provinceService,
+    EmployerService $employerService,
+    PostService $postService,
+    MajorService $majorservice,
+    UserService $userService,
+    StudentService $studentService
+    )
     {
-        
+        $this->provinceService = $provinceService;
+        $this->employerService = $employerService;
+        $this->postService = $postService;
+        $this->majorService = $majorservice;
+        $this->userService = $userService;
+        $this->studentService = $studentService;
+
     }
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
+        $userCount = $this->userService->allAdmin()->count();
+        $countStudent = $this->studentService->allStudent()->count();
+        $countEmployer = $this->employerService->getAllCompany()->count();
+        $countPost = $this->postService->getAllPost()->count();
         $config = $this->config();
         $template = "backend.dashboard.home.index";
-        return view('backend.dashboard.layout',compact('template','config'));
+        return view('backend.dashboard.layout',
+        compact('template','config','countStudent','userCount','countEmployer','countPost'));
     }
     public function employer()
     {
