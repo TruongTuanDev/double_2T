@@ -14,17 +14,17 @@
                                 </div>
                                 <div class="job-info">
                                     <div class="job-name job-item">
-                                        <a href="#" class="job-link">{{$job->title}}</a>
+                                        <a href="" class="job-link">{{$job->title}}</a>
                                     </div>
                                     <div class="company-name job-item">
-                                        <a href="#" class="job-company">{{$company->name_compn}}</a>
+                                        <a href="" class="job-company">{{$company->name_compn}}</a>
                                     </div>
                                     <div class="job-location job-fs">{{$job->address}}</div>
                                     <div class="job-salary job-item job-fs">{{$job->salary}}$</div>
                                     <div class="bonus job-fs"><p>1682 lượt xem - Hết hạn trong 3 ngày</p></div>
                                 </div>
                                 <div class="featured d-flex justify-content-end ms-4" >
-                                    <a class="btn-one" id="addtocart" href="" data-post-id="{{$job->id_post}}">
+                                    <a class="btn-one job" id="post_id" href="{{route('cart.add',['post' => $job->id_post])}}" data-post-id="{{$job->id_post}}">
                                       <i class="fa-regular fa-heart"></i>
                                     </a>
                                     <button class="btn-two">
@@ -40,14 +40,14 @@
             <div class="row">
               <div class="nav-bar container">
                 <ul class="nav nav-tabs">
-                  <li class="nav-item active1">
-                    <a class="nav-link" data-bs-toggle="tab" href="#job-info">INFO JOB</a>
+                  <li class="nav-item active">
+                    <a class="nav-link" data-bs-toggle="tab" href="#job-info">Thông tin công việc</a>
                   </li>
                   <li class="nav-item">
-                    <a class="nav-link" data-bs-toggle="tab" href="#companyInfo">COMPANY INFO</a>
+                    <a class="nav-link" data-bs-toggle="tab" href="#companyInfo">Thông tin công ty</a>
                   </li>
                   <li class="nav-item">
-                    <a class="nav-link" data-bs-toggle="tab" href="#job-company">JOBS FROM THIS COMPANY</a>
+                    <a class="nav-link" data-bs-toggle="tab" href="#job-company">Công việc đến từ công ty</a>
                   </li>
                 </ul>
               </div>
@@ -58,35 +58,25 @@
                   <div class="row">
                     <div class="col-md-8 col-sm-12">
                       <div class="description-1 mt-3">
-                        <p class="title-description">WHAT WE CAN OFFER</p>
-                        <p><span>$</span>Thu nhập cạnh tranh</p>
-                        <p><span><i class="fa-solid fa-users"></i></span>Chương trình cho vay ưu đãi dành cho cán bộ nhân viên</p>
-                        <p><span><i class="fa-brands fa-react"></i></span>Môi trường làm việc gắn kết, hòa đồng, kỷ luật</p>
+                        <p class="title-description">Ưu đãi dành cho bạn</p>
+                        <p>{{$job->treatment}}</p>
+                  
                       </div>
                       <div class="description-1 mt-3">
-                        <p class="title-description">JOB DESCRIPTION</p>
+                        <p class="title-description">Mô tải công việc</p>
                         <p>
-                          Mục tiêu <br>
-                        - Người đảm nhận vị trí thiết lập quan hệ, phát triển, quản lý quan hệ với khách hàng doanh nghiệp phân khúc MM mới và hiện hữu; Chịu trách nhiệm tư vấn các SPDV, chăm sóc khách hàng, theo dõi tình trạng khách hàng trong danh mục quản lý, bao gồm công tác quản lý rủi ro, theo dõi thu hồi nợ nhằm đạt được các mục tiêu kinh doanh.
-                        </p>
-                        <p>Trách nhiệm chính <br>
-                            1. Am hiểu khách hàng: <br>
-                            - Thu thập/ tìm hiểu những nhận định, nguồn khách hàng tiềm năng (leads) nhằm hiểu rõ đặc điểm, nhu cầu, thị trường, sản phẩm ngân hàng cạnh tranh… của phân khúc khách hàng MM/tiểu phân khúc trọng tâm được giao. <br>
-                            - Thu thập, phân tích thông tin về khách hàng hiện hữu, tình hình hoạt động/phương thức/phương án kinh doanh, báo cáo tài chính,... nhằm am hiểu khách hàng, nhu cầu và có khả năng tư vấn phương án kinh doanh cho khách hàng <br>
+                         {!!$job->description!!}
                         </p>
                       </div>
                       <div class="description-1 mt-3">
                         <p class="title-description">YÊU CẦU CÔNG VIỆC</p>
                         <p>
-                          Chân dung Thành công - Bằng cấp, Kinh nghiệm <br>
-                          - Trình độ đại học ưu tiên chuyên ngành Kinh tế/ Tài chính/ Ngân hàng/ QTKD/ Kế toán/ Kiểm toán <br>
-                          - Kinh nghiệm: Tối thiểu 10 năm trong lĩnh vực bán hàng và thẩm định mảng KHDN <br>
-                          - Ngoại ngữ: Tối thiểu TOEIC 650 hoặc tương đương <br>
+                          {{$job->requiment}}
                         </p>
                       </div>
                       <div class="description-1 mt-3">
-                        <p class="title-description">JOB LOCATIONS</p>
-                        <p><span><i class="fa-solid fa-location-dot"></i></span>Chợ Lớn, Ho Chi Minh City, Vietnam</p>
+                        <p class="title-description">Địa điểm làm việc</p>
+                        <p><span><i class="fa-solid fa-location-dot"></i></span>{{$job->address}}</p>
                       </div>
                     </div>
                     <div class="col-md-4 col-sm-12">
@@ -103,14 +93,6 @@
                           <div class="summary">
                             <p><span><i class="fa-solid fa-business-time"></i></span>NGÀNH NGHỀ</p>
                             <p>Cấp quản lý điều hành, Bán hàng, Ngân hàng</p>
-                          </div>
-                          <div class="summary">
-                            <p><span><i class="fa-regular fa-flag"></i></span>KỸ NĂNG</p>
-                            <p>{{$job->requiment}}</p>
-                          </div>
-                          <div class="summary">
-                            <p><span><i class="fa-solid fa-language"></i></span>Ngôn ngữ trình bày hồ sơ</p>
-                            <p>Bất kỳ</p>
                           </div>
                           <div class="summary d-flex justify-content-center">
                             <img class="w-25" src="img/vnw-logo-inTECH.png" alt="">

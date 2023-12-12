@@ -9,7 +9,7 @@
                       <img src="{{ asset($new->image) }}" alt="" class="card-img-top">
                       <div class="card-body">
                           <h5 class="card-title">{{ $new->title }}</h5>
-                          <p class="card-text"> {{ $new->content }} </p>
+                          <p class="card-text">{!!$new->content!!}</p>
                           <a href="#" class="btn btn-primary fa fa-eye">  {{ $new->view }}</a>
                           <a href="#" class="btn btn-primary">Detail</a>
                       </div>

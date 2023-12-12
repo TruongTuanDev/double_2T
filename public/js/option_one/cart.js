@@ -1,16 +1,12 @@
-$(document).ready(function(){
-  $('#addtocart').click(function(e){
-      e.preventDefault();
-      var postId = $(this).data('post-id');
+// import axios from 'axios';
 
-      $.ajax({
-          url: 'add-to-favorites',
-          type: 'POST',
-          data: { id: postId },
-          success: function(response) {
-              // Xử lý phản hồi từ server (nếu cần)
-          }
-      });
-  });
-});
- 
+// document.getElementById('addtocart').addEventListener('click', function() {
+//     var postId = this.closest('.job').getAttribute('data-post-id');
+//     axios.post('/add-job', { post_id: postId })
+//         .then(response => {
+//             console.log(response.data.message);
+//         })
+//         .catch(error => {
+//             console.error('Error:', error);
+//         });
+// });

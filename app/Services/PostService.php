@@ -17,6 +17,11 @@ class PostService implements PostServiceInterface
   {
     $this->postRepository = $postRepository;
   }
+  public function getFavouriteJob($id)
+  {
+    $favoriteJob = $this->postRepository->getFavouriteJob($id);
+    return $favoriteJob;
+  }
   public function paginatePostOfComp(){
     $posts = $this->postRepository->getPostOfCompany(15);
     return $posts;

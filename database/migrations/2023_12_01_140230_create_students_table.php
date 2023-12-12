@@ -19,6 +19,7 @@ return new class extends Migration
             $table->string('avatar')->nullable();
             $table->string('description')->nullable();
             $table->integer('id_user');
+            $table->enum('status',['active','inactive']);
             $table->rememberToken();
             $table->timestamps();
         });

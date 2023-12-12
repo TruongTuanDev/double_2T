@@ -12,7 +12,7 @@
             <div class="swiper-slide">
               <img src="{{$banner->photo}}" class="d-block" alt="Novaland">
               <div class="slide-caption d-none d-md-block text-left">
-                <div class="title" >{{$banner->title}}</div>
+                <div class="title" ></div>
                 <div class="description">{!! html_entity_decode($banner->description) !!}</div>
               </div>
             </div>
