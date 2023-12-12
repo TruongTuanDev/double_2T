@@ -70,8 +70,10 @@ use Illuminate\Support\Facades\Route;
     
     Route::get('list',[UserController::class,'index'])->name('admin.index');
 
-    Route::get('listPost',[BackendPostController::class,'listPost'])->name('post.list');
-
+    Route::get('listPost',[BackendPostController::class,'listpost'])->name('posts.list');
+    Route::get('posts/active',[BackendPostController::class,'active'])->name('posts.active');
+    Route::get('posts/inactive',[BackendPostController::class,'inactive'])->name('posts.inactive');
+    Route::get('posts/Updateactive/{id_post}',[BackendPostController::class,'updateactive'])->name('posts.updateactive');
     Route::get('admin/create',[UserController::class,'create'])->name('admin.create');
     
     

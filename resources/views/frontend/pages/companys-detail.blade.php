@@ -4,6 +4,7 @@
     <div class="content-jobs-detail">
         <div class="header-jobs-detail">
             <div class="container">
+
                 <div class="row">
                     <div class="product-item">
                         <div class="card jobs-card">
@@ -12,21 +13,12 @@
                                     <div class="job-img me-3">
                                         <img class="w-100" src="{{ $company->logo }}" alt="logo" width="78px">
                                     </div>
-                                    @foreach ($job as $job)
                                         <div class="job-info">
                                             <div class="job-name job-item">
-                                                <a href="#" class="job-link">{{ $job->title }}</a>
+                                                <a href="#" class="job-link"><h2>{{ $company->name_compn }}</h2></a>
+                                            </div></a>
                                             </div>
-                                            <div class="company-name job-item">
-                                                <a href="#" class="job-company">{{ $company->name_compn }}</a>
-                                            </div>
-                                            <div class="job-location job-fs">{{ $job->address }}</div>
-                                            <div class="job-salary job-item job-fs">{{ $job->salary }}$</div>
-                                            <div class="bonus job-fs">
-                                                <p>1682 lượt xem - Hết hạn trong 3 ngày</p>
-                                            </div>
-                                        </div>
-                                    @endforeach
+
                                     <div class="featured d-flex justify-content-end ms-4">
                                         <button class="btn-one">
                                             <i class="fa-regular fa-heart"></i>
@@ -43,7 +35,7 @@
                 <div class="row">
                     <div class="nav-bar container">
                         <ul class="nav nav-tabs">
-                            <li class="nav-item">
+                            <li class="nav-item active">
                                 <a class="nav-link" data-bs-toggle="tab" href="#companyInfo">COMPANY INFO</a>
                             </li>
                             <li class="nav-item">
@@ -54,7 +46,7 @@
                 </div>
                 <div class="row">
                     <div class="container tab-content">
-                        <div class="tab-pane container fade active" id="companyInfo">
+                        <div class="tab-pane container fade active1" id="companyInfo">
                             <div class="row">
                                 <div class="col-md-8 col-sm-12">
                                     <p class="mt-3"><a href="#" class="me-2">Xem toàn bộ hồ sơ công ty</a><i
@@ -121,6 +113,7 @@
                             </div>
                         </div>
                         <div class="tab-pane container fade" id="job-company">
+                            @foreach ($job as $job)
                           <div class="col-lg-12">
                             <div class="product-item mb-4">
                                 <div class="card jobs-card">
@@ -156,6 +149,7 @@
                                 </div>
                             </div>
                         </div>
+                        @endforeach
                         </div>
                     </div>
                 </div>

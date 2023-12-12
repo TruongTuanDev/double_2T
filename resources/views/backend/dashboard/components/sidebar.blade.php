@@ -53,10 +53,11 @@ if (Auth::id() != null) {
             </ul>
         </li>
          <li class="">
-            <a href="{{ route('news.index') }}"><i class="fa fa-th-large"></i> <span class="nav-label">Quản lý công việc</span> <span class="fa arrow"></span></a>
+            <a href="{{ route('posts.list') }}"><i class="fa fa-th-large"></i> <span class="nav-label">Quản lý công việc</span> <span class="fa arrow"></span></a>
             <ul class="nav nav-second-level">
 
-                <li><a href="{{route('post.list')}}">Danh sách công việc</a></li>
+                <li><a href="{{route('posts.active')}}">Danh sách công việc đã duyệt</a></li>
+                <li><a href="{{route('posts.inactive')}}">Danh sách công việc chờ duyệt</a></li>
             </ul>
         </li>
         <li class="">

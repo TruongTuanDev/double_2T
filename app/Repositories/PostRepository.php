@@ -33,6 +33,10 @@ class PostRepository extends BaseRepository implements PostRepositoryInterface
     ->take(9)
     ->get();
   }
+  public function getFeaturedJobOrderByDate(){
+    return Post::orderBy('post_date', 'desc')
+    ->get();
+  }
   public function findJobById($id)
   {
     $job = Post::with('companys')->find($id);

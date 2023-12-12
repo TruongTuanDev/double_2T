@@ -58,7 +58,7 @@
                         @endif
                     </td>
                     <td>
-                        <a href="{{route('post.edit',$post->id)}}" class="btn btn-primary float-left mr-1"  data-toggle="tooltip" title="edit" data-placement="bottom"><i class="fa fa-edit"></i></a>
+                        <a href="{{route('post.edit',$post->id_post)}}" class="btn btn-primary float-left mr-1"  data-toggle="tooltip" title="edit" data-placement="bottom"><i class="fa fa-edit"></i></a>
                         <form method="POST" action="{{route('post.destroy',[$post->id_post])}}">
                           @csrf 
                           @method('delete')

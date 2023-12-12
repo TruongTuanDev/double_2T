@@ -51,18 +51,15 @@
                     <td>{{$post->salary}}</td>
                     <td>{{$post->position}}</td>
                     <td>
-                        @if($post->status=='active')
-                            <span class="badge badge-success">{{$post->status}}</span>
-                        @else
-                            <span class="badge badge-warning">{{$post->status}}</span>
-                        @endif
+                      <span class="badge badge-warning">Chờ duyệt</span>
+                      <a href="{{route('posts.updateactive',[$post->id_post])}}" class="btn btn-primary float-left mr-1"  data-toggle="tooltip" title="status" data-placement="bottom"><i class="fa fa-check"></i></a>
                     </td>
                     <td>
-                        <a href="{{route('post.edit',$post->id)}}" class="btn btn-primary float-left mr-1"  data-toggle="tooltip" title="edit" data-placement="bottom"><i class="fa fa-edit"></i></a>
+                        <a href="{{route('post.edit',$post->id_post)}}" class="btn btn-primary float-left mr-1"  data-toggle="tooltip" title="edit" data-placement="bottom"><i class="fa fa-edit"></i></a>
                         <form method="POST" action="{{route('post.destroy',[$post->id_post])}}">
                           @csrf 
                           @method('delete')
-                              <button class="btn btn-danger dltBtn" data-id={{$post->id_post}}  data-toggle="tooltip" data-placement="bottom" title="Delete"><i class="fa fa-trash"></i></button>
+                              <button class="btn btn-danger dltBtn" data-id={{$post->id}}  data-toggle="tooltip" data-placement="bottom" title="Delete"><i class="fa fa-trash"></i></button>
                         </form>
                     </td>
                    
