@@ -1,3 +1,4 @@
+
 var navTabs = document.querySelectorAll('.nav-tabs');
 
 navTabs.forEach(function(navTab) {

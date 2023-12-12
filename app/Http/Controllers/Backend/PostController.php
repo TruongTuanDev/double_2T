@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Backend;
 use App\Http\Controllers\Controller;
 use App\Services\PostService;
 use Illuminate\Http\Request;
+use App\Models\Post;
 
 class PostController extends Controller
 {
@@ -18,7 +19,7 @@ class PostController extends Controller
 
     }
     public function listPost(){
-        $posts = $this->postService->paginatePostOfComp();
+        $posts = $this->postService->featuredJobOrderBydate();
         $config =  [
             'js' => [
                 
@@ -31,59 +32,50 @@ class PostController extends Controller
         $template = 'backend.post.index';
         return view('backend.dashboard.layout',compact('template','config','posts'));
     }
-    /**
-     * Display a listing of the resource.
-     */
-    public function index()
+    public function inactive()
     {
-        //
+        $posts=Post::where('status','inactive')->get();
+        $config =  [
+            'js' => [
+                'js/option_two/plugins/switchery/switchery.js'
+            ],
+            'css' => [
+                'css/option_two/plugins/switchery/switchery.css'
+            ]
+        ];
+        $config['seo'] = config('apps.post');
+        $sidebar = 'backend.dashboard.components.sidebar';
+        $template = 'backend.post.inactive';
+        return view('frontend.dashboard.index',compact('template','config','posts','sidebar'));
     }
-
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
+    public function active()
     {
-        //
+        $posts=Post::where('status','active')->get();
+        $config =  [
+            'js' => [
+                'js/option_two/plugins/switchery/switchery.js'
+            ],
+            'css' => [
+                'css/option_two/plugins/switchery/switchery.css'
+            ]
+        ];
+        $config['seo'] = config('apps.post');
+        $sidebar = 'backend.dashboard.components.sidebar';
+        $template = 'backend.post.active';
+        return view('frontend.dashboard.index',compact('template','config','posts','sidebar'));
     }
-
-    /**
-     * Store a newly created resource in storage.
-     */
-    public function store(Request $request)
+    public function updateactive($id_post)
     {
-        //
-    }
+        $post=Post::findOrFail($id_post);
+        $post->status='active';
+        $status=$post->save();
+        if($status){
+            request()->session()->flash('success','Cập nhật thành công');
+        }
+        else{
+            request()->session()->flash('error','Cập nhật thất bại');
+        }
+        return redirect()->route('posts.inactive');
 
-    /**
-     * Display the specified resource.
-     */
-    public function show(string $id)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(string $id)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, string $id)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(string $id)
-    {
-        //
     }
 }

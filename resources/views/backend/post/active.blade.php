@@ -12,7 +12,7 @@
     </div>
     <div class="card-body">
       <div class="table-responsive">
-        {{-- @if(count($posts)>0) --}}
+        @if(count($posts)>0)
         <table class="table table-bordered" id="banner-dataTable" width="100%" cellspacing="0">
           <thead>
             <tr>
@@ -44,7 +44,6 @@
             @foreach($posts as $post)   
                 <tr>
                     <td>{{$post->id_post}}</td>
-
                     <td>{{$post->title}}</td>
                     <td>{{$post->quantity}}</td>
                     <td>{{$post->post_date}}</td>
@@ -59,7 +58,7 @@
                         @endif
                     </td>
                     <td>
-                        <a href="{{route('post.edit',$post->id)}}" class="btn btn-primary float-left mr-1"  data-toggle="tooltip" title="edit" data-placement="bottom"><i class="fa fa-edit"></i></a>
+                        <a href="{{route('post.edit',$post->id_post)}}" class="btn btn-primary float-left mr-1"  data-toggle="tooltip" title="edit" data-placement="bottom"><i class="fa fa-edit"></i></a>
                         <form method="POST" action="{{route('post.destroy',[$post->id_post])}}">
                           @csrf 
                           @method('delete')
@@ -71,10 +70,10 @@
             @endforeach
           </tbody>
         </table>
-        <span style="float:right">{{$posts->links()}}</span>
-        {{-- @else --}}
-          {{-- <h6 class="text-center">Không tìm thấy công việc!!! Vui lòng tạo thêm công việc</h6> --}}
-        {{-- @endif --}}
+        {{-- <span style="float:right">{{$posts->links()}}</span> --}}
+        @else
+          <h6 class="text-center">Không tìm thấy công việc!!! Vui lòng tạo thêm công việc</h6>
+        @endif
       </div>
     </div>
 </div>

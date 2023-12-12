@@ -9,7 +9,7 @@ use App\Repositories\Interfaces\NewsRepositoryInterface;
  * Class UserService
  * @package App\Services
  */
-class NEwsRepository extends BaseRepository implements NewsRepositoryInterface
+class NewsRepository extends BaseRepository implements NewsRepositoryInterface
 {
   protected $model;
   public function __construct(News $model){
@@ -17,7 +17,6 @@ class NEwsRepository extends BaseRepository implements NewsRepositoryInterface
   }
   public function getFeaturedNews()
   {
-    return News::orderBy('create_date','desc')
-    ->get();
+    return News::where('status','active')->orderBy('create_date','desc')->get();
   }
 }

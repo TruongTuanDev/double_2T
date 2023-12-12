@@ -10,6 +10,7 @@ interface PostServiceInterface
   public function paginatePostOfComp();
   public function getAllPost();
   public function featuredJob();
+  public function featuredJobOrderBydate();
   public function findJobById($id);
   public function getFavouriteJob($id);
 }

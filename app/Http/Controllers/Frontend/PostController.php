@@ -111,6 +111,7 @@ class PostController extends Controller
         // dd($data);
         $idUser = Auth()->id();
         $id_major = $data['id_major'];
+        $data['status'] = 'inactive';
         $data['id_emp'] = $idUser;
         $data['exp_date'] = now()->addDays(30);
         $major= $this->majorService->findMajorById($id_major);
