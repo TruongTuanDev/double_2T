@@ -16,4 +16,6 @@ interface PostRepositoryInterface
 
   public function findJobById($id);
 
+  public function getFavouriteJob($id);
+
 }

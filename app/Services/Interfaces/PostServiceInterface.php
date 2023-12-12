@@ -11,4 +11,5 @@ interface PostServiceInterface
   public function getAllPost();
   public function featuredJob();
   public function findJobById($id);
+  public function getFavouriteJob($id);
 }

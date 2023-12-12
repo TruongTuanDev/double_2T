@@ -12,7 +12,7 @@
     </div>
     <div class="card-body">
       <div class="table-responsive">
-        @if(count($posts)>0)
+        {{-- @if(count($posts)>0) --}}
         <table class="table table-bordered" id="banner-dataTable" width="100%" cellspacing="0">
           <thead>
             <tr>
@@ -43,7 +43,7 @@
           <tbody>
             @foreach($posts as $post)   
                 <tr>
-                    <td>{{$post->id}}</td>
+                    <td>{{$post->post_id}}</td>
                     <td>{{$post->title}}</td>
                     <td>{{$post->quantity}}</td>
                     <td>{{$post->post_date}}</td>
@@ -71,9 +71,9 @@
           </tbody>
         </table>
         <span style="float:right">{{$posts->links()}}</span>
-        @else
-          <h6 class="text-center">Không tìm thấy công việc!!! Vui lòng tạo thêm công việc</h6>
-        @endif
+        {{-- @else --}}
+          {{-- <h6 class="text-center">Không tìm thấy công việc!!! Vui lòng tạo thêm công việc</h6> --}}
+        {{-- @endif --}}
       </div>
     </div>
 </div>

@@ -57,11 +57,15 @@ class MajorController extends Controller
     {
         // return $request->all();
         $this->validate($request,[
-            'name'=>'string|required|max:50',
-            'image'=>'string|required|max:150',
+            'name'=>'string|required|max:100',
+            'logo'=>'string|required|max:150',
             'job_quantity'=>'integer|nullable',
         ]);
         $data=$request->all();
+        $inputString = $request->input('name'); 
+        $data['job_quantity'] = 0;
+        $uppercaseString = strtoupper($inputString);
+        $data['name'] = $uppercaseString;
         $status=Major::create($data);
         if($status){
             request()->session()->flash('success','Thêm major thành công');

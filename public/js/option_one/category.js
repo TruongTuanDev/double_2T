@@ -1,3 +1,4 @@
+
 function toggleNewCategoryForm() {
     var newCategoryForm = document.getElementById('newCategoryForm');
     if (newCategoryForm.style.display === 'none') {

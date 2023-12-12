@@ -4,10 +4,39 @@ namespace App\Http\Controllers\Frontend;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Student;
+use App\Services\PostService;
 use Illuminate\Support\Facades\Auth;
 
 class StudentController extends Controller
 {
+    protected $favouriteJob;
+
+    public function __construct
+    (
+        PostService $favouriteJob
+    )
+    {
+        $this->favouriteJob = $favouriteJob;
+    }
+    public function index()
+    {
+       $id_student = Auth()->id();
+       $posts = $this->favouriteJob->getFavouriteJob($id_student);
+       dd($posts);
+    //    $count = count($posts);
+       $config =  [
+        'js' => [
+            'js/option_two/plugins/switchery/switchery.js'
+        ],
+        'css' => [
+            'css/option_two/plugins/switchery/switchery.css'
+        ]
+    ];
+       $config['seo'] = config('apps.student');
+    //    dd($config['seo']);
+       $template = 'backend.post.index';
+       return view('frontend.dashboard.layout',compact('template','config','posts'));
+    }
     public function home()
     {
         $config = $this->config();
@@ -53,6 +82,7 @@ class StudentController extends Controller
         ]);
         $data=$request->all();
         $data['id_user']=Auth()->user()->id;
+        $data['status'] =  'active';
         $student=Student::where('id_user', Auth()->user()->id)->first();
         $status=$student->fill($data)->save();
         if($status){
