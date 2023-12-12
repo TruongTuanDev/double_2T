@@ -109,6 +109,7 @@ class EmployerController extends Controller
         // dd($data);
         $idUser = Auth()->id();
         $data['id_user'] =  $idUser;
+        $data['status'] =  'active';
         $status = Employer::where('id_user', $idUser)->update($data);
         // $employer=Employer::where('id_user', Auth()->user()->id)->first();
         // $status=$employer->fill($data)->save();

@@ -19,6 +19,7 @@ return new class extends Migration
             $table->text('description')->nullable();
             $table->dateTime('exp_date')->nullable();
             $table->string('requirement',100)->nullable();
+            $table->string('treatment',100)->nullable();
             $table->string('salary',20)->nullable();
             $table->string('address')->nullable();
             $table->string('position')->nullable();

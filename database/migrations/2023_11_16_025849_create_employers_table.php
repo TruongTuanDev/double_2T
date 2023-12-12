@@ -24,6 +24,7 @@ return new class extends Migration
             $table->integer('staff_number')->nullable(); 
             $table->integer('id_user')->nullable(); 
             $table->integer('job_quantity')->nullable(); 
+            $table->enum('status',['active','inactive']);
             $table->timestamps();
             $table->rememberToken()->nullable();
         });

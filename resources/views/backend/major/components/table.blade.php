@@ -18,8 +18,8 @@
         </td>
         <td>
             <div class="info-item image">
-                @if($majors->image)
-                            <img src="{{$majors->image}}" class="img-fluid zoom" style="max-width:80px" alt="{{$majors->image}}">
+                @if($majors->logo)
+                            <img src="{{$majors->logo}}" class="img-fluid zoom" style="max-width:80px" alt="{{$majors->logo}}">
                         @else
                             <img src="{{asset('backend/img/thumbnail-default.jpg')}}" class="img-fluid zoom" style="max-width:100%" alt="avatar.png">
                         @endif

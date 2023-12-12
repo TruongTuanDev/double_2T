@@ -39,20 +39,6 @@
               </div>
             </div>
             <div class="row mb15">
-              <div class="form-group col-lg-12">
-                <label for="inputPhoto" class="col-form-label">Ảnh <span class="text-danger">*</span></label>
-                <div class="input-group">
-                    <span class="input-group-btn">
-                        <a id="lfm" data-input="thumbnail" data-preview="holder" class="btn btn-primary">
-                        <i class="fa fa-picture-o"></i> Chọn
-                        </a>
-                    </span>
-                  <input id="thumbnail" class="form-control" type="text" name="image" value="{{old('photo')}}">
-                </div>
-                <div id="holder" style="margin-top:15px;max-height:100px;"></div>
-            </div>
-          </div>
-            <div class="row mb15">
               <div class="col-lg-12">
                 <div class="form-row">
                   <label for="" class="control-lable text-left">Logo

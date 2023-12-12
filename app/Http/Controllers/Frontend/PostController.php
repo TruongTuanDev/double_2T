@@ -219,7 +219,7 @@ class PostController extends Controller
         return redirect()->route('user.index');
 
     }
-
+   
     /**
      * Remove the specified resource from storage.
      *

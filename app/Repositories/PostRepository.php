@@ -2,6 +2,7 @@
 
 namespace App\Repositories;
 
+use App\Models\Favjob;
 use App\Models\Post;
 use App\Repositories\Interfaces\PostRepositoryInterface;
 use Illuminate\Support\Facades\Auth;
@@ -25,7 +26,12 @@ class PostRepository extends BaseRepository implements PostRepositoryInterface
     $posts = Post::orderBy('id_post', 'desc')->where('id_emp', $idEmp)->paginate($number);
     return $posts;
   }
-
+  public function getFavouriteJob($id)
+  {
+    $id = Auth()->id();
+    $favouriteJob = Favjob::find($id);
+    return $favouriteJob;
+  }
 
   public function getFeaturedJob()
   {

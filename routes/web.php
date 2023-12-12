@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Ajax\LocationController;
+use App\Http\Controllers\Ajax\PostController as AjaxPostController;
 use App\Http\Controllers\Backend\AuthController;
 use App\Http\Controllers\Frontend\HomePageController;
 use App\Http\Controllers\Backend\DashboardController;
@@ -114,6 +115,8 @@ Route::group(['prefix' => 'user'], function(){
     Route::post('register',[AAuthController::class,'register'])->name('user.register');
     Route::get('register',[AAuthController::class,'index'])->name('user.register');
     Route::get('dashboard',[StudentController::class,'home'])->name('user.dashboard');
+    Route::get('apply',[StudentController::class,'apply'])->name('job.apply');
+    Route::get('favourite',[StudentController::class,'index'])->name('job.fav');
     Route::get('dashboard/information/{iduser}',[StudentController::class,'UpdateInfor'])->name('user.information');
     Route::post('dashboard/store',[StudentController::class,'store'])->name('user.store');
 });
@@ -145,6 +148,8 @@ Route::group(['prefix' => 'employer'], function(){
 Route::get('ajax/location/getLocation',[LocationController::class,'getLocation'])->name('location.index');
 Route::get('/check-auth',[AuthController::class,'checkAuth' ])->name('check-auth');
 Route::post('/filter-employers', [EmployerController::class, 'filter'])->name('filter-employers');
+Route::post('/add-job', 'AjaxPostController@addFavouriteJob')->name('add.job');
+Route::get('/add-to-cart/{post}', [AjaxPostController::class, 'addToCart'])->name('cart.add');
 
 
 
