@@ -142,9 +142,12 @@ class PostController extends Controller
        ];
        
         $job = $this->postService->findJobById($id);
+        $job_recomment = $this->postService->getRecommentFavouriteJob($job->id_major,$job->address);
         $company = $job->companys;
+        $company_recomment=$this->employerService->getRecommentFavouriteCompany($job->address);
         $template = 'frontend.pages.jobs-detail';
-        return view('index',compact('config','provinces','job','template','company'));
+        dd($job_recomment);
+        return view('index',compact('config','provinces','job','template','company','job_recomment','company_recomment'));
     }
     /**
      * Display the specified resource.

@@ -48,4 +48,9 @@ class PostRepository extends BaseRepository implements PostRepositoryInterface
     $job = Post::with('companys')->find($id);
     return $job;
   }
+  public function getRecommentFavouriteJob($id_major,$address){
+    $job = Post::where('id_major',$id_major)->orwhere('address',$address)->get();
+    return $job;
+  }
+
 }

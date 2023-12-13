@@ -44,6 +44,10 @@ class EmployerService implements EmployerServiceInterface
     $companys = $this->employerRepository->findCompanyById($id);
     return $companys;
   }
+  public function getRecommentfavouriteCompany($address){
+    $companys = $this->employerRepository->getRecommentfavouriteCompany($address);
+    return $companys;
+  }
   public function create($request){
     DB::beginTransaction();
     try{
