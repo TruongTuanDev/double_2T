@@ -27,6 +27,16 @@ class StudentService implements StudentServiceInterface
     $students = $this->studentRepository->getAll();
     return $students;
   }
+  public function findStudentById($id)
+  {
+    $student = $this->studentRepository->findById($id);
+    return $student;
+  }
+  public function findStudentByIdUser($id)
+  {
+    $student = $this->studentRepository->findStudentByIdUser($id);
+    return $student;
+  }
   public function create($request){
     DB::beginTransaction();
     try{

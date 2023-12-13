@@ -76,7 +76,7 @@ class EmployerController extends Controller
             ]
        ];
        $config['seo'] = config('apps.employer');
-       $template = 'frontend.employer.create';
+       $template = 'frontend.dashboard.employer.create';
        $sidebar = 'frontend.dashboard.layouts.sidebaremp';
        return view('frontend.dashboard.index',
        compact('template','config','sidebar'));
@@ -100,7 +100,7 @@ class EmployerController extends Controller
             'address'=>'string',
             'treatment'=>'string',
             'website'=>'string',
-            'scale'=>'integer',
+            'staff_number'=>'integer',
         ]);
 
         $data=$request->all();

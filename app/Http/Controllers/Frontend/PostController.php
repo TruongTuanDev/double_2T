@@ -4,10 +4,12 @@ namespace App\Http\Controllers\Frontend;
 
 use App\Http\Controllers\Controller;
 use App\Models\Banner;
+use App\Models\Favjob;
 use App\Models\Major;
 use App\Models\Post;
 use App\Models\User;
 use App\Models\Settings;
+use App\Models\Student;
 use App\Rules\MatchOldPassword;
 use App\Services\DistrictService;
 use App\Services\EmployerService;
@@ -15,9 +17,11 @@ use App\Services\MajorService;
 use App\Services\PostService;
 use App\Services\UserService;
 use App\Services\provinceService;
+use App\Services\StudentService;
 use App\Services\WardService;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 
@@ -30,18 +34,21 @@ class PostController extends Controller
     protected $wardsService;
     protected $employerService;
     protected $majorService;
+    protected $studentService;
 
     public function __construct
     (PostService $postService,
     ProvinceService $provinceService,
     EmployerService $employerService,
-    MajorService $majorService
+    MajorService $majorService,
+    StudentService $studentService,
     )
     {
         $this->postService = $postService;
         $this->provinceService = $provinceService;
         $this->employerService = $employerService;
         $this->majorService = $majorService;
+        $this->studentService = $studentService;
     }
     /**
      * Display a listing of the resource.
@@ -110,9 +117,10 @@ class PostController extends Controller
         $data=$request->all();
         // dd($data);
         $idUser = Auth()->id();
+        $employer = $this->employerService->findCompanyById($idUser);
         $id_major = $data['id_major'];
         $data['status'] = 'inactive';
-        $data['id_emp'] = $idUser;
+        $data['id_emp'] = $employer->id_emp;
         $data['exp_date'] = now()->addDays(30);
         $major= $this->majorService->findMajorById($id_major);
         if ($major) {
@@ -130,6 +138,12 @@ class PostController extends Controller
 
     }
     public function jobDetail($id){
+        $id_user = Auth()->id();
+        $student = $this->studentService->findStudentByIdUser($id_user);
+       $jobfav = Favjob::where('status', 'active')
+                        ->where('student_id', $student->id_stu)
+                        ->first();
+        // dd($jobfav);
        $provinces = $this->provinceService->allProvince();
        $config = [
         'css' => [
@@ -144,7 +158,7 @@ class PostController extends Controller
         $job = $this->postService->findJobById($id);
         $company = $job->companys;
         $template = 'frontend.pages.jobs-detail';
-        return view('index',compact('config','provinces','job','template','company'));
+        return view('index',compact('config','provinces','job','template','company','jobfav'));
     }
     /**
      * Display the specified resource.

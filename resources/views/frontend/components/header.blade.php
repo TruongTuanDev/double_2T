@@ -74,7 +74,7 @@
                           <i class="fa fa-user d-flex align-items-center justify-content-center"
                               aria-hidden="true"
                               style="background-color: rgb(0, 183, 255); width: 2.25rem; height: 100%; border-radius: 5px;"></i>
-                          <span>Login</span>
+                          <span>Đăng nhập</span>
                       </a>
                       <div class="dropdown-menu dropdown-menu-end">
                           <div class="title mb-3 fs-5" style="color: #333; font-weight: 500;"><span
