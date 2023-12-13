@@ -5,18 +5,26 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Student;
 use App\Services\PostService;
+use App\Services\StudentService;
+use App\Services\UserService;
 use Illuminate\Support\Facades\Auth;
 
 class StudentController extends Controller
 {
     protected $favouriteJob;
+    protected $studentService;
+    protected $userService;
 
     public function __construct
     (
-        PostService $favouriteJob
+        PostService $favouriteJob,
+        StudentService $studentService,
+        UserService $userService,
     )
     {
         $this->favouriteJob = $favouriteJob;
+        $this->studentService = $studentService;
+        $this->userService = $userService;
     }
     public function index()
     {
@@ -38,9 +46,10 @@ class StudentController extends Controller
     }
     public function home()
     {
+        
         $config = $this->config();
-        $template = "Frontend.dashboard.home.index";
-        return view('Frontend.dashboard.layout',compact('template','config'));
+        $template = "frontend.dashboard.home.index";
+        return view('frontend.dashboard.layout',compact('template','config'));
     }
     private function config(){
         return [
@@ -62,12 +71,13 @@ class StudentController extends Controller
              'library/location.js',
              ]
         ];
-        $student=Student::where('id_user', $iduser)->first();
-        dd($student);
+        $user = $this->userService->findById($iduser);
+        $student = $this->studentService->findStudentByIdUser($iduser);
+
         $config['seo'] = config('apps.user');
         $template = 'frontend.dashboard.user.create';
         return view('frontend.dashboard.layout',
-        compact('template','config','student'));
+        compact('template','config','user','student'));
      }
      public function store(Request $request)
     {
@@ -92,8 +102,8 @@ class StudentController extends Controller
             request()->session()->flash('error','Cập nhật thất bại');
         }
         $config=$this->config();
-        $template = "Frontend.dashboard.home.index";
-        return view('Frontend.dashboard.layout',compact('template','config'));
+        $template = "frontend.dashboard.home.index";
+        return view('frontend.dashboard.layout',compact('template','config'));
 
     }
 }

@@ -25,11 +25,18 @@
                                 </div>
                                 <div class="featured d-flex justify-content-end ms-4" >
                                     <a class="btn-one job" id="post_id" href="{{route('cart.add',['post' => $job->id_post])}}" data-post-id="{{$job->id_post}}">
+                                      @if($jobfav!= null)
+                                      @if ($jobfav->status === 'active')
+                                      <i class="fa-solid fa-heart" style="color: rgb(255, 136, 0)"></i>
+                                      @endif
+                                      @elseif($jobfav == null)
                                       <i class="fa-regular fa-heart"></i>
+                                      @endif
                                     </a>
-                                    <button class="btn-two">
-                                      Apply Now
+                                    <button id="submitBtn" onclick="showForm()" class="btn-two">
+                                      Nộp đơn
                                     </button>
+
                                 </div>
                         </div>
                     </div>
@@ -162,3 +169,50 @@
         </div>
     </div>
 </div>
+ 
+
+ <!-- Overlay và Form -->
+ <div class="overlay" id="overlay">
+     <div id="submissionForm">
+         <div id="formHeader">
+          <div class="card-body">
+            <div class="view_job_item d-flex align-items-center justify-content-start">
+                    <div class="job-img me-3">
+                        <img class="w-100" src="{{$company->logo}}"
+                            alt="logo" width="78px">
+                    </div>
+                    <div class="job-info">
+                        <div class="job-name job-item">
+                            <a href="" class="job-link">{{$job->title}}</a>
+                        </div>
+                        <div class="company-name job-item">
+                            <a href="" class="job-company">{{$company->name_compn}}</a>
+                        </div>
+                        <div class="job-location job-fs">{{$job->address}}</div>
+                    </div>
+            </div>
+        </div>
+         </div>
+
+         <!-- Nội dung form -->
+         <form id="myForm">
+             <label for="fullName"> 
+              @if(Auth()->id() != null)
+              <strong>
+                {{Auth()->user()->name}}
+              </strong>
+              @endif
+            </label>
+
+             <label >CV:</label>
+             <input type="file"name="file" required>
+
+             <label for="email">Email:</label>
+             <input type="email" id="email" name="email" required>
+
+             <label for="message">Nội dung đơn:</label>
+             <textarea id="message" name="message" required></textarea>
+             <input type="submit" value="Gửi Đơn">
+         </form>
+     </div>
+ </div>

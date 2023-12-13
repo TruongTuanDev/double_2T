@@ -129,11 +129,11 @@ Route::group(['prefix' => 'employer'], function(){
    Route::get('login',[EAuthController::class,'loginForm'])->name('employer.login');
    Route::post('login',[EAuthController::class,'login'])->name('employer.login');
    //Jobs
-   Route::get('post',[PostController::class,'index'])->name('post.index');
-   Route::get('create',[PostController::class,'create'])->name('post.create');
-   Route::post('store',[PostController::class,'store'])->name('post.store');
-   Route::get('edit',[PostController::class,'edit'])->name('post.edit');
-   Route::post('destroy',[PostController::class,'destroy'])->name('post.destroy');
+   Route::get('post',[PostController::class,'index'])->name('post.index')->middleware('employer.status');
+   Route::get('create',[PostController::class,'create'])->name('post.create')->middleware('employer.status');
+   Route::post('store',[PostController::class,'store'])->name('post.store')->middleware('employer.status');
+   Route::get('edit',[PostController::class,'edit'])->name('post.edit')->middleware('employer.status');
+   Route::post('destroy',[PostController::class,'destroy'])->name('post.destroy')->middleware('employer.status');
 
    Route::get('dashboard',[DashboardController::class,'employer'])->name('employer.dashboard');
 
@@ -149,7 +149,7 @@ Route::get('ajax/location/getLocation',[LocationController::class,'getLocation']
 Route::get('/check-auth',[AuthController::class,'checkAuth' ])->name('check-auth');
 Route::post('/filter-employers', [EmployerController::class, 'filter'])->name('filter-employers');
 Route::post('/add-job', 'AjaxPostController@addFavouriteJob')->name('add.job');
-Route::get('/add-to-cart/{post}', [AjaxPostController::class, 'addToCart'])->name('cart.add');
+Route::get('/add-to-cart/{post}', [AjaxPostController::class, 'addToCart'])->name('cart.add')->middleware('student.status');
 
 
 

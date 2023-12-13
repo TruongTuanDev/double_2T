@@ -65,7 +65,7 @@
                         <i class="fa fa-picture-o"></i> Chọn
                       </a>
                     </span>
-                    <input id="thumbnaillg" class="form-control" type="text" name="logo">
+                    <input  id="thumbnaillg" class="form-control" type="text" name="logo">
                   </div>
                   <img id="holderlg" style="margin-top:15px;max-height:100px;">
                 </div>

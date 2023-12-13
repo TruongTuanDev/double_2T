@@ -1,0 +1,71 @@
+.overlay {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5); 
+  justify-content: center;
+  align-items: center;
+  z-index: 10000;
+}
+
+#submissionForm {
+  display: none;
+  background-color: #fff; 
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); 
+  z-index: 10000;
+  max-width: 600px; 
+  width: 100%;
+  position: relative;
+  overflow-y: auto; 
+}
+
+#submissionForm input,
+#submissionForm textarea {
+  width: calc(100% - 20px);
+  padding: 10px;
+  margin-bottom: 15px;
+  box-sizing: border-box;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+#submissionForm input[type="submit"] {
+  background-color: rgb(255, 125, 85);
+  color: #fff;
+  cursor: pointer;
+  position: sticky;
+  bottom: 10px;
+  width: calc(100% - 20px);
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+}
+
+#submissionForm label {
+  display: block;
+  margin-bottom: 8px;
+}
+
+#formHeader {
+  text-align: center;
+  margin-bottom: 20px;
+  position: sticky;
+  top: 0;
+  background-color: #fff;
+  z-index: 3;
+  padding: 10px;
+}
+
+#submissionForm .close-btn {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  cursor: pointer;
+  font-size: 20px;
+  color: #333;
+}

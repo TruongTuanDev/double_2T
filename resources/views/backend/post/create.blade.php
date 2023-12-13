@@ -151,6 +151,17 @@
               </div>
             </div>
           </div>
+          <div class="row mb15">
+            <div class="col-lg-12">
+              <div class="form-group">
+                <label for="inputDesc" class="col-form-label">Ưu đãi</label>
+                  <textarea class="form-control" id="treatment" name="treatment">{{old('treatment')}}</textarea>
+                @error('treatment')
+                <span class="text-danger">{{$message}}</span>
+                @enderror
+              </div>
+            </div>
+          </div>
           </div>
         </div>
       </div>

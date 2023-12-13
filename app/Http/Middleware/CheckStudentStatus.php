@@ -4,9 +4,7 @@ namespace App\Http\Middleware;
 
 use App\Services\StudentService;
 use Closure;
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
-use Symfony\Component\HttpFoundation\Response;
+
 
 class CheckStudentStatus
 {
@@ -26,9 +24,9 @@ class CheckStudentStatus
     public function handle($request, Closure $next)
     {
         $student_id = Auth()->id();
-        $student = $this->$studentService->get
+        $student = $this->studentService->findStudentById($student_id);
         if ($student && $student->status !== 'active') {
-            return redirect()->route('admin.login')->with('error','Bạn phải đăng nhập trước');
+            return redirect()->route('user.information')->with('error','Bạn phải cập nhật thông tin trước');
         }
 
         return $next($request);

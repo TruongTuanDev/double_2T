@@ -18,6 +18,7 @@
     <link rel="stylesheet" href="{{ asset('css/option_one/customize.css') }}">
     <link rel="stylesheet" href="{{ asset('css/option_one/detailjob.css') }}">
     <link rel="stylesheet" href="{{ asset('css/option_one/footer.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/option_one/form-apply.css') }}">
 
     <!-- Link Swiper's CSS -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css" />
