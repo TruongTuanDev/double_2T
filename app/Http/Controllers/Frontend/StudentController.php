@@ -66,14 +66,14 @@ class StudentController extends Controller
          'css' => [
              'https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css'
          ],
-         'js' => [
+         'js' => [  
              'https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js',
              'library/location.js',
              ]
         ];
         $user = $this->userService->findById($iduser);
         $student = $this->studentService->findStudentByIdUser($iduser);
-        // dd($student);
+
         $config['seo'] = config('apps.user');
         $template = 'frontend.dashboard.user.create';
         return view('frontend.dashboard.layout',

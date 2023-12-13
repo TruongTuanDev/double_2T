@@ -1,4 +1,4 @@
-@include('frontend.dashboard.components.breadcrumb',['title'=> $config['seo']['create']['title']])
+  @include('frontend.dashboard.components.breadcrumb',['title'=> $config['seo']['create']['title']])
 @php
 if (Auth::id() != null) {
     $profile=Auth()->user();

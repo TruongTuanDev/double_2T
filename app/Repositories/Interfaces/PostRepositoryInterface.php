@@ -18,4 +18,5 @@ interface PostRepositoryInterface
 
   public function getFavouriteJob($id);
 
+  public function getRecommentFavouriteJob($major,$address);
 }
