@@ -13,4 +13,5 @@ interface PostServiceInterface
   public function featuredJobOrderBydate();
   public function findJobById($id);
   public function getFavouriteJob($id);
+  public function getRecommentFavouriteJob($id_major,$address);
 }

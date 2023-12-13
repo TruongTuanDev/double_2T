@@ -45,4 +45,8 @@ class PostService implements PostServiceInterface
     $job = $this->postRepository->getfeaturedJobOrderBydate();
     return $job;
   }
+  public function getRecommentFavouriteJob($id_major,$address){
+    $job=$this->postRepository->getRecommentFavouriteJob($id_major,$address);
+    return $job;
+  }
 }

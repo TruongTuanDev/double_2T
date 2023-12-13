@@ -155,7 +155,6 @@
                   </div>
                 </div>
                 <div class="tab-pane container fade" id="job-company">
-                  2
                 </div>
               </div>
             </div>

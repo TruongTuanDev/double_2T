@@ -13,4 +13,6 @@ interface EmployerServiceInterface
 
   public function findCompanyByIdJob($id);
   public function findCompanyById($id);
+  public function getRecommentfavouriteCompany($address);
+
 }
