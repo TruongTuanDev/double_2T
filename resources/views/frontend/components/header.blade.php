@@ -153,7 +153,6 @@
                         <span>
                             @if(Auth()->id() != null)
                                 {{Auth()->user()->name}}
-                            
                             @endif
                         </span>
                     </a>

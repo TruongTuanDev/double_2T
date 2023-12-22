@@ -1,6 +1,6 @@
     <div class="grid login-grid main login-box">
         <div class="grid-logo-vnw">
-            <div class="vnw-title">Sign in to continue!
+            <div class="vnw-title">Đăng nhập để tiếp tục!
                 <div class="vnw-login__social">
                     <a href="#"
                         class="btn btn-default full-width facebook-btn">
@@ -12,8 +12,8 @@
                                     style="fill:#fff"></path>
                             </svg>
                         </span>
-                        <span class="text-desktop">with Facebook account </span>
-                        <span class="text-mobile">with Facebook </span>
+                        <span class="text-desktop">Với tài khoản Google</span>
+                        <span class="text-mobile">Với tài khoản Facebook </span>
                     </a>
                     <a href="#"
                         class="btn btn-default full-width google-btn m-r-sm">
@@ -33,11 +33,11 @@
                                 </path>
                             </svg>
                         </span>
-                        <span class="text-desktop">with Google account </span>
-                        <span class="text-mobile">with Google </span>
+                        <span class="text-desktop">Với tài khoản Google</span>
+                        <span class="text-mobile">Với tài khoản Facebook </span>
                     </a>
                 </div>
-                <span class="vnw-login__sml-text">or with your email</span>
+                <span class="vnw-login__sml-text">Hoặc với email của bạn</span>
             </div>
         </div>
 
@@ -59,7 +59,7 @@
                 @endif    
             </div>
             <div class="form-group">
-                <label for="login__password">Password</label>
+                <label for="login__password">Mật khẩu</label>
                 <input 
                 id="login__password" 
                 type="password" 
@@ -73,15 +73,15 @@
             </div>
             <div class="row">
                 <div class="col-md-12 col-xs-12 text-right forgot-password">
-                    <a class="inline m-t-sm forgot-password__text clickable" href="#">Forgot Password?</a>
+                    <a class="inline m-t-sm forgot-password__text clickable" href="#">Quên mật khẩu ?</a>
                 </div>
             </div>
             <div class="form__field">
                 <input type="submit" id="button-login" value="Login">
             </div>
         </form>
-        <p class="text-center m-b-none register">Don&#039;t have an account yet?
-            <a href="{{route('employer.register')}}"><strong>Register now!</strong></a>
+        <p class="text-center m-b-none register">Bạn chưa có mật khẩu?
+            <a href="{{route('employer.register')}}"><strong>Đăng ký ngay!</strong></a>
         </p>
         <hr class="hidden-xs">
         <div class="login__footer">

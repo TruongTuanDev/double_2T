@@ -2,7 +2,7 @@
   <nav class="navbar navbar-static-top white-bg" role="navigation" style="margin-bottom: 0">
   <div class="navbar-header">
       <a class="navbar-minimalize minimalize-styl-2 btn btn-primary " href="#"><i class="fa fa-bars"></i> </a>
-      <form role="search" class="navbar-form-custom" action="search_results.html">
+      <form role="search" class="navbar-form-custom" action="">
           <div class="form-group">
               <input type="text" placeholder="Search for something..." class="form-control" name="top-search" id="top-search">
           </div>
@@ -20,7 +20,7 @@
                   <li>
                       <div class="dropdown-messages-box">
                           <a href="{{route('admin-profile')}}" class="pull-left">
-                              <img alt="image" class="img-circle" src="img/a7.jpg">
+                              <img alt="image" class="img-circle" src="">
                           </a>
                           <div>
                               <small class="pull-right">46h ago</small>
@@ -32,7 +32,7 @@
                   <li class="divider"></li>
                   <li>
                       <div class="dropdown-messages-box">
-                          <a href="profile.html" class="pull-left">
+                          <a href="" class="pull-left">
                               <img alt="image" class="img-circle" src="img/a4.jpg">
                           </a>
                           <div>
@@ -80,7 +80,7 @@
                   </li>
                   <li class="divider"></li>
                   <li>
-                      <a href="profile.html">
+                      <a href="">
                           <div>
                               <i class="fa fa-twitter fa-fw"></i> 3 New Followers
                               <span class="pull-right text-muted small">12 minutes ago</span>
@@ -110,7 +110,7 @@
 
 
           <li>
-              <a href="{{route('auth.logout')}}">
+              <a href="{{route('employer.logout')}}"> 
                   <i class="fa fa-sign-out"></i> Log out
               </a>
           </li>

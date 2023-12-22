@@ -128,6 +128,7 @@ Route::group(['prefix' => 'employer'], function(){
    Route::get('register',[EAuthController::class,'index'])->name('employer.register');
    Route::get('login',[EAuthController::class,'loginForm'])->name('employer.login');
    Route::post('login',[EAuthController::class,'login'])->name('employer.login');
+   Route::get('logout',[EAuthController::class,'logout'])->name('employer.logout');
    //Jobs
    Route::get('post',[PostController::class,'index'])->name('post.index')->middleware('employer.status');
    Route::get('create',[PostController::class,'create'])->name('post.create')->middleware('employer.status');

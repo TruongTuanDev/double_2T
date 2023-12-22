@@ -60,6 +60,7 @@ class AAuthController extends Controller
         }
         return redirect()->route('user.login');
     }
+    
     private function config(){
         return [
             'js' => [

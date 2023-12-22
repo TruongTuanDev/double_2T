@@ -8,7 +8,7 @@
         </ul>
     </div>
 @endif
-<form action="{{Route('user.store')}}" method="post" class="box">
+<form action="{{route('user.store')}}" method="post" class="box">
   @csrf
   <div class="wrapper wrapper-content animated fadeInRight">
     <div class="row">

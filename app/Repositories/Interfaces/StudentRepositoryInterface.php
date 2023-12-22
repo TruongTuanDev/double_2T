@@ -8,5 +8,5 @@ namespace App\Repositories\Interfaces;
  */
 interface StudentRepositoryInterface
 {
- public function findStudentByIdUser($student);
+ public function findStudentByIdUser($id);
 }
