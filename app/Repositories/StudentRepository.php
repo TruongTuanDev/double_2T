@@ -18,7 +18,6 @@ class StudentRepository extends BaseRepository implements StudentRepositoryInter
   }
  public function findStudentByIdUser($id)
  {
-  $id = Auth()->id();
   $student = Student::where('id_user', $id)->first();
   return $student;
  }

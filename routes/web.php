@@ -120,6 +120,7 @@ Route::group(['prefix' => 'user'], function(){
     Route::get('dashboard/information/{iduser}',[StudentController::class,'UpdateInfor'])->name('user.information');
     Route::post('dashboard/store',[StudentController::class,'store'])->name('user.store');
 });
+Route::post('job/send',[PostController::class,'storeCVOfStudent'])->name('sendinfor.apply');
 
 
 Route::group(['prefix' => 'employer'], function(){

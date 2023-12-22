@@ -17,6 +17,7 @@ return new class extends Migration
             $table->unsignedBigInteger('id_student');
             $table->string('email');
             $table->string('file_cv');
+            $table->text('message')->nullable();
             $table->timestamp('date_apply');
             $table->timestamps();
         });

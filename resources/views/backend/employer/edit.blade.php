@@ -60,18 +60,18 @@
                 <div class="form-row">
                   <label for="" class="control-lable text-left">Logo
                   </label>
+
                   <div class="input-group">
                     <span class="input-group-btn">
-                      <a id="lfmlg" data-input="thumbnail" data-preview="holder" class="btn btn-primary">
+                      <a id="lfmlg" data-input="thumbnaillg" data-preview="holderlg" class="btn btn-primary">
                         <i class="fa fa-picture-o"></i> Chọn
                       </a>
                     </span>
-                    <input id="thumbnail" class="form-control" type="text" name="logo" value="{{$employer->logo}}">
+                    <input id="thumbnaillg" class="form-control" type="text" name="logo">
                   </div>
-                  <img id="holder" style="margin-top:15px;max-height:100px;">
+                  <img id="holderlg" style="margin-top:15px;max-height:100px;">
                 </div>
               </div>
-            </div>
             <div class="row mb15">
               <div class="col-lg-12">
                 <div class="form-row">
@@ -79,13 +79,13 @@
                   </label>
                   <div class="input-group">
                     <span class="input-group-btn">
-                      <a id="lfmbg" data-input="thumbnail" data-preview="holder" class="btn btn-primary">
+                      <a id="lfmbg" data-input="thumbnailbg" data-preview="holderbg" class="btn btn-primary">
                         <i class="fa fa-picture-o"></i> Chọn
                       </a>
                     </span>
-                    <input id="thumbnail" class="form-control" type="text" name="background" value="{{$employer->background}}">
+                    <input id="thumbnailbg" class="form-control" type="text" name="background" value="{{$employer->background}}">
                   </div>
-                  <img id="holder" style="margin-top:15px;max-height:100px;">
+                  <img id="holderbg" style="margin-top:15px;max-height:100px;">
                 </div>
               </div>
             </div>

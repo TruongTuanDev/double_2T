@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Frontend;
 use App\Http\Controllers\Controller;
 use App\Models\Banner;
 use App\Models\Favjob;
+use App\Models\JobApply;
 use App\Models\Major;
 use App\Models\Post;
 use App\Models\User;
@@ -139,10 +140,9 @@ class PostController extends Controller
     }
     public function jobDetail($id){
         $id_user = Auth()->id();
-        dd( $id_user );
-
+        // dd( $id_user );
         $student = $this->studentService->findStudentByIdUser($id_user);
-        dd($student);
+        // dd($student);
         $jobfav = Favjob::where('status', 'active')
                         ->where('student_id', $student->id_stu)
                         ->first();
@@ -163,7 +163,23 @@ class PostController extends Controller
         $company = $job->companys;
         $company_recomment=$this->employerService->getRecommentFavouriteCompany($job->address);
         $template = 'frontend.pages.jobs-detail';
-        return view('index',compact('config','provinces','job','template','company','jobfav','job_recomment','company_recomment'));
+        return view('index',compact('config','provinces','job','student',
+        'template','company','jobfav','job_recomment','company_recomment'));
+    }
+    public function storeCVOfStudent(Request $request){
+        $this->validate($request,
+        [
+          
+        ]);
+        $data=$request->all();
+      
+        $status=JobApply::create($data);
+        if($status){
+            request()->session()->flash('success','Nộp cv thành công');
+        }
+        else{
+            request()->session()->flash('error','Nộp cv thất bại');
+        }
     }
     /**
      * Display the specified resource.

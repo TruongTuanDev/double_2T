@@ -51,6 +51,7 @@ class HomePageController extends Controller
        $majors=$this-> majorService->featuredMajor();
        $user = $this->userService->findById($id_user);
        $news=$this->newsService->featuredNews();
+       
     //    dd($jobs);
     //    dd($user);
        $config = [

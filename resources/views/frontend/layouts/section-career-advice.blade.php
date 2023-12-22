@@ -6,10 +6,12 @@
             @foreach($news as $new) 
               <div class="col-12 col-md-6 col-lg-3">
                   <div class="card career-card" style="height: 100%;">
-                      <img src="{{ asset($new->image) }}" alt="" class="card-img-top">
+                      <img src="{{$new->image}}" alt="" class="card-img-top">
                       <div class="card-body">
                           <h5 class="card-title">{{ $new->title }}</h5>
-                          <p class="card-text">{!!$new->content!!}</p>
+                          
+                          {{-- {{}} --}}
+                          <p class="card-text">{!!Str::limit($new->content, 200)!!}</p>
                           <a href="#" class="btn btn-primary fa fa-eye">  {{ $new->view }}</a>
                           <a href="#" class="btn btn-primary">Detail</a>
                       </div>
