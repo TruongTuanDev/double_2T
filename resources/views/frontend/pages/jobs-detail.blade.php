@@ -172,6 +172,8 @@
  
 
  <!-- Overlay và Form -->
+  <!-- Nội dung form -->
+
  <div class="overlay" id="overlay">
      <div id="submissionForm">
          <div id="formHeader">
@@ -193,26 +195,27 @@
             </div>
         </div>
          </div>
-
-         <!-- Nội dung form -->
-         <form id="myForm">
+         <form id="myForm" method="POST" action="{{route('sendinfor.apply')}}">
+          @csrf
+          <input name="id_post" value="{{$job->id_post}}" type="text" hidden>
+          <input name="id_student" value="{{$student->id_stu}}" type="text" hidden>
              <label for="fullName"> 
               @if(Auth()->id() != null)
               <strong>
                 {{Auth()->user()->name}}
               </strong>
               @endif
-            </label>
-
+            </label> 
              <label >CV:</label>
-             <input type="file"name="file" required>
+             <input type="text" name="file_cv" required>
 
              <label for="email">Email:</label>
              <input type="email" id="email" name="email" required>
 
              <label for="message">Nội dung đơn:</label>
              <textarea id="message" name="message" required></textarea>
-             <input type="submit" value="Gửi Đơn">
-         </form>
+             <button type="submit">Gửi đơn</button>
+            </form>
      </div>
  </div>
+
