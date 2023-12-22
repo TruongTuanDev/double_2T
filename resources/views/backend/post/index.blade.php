@@ -44,7 +44,6 @@
             @foreach($posts as $post)   
                 <tr>
                     <td>{{$post->id_post}}</td>
-
                     <td>{{$post->title}}</td>
                     <td>{{$post->quantity}}</td>
                     <td>{{$post->post_date}}</td>
