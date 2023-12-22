@@ -20,6 +20,7 @@ class Employer extends Model
         'staff_number',
         'id_user',
         'job_quantity',
+        'status'
     ];
     protected $table = 'employers';
     protected $primaryKey = 'id_emp';

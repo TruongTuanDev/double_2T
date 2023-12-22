@@ -44,6 +44,11 @@ class EmployerService implements EmployerServiceInterface
     $companys = $this->employerRepository->findCompanyById($id);
     return $companys;
   }
+  public function findCompanyByIdUser($id_user)
+  {
+    $companys = $this->employerRepository->findCompanyByIdUser($id_user);
+    return $companys;
+  }
   public function getRecommentfavouriteCompany($address){
     $companys = $this->employerRepository->getRecommentfavouriteCompany($address);
     return $companys;

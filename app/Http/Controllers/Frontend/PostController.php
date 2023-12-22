@@ -117,7 +117,7 @@ class PostController extends Controller
         $data=$request->all();
         // dd($data);
         $idUser = Auth()->id();
-        $employer = $this->employerService->findCompanyById($idUser);
+        $employer = $this->employerService->findCompanyByIdUser($idUser);
         $id_major = $data['id_major'];
         $data['status'] = 'inactive';
         $data['id_emp'] = $employer->id_emp;

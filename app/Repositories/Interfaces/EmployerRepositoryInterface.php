@@ -13,6 +13,6 @@ interface EmployerRepositoryInterface
 
   public function findCompanyByIdJob($id);
   public function findCompanyById($id);
-
+  public function findCompanyByIdUser($id_user);
   public function getRecommentFavouriteCompany($address);
 }
