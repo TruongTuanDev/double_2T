@@ -146,36 +146,6 @@
           />
         </div>
       </div>
-      <div class="form-group term-and-policy-wrapper">
-          <input
-            type="checkbox"
-            class="checkbox"
-            id="checkbox"
-            autocomplete="off"
-          />
-        <label class="" for="checkbox"
-          >Tôi đồng ý với
-          <a
-            href=""
-            target="_blank"
-            title="Thoả thuận sử dụng"
-            >Thoả thuận sử dụng</a
-          >
-          và
-          <a
-            href=""
-            target="_blank"
-            title="Quy định bảo mật"
-            >Quy&nbsp;định bảo&nbsp;mật</a
-          >
-          của 2t.</label
-        >
-      </div>
-
-      <p class="error-msg" id="error-msg">
-        Vui lòng đánh dấu vào hộp chọn để tiếp tục đăng ký.
-      </p>
-
       <div class="form__field form-group column">
         <input
           type="submit"
@@ -188,7 +158,7 @@
     </form>
 
     <p class="text-center m-b-none register">
-      Bạn là thành viên VietnamWorks?
+      Bạn là thành viên chúng tôi?
       <a href="">
         <strong>Đăng Nhập</strong>
       </a>

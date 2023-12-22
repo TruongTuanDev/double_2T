@@ -12020,6 +12020,7 @@ input[type='submit'] {
   -webkit-box-flex: 1;
   -ms-flex: 1;
   flex: 1;
+  min-width: 300px !important;
 }
 
 .login-grid {
@@ -12199,9 +12200,21 @@ input[type='submit'] {
   margin-bottom: 20px;
 }
 
-.grid.main.login-box #button-login {
-  font-weight: 700;
-  width: 100%;
+ #button-login {
+  padding: 10px 20px !important;
+  font-size: 16px !important;
+  font-weight: bold !important;
+  color: #fff !important;
+  background-color: #FF7D55 !important;
+  border: none !important;
+  border-radius: 5px !important;
+  cursor: pointer !important;
+  transition: background-color 0.3s ease !important;
+  font-weight: 700 !important;
+  width: 100% !important;
+}
+#button-login:hover {
+  background-color: #2980b9;
 }
 
 .grid.main #sso-register__form #button-register {

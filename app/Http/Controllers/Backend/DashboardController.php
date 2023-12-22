@@ -78,7 +78,6 @@ class DashboardController extends Controller
                 'js/option_two/plugins/easypiechart/jquery.easypiechart.js',
                 'js/option_two/plugins/sparkline/jquery.sparkline.min.js',
                 'js/option_two/demo/sparkline-demo.js'
-
             ]
         ];
     }

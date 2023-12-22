@@ -139,8 +139,11 @@ class PostController extends Controller
     }
     public function jobDetail($id){
         $id_user = Auth()->id();
+        dd( $id_user );
+
         $student = $this->studentService->findStudentByIdUser($id_user);
-       $jobfav = Favjob::where('status', 'active')
+        dd($student);
+        $jobfav = Favjob::where('status', 'active')
                         ->where('student_id', $student->id_stu)
                         ->first();
         // dd($jobfav);

@@ -16,10 +16,10 @@ class StudentRepository extends BaseRepository implements StudentRepositoryInter
   public function __construct(Student $model){
     $this->model = $model;
   }
- public function findStudentByIdUser($student)
+ public function findStudentByIdUser($id)
  {
-  $id_user = Auth()->id();
-  $student = Student::where('id_user', $id_user)->first();
+  $id = Auth()->id();
+  $student = Student::where('id_user', $id)->first();
   return $student;
  }
 }
