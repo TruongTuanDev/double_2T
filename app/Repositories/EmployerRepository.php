@@ -4,6 +4,7 @@ namespace App\Repositories;
 
 use App\Models\Employer;
 use App\Repositories\Interfaces\EmployerRepositoryInterface;
+use App\Repositories\BaseRepository;
 
 /**
  * Class UserService
@@ -32,6 +33,11 @@ class EmployerRepository extends BaseRepository implements EmployerRepositoryInt
   public function findCompanyById($id)
   {
     $company = Employer::with('posts')->find($id);
+    return $company;
+  }
+  public function findCompanyByIdUser($id_user)
+  {
+    $company = Employer::with('posts')->where('id_user',$id_user)->first();
     return $company;
   }
   public function getRecommentFavouriteCompany($address){

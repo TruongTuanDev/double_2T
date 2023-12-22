@@ -26,13 +26,6 @@ if (Auth::id() != null) {
               </div>
           </li>
           <li class="active">
-              <a><i class="fa fa-th-large"></i> <span class="nav-label">Quản lý admin</span> <span class="fa arrow"></span></a>
-              <ul class="nav nav-second-level">
-                  <li><a href="{{ route('admin.index')}}">Danh sách admin</a></li>
-                  <li><a href="{{route('admin.create')}}">Thêm admin</a></li>
-              </ul>
-          </li>
-          <li class="active">
             <a><i class="fa fa-th-large"></i> <span class="nav-label">Quản lý chuyên ngành</span> <span class="fa arrow"></span></a>
             <ul class="nav nav-second-level">
                 <li><a href="{{ route('major.index')}}">Danh sách chuyên ngành</a></li>

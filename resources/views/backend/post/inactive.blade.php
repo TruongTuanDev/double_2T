@@ -7,7 +7,6 @@
          </div>
      </div>
     <div class="card-header py-3">
-      <a href="{{route('post.create')}}" class="btn btn-primary btn-sm float-right" data-toggle="tooltip" data-placement="bottom" title="Add banner"><i class="fa fa-plus"></i>Thêm công việc</a>
       <h4 class="m-0 font-weight-bold text-primary float-left">Danh sách công việc</h6>
     </div>
     <div class="card-body">
