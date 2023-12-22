@@ -104,6 +104,6 @@ class StudentController extends Controller
         $config=$this->config();
         $template = "frontend.dashboard.home.index";
         return view('frontend.dashboard.layout',compact('template','config'));
-
+    
     }
 }
