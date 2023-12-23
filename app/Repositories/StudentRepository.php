@@ -21,4 +21,8 @@ class StudentRepository extends BaseRepository implements StudentRepositoryInter
   $student = Student::where('id_user', $id)->first();
   return $student;
  }
+ public function applyListOfStudent($id_Student)
+ {
+  
+ }
 }
