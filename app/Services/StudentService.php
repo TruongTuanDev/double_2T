@@ -37,6 +37,9 @@ class StudentService implements StudentServiceInterface
     $student = $this->studentRepository->findStudentByIdUser($id);
     return $student;
   }
+  public function applyListOfStudent($id){
+    
+  }
   public function create($request){
     DB::beginTransaction();
     try{

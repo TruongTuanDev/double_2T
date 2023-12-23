@@ -24,8 +24,8 @@ class CheckEmployerStatus
      */
     public function handle($request, Closure $next)
     {
-        $employer_id = Auth()->id();
-        $employer = $this->emplyerService->findCompanyById($employer_id);
+        $user_id = Auth()->id();
+        $employer = $this->emplyerService->findCompanyByIdUser($user_id);
         if ($employer && $employer->status !== 'active') {
             return redirect()->route('employer.update')->with('error','Bạn phải cập nhật thông tin trước');
         }

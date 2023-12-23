@@ -115,7 +115,7 @@ Route::group(['prefix' => 'user'], function(){
     Route::post('register',[AAuthController::class,'register'])->name('user.register');
     Route::get('register',[AAuthController::class,'index'])->name('user.register');
     Route::get('dashboard',[StudentController::class,'home'])->name('user.dashboard');
-    Route::get('apply',[StudentController::class,'apply'])->name('job.apply');
+    Route::get('apply/list',[StudentController::class,'applyList'])->name('job.apply');
     Route::get('favourite',[StudentController::class,'index'])->name('job.fav');
     Route::get('dashboard/information/{iduser}',[StudentController::class,'UpdateInfor'])->name('user.information');
     Route::post('dashboard/store',[StudentController::class,'store'])->name('user.store');
@@ -143,7 +143,7 @@ Route::group(['prefix' => 'employer'], function(){
    Route::post('update',[FrontendEmployerController::class,'updateInfor'])->name('employer.updatei');
 
    Route::get('index',[FrontendEmployerController::class,'index'])->name('employer.list');
-   Route::resource('news', 'App\Http\Controllers\Frontend\NewsController');
+   Route::resource('news', 'App\Http\Controllers\Frontend\NewsController')->middleware('employer.status');;
 });
 
 /* AJAX */

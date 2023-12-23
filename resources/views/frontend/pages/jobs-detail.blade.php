@@ -214,8 +214,8 @@
 
              <label for="message">Nội dung đơn:</label>
              <textarea id="message" name="message" required></textarea>
-             <button type="submit">Gửi đơn</button>
-            </form>
+             <button type="submit" id="submitBtn">Gửi đơn</button>
+         </form>
      </div>
  </div>
 

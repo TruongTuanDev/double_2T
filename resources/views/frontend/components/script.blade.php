@@ -62,7 +62,7 @@
     <script src="{{ asset('js/option_one/cart.js')}}"></script>
     <script src="{{ asset('js/option_one/form-apply.js')}}"></script>
     <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.js"></script>
-    <script>
+    {{-- <script>
       $.ajax({
         url: '/check-auth',
         type: 'GET',
@@ -80,5 +80,5 @@
           console.error('Error checking authentication status:', error);
         }
       });
-    </script>
+    </script> --}}
 

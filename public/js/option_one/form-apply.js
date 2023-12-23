@@ -5,14 +5,6 @@ function showForm() {
   overlay.style.display = 'flex';
   form.style.display = 'block'; 
 }
-
-document.getElementById('myForm').addEventListener('submit', function(event) {
-  event.preventDefault();
-
-
-  var overlay = document.getElementById('overlay');
-  var form = document.getElementById('submissionForm');
-
-  overlay.style.display = 'none'; 
-  form.style.display = 'none';    
+document.getElementById('myForm').addEventListener('submit', function() {
+  document.getElementById('submitBtn').disabled = true;
 });

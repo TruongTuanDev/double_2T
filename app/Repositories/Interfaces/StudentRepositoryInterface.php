@@ -9,4 +9,5 @@ namespace App\Repositories\Interfaces;
 interface StudentRepositoryInterface
 {
  public function findStudentByIdUser($id);
+ public function applyListOfStudent($id_User);
 }

@@ -172,7 +172,7 @@ class PostController extends Controller
           
         ]);
         $data=$request->all();
-      
+        // dd($data);
         $status=JobApply::create($data);
         if($status){
             request()->session()->flash('success','Nộp cv thành công');

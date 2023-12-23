@@ -106,4 +106,7 @@ class StudentController extends Controller
         return view('frontend.dashboard.layout',compact('template','config'));
     
     }
+    public function applyList(){
+
+    }
 }

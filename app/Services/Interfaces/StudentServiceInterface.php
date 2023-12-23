@@ -11,4 +11,5 @@ interface StudentServiceInterface
   public function allStudent();
   public function findStudentById($id);
   public function findStudentByIdUser($id);
+  public function applyListOfStudent($id);
 }
