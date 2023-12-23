@@ -15,7 +15,7 @@ interface PostRepositoryInterface
   public function getFeaturedJob();
 
   public function findJobById($id);
-
+  public function findJobByIdemp($id_emp);
   public function getFavouriteJob($id);
 
   public function getRecommentFavouriteJob($major,$address);

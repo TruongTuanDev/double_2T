@@ -38,4 +38,7 @@ class Post extends Authenticatable
     public function companys() {
         return $this->belongsTo(Employer::class, 'id_emp','id_emp');
     }
+    public function favjob() {
+        return $this->hasMany(Favjob::class, 'post_id','id_post');
+    }
 }

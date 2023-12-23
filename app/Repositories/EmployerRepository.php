@@ -35,13 +35,14 @@ class EmployerRepository extends BaseRepository implements EmployerRepositoryInt
     $company = Employer::with('posts')->find($id);
     return $company;
   }
+
   public function findCompanyByIdUser($id_user)
   {
     $company = Employer::with('posts')->where('id_user',$id_user)->first();
     return $company;
   }
   public function getRecommentFavouriteCompany($address){
-    $company=Employer::where('address',$address);
+    $company=Employer::where('address',$address)->get();
     return $company;
   }
 }

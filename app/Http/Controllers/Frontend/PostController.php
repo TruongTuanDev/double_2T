@@ -143,9 +143,13 @@ class PostController extends Controller
         // dd( $id_user );
         $student = $this->studentService->findStudentByIdUser($id_user);
         // dd($student);
-        $jobfav = Favjob::where('status', 'active')
+        $job = $this->postService->findJobById($id);
+        $jobfav = Favjob::where('status', 'active')->where('post_id',$job->id_post)
                         ->where('student_id', $student->id_stu)
                         ->first();
+         $jobfavs = Favjob::where('status', 'active')
+                        ->where('student_id', $student->id_stu)
+                        ->get();
         // dd($jobfav);
        $provinces = $this->provinceService->allProvince();
        $config = [
@@ -157,14 +161,13 @@ class PostController extends Controller
             'library/location.js'
             ]
        ];
-       
-        $job = $this->postService->findJobById($id);
         $job_recomment = $this->postService->getRecommentFavouriteJob($job->id_major,$job->address);
         $company = $job->companys;
+        $job_company=$this->postService->findJobByIdemp($company->id_emp);
         $company_recomment=$this->employerService->getRecommentFavouriteCompany($job->address);
         $template = 'frontend.pages.jobs-detail';
         return view('index',compact('config','provinces','job','student',
-        'template','company','jobfav','job_recomment','company_recomment'));
+        'template','company','jobfav','job_recomment','company_recomment','job_company','jobfavs'));
     }
     public function storeCVOfStudent(Request $request){
         $this->validate($request,

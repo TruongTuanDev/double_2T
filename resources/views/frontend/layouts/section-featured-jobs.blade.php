@@ -9,6 +9,7 @@
           <div class="container-fluid sectionBlock__content d-flex flex-column" style="height: 90%;">
               <div class="row p-3" style="overflow: auto;">
                   @foreach($jobs as $job)
+                  @if($job->status=='active')
                   <div class="col-lg-4 col-md-6">
                       <div class="product-item mb-4">
                           <div class="card jobs-card">
@@ -44,6 +45,7 @@
                           </div>
                       </div>
                   </div>
+                  @endif
                   @endforeach
               </div>
           </div>
