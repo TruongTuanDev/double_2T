@@ -41,6 +41,11 @@ class PostService implements PostServiceInterface
     $job = $this->postRepository->findJobById($id);
     return $job;
   }
+  public function findJobByIdemp($id_emp)
+  {
+    $job = $this->postRepository->findJobByIdemp($id_emp);
+    return $job;
+  }
   public function featuredJobOrderBydate(){
     $job = $this->postRepository->getfeaturedJobOrderBydate();
     return $job;
