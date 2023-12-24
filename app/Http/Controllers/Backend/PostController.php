@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Backend;
 
 use App\Http\Controllers\Controller;
+use App\Models\Employer;
 use App\Services\PostService;
 use Illuminate\Http\Request;
 use App\Models\Post;
@@ -67,9 +68,12 @@ class PostController extends Controller
     public function updateactive($id_post)
     {
         $post=Post::findOrFail($id_post);
+        $emp=Employer::findOrFail($post->id_emp);
         $post->status='active';
+        $emp->job_quantity+=1;
+        $status_emp=$emp->save();
         $status=$post->save();
-        if($status){
+        if($status && $status_emp){
             request()->session()->flash('success','Cập nhật thành công');
         }
         else{

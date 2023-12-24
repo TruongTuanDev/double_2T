@@ -2,6 +2,7 @@
 
 namespace App\Repositories;
 
+use App\Models\Employer;
 use App\Models\Favjob;
 use App\Models\Post;
 use App\Repositories\Interfaces\PostRepositoryInterface;
@@ -22,8 +23,8 @@ class PostRepository extends BaseRepository implements PostRepositoryInterface
   }
   public function getPostOfCompany($number)
   {
-    $idEmp = Auth()->id();
-    $posts = Post::orderBy('id_post', 'desc')->where('id_emp', $idEmp)->paginate($number);
+    $emp=Employer::where('id_user',Auth()->id())->first();
+    $posts = Post::orderBy('id_post', 'desc')->where('id_emp', $emp->id_emp)->paginate($number);
     return $posts;
   }
   public function getFavouriteJob($id)

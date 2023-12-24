@@ -59,7 +59,6 @@ class PostController extends Controller
       $posts = $this->postService->paginatePostOfComp();
 
       //  $users = $this->userService->paginate(15);
-      $posts =Post::orderBy('id_post','DESC')->paginate(10);
        $config =  [
         'js' => [
             'js/option_two/plugins/switchery/switchery.js'
@@ -144,6 +143,8 @@ class PostController extends Controller
         $student = $this->studentService->findStudentByIdUser($id_user);
         // dd($student);
         $job = $this->postService->findJobById($id);
+        $job->traffic_volume+=1;
+        $job->save();
         $jobfav = Favjob::where('status', 'active')->where('post_id',$job->id_post)
                         ->where('student_id', $student->id_stu)
                         ->first();
