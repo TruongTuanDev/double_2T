@@ -21,7 +21,7 @@
                                     </div>
                                     <div class="job-location job-fs">{{$job->address}}</div>
                                     <div class="job-salary job-item job-fs">{{$job->salary}}$</div>
-                                    <div class="bonus job-fs"><p>1682 lượt xem - Hết hạn trong 3 ngày</p></div>
+                                    <div class="bonus job-fs"><p>{{$job->traffic_volume}} lượt xem</p></div>
                                 </div>
                                 <div class="featured d-flex justify-content-end ms-4" >
                                     <a class="btn-one job" id="post_id" href="{{route('cart.add',['post' => $job->id_post])}}" data-post-id="{{$job->id_post}}">
@@ -126,11 +126,11 @@
                         <div class="section-right-one mt-2">
                           <div class="summary">
                             <p><span><i class="fa-solid fa-location-dot"></i></span>ĐỊA ĐIỂM</p>
-                            <p>32F & 36F, Keangnam Landmark 72 Tower, Pham Hung, Nam Tu Liem, Hanoi</p>
+                            <p>{{$company->address}}</p>
                           </div>
                           <div class="summary">
                             <p><span><i class="fa-solid fa-user"></i></i></span>LIÊN HỆ</p>
-                            <p>HR Department</p>
+                            <p>HR department</p>
                           </div>
                           <div class="summary d-flex justify-content-center">
                             <img class="w-25" src="img/vnw-logo-inTECH.png" alt="">
@@ -169,14 +169,21 @@
                                       </div>
                                       <div class="featured  col-md-2 mt-2" >
                                         <a class="btn-one job" id="post_id" href="{{route('cart.add',['post' => $job_company->id_post])}}" data-post-id="{{$job_company->id_post}}">
+                                          @php
+                                           $count = 0;
+                                           @endphp
                                            @foreach($jobfavs as $jobfav)
                                            @if ($jobfav->post_id === $job_company->id_post)
                                            <i class="fa-solid fa-heart" style="color: rgb(255, 136, 0)"></i>
-                                          
+                                           @php
+                                           $count = $count + 1;
+                                           @endphp
                                            @elseif($jobfav->post_id != $job_company->id_post)
-                                           <i class="fa-regular fa-heart"></i>
                                            @endif
                                            @endforeach
+                                           @if($count===0)
+                                           <i class="fa-regular fa-heart"></i>
+                                           @endif
                                         </a>
                                     </div>
                                   </div>
@@ -190,7 +197,7 @@
             </div>
           </div>
         </div>
-        <div class=" container  content-job-details mt-3 p-3">
+        <div class=" container  content-job-details mt-3 p-3 mb-3">
           <h3 class="mt-3">VIỆC LÀM BẠN SẼ THÍCH</h3>
           <div class="row">
            
@@ -237,7 +244,7 @@
           </div>
       </div>
     </div>
-    <div class=" container  content-job-details mt-3 p-3">
+    <div class=" container  content-job-details mt-3 p-3 mb-3">
       <h3 class="mt-3">CÔNG TI BẠN SẼ THÍCH</h3>
       <div class="row">
        
