@@ -311,8 +311,8 @@
          </div>
          <form id="myForm" method="POST" action="{{route('sendinfor.apply')}}">
           @csrf
-          <input name="id_post" value="{{$job->id_post}}" type="text" hidden>
-          <input name="id_student" value="{{$student->id_stu}}" type="text" hidden>
+          <input name="post_id_post" value="{{$job->id_post}}" type="text" hidden>
+          <input name="student_id_stu" value="{{$student->id_stu}}" type="text" hidden>
              <label for="fullName"> 
               @if(Auth()->id() != null)
               <strong>

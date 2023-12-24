@@ -26,10 +26,9 @@ class PostRepository extends BaseRepository implements PostRepositoryInterface
     $posts = Post::orderBy('id_post', 'desc')->where('id_emp', $idEmp)->paginate($number);
     return $posts;
   }
-  public function getFavouriteJob($id)
+  public function getFavouriteJob($idStudent)
   {
-    $id = Auth()->id();
-    $favouriteJob = Favjob::find($id);
+    $favouriteJob = Favjob::where('student_id', $idStudent)->get();
     return $favouriteJob;
   }
 

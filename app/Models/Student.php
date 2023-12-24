@@ -22,5 +22,9 @@ class Student extends Model
     public function users() {
         return $this->belongsTo(User::class, 'id','id_stu');
     }
+    public function jobs()
+    {
+        return $this->belongsToMany(Post::class, 'student_job'); 
+    }
     
 }
