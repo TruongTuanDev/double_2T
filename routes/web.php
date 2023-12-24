@@ -116,7 +116,7 @@ Route::group(['prefix' => 'user'], function(){
     Route::get('register',[AAuthController::class,'index'])->name('user.register');
     Route::get('dashboard',[StudentController::class,'home'])->name('user.dashboard');
     Route::get('apply/list',[StudentController::class,'applyList'])->name('job.apply');
-    Route::get('favourite',[StudentController::class,'index'])->name('job.fav');
+    Route::get('favourite',[StudentController::class,'favourite'])->name('job.fav');
     Route::get('dashboard/information/{iduser}',[StudentController::class,'UpdateInfor'])->name('user.information');
     Route::post('dashboard/store',[StudentController::class,'store'])->name('user.store');
 });

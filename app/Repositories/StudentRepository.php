@@ -23,6 +23,8 @@ class StudentRepository extends BaseRepository implements StudentRepositoryInter
  }
  public function applyListOfStudent($id_Student)
  {
-  
+  $student = Student::find($id_Student);
+  $appliedJobs = $student->jobs;
+  return $appliedJobs;
  }
 }
