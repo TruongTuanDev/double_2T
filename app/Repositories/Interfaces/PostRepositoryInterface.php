@@ -13,6 +13,7 @@ interface PostRepositoryInterface
 
   public function getFeaturedJobOrderByDate();
   public function getFeaturedJob();
+  
 
   public function findJobById($id);
   public function findJobByIdemp($id_emp);

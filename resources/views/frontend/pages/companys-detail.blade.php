@@ -3,12 +3,11 @@
     <img class="back-ground w-100" src="{{ asset('img/about.jpg') }}" alt="">
     <div class="content-jobs-detail">
         <div class="header-jobs-detail">
-            <div class="container">
-
+            <div class="container-fluid">
                 <div class="row">
                     <div class="product-item">
-                        <div class="card jobs-card">
-                            <div class="card-body">
+                        <div class="card jobs-card" style="border-radius: 0px">
+                            <div class="card-body" >
                                 <div class="view_job_item d-flex align-items-center justify-content-start">
                                     <div class="job-img me-3">
                                         <img class="w-100" src="{{ $company->logo }}" alt="logo" width="78px">
@@ -20,11 +19,9 @@
                                             </div>
 
                                     <div class="featured d-flex justify-content-end ms-4">
-                                        <button class="btn-one">
-                                            <i class="fa-regular fa-heart"></i>
-                                        </button>
+                                        
                                         <button class="btn-two">
-                                            Apply Now
+                                            Follow
                                         </button>
                                     </div>
                                 </div>
@@ -70,7 +67,8 @@
                                                 <img src="{{ asset('img/slide/img-cpmpany6.webp') }}" alt="">
                                             </div>
                                         </div>
-                                        <div class="swiper-pagination"></div>
+                                        <div class="swiper-pagination"></div>  .
+                                        
                                     </div>
                                     <p class="mt-4 cty-description">
                                         From 1st January 2023, our company will embark on a new milestone to be an
