@@ -24,7 +24,7 @@
                                               <a href="{{route('job-detail',$job->id_post)}}" class="job-link">{{$job->title}}</a>
                                           </div>
                                           <div class="company-name job-item">
-                                              <a href="detail-jobs.html " class="job-conpany">FPT</a>
+                                              <a href="{{route('companydetail',$job->id_emp)}}" class="job-conpany">{{ $job->companys->name_compn }}</a>
                                           </div>
                                           <div class="job-salary job-item">{{$job->salary}}</div>
                                           <div class="job-location">{{$job->address}}</div>
