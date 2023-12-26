@@ -16,4 +16,5 @@ interface EmployerServiceInterface
   public function findCompanyByIdUser($id_user);
   public function getRecommentfavouriteCompany($address);
 
+  public function listStudentSendCV($id_emp);
 }

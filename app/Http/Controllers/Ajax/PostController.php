@@ -25,7 +25,7 @@ class PostController extends Controller
   {
       $post = Post::findOrFail($postId);
       $user_id = Auth()->id();
-      $cartItem = Favjob::where('post_id', $post->id_post)->first();
+      $cartItem = Favjob::where('post_id_post', $post->id_post)->first();
       $student = $this->studentService->findStudentByIdUser($user_id);
       if ($cartItem) {
           $cartItem->status = 'inactive'; 
@@ -33,8 +33,8 @@ class PostController extends Controller
           return redirect()->back()->with('success', 'Đã loại bỏ công việc khỏi danh sách yêu thích.');
       } else {
           Favjob::create([
-              'post_id' => $post->id_post,
-              'student_id' => $student->id_stu,
+              'post_id_post' => $post->id_post,
+              'student_id_stu' => $student->id_stu,
               'status' => 'active'
           ]);
           return redirect()->back()->with('success', 'Đã thêm công việc vào danh sách yêu thích.');

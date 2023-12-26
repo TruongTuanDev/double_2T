@@ -145,11 +145,11 @@ class PostController extends Controller
         $job = $this->postService->findJobById($id);
         $job->traffic_volume+=1;
         $job->save();
-        $jobfav = Favjob::where('status', 'active')->where('post_id',$job->id_post)
-                        ->where('student_id', $student->id_stu)
+        $jobfav = Favjob::where('status', 'active')->where('post_id_post',$job->id_post)
+                        ->where('student_id_stu', $student->id_stu)
                         ->first();
          $jobfavs = Favjob::where('status', 'active')
-                        ->where('student_id', $student->id_stu)
+                        ->where('student_id_stu', $student->id_stu)
                         ->get();
         // dd($jobfav);
        $provinces = $this->provinceService->allProvince();
@@ -322,5 +322,32 @@ class PostController extends Controller
         $config['seo'] = config('apps.user');
         $template = 'backend.user.setting';
         return view('backend.dashboard.layout',compact('template','config','data'));
+    }
+    public function listPass(){
+        
+    }
+    public function listFail(){
+       
+    }
+    public function listHandle(){
+        $id_user = Auth()->id();
+        $employer = $this->employerService->findCompanyByIdUser($id_user);
+        $job = $this->postService->findJobByIdemp($employer->id_emp);
+        // dd($job->id_post);
+        $posts = $this->employerService->listStudentSendCV($job->id_post);
+        dd($posts);
+      //  $users = $this->userService->paginate(15);
+       $config =  [
+        'js' => [
+            'js/option_two/plugins/switchery/switchery.js'
+        ],
+        'css' => [
+            'css/option_two/plugins/switchery/switchery.css'
+        ]
+       ];
+       $config['seo'] = config('apps.post');
+       $sidebar = 'frontend.dashboard.layouts.sidebaremp';
+       $template = 'backend.post.index';
+       return view('frontend.dashboard.index',compact('template','config','sidebar','posts'));
     }
 }

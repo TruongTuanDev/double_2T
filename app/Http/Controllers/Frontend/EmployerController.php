@@ -278,4 +278,5 @@ class EmployerController extends Controller
          $template = 'frontend.pages.companys-detail';
          return view('index',compact('config','provinces','job','template','company'));
      }
+     
 }

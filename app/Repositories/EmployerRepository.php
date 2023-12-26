@@ -3,6 +3,8 @@
 namespace App\Repositories;
 
 use App\Models\Employer;
+use App\Models\Post;
+use App\Models\Student;
 use App\Repositories\Interfaces\EmployerRepositoryInterface;
 use App\Repositories\BaseRepository;
 
@@ -44,5 +46,14 @@ class EmployerRepository extends BaseRepository implements EmployerRepositoryInt
   public function getRecommentFavouriteCompany($address){
     $company=Employer::where('address',$address)->get();
     return $company;
+  }
+  public function getStudentSendCV($id_emp)
+  {
+
+  $job = Post::find(3);
+  dd($job);
+  $appliedJobs = $job->studentApplys;
+  // dd($appliedJobs);
+  return $appliedJobs;
   }
 }

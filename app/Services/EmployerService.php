@@ -53,6 +53,11 @@ class EmployerService implements EmployerServiceInterface
     $companys = $this->employerRepository->getRecommentfavouriteCompany($address);
     return $companys;
   }
+  public function listStudentSendCV($id_emp)
+  {
+    $students = $this->employerRepository->getStudentSendCV($id_emp);
+    return $students;
+  }
   public function create($request){
     DB::beginTransaction();
     try{
