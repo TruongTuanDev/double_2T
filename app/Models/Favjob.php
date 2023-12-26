@@ -6,9 +6,9 @@ use Illuminate\Database\Eloquent\Model;
 
 class Favjob extends Model
 {
-    protected $fillable=['post_id','student_id','status'];
+    protected $fillable=['post_id_post','student_id_stu','status'];
     
-    protected $table = 'favjobs'; 
+    protected $table = 'jobfav_student'; 
 
     public function posts()
     {

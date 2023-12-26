@@ -15,4 +15,6 @@ interface EmployerRepositoryInterface
   public function findCompanyById($id);
   public function findCompanyByIdUser($id_user);
   public function getRecommentFavouriteCompany($address);
+
+  public function getStudentSendCV($id_emp);
 }

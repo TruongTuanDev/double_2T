@@ -111,7 +111,7 @@ class StudentController extends Controller
     public function applyList(){
         $id_user = Auth()->id();
         $student = $this->studentService->findStudentByIdUser($id_user);
-        $jobApplys = $this->studentService->applyListOfStudent($student->id_stu);
+        $posts = $this->studentService->applyListOfStudent($student->id_stu);
         $config =  [
             'js' => [
                 'js/option_two/plugins/switchery/switchery.js'
@@ -123,7 +123,7 @@ class StudentController extends Controller
            $config['seo'] = config('apps.student');
         //    dd($config['seo']);
            $template = 'backend.post.index';
-           return view('frontend.dashboard.layout',compact('template','config','jobApplys'));
+           return view('frontend.dashboard.layout',compact('template','config','posts'));
 
     }
 }
