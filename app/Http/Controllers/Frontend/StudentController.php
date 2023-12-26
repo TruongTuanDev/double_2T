@@ -26,10 +26,13 @@ class StudentController extends Controller
         $this->studentService = $studentService;
         $this->userService = $userService;
     }
-    public function index()
+    public function favourite()
     {
-       $id_student = Auth()->id();
-       $posts = $this->favouriteJob->getFavouriteJob($id_student);
+       $iduser = Auth()->id();
+       $student = $this->studentService->findStudentByIdUser($iduser);
+    //    dd($student->id_stu);
+       $posts = $this->favouriteJob->getFavouriteJob($student->id_stu);
+    //    dd($posts);
     //    $count = count($posts);
        $config =  [
         'js' => [
@@ -46,7 +49,6 @@ class StudentController extends Controller
     }
     public function home()
     {
-        
         $config = $this->config();
         $template = "frontend.dashboard.home.index";
         return view('frontend.dashboard.layout',compact('template','config'));
@@ -107,6 +109,21 @@ class StudentController extends Controller
     
     }
     public function applyList(){
+        $id_user = Auth()->id();
+        $student = $this->studentService->findStudentByIdUser($id_user);
+        $posts = $this->studentService->applyListOfStudent($student->id_stu);
+        $config =  [
+            'js' => [
+                'js/option_two/plugins/switchery/switchery.js'
+            ],
+            'css' => [
+                'css/option_two/plugins/switchery/switchery.css'
+            ]
+        ];
+           $config['seo'] = config('apps.student');
+        //    dd($config['seo']);
+           $template = 'backend.post.index';
+           return view('frontend.dashboard.layout',compact('template','config','posts'));
 
     }
 }

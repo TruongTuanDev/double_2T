@@ -6,7 +6,11 @@ use Illuminate\Database\Eloquent\Model;
 
 class JobApply extends Model
 {
-    protected $fillable=['id_post','id_student','email','file_cv','message',];
-    protected $table = 'jobapplys';
+    protected $fillable=['post_id_post','student_id_stu','email','file_cv','message',];
+    protected $table = 'student_job';
+    public function students()
+    {
+        return $this->belongsToMany(Student::class);
+    }
    
 }

@@ -11,7 +11,7 @@
                           <a href="{{ route('companydetail',$company->id_emp) }}" class="company-link">
                               <div class="img">
                                   <img src="{{$company->logo}}"
-                                      alt="#" class="mb-4" width="130px">
+                                      alt="#" class="mb-4" width="130px" height="150px">
                               </div>
                               <div class="companyBlock__content">
                                   <div class="companyBlock__name">{{$company->name_compn}}</div>

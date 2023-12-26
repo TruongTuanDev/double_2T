@@ -5,6 +5,7 @@ namespace App\Repositories;
 use App\Models\Employer;
 use App\Models\Favjob;
 use App\Models\Post;
+use App\Models\Student;
 use App\Repositories\Interfaces\PostRepositoryInterface;
 use Illuminate\Support\Facades\Auth;
 
@@ -27,11 +28,11 @@ class PostRepository extends BaseRepository implements PostRepositoryInterface
     $posts = Post::orderBy('id_post', 'desc')->where('id_emp', $emp->id_emp)->paginate($number);
     return $posts;
   }
-  public function getFavouriteJob($id)
+  public function getFavouriteJob($idStudent)
   {
-    $id = Auth()->id();
-    $favouriteJob = Favjob::find($id);
-    return $favouriteJob;
+    $student = Student::find($idStudent);
+    $appliedJobs = $student->favoritePosts;
+    return $appliedJobs;
   }
 
   public function getFeaturedJob()
@@ -51,7 +52,7 @@ class PostRepository extends BaseRepository implements PostRepositoryInterface
   }
   public function findJobByIdemp($id_emp)
   {
-    $job = Post::where('id_emp',$id_emp)->get();
+    $job = Post::where('id_emp',$id_emp)->first();
     return $job;
   }
   public function getRecommentFavouriteJob($id_major,$address){

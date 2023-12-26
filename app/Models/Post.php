@@ -6,6 +6,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Illuminate\Queue\Jobs\JobName;
 use Laravel\Sanctum\HasApiTokens;
 
 class Post extends Authenticatable
@@ -40,5 +41,9 @@ class Post extends Authenticatable
     }
     public function favjob() {
         return $this->hasMany(Favjob::class, 'post_id','id_post');
+    }
+    public function studentApplys()
+    {
+        return $this->belongsToMany(Student::class,'student_job','student_id_stu','post_id_post');
     }
 }

@@ -11,15 +11,17 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('job_applys', function (Blueprint $table) {
+        Schema::create('student_job', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('id_post');
-            $table->unsignedBigInteger('id_student');
+            $table->unsignedBigInteger('post_id_post');
+            $table->unsignedBigInteger('student_id_stu');
             $table->string('email');
             $table->string('file_cv');
             $table->text('message')->nullable();
             $table->timestamp('date_apply');
             $table->timestamps();
+            $table->foreign('student_id_stu')->references('id_stu')->on('students')->onDelete('cascade');
+            $table->foreign('post_id_post')->references('id_post')->on('posts')->onDelete('cascade');
         });
     }
 
@@ -28,6 +30,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('job_applys');
+        Schema::dropIfExists('student_job');
     }
 };

@@ -90,13 +90,14 @@ use Illuminate\Support\Facades\Route;
     Route::get('index',[EmployerController::class,'index'])->name('employer.index');
 
     Route::resource('employer', 'App\Http\Controllers\Backend\EmployerController');
-    //USer 
+    //User 
     Route::resource('user', 'App\Http\Controllers\Backend\UserController');
     Route::get('news/active', [NewsController::class, 'active'])->name('news.active');
     Route::get('news/inactive', [NewsController::class, 'inactive'])->name('news.inactive');
     Route::get('news/updateactive/{id_news}', [NewsController::class, 'updateactive'])->name('news.updateactive');
     Route::post('employer/{id}',[EmployerController::class,'update'])->name('admin.employer.update');
-    //USer admin.
+    
+    //User admin.
     Route::resource('admin', 'App\Http\Controllers\Backend\UserController');
 
 
@@ -116,7 +117,7 @@ Route::group(['prefix' => 'user'], function(){
     Route::get('register',[AAuthController::class,'index'])->name('user.register');
     Route::get('dashboard',[StudentController::class,'home'])->name('user.dashboard');
     Route::get('apply/list',[StudentController::class,'applyList'])->name('job.apply');
-    Route::get('favourite',[StudentController::class,'index'])->name('job.fav');
+    Route::get('favourite',[StudentController::class,'favourite'])->name('job.fav');
     Route::get('dashboard/information/{iduser}',[StudentController::class,'UpdateInfor'])->name('user.information');
     Route::post('dashboard/store',[StudentController::class,'store'])->name('user.store');
 });
@@ -143,7 +144,12 @@ Route::group(['prefix' => 'employer'], function(){
    Route::post('update',[FrontendEmployerController::class,'updateInfor'])->name('employer.updatei');
 
    Route::get('index',[FrontendEmployerController::class,'index'])->name('employer.list');
-   Route::resource('news', 'App\Http\Controllers\Frontend\NewsController')->middleware('employer.status');;
+   Route::resource('news', 'App\Http\Controllers\Frontend\NewsController')->middleware('employer.status');
+
+   Route::get('student/pass',[FrontendEmployerController::class,'listPass'])->name('student.pass.list');
+   Route::get('student/fail',[FrontendEmployerController::class,'listFail'])->name('student.fail.list');
+   Route::get('student/handle',[PostController::class,'listHandle'])->name('student.handle.list');
+
 });
 
 /* AJAX */
