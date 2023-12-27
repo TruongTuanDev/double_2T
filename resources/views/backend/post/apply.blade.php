@@ -7,22 +7,23 @@
          </div>
      </div>
     <div class="card-header py-3">
-      <a href="{{route('post.create')}}" class="btn btn-primary btn-sm float-right" data-toggle="tooltip" data-placement="bottom" title="Add banner"><i class="fa fa-plus"></i>Thêm công việc</a>
-      <h4 class="m-0 font-weight-bold text-primary float-left">Danh sách công việc</h6>
+      <h4 class="m-0 font-weight-bold text-primary float-left">Danh sách sinh viên đã ứng tuyển công việc</h6>
     </div>
     <div class="card-body">
       <div class="table-responsive">
-        @if(count($posts)>0)
+        @if(count($students)>0)
         <table class="table table-bordered" id="banner-dataTable" width="100%" cellspacing="0">
           <thead>
             <tr>
               <th>STT</th>
-              <th>Tiêu đề</th>
-              <th>Số lượng</th>
-              <th>Ngày đăng</th>
-              <th>Ngày hết hạn</th>
-              <th>Lương</th>
+              <th>Ảnh đại diện</th>
+              <th>Họ tên</th>
+              <th>Ngày sinh</th>
+              <th>Trường</th>
+              <th>Địa điểm</th>
+              <th>Tên công việc</th>
               <th>Vị trí</th>
+              <th>Lương</th>
               <th>Trạng thái</th>
               <th>Hành động</th>
             </tr>
@@ -30,50 +31,54 @@
           <tfoot>
             <tr>
               <th>STT</th>
-              <th>Tiêu đề</th>
-              <th>Số lượng</th>
-              <th>Ngày đăng</th>
-              <th>Ngày hết hạn</th>
-              <th>Lương</th>
+              <th>Ảnh đại diện</th>
+              <th>Họ tên</th>
+              <th>Ngày sinh</th>
+              <th>Trường</th>
+              <th>Địa điểm</th>
+              <th>Tên công việc</th>
               <th>Vị trí</th>
+              <th>Lương</th>
               <th>Trạng thái</th>
               <th>Hành động</th>
               </tr>
           </tfoot>
           <tbody>
-            @foreach($posts as $post)   
+            @foreach($students as $student)   
                 <tr>
-                    <td>{{$post->id_post}}</td>
-                    <td>{{$post->title}}</td>
-                    <td>{{$post->quantity}}</td>
-                    <td>{{$post->post_date}}</td>
-                    <td>{{$post->exp_date}}</td>
-                    <td>{{$post->salary}}</td>
-                    <td>{{$post->position}}</td>
+                    <td>{{$loop->iteration}}</td>
+                    <td>{{$student->avatar}}</td>
+                    <td>{{$student->major}}</td>
+                    <td>{{$student->birthday}}</td>
+                    <td>{{$student->university}}</td>
+                    <td>{{$job->address}}</td>
+                    <td>{{$job->title}}</td>
+                    <td>{{$job->position}}</td>
+                    <td>{{$job->salary}}</td>
                     <td>
-                        @if($post->status=='active')
-                            <span class="badge badge-success">{{$post->status}}</span>
+                        @if($job->status=='active')
+                            <span class="badge badge-success">{{$job->status}}</span>
                         @else
-                            <span class="badge badge-warning">{{$post->status}}</span>
+                            <span class="badge badge-warning">{{$job->status}}</span>
                         @endif
                     </td>
                     <td>
-                        <a href="{{route('post.edit',$post->id)}}" class="btn btn-primary float-left mr-1"  data-toggle="tooltip" title="edit" data-placement="bottom"><i class="fa fa-edit"></i></a>
-                        <form method="POST" action="{{route('post.destroy',[$post->id_post])}}">
+                         <a href="{{route('apply.pass',['id_job' => $job->id_post, 'id_student' => $student->id_stu])}}" class="btn btn-primary float-left mr-1"  data-toggle="tooltip" title="edit" data-placement="bottom"><i class="fa-solid fa-person-circle-check"></i></a> 
+                         <form method="POST" action="{{route('remove.applicant',['id_job' => $job->id_post, 'id_student' => $student->id_stu])}}">
                           @csrf 
                           @method('delete')
-                              <button class="btn btn-danger dltBtn" data-id={{$post->id_post}}  data-toggle="tooltip" data-placement="bottom" title="Delete"><i class="fa fa-trash"></i></button>
-                        </form>
+                              <button class="btn btn-danger dltBtn" data-id= "" data-toggle="tooltip" data-placement="bottom" title="Delete"><i class="fa fa-trash"></i></button>
+                        </form> 
                     </td>
                    
                 </tr>  
             @endforeach
           </tbody>
         </table>
-        @elseif(count($posts)>1)
-        <span style="float:right">{{$posts->links()}}</span>
+        @elseif(count($students)>1)
+        <span style="float:right">{{$students->links()}}</span>
         @else
-          <h6 class="text-center">Không tìm thấy công việc!!! Vui lòng tạo thêm công việc</h6>
+          <h6 class="text-center">Không tìm thấy sinh viên ứng tuyển!</h6>
         @endif
       </div>
     </div>

@@ -50,8 +50,8 @@ class EmployerRepository extends BaseRepository implements EmployerRepositoryInt
   public function getStudentSendCV($id_emp)
   {
 
-  $job = Post::find(3);
-  dd($job);
+  $job = Post::find($id_emp);
+  // dd($job);
   $appliedJobs = $job->studentApplys;
   // dd($appliedJobs);
   return $appliedJobs;

@@ -26,6 +26,7 @@ return new class extends Migration
             $table->enum('status',['active','inactive'])->default('active');
             $table->integer('id_emp');
             $table->integer('id_major');
+            $table->string('province_id',20);
             $table->integer('traffic_volume')->nullable();
             $table->rememberToken();
             $table->timestamps();

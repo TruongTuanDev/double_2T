@@ -10,6 +10,7 @@ use App\Models\Settings;
 use App\Rules\MatchOldPassword;
 use App\Services\DistrictService;
 use App\Services\EmployerService;
+use App\Services\PostService;
 use App\Services\provinceService;
 use App\Services\WardService;
 use Carbon\Carbon;
@@ -24,13 +25,15 @@ class EmployerController extends Controller
     protected $districtService;
     protected $wardsService;
     protected $employersService;
+    protected $postService;
 
     public function __construct
     (UserService $userService,
     ProvinceService $provinceService,
     DistrictService $districtService,
     WardService $wardsService,
-    EmployerService $employersService
+    EmployerService $employersService,
+    PostService $postService
     )
     {
         $this->userService = $userService;
@@ -38,6 +41,7 @@ class EmployerController extends Controller
         $this->districtService = $districtService;
         $this->wardsService = $wardsService;
         $this->employersService = $employersService;
+        $this->postService = $postService;
     }
     /**
      * Display a listing of the resource.
@@ -274,9 +278,10 @@ class EmployerController extends Controller
         ];
         
          $company = $this->employersService->findCompanyById($id);
+         $historySearch = $this->postService->historyBySearch();
          $job = $company->posts->all();
          $template = 'frontend.pages.companys-detail';
-         return view('index',compact('config','provinces','job','template','company'));
+         return view('index',compact('config','provinces','job','template','company','historySearch'));
      }
      
 }

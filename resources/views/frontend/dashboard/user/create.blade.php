@@ -121,9 +121,9 @@ if (Auth::id() != null) {
                     </label>
                     <select name="major" id="" class="form-control setupSelect2">
                       <option value="{{ $student->major }}">{{ $student->major }}</option>
-                      <option value="admin">Công nghệ thông tin</option>
-                      <option value="employer">Maketing</option>
-                      <option value="user">kinh doanh quốc tế</option>
+                      @foreach($majors as $major)
+                       <option value="{{$major->name}}">{{$major->name}}</option>
+                      @endforeach
                     </select>
                   </div>
                 </div>
@@ -149,13 +149,13 @@ if (Auth::id() != null) {
                     </label>
                     <div class="input-group">
                       <span class="input-group-btn">
-                        <a id="lfm" data-input="thumbnail" data-preview="holder" class="btn btn-primary">
+                        <a id="lfmav" data-input="thumbnailav" data-preview="holderav" class="btn btn-primary">
                           <i class="fa fa-picture-o"></i> Chọn
                         </a>
                       </span>
-                      <input id="thumbnail" class="form-control" type="text" name="avatar" value="{{ $student->avatar }}">
+                      <input id="thumbnailav" class="form-control" type="text" name="avatar" value="{{ $student->avatar }}">
                     </div>
-                    <img id="holder" style="margin-top:15px;max-height:100px;">
+                    <img id="holderav" style="margin-top:15px;max-height:100px;">
                   </div>
                 </div>
               </div>

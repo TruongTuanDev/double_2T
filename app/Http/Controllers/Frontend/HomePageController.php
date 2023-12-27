@@ -51,6 +51,7 @@ class HomePageController extends Controller
        $majors=$this-> majorService->featuredMajor();
        $user = $this->userService->findById($id_user);
        $news=$this->newsService->featuredNews();
+       $historySearch = $this->postService->historyBySearch();
        
     //    dd($jobs);
     //    dd($user);
@@ -65,7 +66,7 @@ class HomePageController extends Controller
        ];
        $template = "frontend.pages.home";
        return view('index',
-       compact('config','provinces','template','banners','companys','jobs','majors','user','news'));
+       compact('config','provinces','template','banners','companys','jobs','majors','user','news','historySearch'));
     }
     
     /**

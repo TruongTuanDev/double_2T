@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Frontend;
 use App\Http\Controllers\Controller;
 use App\Models\Banner;
 use App\Models\Favjob;
+use App\Models\HistorySearch;
 use App\Models\JobApply;
 use App\Models\Major;
 use App\Models\Post;
@@ -43,6 +44,7 @@ class PostController extends Controller
     EmployerService $employerService,
     MajorService $majorService,
     StudentService $studentService,
+    UserService $userService,
     )
     {
         $this->postService = $postService;
@@ -50,6 +52,7 @@ class PostController extends Controller
         $this->employerService = $employerService;
         $this->majorService = $majorService;
         $this->studentService = $studentService;
+        $this->userService = $userService;
     }
     /**
      * Display a listing of the resource.
@@ -166,9 +169,10 @@ class PostController extends Controller
         $company = $job->companys;
         $job_company=$this->postService->findJobByIdemp($company->id_emp);
         $company_recomment=$this->employerService->getRecommentFavouriteCompany($job->address);
+        $historySearch = $this->postService->historyBySearch();
         $template = 'frontend.pages.jobs-detail';
         return view('index',compact('config','provinces','job','student',
-        'template','company','jobfav','job_recomment','company_recomment','job_company','jobfavs'));
+        'template','company','jobfav','job_recomment','company_recomment','job_company','jobfavs','historySearch'));
     }
     public function storeCVOfStudent(Request $request){
         $this->validate($request,
@@ -329,13 +333,46 @@ class PostController extends Controller
     public function listFail(){
        
     }
+    public function removeApplicant($id_job, $id_student)
+{
+        $job = Post::find($id_job);
+
+        $job->studentApplys()->detach($id_student);
+
+     return request()->session()->flash('status','Bạn đã xóa sinh viên khỏi danh sách ứng tuyển');
+
+   } 
+   public function searchJobs(Request $request)
+        {
+       $provinces = $this->provinceService->allProvince();
+       $historySearch = $this->postService->historyBySearch();
+       $config = [
+        'css' => [
+            'https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css'
+        ],
+        'js' => [
+            'https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js',
+            'library/location.js'
+            ]
+       ];
+            $provinceId = $request->input('province_id');
+            $searchTerm = $request->input('data_search');
+            $data=$request->all();
+            // dd($data);
+            $status=HistorySearch::create($data);
+            $jobs = $this->postService->listJobBySearch($provinceId,$searchTerm);
+            // dd($jobs);
+            $template = 'frontend.pages.jobs-search';
+            return view('index', compact('jobs','template','config','provinces','historySearch'));
+        }
     public function listHandle(){
         $id_user = Auth()->id();
         $employer = $this->employerService->findCompanyByIdUser($id_user);
-        $job = $this->postService->findJobByIdemp($employer->id_emp);
+        $user = $this->userService->findById($id_user);
+        $job = $this->postService->findJobByIdempListHandle($employer->id_emp);
         // dd($job->id_post);
-        $posts = $this->employerService->listStudentSendCV($job->id_post);
-        dd($posts);
+        $students = $this->employerService->listStudentSendCV($job->id_post);
+        // dd($students);
       //  $users = $this->userService->paginate(15);
        $config =  [
         'js' => [
@@ -347,7 +384,7 @@ class PostController extends Controller
        ];
        $config['seo'] = config('apps.post');
        $sidebar = 'frontend.dashboard.layouts.sidebaremp';
-       $template = 'backend.post.index';
-       return view('frontend.dashboard.index',compact('template','config','sidebar','posts'));
+       $template = 'backend.post.apply';
+       return view('frontend.dashboard.index',compact('template','config','sidebar','students','job','user'));
     }
 }

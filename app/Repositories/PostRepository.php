@@ -4,6 +4,7 @@ namespace App\Repositories;
 
 use App\Models\Employer;
 use App\Models\Favjob;
+use App\Models\HistorySearch;
 use App\Models\Post;
 use App\Models\Student;
 use App\Repositories\Interfaces\PostRepositoryInterface;
@@ -52,6 +53,10 @@ class PostRepository extends BaseRepository implements PostRepositoryInterface
   }
   public function findJobByIdemp($id_emp)
   {
+    $job = Post::where('id_emp',$id_emp)->get();
+    return $job;
+  }
+  public function findJobByIdempListHandel($id_emp){
     $job = Post::where('id_emp',$id_emp)->first();
     return $job;
   }
@@ -59,5 +64,24 @@ class PostRepository extends BaseRepository implements PostRepositoryInterface
     $job = Post::where('id_major',$id_major)->orwhere('address',$address)->get();
     return $job;
   }
-
+  public function getJobBySearch($province_id, $searchTerm)
+  {
+    $jobs = Post::where('province_id', $province_id)
+    ->where(function ($query) use ($searchTerm) {
+        $query->where('title', 'like', '%'.$searchTerm.'%') 
+            ->orWhereHas('major', function ($query) use ($searchTerm) {
+                $query->where('name', 'like', '%'.$searchTerm.'%');
+            })
+            ->orWhereHas('companys', function ($query) use ($searchTerm) {
+                $query->where('name_compn', 'like', '%'.$searchTerm.'%');
+            });
+    })
+    ->get();
+   return $jobs;
+  }
+  public function getHistoryBySearch()
+  {
+    $history = HistorySearch::orderBy('id', 'desc')->first();
+    return $history;
+  }
 }

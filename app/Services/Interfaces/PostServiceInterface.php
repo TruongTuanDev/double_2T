@@ -13,6 +13,10 @@ interface PostServiceInterface
   public function featuredJobOrderBydate();
   public function findJobById($id);
   public function findJobByIdemp($id_emp);
+  public function findJobByIdempListHandle($id_emp);
   public function getFavouriteJob($id);
   public function getRecommentFavouriteJob($id_major,$address);
+
+  public function listJobBySearch($province_id,$searchTerm);
+  public function historyBySearch();
 }

@@ -24,7 +24,7 @@ class CheckStudentStatus
     public function handle($request, Closure $next)
     {
         $student_id = Auth()->id();
-        $student = $this->studentService->findStudentById($student_id);
+        $student = $this->studentService->findStudentByIdUser($student_id);
         if ($student && $student->status !== 'active') {
             return redirect()->route('user.information')->with('error','Bạn phải cập nhật thông tin trước');
         }
