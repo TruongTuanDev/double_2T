@@ -1,15 +1,21 @@
 <div class="search-bar">
-  <div class="input-group search-container">
+  <form class="input-group search-container" action="{{route('search.job')}}" method="GET"> 
       <span class="input-group-text" id="addon-wrapping"><i
               class="fa-solid fa-magnifying-glass"></i></span>
-      <input type="text" aria-label="First name" class="form-control"
+      <input value="{{$historySearch->data_search}}" type="text" aria-label="First name" name="data_search" class="form-control"
           placeholder="Nhập vào công ty,nghề nghiệp,kỹ năng">
           <select name="province_id" class="form-control setupSelect2 province" id="">
               <option value="0">[Chọn Thành Phố]</option>
               @foreach($provinces as $province)
-                <option value="{{$province->code}}">{{$province->name}}</option>
+                <option value="{{$province->code}}" 
+                    {{ $province->code == $historySearch->province_id ? 'selected' : '' }}>
+                    {{$province->name}}
+                </option>
               @endforeach
+              {{-- @foreach($provinces as $province)
+                <option value="{{$province->code}}">{{$province->name}}</option>
+              @endforeach --}}
           </select>
-      <a class="btn btn-search text-decoration-none" id="button-addon2" href="/search-jobs">Search</a>
-  </div>
+      <button class="btn btn-search text-decoration-none" type="submit" id="button-addon2">Search</button>
+  </form>
 </div>

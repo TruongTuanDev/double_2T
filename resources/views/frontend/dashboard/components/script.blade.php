@@ -4,6 +4,7 @@
      $('#lfm').filemanager('image');
      $('#lfmlg').filemanager('image');
      $('#lfmbg').filemanager('image');
+     $('#lfmav').filemanager('image');
  </script>
  <script>
      $('#description').summernote({

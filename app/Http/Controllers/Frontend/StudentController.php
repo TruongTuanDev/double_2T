@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Frontend;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Student;
+use App\Services\MajorService;
 use App\Services\PostService;
 use App\Services\StudentService;
 use App\Services\UserService;
@@ -14,17 +15,20 @@ class StudentController extends Controller
     protected $favouriteJob;
     protected $studentService;
     protected $userService;
+    protected $majorService;
 
     public function __construct
     (
         PostService $favouriteJob,
         StudentService $studentService,
         UserService $userService,
+        MajorService $majorService,
     )
     {
         $this->favouriteJob = $favouriteJob;
         $this->studentService = $studentService;
         $this->userService = $userService;
+        $this->majorService = $majorService;
     }
     public function favourite()
     {
@@ -75,11 +79,12 @@ class StudentController extends Controller
         ];
         $user = $this->userService->findById($iduser);
         $student = $this->studentService->findStudentByIdUser($iduser);
+        $majors = $this->majorService->allMajor();
 
         $config['seo'] = config('apps.user');
         $template = 'frontend.dashboard.user.create';
         return view('frontend.dashboard.layout',
-        compact('template','config','user','student'));
+        compact('template','config','user','student','majors'));
      }
      public function store(Request $request)
     {

@@ -46,6 +46,11 @@ class PostService implements PostServiceInterface
     $job = $this->postRepository->findJobByIdemp($id_emp);
     return $job;
   }
+  public function findJobByIdempListHandle($id_emp)
+  {
+    $job = $this->postRepository->findJobByIdempListHandel($id_emp);
+    return $job;
+  }
   public function featuredJobOrderBydate(){
     $job = $this->postRepository->getfeaturedJobOrderBydate();
     return $job;
@@ -53,5 +58,15 @@ class PostService implements PostServiceInterface
   public function getRecommentFavouriteJob($id_major,$address){
     $job=$this->postRepository->getRecommentFavouriteJob($id_major,$address);
     return $job;
+  }
+  public function listJobBySearch($province_id, $searchTerm)
+  {
+    $jobs = $this->postRepository->getJobBySearch($province_id, $searchTerm);
+    return $jobs;
+  }
+  public function historyBySearch()
+  {
+    $history = $this->postRepository->getHistoryBySearch();
+    return $history;
   }
 }
