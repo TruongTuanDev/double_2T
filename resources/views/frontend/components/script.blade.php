@@ -1,3 +1,4 @@
+
  <!-- bootstrap js -->
  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"
  integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz"
@@ -33,9 +34,9 @@
     },
   });
 </script>
-<script src="vendor/laravel-filemanager/js/stand-alone-button.js"></script>
+<script src="{{ asset('vendor/laravel-filemanager/js/stand-alone-button.js')}}"></script>
     <script>
-        $('#lfm').filemanager('image');
+        $('#lfmcv').filemanager('image');
     </script>
     <script>
         $('#description').summernote({

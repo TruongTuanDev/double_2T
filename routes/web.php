@@ -46,7 +46,7 @@ use Illuminate\Support\Facades\Route;
         return back()->with('message', 'Verification link sent!');
     })->middleware(['auth', 'throttle:6,1'])->name('verification.send');
 
-    Route::get('dashboard/index',[DashboardController::class,'index'])->name('dashboard.index');
+    Route::get('dashboard/index',[DashboardController::class,'index'])->name('dashboard.index')->middleware('admin');
     // ->middleware('admin');
     Route::get('/', [HomePageController::class, 'index'])->name('home');
 
