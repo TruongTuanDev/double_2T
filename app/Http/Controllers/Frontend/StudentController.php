@@ -5,11 +5,8 @@ use App\Http\Controllers\Controller;
 use App\Models\Employer;
 use Illuminate\Http\Request;
 use App\Models\Student;
-<<<<<<< HEAD
 use App\Models\Follow;
-=======
 use App\Services\MajorService;
->>>>>>> b4789f4f3812cd826783c97e68ac86c9a0f9c17e
 use App\Services\PostService;
 use App\Services\StudentService;
 use App\Services\UserService;
