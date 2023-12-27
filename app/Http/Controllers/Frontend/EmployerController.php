@@ -4,12 +4,14 @@ namespace App\Http\Controllers\Frontend;
 
 use App\Http\Controllers\Controller;
 use App\Models\Employer;
+use App\Models\Follow;
 use App\Models\User;
 use App\Services\UserService;
 use App\Models\Settings;
 use App\Rules\MatchOldPassword;
 use App\Services\DistrictService;
 use App\Services\EmployerService;
+use App\Services\StudentService;
 use App\Services\provinceService;
 use App\Services\WardService;
 use Carbon\Carbon;
@@ -21,6 +23,7 @@ class EmployerController extends Controller
 {
     protected $userService;
     protected $provinceService;
+    protected $studentsService;
     protected $districtService;
     protected $wardsService;
     protected $employersService;
@@ -30,7 +33,8 @@ class EmployerController extends Controller
     ProvinceService $provinceService,
     DistrictService $districtService,
     WardService $wardsService,
-    EmployerService $employersService
+    EmployerService $employersService,
+    StudentService $studentsService
     )
     {
         $this->userService = $userService;
@@ -38,6 +42,7 @@ class EmployerController extends Controller
         $this->districtService = $districtService;
         $this->wardsService = $wardsService;
         $this->employersService = $employersService;
+        $this->studentsService = $studentsService;
     }
     /**
      * Display a listing of the resource.
@@ -261,7 +266,7 @@ class EmployerController extends Controller
         return redirect()->route('admin')->with('success','Mật khẩu thay đổi thành công');
     }
 
-    public function jobDetail($id){
+    public function jobDetail($id_emp){
         $provinces = $this->provinceService->allProvince();
         $config = [
          'css' => [
@@ -272,11 +277,16 @@ class EmployerController extends Controller
              'library/location.js'
              ]
         ];
-        
-         $company = $this->employersService->findCompanyById($id);
+        $id_user = Auth()->id();
+        // dd( $id_user );
+        $student = $this->studentsService->findStudentByIdUser($id_user);
+         $company = $this->employersService->findCompanyById($id_emp);
+         $follow = Follow::where('status', 'active')->where('employer_id_emp',$company->id_emp)
+                        ->where('student_id_stu', $student->id_stu)
+                        ->first();
          $job = $company->posts->all();
          $template = 'frontend.pages.companys-detail';
-         return view('index',compact('config','provinces','job','template','company'));
+         return view('index',compact('config','provinces','job','template','company','follow'));
      }
      
 }

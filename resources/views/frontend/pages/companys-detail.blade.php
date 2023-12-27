@@ -19,10 +19,17 @@
                                             </div>
 
                                     <div class="featured d-flex justify-content-end ms-4">
-                                        
-                                        <button class="btn-two">
-                                            Follow
-                                        </button>
+                                        @if($follow!=null)
+                                        @if ($follow->status === 'active')
+                                        <a class="btn-follow" style="background-color: blue"  href="{{route('user.follow',['id_emp' => $company->id_emp])}}">
+                                            Following
+                                        </a>
+                                      @endif
+                                      @elseif($follow == null)
+                                      <a class="btn-follow" href="{{route('user.follow',['id_emp' => $company->id_emp])}}">
+                                        Follow
+                                      </a>
+                                      @endif
                                     </div>
                                 </div>
                             </div>

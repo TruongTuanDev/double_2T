@@ -94,7 +94,19 @@ body a{
   border-radius: 5px;
   display: block;
 }
-.btn-two:hover{
+.btn-follow{
+  width: 100px;
+  height: 40px;
+  background-color: var(--color-origin);
+  color: #fff;
+  margin-left: 10px;
+  border: none;
+  border-radius: 5px;
+  display: block;
+  text-align: center;
+  line-height: 40px;
+}
+.btn-two:hover ,.btn-follow:hover{
   transition: .25s;
   color: #ffffff ;
   background-color: rgb(255, 112, 2);

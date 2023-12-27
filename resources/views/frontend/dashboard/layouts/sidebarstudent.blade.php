@@ -36,6 +36,7 @@ if (Auth::id() != null) {
             <ul class="nav nav-second-level">
                 <li><a href="{{ route('job.apply')}}">Danh sách công việc đã Apply</a></li>
                 <li><a href="{{ route('job.fav')}}">Danh sách công việc đã thích</a></li>
+                <li><a href="{{ route('user.following')}}">Danh sách công ty đang theo dõi</a></li>
             </ul>
          </li>
       </ul>

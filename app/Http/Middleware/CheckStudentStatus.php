@@ -28,7 +28,6 @@ class CheckStudentStatus
         if ($student && $student->status !== 'active') {
             return redirect()->route('user.information')->with('error','Bạn phải cập nhật thông tin trước');
         }
-
         return $next($request);
     }
 }

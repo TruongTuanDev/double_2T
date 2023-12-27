@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers\Frontend;
 use App\Http\Controllers\Controller;
+use App\Models\Employer;
 use Illuminate\Http\Request;
 use App\Models\Student;
+use App\Models\Follow;
 use App\Services\PostService;
 use App\Services\StudentService;
 use App\Services\UserService;
@@ -126,4 +128,24 @@ class StudentController extends Controller
            return view('frontend.dashboard.layout',compact('template','config','posts'));
 
     }
+    public function followingList(){
+        $id_user = Auth()->id();
+        $student = $this->studentService->findStudentByIdUser($id_user);
+        $emp=$student->employerFollows;
+        $config =  [
+
+            'js' => [
+                'js/option_two/plugins/switchery/switchery.js'
+            ],
+            'css' => [
+                'css/option_two/plugins/switchery/switchery.css'
+            ]
+        ];
+           $config['seo'] = config('apps.student');
+        //    dd($config['seo']);
+           $template = 'frontend.dashboard.employer.index';
+           return view('frontend.dashboard.layout',compact('template','config','emp'));
+
+    }
+    
 }
