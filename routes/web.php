@@ -152,6 +152,9 @@ Route::group(['prefix' => 'employer'], function(){
    Route::get('student/fail',[FrontendEmployerController::class,'listFail'])->name('student.fail.list');
    Route::get('student/handle',[PostController::class,'listHandle'])->name('student.handle.list');
 
+   Route::delete('/remove-applicant/{id_job}/{id_student}', [PostController::class, 'removeApplicant'])->name('remove.applicant');
+   Route::delete('/rg/{id_student}', [PostController::class, 'removeApplicantt'])->name('apply.pass');
+
 });
 
 /* AJAX */
@@ -160,6 +163,7 @@ Route::get('/check-auth',[AuthController::class,'checkAuth' ])->name('check-auth
 Route::post('/filter-employers', [EmployerController::class, 'filter'])->name('filter-employers');
 Route::post('/add-job', 'AjaxPostController@addFavouriteJob')->name('add.job');
 Route::get('/add-to-cart/{post}', [AjaxPostController::class, 'addToCart'])->name('cart.add')->middleware('student.status');
+Route::get('/viec-lam',[PostController::class, 'searchJobs'])->name('search.job');
 
 
 

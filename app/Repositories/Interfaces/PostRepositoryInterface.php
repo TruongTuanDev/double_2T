@@ -17,7 +17,11 @@ interface PostRepositoryInterface
 
   public function findJobById($id);
   public function findJobByIdemp($id_emp);
+  public function findJobByIdempListHandel($id_emp);
   public function getFavouriteJob($id);
 
   public function getRecommentFavouriteJob($major,$address);
+
+  public function getJobBySearch($province_id,$searchItem);
+  public function getHistoryBySearch();
 }

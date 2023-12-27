@@ -32,10 +32,14 @@ class Post extends Authenticatable
         'status',
         'id_emp',
         'id_major',
+        'province_id',
         'traffic_volume'
     ];
     protected $table = 'posts'; 
-
+    public function major()
+    {
+        return $this->belongsTo(Major::class, 'id_major','id_maj');
+    }
     public function companys() {
         return $this->belongsTo(Employer::class, 'id_emp','id_emp');
     }
@@ -44,6 +48,7 @@ class Post extends Authenticatable
     }
     public function studentApplys()
     {
-        return $this->belongsToMany(Student::class,'student_job','student_id_stu','post_id_post');
+        return $this->belongsToMany(Student::class,'student_job','post_id_post','student_id_stu');
     }
+    
 }
