@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Ajax\LocationController;
 use App\Http\Controllers\Ajax\PostController as AjaxPostController;
+use App\Http\Controllers\Ajax\FollowController as AjaxFollowController;
 use App\Http\Controllers\Backend\AuthController;
 use App\Http\Controllers\Frontend\HomePageController;
 use App\Http\Controllers\Backend\DashboardController;
@@ -120,9 +121,10 @@ Route::group(['prefix' => 'user'], function(){
     Route::get('favourite',[StudentController::class,'favourite'])->name('job.fav');
     Route::get('dashboard/information/{iduser}',[StudentController::class,'UpdateInfor'])->name('user.information');
     Route::post('dashboard/store',[StudentController::class,'store'])->name('user.store');
+    Route::get('dashboard/following',[StudentController::class,'followingList'])->name('user.following');
 });
 Route::post('job/send',[PostController::class,'storeCVOfStudent'])->name('sendinfor.apply');
-
+Route::get('follow/{id_emp}',[AjaxFollowController::class,'follow'])->name('user.follow');
 
 Route::group(['prefix' => 'employer'], function(){
     //Employer

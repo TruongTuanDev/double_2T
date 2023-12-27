@@ -30,5 +30,7 @@ class Student extends Model
     {
         return $this->belongsToMany(Post::class,'jobfav_student','student_id_stu','post_id_post'); 
     }
-    
+    public function employerFollows(){
+        return $this->belongsToMany(Employer::class,'follow','student_id_stu','employer_id_emp');
+    }
 }
