@@ -491,14 +491,13 @@
                         @endif
                     </label>
                     <label>CV:</label>
-                    <input type="text" name="file_cv" required>
-
+                    <input type="file" name="file_CV">
                     <label for="email">Email:</label>
                     <input type="email" id="email" name="email" required>
 
                     <label for="message">Nội dung đơn:</label>
                     <textarea id="message" name="message" required></textarea>
-                    <button type="submit" id="submitBtn">Gửi đơn</button>
+                    <button type="submit" class="btn btn-secondary" id="submitBtn">Gửi đơn</button>
                 </form>
             </div>
         </div>

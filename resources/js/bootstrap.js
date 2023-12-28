@@ -36,3 +36,17 @@ window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
  * Copyright 2011-2016 Twitter, Inc.
  * Licensed under the MIT license
  */
+import firebase from 'firebase/app';
+import 'firebase/storage';
+
+const firebaseConfig = {
+    apiKey: process.env.MIX_FIREBASE_API_KEY,
+    authDomain: process.env.MIX_FIREBASE_AUTH_DOMAIN,
+    databaseURL: process.env.MIX_FIREBASE_DATABASE_URL,
+    projectId: process.env.MIX_FIREBASE_PROJECT_ID,
+    storageBucket: process.env.MIX_FIREBASE_STORAGE_BUCKET,
+    messagingSenderId: process.env.MIX_FIREBASE_MESSAGING_SENDER_ID,
+    appId: process.env.MIX_FIREBASE_APP_ID,
+};
+
+firebase.initializeApp(firebaseConfig);

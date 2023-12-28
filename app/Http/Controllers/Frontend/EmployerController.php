@@ -288,10 +288,12 @@ class EmployerController extends Controller
          $follow = Follow::where('status', 'active')->where('employer_id_emp',$company->id_emp)
                         ->where('student_id_stu', $student->id_stu)
                         ->first();
-         $historySearch = $this->postService->historyBySearch();
-         $job = $company->posts->all();
+      
          $template = 'frontend.pages.companys-detail';
-         return view('index',compact('config','provinces','job','template','company','follow','historySearch'));
+         $job = $company->posts->all();
+         $historySearch = $this->postService->historyBySearch();
+         return view('index',compact('config','provinces','job','template','company','historySearch','follow'));
+     }
      
 }
 public function listFollower(){

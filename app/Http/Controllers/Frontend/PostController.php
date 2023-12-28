@@ -22,10 +22,15 @@ use App\Services\provinceService;
 use App\Services\StudentService;
 use App\Services\WardService;
 use Carbon\Carbon;
+use Google\Service\Firebasestorage\Bucket;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Storage;
+
+use Kreait\Firebase\Factory;
+use Kreait\Firebase\ServiceAccount;
 
 class PostController extends Controller
 {
@@ -174,21 +179,7 @@ class PostController extends Controller
         return view('index',compact('config','provinces','job','student',
         'template','company','jobfav','job_recomment','company_recomment','job_company','jobfavs','historySearch'));
     }
-    public function storeCVOfStudent(Request $request){
-        $this->validate($request,
-        [
-          
-        ]);
-        $data=$request->all();
-        // dd($data);
-        $status=JobApply::create($data);
-        if($status){
-            request()->session()->flash('success','Nộp cv thành công');
-        }
-        else{
-            request()->session()->flash('error','Nộp cv thất bại');
-        }
-    }
+   
     /**
      * Display the specified resource.
      *
@@ -333,6 +324,57 @@ class PostController extends Controller
     public function listFail(){
        
     }
+    public function uploadFileCV(Request $request)
+    {
+        $this->validate($request, [
+            'file_CV' => 'required|file|mimes:pdf,doc,docx',
+        ]);
+    
+        $file = $request->file('file_CV');
+        // Tải file lên Firebase Storage
+        $serviceAccount = ServiceAccount::fromJsonFile(config('firebase.credentials_json'));
+        $firebase = (new Factory())->withServiceAccount($serviceAccount)->create();
+        $storage = $firebase->getStorage();
+        $bucket = $storage->getBucket();
+        $object = $bucket->upload($file->getContent(), [
+            'name' => $file->getClientOriginalName(),
+        ]);
+    
+        // Lấy đường dẫn đến file trên Firebase Storage
+        $filePath = $object->name();
+    
+        // Lưu dữ liệu và đường dẫn file vào CSDL
+        $data = $request->except('file_CV'); // Loại bỏ file từ dữ liệu để tránh lưu nội dung file vào CSDL
+        $data['file_CV_path'] = $filePath;
+    
+        // Kiểm tra và lưu dữ liệu vào model JobApply
+        $this->validate($request, [
+            // Thêm các quy tắc kiểm tra dữ liệu cho các trường khác trong form
+        ]);
+    
+        $status = JobApply::create($data);
+    
+        if ($status) {
+            return redirect()->route('home')->with('success', 'Nộp CV thành công');
+        } else {
+            return redirect()->route('home')->with('error', 'Nộp CV thất bại');
+        }
+    }
+    public function storeCVOfStudent(Request $request){
+        $this->validate($request,
+        [
+          
+        ]);
+        $data=$request->all();
+        // dd($data);
+        $status=JobApply::create($data);
+        if($status){
+            request()->session()->flash('success','Nộp cv thành công');
+        }
+        else{
+            request()->session()->flash('error','Nộp cv thất bại');
+        }
+    }
     public function removeApplicant($id_job, $id_student)
 {
         $job = Post::find($id_job);
@@ -369,9 +411,12 @@ class PostController extends Controller
         $id_user = Auth()->id();
         $employer = $this->employerService->findCompanyByIdUser($id_user);
         $user = $this->userService->findById($id_user);
-        $job = $this->postService->findJobByIdempListHandle($employer->id_emp);
-        // dd($job->id_post);
-        $students = $this->employerService->listStudentSendCV($job->id_post);
+        $jobs = $this->postService->findJobByIdempListHandle($employer->id_emp);
+        // dd($jobs);
+        // foreach ($jobs as $job){
+        //     dd($job->studentApplys);
+        // }
+        // $students = $this->employerService->listStudentSendCV($job->id_post);
         // dd($students);
       //  $users = $this->userService->paginate(15);
        $config =  [
@@ -385,6 +430,6 @@ class PostController extends Controller
        $config['seo'] = config('apps.post');
        $sidebar = 'frontend.dashboard.layouts.sidebaremp';
        $template = 'backend.post.apply';
-       return view('frontend.dashboard.index',compact('template','config','sidebar','students','job','user'));
+       return view('frontend.dashboard.index',compact('template','config','sidebar','jobs','user'));
     }
 }
