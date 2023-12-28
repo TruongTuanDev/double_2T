@@ -288,11 +288,32 @@ class EmployerController extends Controller
          $follow = Follow::where('status', 'active')->where('employer_id_emp',$company->id_emp)
                         ->where('student_id_stu', $student->id_stu)
                         ->first();
+      
+         $template = 'frontend.pages.companys-detail';
          $job = $company->posts->all();
          $historySearch = $this->postService->historyBySearch();
-         $job = $company->posts->all();
-         $template = 'frontend.pages.companys-detail';
          return view('index',compact('config','provinces','job','template','company','historySearch','follow'));
      }
      
+}
+public function listFollower(){
+    $id_user = Auth()->id();
+    $employer= $this->employersService->findCompanyByIdUser($id_user);
+    $students=$employer->studentFollows;
+    // $users=$students->users;
+    $config =  [
+
+        'js' => [
+            'js/option_two/plugins/switchery/switchery.js'
+        ],
+        'css' => [
+            'css/option_two/plugins/switchery/switchery.css'
+        ]
+    ];
+       $config['seo'] = config('apps.student');
+       $sidebar='frontend.dashboard.layouts.sidebaremp';
+    //    dd($config['seo']);
+       $template = 'frontend.dashboard.employer.follower';
+       return view('frontend.dashboard.layout',compact('template','config','students','sidebar'));
+}
 }
