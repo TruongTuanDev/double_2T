@@ -148,13 +148,12 @@ Route::group(['prefix' => 'employer'], function(){
    Route::get('index',[FrontendEmployerController::class,'index'])->name('employer.list');
    Route::resource('news', 'App\Http\Controllers\Frontend\NewsController')->middleware('employer.status');
 
-   Route::get('student/pass',[FrontendEmployerController::class,'listPass'])->name('student.pass.list');
-   Route::get('student/fail',[FrontendEmployerController::class,'listFail'])->name('student.fail.list');
+   Route::get('student/pass',[PostController::class,'listPass'])->name('student.pass.list');
+   Route::get('student/fail',[PostController::class,'listFail'])->name('student.fail.list');
    Route::get('student/handle',[PostController::class,'listHandle'])->name('student.handle.list');
-
+   Route::get('listFollower',[FrontendEmployerController::class,'listFollower'])->name('follower.index');
    Route::delete('/remove-applicant/{id_job}/{id_student}', [PostController::class, 'removeApplicant'])->name('remove.applicant');
    Route::delete('/rg/{id_student}', [PostController::class, 'removeApplicantt'])->name('apply.pass');
-
 });
 
 /* AJAX */

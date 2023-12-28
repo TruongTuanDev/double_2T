@@ -20,7 +20,7 @@ class Student extends Model
     protected $primaryKey = 'id_stu';
 
     public function users() {
-        return $this->belongsTo(User::class, 'id','id_stu');
+        return $this->hasOne(User::class, 'id','id_stu');
     }
     public function applyPosts()
     {

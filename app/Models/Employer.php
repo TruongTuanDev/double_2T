@@ -35,6 +35,6 @@ class Employer extends Model
         return $this->hasMany(Follow::class,'id_emp','employer_id_emp');
     }
     public function studentFollows(){
-        return $this->hasMany(Student::class,'follow','employer_id_emp','student_id_stu');
+        return $this->belongsToMany(Student::class,'follow','employer_id_emp','student_id_stu');
     }
 }

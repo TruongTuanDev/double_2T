@@ -46,6 +46,12 @@ if (Auth::id() != null) {
             </ul>
           </li>
           <li>
+            <a href="#"><i class="fa fa-th-large"></i> <span class="nav-label">Quản lý người theo dõi</span> <span class="fa arrow"></span></a>
+            <ul class="nav nav-second-level">
+                <li><a href="{{route('follower.index')}}">Danh sách người theo dõi</a></li>
+            </ul>
+          </li>
+          <li>
             <a href="#"><i class="fa fa-th-large"></i> <span class="nav-label">Quản lý ứng viên</span> <span class="fa arrow"></span></a>
             <ul class="nav nav-second-level">
                 <li><a href="{{route('student.pass.list')}}">Danh sách đã nhận</a></li>

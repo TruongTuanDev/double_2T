@@ -7,7 +7,11 @@
 
 <body>
     <div id="wrapper">
+        @if(isset($sidebar))
+        @include($sidebar)
+        @else
         @include('frontend.dashboard.layouts.sidebarstudent')
+        @endif
         <div id="page-wrapper" class="gray-bg">
            @include('frontend.dashboard.components.nav')
             @include($template)
