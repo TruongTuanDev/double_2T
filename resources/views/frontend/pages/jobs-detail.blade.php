@@ -491,15 +491,7 @@
                         @endif
                     </label>
                     <label>CV:</label>
-                    <div class="input-group">
-                        <span class="input-group-btn">
-                            <a id="lfmcv" data-input="thumbnailcv" data-preview="holdercv" class="btn btn-primary">
-                            <i class="fa fa-picture-o"></i> Chọn
-                            </a>
-                        </span>
-                      <input id="thumbnailcv" class="form-control" type="text" name="file_cv">
-                    </div>
-
+                    <input type="file" name="file_CV">
                     <label for="email">Email:</label>
                     <input type="email" id="email" name="email" required>
 

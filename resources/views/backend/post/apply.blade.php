@@ -11,7 +11,7 @@
     </div>
     <div class="card-body">
       <div class="table-responsive">
-        @if(count($students)>0)
+        @if(count($jobs)>0)
         <table class="table table-bordered" id="banner-dataTable" width="100%" cellspacing="0">
           <thead>
             <tr>
@@ -44,10 +44,13 @@
               </tr>
           </tfoot>
           <tbody>
-            @foreach($students as $student)   
+            @foreach($jobs as $job)   
+              @foreach($job->studentApplys as $student)
                 <tr>
                     <td>{{$loop->iteration}}</td>
-                    <td>{{$student->avatar}}</td>
+                    <td>
+                      <img height="100px" width="100px" src="{{$student->avatar}}" alt="">
+                    </td>
                     <td>{{$student->major}}</td>
                     <td>{{$student->birthday}}</td>
                     <td>{{$student->university}}</td>
@@ -72,11 +75,13 @@
                     </td>
                    
                 </tr>  
+                  
+              @endforeach
             @endforeach
           </tbody>
         </table>
-        @elseif(count($students)>1)
-        <span style="float:right">{{$students->links()}}</span>
+        @elseif(count($jobs)>1)
+        <span style="float:right">{{$jobs->links()}}</span>
         @else
           <h6 class="text-center">Không tìm thấy sinh viên ứng tuyển!</h6>
         @endif

@@ -123,8 +123,10 @@ Route::group(['prefix' => 'user'], function(){
     Route::post('dashboard/store',[StudentController::class,'store'])->name('user.store');
     Route::get('dashboard/following',[StudentController::class,'followingList'])->name('user.following');
 });
-Route::post('job/send',[PostController::class,'storeCVOfStudent'])->name('sendinfor.apply');
+Route::post('job/send',[PostController::class,'uploadFileCV'])->name('sendinfor.apply');
 Route::get('follow/{id_emp}',[AjaxFollowController::class,'follow'])->name('user.follow');
+
+// Route::post('/upload-file',[PostController::class,'uploadFileCV'])->name('file.upload');
 
 Route::group(['prefix' => 'employer'], function(){
     //Employer
