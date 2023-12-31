@@ -31,6 +31,9 @@ class Employer extends Model
     public function posts(){
         return $this->hasMany(Post::class,'id_emp','id_emp');
     }
+    public function news(){
+        return $this->hasMany(News::class,'id_emp','id_emp');
+    }
     public function follows(){
         return $this->hasMany(Follow::class,'id_emp','employer_id_emp');
     }

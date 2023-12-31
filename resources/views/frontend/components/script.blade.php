@@ -62,6 +62,7 @@
     <script src="{{ asset('js/option_one/swipper.js')}}"></script>
     <script src="{{ asset('js/option_one/cart.js')}}"></script>
     <script src="{{ asset('js/option_one/form-apply.js')}}"></script>
+    <script src="{{ asset('js/option_one/active.js')}}"></script>
     <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.js"></script>
     {{-- <script>
       $.ajax({

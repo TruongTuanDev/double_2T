@@ -6,9 +6,7 @@ namespace App\Repositories\Interfaces;
  * Interface UserRepositoryInterface
  * @package App\Repositories\Interfaces
  */
-interface NewsRepositoryInterface
+interface FollowRepositoryInterface
 {
-  public function getFeaturedNews();
-  public function getNewsByIdEmp($id_emp);
-
+ public function getFollowByIdEmpl($id_emp);
 }

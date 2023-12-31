@@ -8,12 +8,12 @@
                   <div class="card career-card" style="height: 100%;">
                       <img src="{{$new->image}}" alt="" class="card-img-top">
                       <div class="card-body">
-                          <h5 class="card-title">{{ $new->title }}</h5>
+                          <a href="{{route('news.detail',$new->slug)}}" class="card-title" style="font-size: 23px ; font-weight: 700 ;font-family: 'Times New Roman', Times, serif">{{ $new->title }}</a>
                           
                           {{-- {{}} --}}
                           <p class="card-text">{!!Str::limit($new->content, 200)!!}</p>
-                          <a href="#" class="btn btn-primary fa fa-eye">  {{ $new->view }}</a>
-                          <a href="#" class="btn btn-primary">Detail</a>
+                          <a class="btn btn-primary fa fa-eye">  {{ $new->view }}</a>
+                          <a href="{{route('news.detail',$new->slug)}}" class="btn btn-primary">Detail</a>
                       </div>
                   </div>
               </div>

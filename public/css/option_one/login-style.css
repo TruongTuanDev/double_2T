@@ -13288,7 +13288,8 @@ border-width: 0 1px 1px 0;
 transform: rotate(45deg);
 }
 .register-box.grid.main { 
-padding: 24px 64px
+padding: 24px 64px;
+margin-left: 200px !important;
 }
 
 .register-box .vnw-title .title {

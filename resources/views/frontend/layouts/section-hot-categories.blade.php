@@ -8,7 +8,7 @@
                   <div class="wrap-item">
                       <div class="category-item">
                           <a href="/search-jobs">
-                              <img src="https://images02.vietnamworks.com/mobile_banner/39fc1e25eac4528661800fe9e28267ca.png"
+                              <img src="{{ $major->logo }}"
                                   alt="category icon">
                               <div class="wrap-name">
                                   <h5 class="title truncate-text-2-line">{{ $major->name }}</h5>

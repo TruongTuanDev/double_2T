@@ -2,6 +2,7 @@
 
 namespace App\Services;
 
+use App\Models\News;
 use App\Repositories\NewsRepository;
 use App\Services\Interfaces\NewsServiceInterface;
 use Carbon\Carbon;
@@ -37,20 +38,14 @@ class NewsService implements NewsServiceInterface
     $news = $this->newsRepository->findById($id);
     return $news;
   }
-  public function create($request){
-    DB::beginTransaction();
-    try{
-      $payload = $request->except(['_token', 'send','re_password']);
-      $carbonDate = Carbon::createFromFormat('d/m/Y',$payload['birthday']);
-      $payload['birthday'] = $carbonDate->format('Y-m-d H:i:s');
-      dd($payload);
-      DB::commit();
-      return true;
-    }catch(Exception $e){
-      DB::rollBack();
-      echo $e->getMessage();
-      return false;
-    };
+  public function findNewsByIdEmp($id_emp)
+  {
+    $news = $this->newsRepository->getNewsByIdEmp($id_emp);
+    return $news; 
+  }
+  public function findNewsBySlug($slug){
+    $news = News::where('slug',$slug)->first();
+    return $news; 
   }
 
 }

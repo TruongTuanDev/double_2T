@@ -19,4 +19,8 @@ class NewsRepository extends BaseRepository implements NewsRepositoryInterface
   {
     return News::where('status','active')->orderBy('create_date','desc')->get();
   }
+  public function getNewsByIdEmp($id_emp)
+  {
+    return News::where('id_emp',$id_emp)->get();
+  }
 }
