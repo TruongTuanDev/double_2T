@@ -4,7 +4,9 @@ namespace App\Http\Controllers\Backend;
 
 use App\Http\Controllers\Controller;
 use App\Services\EmployerService;
+use App\Services\FollowService;
 use App\Services\MajorService;
+use App\Services\NewsService;
 use App\Services\PostService;
 use App\Services\ProvinceService;
 use App\Services\StudentService;
@@ -20,6 +22,8 @@ class DashboardController extends Controller
     protected $majorService;
     protected $userService;
     protected $studentService;
+    protected $newsService;
+    protected $followerService;
     public function __construct
     (
     ProvinceService $provinceService,
@@ -27,7 +31,9 @@ class DashboardController extends Controller
     PostService $postService,
     MajorService $majorservice,
     UserService $userService,
-    StudentService $studentService
+    StudentService $studentService,
+    NewsService $newsService,
+    FollowService $followerService,
     )
     {
         $this->provinceService = $provinceService;
@@ -36,6 +42,8 @@ class DashboardController extends Controller
         $this->majorService = $majorservice;
         $this->userService = $userService;
         $this->studentService = $studentService;
+        $this->followerService = $followerService;
+        $this->newsService = $newsService;
 
     }
     /**
@@ -54,10 +62,17 @@ class DashboardController extends Controller
     }
     public function employer()
     {
+        $id_user = Auth()->id();
+        $employer = $this->employerService->findCompanyByIdUser($id_user);
         $config = $this->config();
+        $countJob = $this->postService->findJobByIdemp($employer->id_emp)->count();
+        $countNews = $this->newsService->findNewsByIdEmp($employer->id_emp)->count();
+        $countStudentApply = $this->postService->findJobByIdempListHandle($employer->id_emp)->count();
+        $countFollower = $this->followerService->listFollowers($employer->id_emp)->count();
         $sidebar = "frontend.dashboard.layouts.sidebaremp";
-        $template = "frontend.dashboard.home.index";
-        return view('frontend.dashboard.index',compact('template','config','sidebar'));
+        $template = "frontend.dashboard.home.employer";
+        return view('frontend.dashboard.index',
+        compact('template','config','sidebar','countJob','countNews','countJob','countStudentApply','countFollower'));
     }
     private function config(){
         return [

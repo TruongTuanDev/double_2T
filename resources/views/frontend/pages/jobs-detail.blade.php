@@ -479,7 +479,7 @@
                         </div>
                     </div>
                 </div>
-                <form id="myForm" method="POST" action="{{ route('sendinfor.apply') }}">
+                <form id="myForm" method="POST" action="{{ route('sendinfor.apply') }}" enctype="multipart/form-data">
                     @csrf
                     <input name="post_id_post" value="{{ $job->id_post }}" type="text" hidden>
                     <input name="student_id_stu" value="{{ $student->id_stu }}" type="text" hidden>
@@ -497,7 +497,7 @@
 
                     <label for="message">Nội dung đơn:</label>
                     <textarea id="message" name="message" required></textarea>
-                    <button type="submit" class="btn btn-secondary" id="submitBtn">Gửi đơn</button>
+                    <button type="submit" class="btn btn-success" id="submitBtn">Gửi đơn</button>
                 </form>
             </div>
         </div>

@@ -68,6 +68,7 @@ class Kernel extends HttpKernel
 
         // 'login' => \App\Http\Middleware\LoginMiddleware::class,
         'login' => \App\Http\Middleware\AuthMiddleware::class,
+        'home' => \App\Http\Middleware\Home::class,
         'admin' => \App\Http\Middleware\Admin::class,
         'employer' => \App\Http\Middleware\Employer::class,
         'student' => \App\Http\Middleware\Student::class,

@@ -294,26 +294,26 @@ class EmployerController extends Controller
          $historySearch = $this->postService->historyBySearch();
          return view('index',compact('config','provinces','job','template','company','historySearch','follow'));
      }
-     
+     public function listFollower(){
+        $id_user = Auth()->id();
+        $employer= $this->employersService->findCompanyByIdUser($id_user);
+        $students=$employer->studentFollows;
+        // $users=$students->users;
+        $config =  [
+    
+            'js' => [
+                'js/option_two/plugins/switchery/switchery.js'
+            ],
+            'css' => [
+                'css/option_two/plugins/switchery/switchery.css'
+            ]
+        ];
+           $config['seo'] = config('apps.student');
+           $sidebar='frontend.dashboard.layouts.sidebaremp';
+        //    dd($config['seo']);
+           $template = 'frontend.dashboard.employer.follower';
+           return view('frontend.dashboard.layout',compact('template','config','students','sidebar'));
+    } 
 }
-public function listFollower(){
-    $id_user = Auth()->id();
-    $employer= $this->employersService->findCompanyByIdUser($id_user);
-    $students=$employer->studentFollows;
-    // $users=$students->users;
-    $config =  [
 
-        'js' => [
-            'js/option_two/plugins/switchery/switchery.js'
-        ],
-        'css' => [
-            'css/option_two/plugins/switchery/switchery.css'
-        ]
-    ];
-       $config['seo'] = config('apps.student');
-       $sidebar='frontend.dashboard.layouts.sidebaremp';
-    //    dd($config['seo']);
-       $template = 'frontend.dashboard.employer.follower';
-       return view('frontend.dashboard.layout',compact('template','config','students','sidebar'));
-}
-}
+

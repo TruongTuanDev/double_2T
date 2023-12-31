@@ -13,6 +13,7 @@ use App\Http\Controllers\Backend\UserController;
 use App\Http\Controllers\Frontend\AAuthController;
 use App\Http\Controllers\Frontend\EAuthController;
 use App\Http\Controllers\Frontend\EmployerController as FrontendEmployerController;
+use App\Http\Controllers\Frontend\NewsController as FrontendNewsController;
 use App\Http\Controllers\Frontend\PostController;
 use App\Http\Controllers\Frontend\StudentController;
 use Illuminate\Http\Request;
@@ -48,14 +49,14 @@ use Illuminate\Support\Facades\Route;
 
     Route::get('dashboard/index',[DashboardController::class,'index'])->name('dashboard.index')->middleware('admin');
     // ->middleware('admin');
-    Route::get('/', [HomePageController::class, 'index'])->name('home');
+    Route::get('/', [HomePageController::class, 'index'])->name('home')->middleware('home');
 
 
 
     
 
-    Route::get('job-detail/{id}', [PostController::class, 'jobDetail'])->name('job-detail');
-    Route::get('companydetail/{id}', [FrontendEmployerController::class, 'jobDetail'])->name('companydetail');
+    Route::get('job-detail/{id}', [PostController::class, 'jobDetail'])->name('job-detail')->middleware('login');
+    Route::get('companydetail/{id}', [FrontendEmployerController::class, 'jobDetail'])->name('companydetail')->middleware('login');
     Route::get('add-to-favorites', 'FavJobController@addToCart');
 
     Route::group(['prefix' => 'admin'], function(){
@@ -114,6 +115,7 @@ Route::group(['prefix' => 'user'], function(){
     Route::resource('auth', 'App\Http\Controllers\Frontend\AAuthController');
     Route::get('login',[AAuthController::class,'loginForm'])->name('user.login');
     Route::post('login',[AAuthController::class,'login'])->name('user.login');
+    Route::get('logout',[AAuthController::class,'logout'])->name('user.logout');
     Route::post('register',[AAuthController::class,'register'])->name('user.register');
     Route::get('register',[AAuthController::class,'index'])->name('user.register');
     Route::get('dashboard',[StudentController::class,'home'])->name('user.dashboard');
@@ -125,7 +127,14 @@ Route::group(['prefix' => 'user'], function(){
 });
 Route::post('job/send',[PostController::class,'uploadFileCV'])->name('sendinfor.apply');
 Route::get('follow/{id_emp}',[AjaxFollowController::class,'follow'])->name('user.follow');
+Route::get('blog',[FrontendNewsController::class,'blog'])->name('blog');
+Route::get('/blog-detail/{slug}',[FrontendNewsController::class,'blogDetail'])->name('news.detail');
+Route::get('/blog/search', [FrontendNewsController::class, 'blogSearch'])->name('blog.search');
+Route::post('/blog/filter', [FrontendNewsController::class, 'blogFilter'])->name('blog.filter');
+Route::get('blog-cat/{slug}', [FrontendNewsController::class, 'blogByCategory'])->name('blog.category');
+Route::get('blog-tag/{slug}', [FrontendNewsController::class, 'blogByTag'])->name('blog.tag');
 
+Route::post('post/{slug}/comment', [FrontendNewsController::class, 'store'])->name('post-comment.store');
 // Route::post('/upload-file',[PostController::class,'uploadFileCV'])->name('file.upload');
 
 Route::group(['prefix' => 'employer'], function(){

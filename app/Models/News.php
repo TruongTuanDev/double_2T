@@ -17,11 +17,12 @@ class News extends Model
         'image',
         'create_date',
         'view',
+        'slug',
         'id_emp',
         'status',
     ];
     protected $table = 'news';
-    public function news(){
-        return $this->hasMany(Employer::class,'id_emp','id_emp');
+    public function company(){
+        return $this->belongsTo(Employer::class,'id_emp','id_emp');
     }
 }

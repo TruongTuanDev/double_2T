@@ -22,15 +22,8 @@ use App\Services\provinceService;
 use App\Services\StudentService;
 use App\Services\WardService;
 use Carbon\Carbon;
-use Google\Service\Firebasestorage\Bucket;
+use CloudinaryLabs\CloudinaryLaravel\Facades\Cloudinary;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Facades\Hash;
-use Illuminate\Support\Facades\Storage;
-
-use Kreait\Firebase\Factory;
-use Kreait\Firebase\ServiceAccount;
 
 class PostController extends Controller
 {
@@ -330,34 +323,23 @@ class PostController extends Controller
             'file_CV' => 'required|file|mimes:pdf,doc,docx',
         ]);
     
-        $file = $request->file('file_CV');
-        // Tải file lên Firebase Storage
-        $serviceAccount = ServiceAccount::fromJsonFile(config('firebase.credentials_json'));
-        $firebase = (new Factory())->withServiceAccount($serviceAccount)->create();
-        $storage = $firebase->getStorage();
-        $bucket = $storage->getBucket();
-        $object = $bucket->upload($file->getContent(), [
-            'name' => $file->getClientOriginalName(),
-        ]);
+        if ($request->hasFile('file_CV')) {
+            $file = $request->file('file_CV');
+            $folder = 'double-2t';
+            $imageUrl = $file->storeOnCloudinary(['folder' => $folder])->getSecurePath();
     
-        // Lấy đường dẫn đến file trên Firebase Storage
-        $filePath = $object->name();
+            $data = $request->except('file_CV');
+            $data['file_CV'] = $imageUrl;
     
-        // Lưu dữ liệu và đường dẫn file vào CSDL
-        $data = $request->except('file_CV'); // Loại bỏ file từ dữ liệu để tránh lưu nội dung file vào CSDL
-        $data['file_CV_path'] = $filePath;
+            $jobApply = JobApply::create($data);
     
-        // Kiểm tra và lưu dữ liệu vào model JobApply
-        $this->validate($request, [
-            // Thêm các quy tắc kiểm tra dữ liệu cho các trường khác trong form
-        ]);
-    
-        $status = JobApply::create($data);
-    
-        if ($status) {
-            return redirect()->route('home')->with('success', 'Nộp CV thành công');
+            if ($jobApply) {
+                return redirect()->route('home')->with('success', 'Nộp CV thành công');
+            } else {
+                return redirect()->route('home')->with('error', 'Nộp CV thất bại');
+            }
         } else {
-            return redirect()->route('home')->with('error', 'Nộp CV thất bại');
+            return redirect()->route('home')->with('error', 'Vui lòng điền đầy đủ thông tin');
         }
     }
     public function storeCVOfStudent(Request $request){
