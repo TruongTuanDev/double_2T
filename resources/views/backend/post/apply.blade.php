@@ -66,7 +66,8 @@
                         @endif
                     </td>
                     <td>
-                         <a href="{{route('apply.pass',['id_job' => $job->id_post, 'id_student' => $student->id_stu])}}" class="btn btn-primary float-left mr-1"  data-toggle="tooltip" title="edit" data-placement="bottom"><i class="fa-solid fa-person-circle-check"></i></a> 
+                      <a href="{{route('apply.pass',['id_job' => $job->id_post, 'id_student' => $student->id_stu])}}" class="btn btn-primary float-left mr-1"  data-toggle="tooltip" title="status" data-placement="bottom"><i class="fa fa-check"></i></a>
+                         {{-- <a href="{{route('apply.pass',['id_job' => $job->id_post, 'id_student' => $student->id_stu])}}" class="btn btn-primary float-left mr-1"  data-toggle="tooltip" title="edit" data-placement="bottom"><i class="fa fa-check"></a>  --}}
                          <form method="POST" action="{{route('remove.applicant',['id_job' => $job->id_post, 'id_student' => $student->id_stu])}}">
                           @csrf 
                           @method('delete')
