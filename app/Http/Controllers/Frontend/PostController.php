@@ -311,7 +311,20 @@ class PostController extends Controller
         $template = 'backend.user.setting';
         return view('backend.dashboard.layout',compact('template','config','data'));
     }
-    public function listPass(){
+    public function listPass(''){  
+        $post=Post::findOrFail($id_post);
+        $emp=Employer::findOrFail($post->id_emp);
+        $post->status='active';
+        $emp->job_quantity+=1;
+        $status_emp=$emp->save();
+        $status=$post->save();
+        if($status && $status_emp){
+            request()->session()->flash('success','Cập nhật thành công');
+        }
+        else{
+            request()->session()->flash('error','Cập nhật thất bại');
+        }
+        return redirect()->route('posts.inactive');  
         
     }
     public function listFail(){
@@ -345,10 +358,10 @@ class PostController extends Controller
     public function storeCVOfStudent(Request $request){
         $this->validate($request,
         [
-          
         ]);
         $data=$request->all();
         // dd($data);
+        $data['status']='inactive';
         $status=JobApply::create($data);
         if($status){
             request()->session()->flash('success','Nộp cv thành công');
