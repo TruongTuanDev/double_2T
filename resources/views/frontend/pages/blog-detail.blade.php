@@ -1,18 +1,5 @@
 
     <!-- Breadcrumbs -->
-    <div class="breadcrumbs">
-        <div class="container">
-            <div class="row">
-                <div class="col-12">
-                    <div class="bread-inner">
-                        <ul class="bread-list">
-                            <li><a href="{{route('home')}}">Trang chủ  ->  Tin tức chi tiết<i class="ti-arrow-right"></i></a></li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
     <!-- End Breadcrumbs -->
 
     <!-- Start Blog Single -->
