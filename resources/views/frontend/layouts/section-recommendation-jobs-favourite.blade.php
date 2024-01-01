@@ -4,7 +4,7 @@
       <div class="sectionBlock">
           <div class="d-flex justify-content-between align-items-center section-title">
               <h4 class="sectionBlock__title" style="font-weight: 700; color: #333;">Recommendation Jobs</h4>
-              <div class="sectionBlock__link"><a href="#">View All</a></div>
+              <div class="sectionBlock__link"><a href="#">Xem tất cả</a></div>
           </div>
           <div class="container-fluid sectionBlock__content d-flex flex-column" style="height: 90%;">
               <div class="row p-3" style="overflow: auto;">

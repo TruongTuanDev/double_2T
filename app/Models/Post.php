@@ -8,8 +8,9 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Queue\Jobs\JobName;
 use Laravel\Sanctum\HasApiTokens;
+use Illuminate\Database\Eloquent\Model;
 
-class Post extends Authenticatable
+class Post extends Model
 {
     use HasApiTokens, HasFactory, Notifiable;
 

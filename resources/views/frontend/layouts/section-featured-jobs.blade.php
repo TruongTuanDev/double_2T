@@ -4,7 +4,7 @@
       <div class="sectionBlock">
           <div class="d-flex justify-content-between align-items-center section-title">
               <h4 class="sectionBlock__title" style="font-weight: 700; color: #333;">Công việc hàng đầu</h4>
-              <div class="sectionBlock__link"><a href="#">Xem tất cả</a></div>
+              <div class="sectionBlock__link"><a href="{{route('posts.list')}}">Xem tất cả</a></div>
           </div>
           <div class="container-fluid sectionBlock__content d-flex flex-column" style="height: 90%;">
               <div class="row p-3" style="overflow: auto;">
@@ -16,7 +16,7 @@
                               <div class="card-body">
                                   <div class="view_job_item d-flex align-items-center justify-content-start">
                                       <div class="job-img">
-                                          <img src=""
+                                          <img src="{{$job->companys->logo}}"
                                               alt="logo" width="78px">
                                       </div>
                                       <div class="job-info mx-2">
@@ -26,7 +26,7 @@
                                           <div class="company-name job-item">
                                               <a href="{{route('companydetail',$job->id_emp)}}" class="job-conpany">{{ $job->companys->name_compn }}</a>
                                           </div>
-                                          <div class="job-salary job-item">{{$job->salary}}</div>
+                                          <div class="job-salary job-item">{{number_format($job->salary, 0, ',', '.')}} VND</div>
                                           <div class="job-location">{{$job->address}}</div>
                                       </div>
                                       <div class="featured">

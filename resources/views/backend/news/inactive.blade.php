@@ -17,10 +17,8 @@
             <tr>
               <th>STT</th>
               <th>Tiêu đề</th>
-              <th>Nội dung</th>
               <th>Hình ảnh</th>
               <th>Ngày đăng</th>
-              <th>Lượt xem</th>
               <th>Trạng thái</th>
             </tr>
           </thead>
@@ -28,10 +26,8 @@
             <tr>
                 <th>STT</th>
                 <th>Tiêu đề</th>
-                <th>Nội dung</th>
                 <th>Hình ảnh</th>
                 <th>Ngày đăng</th>
-                <th>Lượt xem</th>
                 <th>Trạng thái</th>
               </tr>
           </tfoot>
@@ -40,10 +36,10 @@
                 <tr>
                     <td>{{$new->id_news}}</td>
                     <td>{{$new->title}}</td>
-                    <td>{{$new->content}}</td>
-                    <td>{{$new->image}}</td>
+                    <td>
+                      <img width="100px" height="100px" src="{{$new->image}}" alt="">
+                    </td>
                     <td>{{$new->create_date}}</td>
-                    <td>{{$new->view}}</td>
                     <td>
                             <span class="badge badge-warning">Chờ duyệt</span>
                             <a href="{{route('news.updateactive',[$new->id_news])}}" class="btn btn-primary float-left mr-1"  data-toggle="tooltip" title="status" data-placement="bottom"><i class="fa fa-check"></i></a>
