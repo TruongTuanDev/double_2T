@@ -7,7 +7,7 @@
          </div>
      </div>
     <div class="card-header py-3">
-      <h4 class="m-0 font-weight-bold text-primary float-left">Danh sách sinh viên đã ứng tuyển công việc</h6>
+      <h4 class="m-0 font-weight-bold text-primary float-left">Danh sách sinh viên được duyệt</h6>
     </div>
     <div class="card-body">
       <div class="table-responsive">
@@ -47,7 +47,7 @@
             @foreach($jobs as $job)   
               @foreach($job->studentApplys as $student)
                 <tr>
-                  @if($job->studentApplys()->withPivot('status')->first()->pivot->status==='inactive')
+                  @if($job->studentApplys()->withPivot('status')->first()->pivot->status==='fail')
                     <td>{{$loop->iteration}}</td>
                     <td>
                       <img height="100px" width="100px" src="{{$student->avatar}}" alt="">
@@ -60,11 +60,11 @@
                     <td>{{$job->position}}</td>
                     <td>{{$job->salary}}</td>
                     <td>
-                        @if($job->studentApplys()->withPivot('status')->first()->pivot->status==='active')
-                            <span class="badge badge-success">{{$job->studentApplys()->withPivot('status')->first()->pivot->status}}</span>
-                        @else
-                            <span class="badge badge-warning">{{$job->studentApplys()->withPivot('status')->first()->pivot->status}}</span>
-                        @endif
+                      @if($job->studentApplys()->withPivot('status')->first()->pivot->status==='active')
+                      <span class="badge badge-success">{{$job->studentApplys()->withPivot('status')->first()->pivot->status}}</span>
+                  @else
+                      <span class="badge badge-warning">{{$job->studentApplys()->withPivot('status')->first()->pivot->status}}</span>
+                  @endif
                     </td>
                     <td>
                       <a href="{{route('apply.pass',['id_job' => $job->id_post, 'id_student' => $student->id_stu])}}" class="btn btn-primary float-left mr-1"  data-toggle="tooltip" title="status" data-placement="bottom"><i class="fa fa-check"></i></a>

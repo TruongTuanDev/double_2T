@@ -48,7 +48,6 @@ class Post extends Authenticatable
     }
     public function studentApplys()
     {
-        return $this->belongsToMany(Student::class,'student_job','post_id_post','student_id_stu');
+        return $this->belongsToMany(Student::class,'student_job','post_id_post','student_id_stu')->withPivot('status');
     }
-    
 }

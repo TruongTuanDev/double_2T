@@ -164,7 +164,7 @@ Route::group(['prefix' => 'employer'], function(){
    Route::get('student/handle',[PostController::class,'listHandle'])->name('student.handle.list');
    Route::get('listFollower',[FrontendEmployerController::class,'listFollower'])->name('follower.index');
    Route::delete('/remove-applicant/{id_job}/{id_student}', [PostController::class, 'removeApplicant'])->name('remove.applicant');
-   Route::delete('/rg/{id_student}', [PostController::class, 'removeApplicantt'])->name('apply.pass');
+   Route::get('updatestatus/{id_job}/{id_student}', [PostController::class, 'updatestatus'])->name('apply.pass');
 });
 
 /* AJAX */
