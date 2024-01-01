@@ -198,7 +198,7 @@
                                                                         $count = 0;
                                                                     @endphp
                                                                     @foreach ($jobfavs as $jobfav)
-                                                                        @if ($jobfav->post_id === $job_company->id_post)
+                                                                        @if ($jobfav->post_id_post === $job_company->id_post)
                                                                             <i class="fa-solid fa-heart"
                                                                                 style="color: rgb(255, 136, 0)"></i>
                                                                             @php

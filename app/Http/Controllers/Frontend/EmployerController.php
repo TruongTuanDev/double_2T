@@ -29,6 +29,7 @@ class EmployerController extends Controller
     protected $wardsService;
     protected $employersService;
     protected $postService;
+    protected $studentService;
 
     public function __construct
     (UserService $userService,
@@ -37,7 +38,8 @@ class EmployerController extends Controller
     WardService $wardsService,
     EmployerService $employersService,
     StudentService $studentsService,
-    PostService $postService
+    PostService $postService,
+    StudentService $studentService
     )
     {
         $this->userService = $userService;
@@ -47,6 +49,7 @@ class EmployerController extends Controller
         $this->employersService = $employersService;
         $this->studentsService = $studentsService;
         $this->postService = $postService;
+        $this->studentService=$studentService;
     }
     /**
      * Display a listing of the resource.
@@ -314,6 +317,29 @@ class EmployerController extends Controller
            $template = 'frontend.dashboard.employer.follower';
            return view('frontend.dashboard.layout',compact('template','config','students','sidebar'));
     } 
+    public function listAllEmp(){
+            $emps=$this->employersService->getAllCompany();
+            $id_user = Auth()->id();
+            $student = $this->studentService->findStudentByIdUser($id_user);
+             $follows = Follow::where('status', 'active')
+                            ->where('student_id_stu', $student->id_stu)
+                            ->get();
+            // dd($jobfav);
+           $provinces = $this->provinceService->allProvince();
+           $config = [
+            'css' => [
+                'https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css'
+            ],
+            'js' => [
+                'https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js',
+                'library/location.js'
+                ]
+           ];
+            $historySearch = $this->postService->historyBySearch();
+            $template = 'frontend.pages.list-compn';
+            return view('index',compact('config','provinces','emps','student',
+            'template','follows','historySearch'));
+    }
 }
 
 

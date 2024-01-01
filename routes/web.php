@@ -56,7 +56,7 @@ use Illuminate\Support\Facades\Route;
     
 
     Route::get('job-detail/{id}', [PostController::class, 'jobDetail'])->name('job-detail')->middleware('login');
-    Route::get('companydetail/{id}', [FrontendEmployerController::class, 'jobDetail'])->name('companydetail')->middleware('login');
+    Route::get('companydetail/{id}', [FrontendEmployerController::class,'jobDetail'])->name('companydetail')->middleware('login');
     Route::get('add-to-favorites', 'FavJobController@addToCart');
 
     Route::group(['prefix' => 'admin'], function(){
@@ -133,7 +133,8 @@ Route::get('/blog/search', [FrontendNewsController::class, 'blogSearch'])->name(
 Route::post('/blog/filter', [FrontendNewsController::class, 'blogFilter'])->name('blog.filter');
 Route::get('blog-cat/{slug}', [FrontendNewsController::class, 'blogByCategory'])->name('blog.category');
 Route::get('blog-tag/{slug}', [FrontendNewsController::class, 'blogByTag'])->name('blog.tag');
-
+Route::get('listAlljobs', [PostController::class, 'listAllJobs'])->name('listAlljobs');
+Route::get('listAllEmp', [FrontendEmployerController::class, 'listAllEmp'])->name('listAllEmp');
 Route::post('post/{slug}/comment', [FrontendNewsController::class, 'store'])->name('post-comment.store');
 // Route::post('/upload-file',[PostController::class,'uploadFileCV'])->name('file.upload');
 
