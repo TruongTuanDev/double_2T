@@ -325,8 +325,8 @@ class PostController extends Controller
     
         if ($request->hasFile('file_CV')) {
             $file = $request->file('file_CV');
-            $folder = 'double-2t';
-            $imageUrl = $file->storeOnCloudinary(['folder' => $folder])->getSecurePath();
+            // $folder = 'double-2t';
+            $imageUrl = $file->storeOnCloudinary()->getSecurePath();
     
             $data = $request->except('file_CV');
             $data['file_CV'] = $imageUrl;
