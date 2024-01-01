@@ -9,40 +9,22 @@
       <div class="collapse navbar-collapse" id="mynavbar">
           <ul class="navbar-nav me-auto">
               <li class="nav-item mx-lg-1 mx-xl-3 dropdown">
-                  <a class="nav-link" href="#" id="jobsDropdown" role="button" data-bs-toggle="dropdown"
-                      aria-haspopup="true" aria-expanded="false">
+                  <a class="nav-link" href="#">
                       Việc làm
                   </a>
-                  <div class="dropdown-menu" aria-labelledby="jobsDropdown">
-                      <a class="dropdown-item" href="/search-jobs">Việc làm mới nhất</a>
-                      <a class="dropdown-item" href="#">Tìm việc làm</a>
-                      <a class="dropdown-item" href="#">Việc làm quản lý</a>
-                  </div>
               </li>
               <li class="nav-item mx-lg-1 mx-xl-3">
                   <a class="nav-link" href="#">Công ty</a>
               </li>
               <li class="nav-item mx-lg-1 mx-xl-3 dropdown">
-                  <a class="nav-link" href="#" id="careerDropdown" role="button" data-bs-toggle="dropdown"
-                      aria-haspopup="true" aria-expanded="false">
+                  <a class="nav-link" href="#">
                       Nghề nghiệp
                   </a>
-                  <div class="dropdown-menu" aria-labelledby="careerDropdown">
-                      <a class="dropdown-item" href="#">WowCV templates</a>
-                      <a class="dropdown-item" href="#">Salary report</a>
-                      <a class="dropdown-item" href="#">Interview question</a>
-                  </div>
               </li>
               <li class="nav-item mx-lg-1 mx-xl-3 dropdown">
-                  <a class="nav-link" href="#" id="myJobsDropdown" role="button" data-bs-toggle="dropdown"
-                      aria-haspopup="true" aria-expanded="false">
+                  <a class="nav-link" href="#">
                       Việc làm của tôi
                   </a>
-                  <div class="dropdown-menu" aria-labelledby="myJobsDropdown">
-                      <a class="dropdown-item" href="#">Saved jobs</a>
-                      <a class="dropdown-item" href="#">Jobs alert</a>
-                      <a class="dropdown-item" href="#">Jobs for you</a>
-                  </div>
               </li>
               <li class="nav-item mx-lg-1 mx-xl-3 dropdown">
                 <a class="nav-link" href="{{route('blog')}}" role="button" >
