@@ -1,6 +1,6 @@
 <div class="section">
 <div class="section-jobs-detail">
-    <img class="back-ground w-100" src="{{ asset('img/about.jpg') }}" alt="">
+    <img class="w-100" height="400px" src="{{ $company->background }}" alt="logo" width="">
     <div class="content-jobs-detail">
         <div class="header-jobs-detail">
             <div class="container-fluid">
@@ -10,7 +10,7 @@
                             <div class="card-body" >
                                 <div class="view_job_item d-flex align-items-center justify-content-start">
                                     <div class="job-img me-3">
-                                        <img class="w-100" src="{{ $company->logo }}" alt="logo" width="78px">
+                                        <img  src="{{ $company->logo }}" alt="logo" width="78px">
                                     </div>
                                         <div class="job-info">
                                             <div class="job-name job-item">
@@ -58,10 +58,12 @@
                                     </p>
                                     <!-- Swiper -->
 
+                                    
+
                                     <p class="mt-4 cty-description card-text">
                                         {!! $company->description !!}
-
                                         <br>
+
                                     </p>
                                 </div>
                                 <div class="col-md-4 col-sm-12 mt-3">

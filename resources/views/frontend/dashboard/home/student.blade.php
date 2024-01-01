@@ -53,7 +53,7 @@
           </div>
       </div>
   </div>
-  <div class="row">
+  {{-- <div class="row">
       <div class="col-lg-12">
           <div class="ibox float-e-margins">
               <div class="ibox-title">
@@ -109,7 +109,7 @@
       </div>
 
 
-  <div class="row">
+  <div class="row"> --}}
       <div class="col-lg-4">
           <div class="ibox float-e-margins">
               <div class="ibox-title">
@@ -404,5 +404,5 @@
               </div>
           </div>
       </div>
-  </div>
+  {{-- </div> --}}
 </div>
