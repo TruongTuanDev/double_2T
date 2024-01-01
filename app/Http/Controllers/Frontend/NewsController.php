@@ -108,7 +108,7 @@ class NewsController extends Controller
     }
     public function blogDetail($slug){
        $comments=PostComment::getAllComments();
-       dd($comments);
+    //    dd($comments);
        $provinces = $this->provinceService->allProvince();
        $config = [
         'css' => [

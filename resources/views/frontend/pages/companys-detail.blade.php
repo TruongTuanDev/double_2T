@@ -1,6 +1,6 @@
 <div class="section">
 <div class="section-jobs-detail">
-    <img class="back-ground w-100" src="{{ asset('img/about.jpg') }}" alt="">
+    <img class="w-100" height="400px" src="{{ $company->background }}" alt="logo" width="">
     <div class="content-jobs-detail">
         <div class="header-jobs-detail">
             <div class="container-fluid">
@@ -10,7 +10,7 @@
                             <div class="card-body" >
                                 <div class="view_job_item d-flex align-items-center justify-content-start">
                                     <div class="job-img me-3">
-                                        <img class="w-100" src="{{ $company->logo }}" alt="logo" width="78px">
+                                        <img  src="{{ $company->logo }}" alt="logo" width="78px">
                                     </div>
                                         <div class="job-info">
                                             <div class="job-name job-item">
@@ -79,23 +79,7 @@
                                         
                                     </div>
                                     <p class="mt-4 cty-description">
-                                        From 1st January 2023, our company will embark on a new milestone to be an
-                                        independent legal entity, from LG Vehicle components Solution Development Center
-                                        Vietnam - LG VS DCV -become LG Electronics Development Vietnam Company Limited –
-                                        LGEDV. <br>
-                                        LGEDV is a member of LG Electronics, focuses on commercializing environmentally
-                                        responsible automotive components and core solutions based on LG’s proprietary
-                                        technologies.<br>
-                                        From the beginning, since automotive components industry was still brand new in
-                                        Vietnam, we has always tried our best to build an R&D in Vietnam and became a
-                                        home of over 700 members across Hanoi, Haiphong & Danang.<br>
-                                        The new journey of LG Electronics Development Vietnam Company Limited – LGEDV
-                                        starts, we still keep persistent ambition to build an No.1 R&D in Vietnam. In
-                                        the future, we keep expanding our research fields, creating a dynamic, creative
-                                        & challenge working environment for our colleagues to grow with our global
-                                        business.<br>
-                                        Thank you so much for your trust all though time & keep follow us to see more
-                                        our milestones in the future.<br>
+                                        {{$company->des}}
                                     </p>
                                 </div>
                                 <div class="col-md-4 col-sm-12 mt-3">
