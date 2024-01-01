@@ -9,12 +9,12 @@
       <div class="collapse navbar-collapse" id="mynavbar">
           <ul class="navbar-nav me-auto">
               <li class="nav-item mx-lg-1 mx-xl-3 dropdown">
-                  <a class="nav-link" href="#">
+                  <a class="nav-link" href="{{ route('listAlljobs') }}">
                       Việc làm
                   </a>
               </li>
               <li class="nav-item mx-lg-1 mx-xl-3">
-                  <a class="nav-link" href="#">Công ty</a>
+                  <a class="nav-link" href="{{ route('listAllEmp') }}">Công ty</a>
               </li>
               <li class="nav-item mx-lg-1 mx-xl-3 dropdown">
                   <a class="nav-link" href="#">

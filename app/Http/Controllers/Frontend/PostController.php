@@ -444,4 +444,27 @@ class PostController extends Controller
        $template = 'backend.post.apply';
        return view('frontend.dashboard.index',compact('template','config','sidebar','jobs','user'));
     }
+    public function listAllJobs(){
+        $jobs=$this->postService->getAllPost();
+        $id_user = Auth()->id();
+        $student = $this->studentService->findStudentByIdUser($id_user);
+         $jobfavs = Favjob::where('status', 'active')
+                        ->where('student_id_stu', $student->id_stu)
+                        ->get();
+        // dd($jobfav);
+       $provinces = $this->provinceService->allProvince();
+       $config = [
+        'css' => [
+            'https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css'
+        ],
+        'js' => [
+            'https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js',
+            'library/location.js'
+            ]
+       ];
+        $historySearch = $this->postService->historyBySearch();
+        $template = 'frontend.pages.list-jobs';
+        return view('index',compact('config','provinces','jobs','student',
+        'template','jobfavs','historySearch'));
+    }
 }
