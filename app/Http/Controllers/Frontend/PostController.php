@@ -311,23 +311,43 @@ class PostController extends Controller
         $template = 'backend.user.setting';
         return view('backend.dashboard.layout',compact('template','config','data'));
     }
-    public function listPass(''){  
-        $post=Post::findOrFail($id_post);
-        $emp=Employer::findOrFail($post->id_emp);
-        $post->status='active';
-        $emp->job_quantity+=1;
-        $status_emp=$emp->save();
-        $status=$post->save();
-        if($status && $status_emp){
-            request()->session()->flash('success','Cập nhật thành công');
-        }
-        else{
-            request()->session()->flash('error','Cập nhật thất bại');
-        }
-        return redirect()->route('posts.inactive');  
+    public function listPass(){  
+        $id_user = Auth()->id();
+        $employer = $this->employerService->findCompanyByIdUser($id_user);
+        $user = $this->userService->findById($id_user);
+        $jobs = $this->postService->findJobByIdempListHandle($employer->id_emp);
+       $config =  [
+        'js' => [
+            'js/option_two/plugins/switchery/switchery.js'
+        ],
+        'css' => [
+            'css/option_two/plugins/switchery/switchery.css'
+        ]
+       ];
+       $config['seo'] = config('apps.post');
+       $sidebar = 'frontend.dashboard.layouts.sidebaremp';
+       $template = 'backend.post.pass';
+       return view('frontend.dashboard.index',compact('template','config','sidebar','jobs','user')); 
         
     }
     public function listFail(){
+        $id_user = Auth()->id();
+        $employer = $this->employerService->findCompanyByIdUser($id_user);
+        $user = $this->userService->findById($id_user);
+        $jobs = $this->postService->findJobByIdempListHandle($employer->id_emp);
+       $config =  [
+        'js' => [
+            'js/option_two/plugins/switchery/switchery.js'
+        ],
+        'css' => [
+            'css/option_two/plugins/switchery/switchery.css'
+        ]
+       ];
+       $config['seo'] = config('apps.post');
+       $sidebar = 'frontend.dashboard.layouts.sidebaremp';
+       $template = 'backend.post.fail';
+       return view('frontend.dashboard.index',compact('template','config','sidebar','jobs','user')); 
+        
        
     }
     public function uploadFileCV(Request $request)
@@ -372,13 +392,32 @@ class PostController extends Controller
     }
     public function removeApplicant($id_job, $id_student)
 {
-        $job = Post::find($id_job);
-
-        $job->studentApplys()->detach($id_student);
-
-     return request()->session()->flash('status','Bạn đã xóa sinh viên khỏi danh sách ứng tuyển');
+        $job=JobApply::where('student_id_stu',$id_student)->where('post_id_post',$id_job)->first();
+        $job->status='fail';
+        $status=$job->save();
+        if($status){
+            request()->session()->flash('success','Loại bỏ thành công');
+        }
+        else{
+            request()->session()->flash('error','Loại thất bại');
+        }
+        return redirect()->route('student.handle.list');
 
    } 
+   public function updatestatus($id_job, $id_student)
+   {
+        $job=JobApply::where('student_id_stu',$id_student)->where('post_id_post',$id_job)->first();
+        $job->status='active';
+        $status=$job->save();
+        if($status){
+            request()->session()->flash('success','Duyệt thành công');
+        }
+        else{
+            request()->session()->flash('error','Duyệt thất bại');
+        }
+        return redirect()->route('student.handle.list');
+   
+      } 
    public function searchJobs(Request $request)
         {
        $provinces = $this->provinceService->allProvince();
@@ -407,13 +446,6 @@ class PostController extends Controller
         $employer = $this->employerService->findCompanyByIdUser($id_user);
         $user = $this->userService->findById($id_user);
         $jobs = $this->postService->findJobByIdempListHandle($employer->id_emp);
-        // dd($jobs);
-        // foreach ($jobs as $job){
-        //     dd($job->studentApplys);
-        // }
-        // $students = $this->employerService->listStudentSendCV($job->id_post);
-        // dd($students);
-      //  $users = $this->userService->paginate(15);
        $config =  [
         'js' => [
             'js/option_two/plugins/switchery/switchery.js'
