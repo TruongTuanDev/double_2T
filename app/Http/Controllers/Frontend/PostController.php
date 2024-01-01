@@ -358,12 +358,12 @@ class PostController extends Controller
     
         if ($request->hasFile('file_CV')) {
             $file = $request->file('file_CV');
-            $folder = 'double-2t';
-            $imageUrl = $file->storeOnCloudinary(['folder' => $folder])->getSecurePath();
+            // $folder = 'double-2t';
+            $imageUrl = $file->storeOnCloudinary()->getSecurePath();
     
             $data = $request->except('file_CV');
             $data['file_CV'] = $imageUrl;
-    
+            $data['status'] ='inactive';
             $jobApply = JobApply::create($data);
     
             if ($jobApply) {
@@ -373,21 +373,6 @@ class PostController extends Controller
             }
         } else {
             return redirect()->route('home')->with('error', 'Vui lòng điền đầy đủ thông tin');
-        }
-    }
-    public function storeCVOfStudent(Request $request){
-        $this->validate($request,
-        [
-        ]);
-        $data=$request->all();
-        // dd($data);
-        $data['status']='inactive';
-        $status=JobApply::create($data);
-        if($status){
-            request()->session()->flash('success','Nộp cv thành công');
-        }
-        else{
-            request()->session()->flash('error','Nộp cv thất bại');
         }
     }
     public function removeApplicant($id_job, $id_student)
