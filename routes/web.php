@@ -14,8 +14,10 @@ use App\Http\Controllers\Frontend\AAuthController;
 use App\Http\Controllers\Frontend\EAuthController;
 use App\Http\Controllers\Frontend\EmployerController as FrontendEmployerController;
 use App\Http\Controllers\Frontend\NewsController as FrontendNewsController;
+use App\Http\Controllers\Frontend\PostCommentController as FrontendPostCommentController;
 use App\Http\Controllers\Frontend\PostController;
 use App\Http\Controllers\Frontend\StudentController;
+use App\Http\Controllers\PostCommentController;
 use Illuminate\Http\Request;
 use Illuminate\Foundation\Auth\EmailVerificationRequest;
 use Illuminate\Support\Facades\Route;
@@ -134,8 +136,9 @@ Route::post('/blog/filter', [FrontendNewsController::class, 'blogFilter'])->name
 Route::get('blog-cat/{slug}', [FrontendNewsController::class, 'blogByCategory'])->name('blog.category');
 Route::get('blog-tag/{slug}', [FrontendNewsController::class, 'blogByTag'])->name('blog.tag');
 
-Route::post('post/{slug}/comment', [FrontendNewsController::class, 'store'])->name('post-comment.store');
-// Route::post('/upload-file',[PostController::class,'uploadFileCV'])->name('file.upload');
+// Post Comment
+Route::post('post/{slug}/comment', [FrontendPostCommentController::class, 'store'])->name('post-comment.store');
+Route::resource('/comment', 'PostCommentController');
 
 Route::group(['prefix' => 'employer'], function(){
     //Employer

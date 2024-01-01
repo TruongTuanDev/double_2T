@@ -20,11 +20,7 @@
         </td>
         <td>
             <div class="info-item image">
-                @if($majors->image)
-                            <img src="{{$majors->image}}" class="img-fluid zoom" style="max-width:80px" alt="{{$majors->image}}">
-                        @else
-                            <img src="{{asset('backend/img/thumbnail-default.jpg')}}" class="img-fluid zoom" style="max-width:100%" alt="avatar.png">
-                        @endif
+                <img src="{{$majors->image}}" class="img-fluid zoom" style="max-width:80px" alt="{{$majors->image}}">
             </div>
         </td>
         <td>

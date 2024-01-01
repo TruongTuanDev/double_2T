@@ -18,11 +18,6 @@
               </li>
               <li class="nav-item mx-lg-1 mx-xl-3 dropdown">
                   <a class="nav-link" href="#">
-                      Nghề nghiệp
-                  </a>
-              </li>
-              <li class="nav-item mx-lg-1 mx-xl-3 dropdown">
-                  <a class="nav-link" href="#">
                       Việc làm của tôi
                   </a>
               </li>
@@ -31,17 +26,11 @@
                     Blog
                 </a>
             </li>
-              <li class="nav-item mx-lg-1 mx-xl-3">
-                  <a class="nav-link" href="#">
-                      <img src="https://live.staticflickr.com/65535/52927117135_621d74d58e_o.png" alt=""
-                          width="70px">
-                  </a>
-              </li>
           </ul>
           <hr class="d-block d-lg-none" style="height: 1px; color: aqua;">
           <ul class="navbar-nav">
               <li class="nav-item mx-lg-1 mx-xl-3">
-                  <a class="nav-link fw-bold" href="{{route('employer.login')}}">DÀNH CHO NHÀ TUYỂN DỤNG</a>
+                  <a class="nav-link fw-bold" href="{{route('employer.login')}}">NHÀ TUYỂN DỤNG</a>
               </li>
               <span class="d-none d-lg-inline-block"
                   style="width: 1px; height: 2.5rem; background-color: rgb(0, 183, 255);"></span>

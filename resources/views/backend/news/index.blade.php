@@ -18,7 +18,6 @@
             <tr>
               <th>STT</th>
               <th>Tiêu đề</th>
-              <th>Nội dung</th>
               <th>Hình ảnh</th>
               <th>Ngày đăng</th>
               <th>Lượt xem</th>
@@ -29,7 +28,6 @@
             <tr>
                 <th>STT</th>
                 <th>Tiêu đề</th>
-                <th>Nội dung</th>
                 <th>Hình ảnh</th>
                 <th>Ngày đăng</th>
                 <th>Lượt xem</th>
@@ -41,8 +39,10 @@
                 <tr>
                     <td>{{$new->id_news}}</td>
                     <td>{{$new->title}}</td>
-                    <td>{{$new->content}}</td>
-                    <td>{{$new->image}}</td>
+                    {{-- <td>{{$new->content}}</td> --}}
+                    <td>
+                      <img height="100px" width="100px" src=" {{$new->image}}" alt="">
+                    </td>
                     <td>{{$new->create_date}}</td>
                     <td>{{$new->view}}</td>
                     <td>

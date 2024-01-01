@@ -7,6 +7,7 @@ use App\Models\News;
 use App\Models\Banner;
 use App\Models\Major;
 use App\Models\Post;
+use App\Models\PostComment;
 use App\Models\User;
 use App\Models\Settings;
 use App\Rules\MatchOldPassword;
@@ -106,6 +107,8 @@ class NewsController extends Controller
         return view('index',compact('config','provinces', 'template','historySearch','posts'));
     }
     public function blogDetail($slug){
+       $comments=PostComment::getAllComments();
+       dd($comments);
        $provinces = $this->provinceService->allProvince();
        $config = [
         'css' => [
@@ -123,7 +126,7 @@ class NewsController extends Controller
         $post= $this->newsService->findNewsBySlug($slug);
         // dd($post);
         $recent_posts=News::where('status','active')->orderBy('id_news','DESC')->limit(3)->get();
-        return view('index',compact('config','provinces', 'template','historySearch','post','recent_posts'));
+        return view('index',compact('config','provinces', 'template','historySearch','post','recent_posts','comments'));
     }
 
     public function blogSearch(Request $request){

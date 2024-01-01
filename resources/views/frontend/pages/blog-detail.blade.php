@@ -42,13 +42,13 @@
                                                     <div class="form-group  comment_form_body">
                                                         <label>Bình luận của bạn<span>*</span></label>
                                                         <textarea name="comment" id="comment" rows="10" placeholder=""></textarea>
-                                                        <input type="hidden" name="post_id" value="{{ $post->id_news }}" />
-                                                        <input type="hidden" name="parent_id" id="parent_id" value="" />
+                                                        <input type="hidden" name="news_id" value="{{ $post->id_news }}" />
+                                                        <input type="hidden" name="parent_id" id="parent_id" value="{{$post->company->id_emp}}" />
                                                     </div>
                                                 </div>
                                                 <div class="col-12">
                                                     <div class="form-group button">
-                                                        <button type="submit" class="btn"><span class="comment_btn comment">Đăng bình luận</span><span class="comment_btn reply" style="display: none;">Reply Comment</span></button>
+                                                        <button type="submit" class="btn btn-primary"><span class="comment_btn comment">Đăng bình luận</span><span class="comment_btn reply" style="display: none;">Reply Comment</span></button>
                                                     </div>
                                                 </div>
                                             </div>
@@ -60,7 +60,7 @@
 
                             @else
                             <p class="text-center p-5">
-                                Bạn cần <a href="{{route('user.login')}}" style="color:rgb(54, 54, 204)">Đăng nhập</a> OR <a style="color:blue" href="{{route('user.register')}}">Đăng ký</a> để bình luận.
+                                Bạn cần <a href="{{route('user.login')}}" style="color:rgb(54, 54, 204)">Đăng nhập</a> hoặc <a style="color:blue" href="{{route('user.register')}}">Đăng ký</a> để bình luận.
 
                             </p>
 
@@ -71,7 +71,9 @@
                                 <div class="comments">
                                     <h3 class="comment-title">Bình luận(8)</h3>
                                     <!-- Single Comment -->
-                                    {{-- @include('frontend.pages.comment', ['comments' => $post->comments, 'post_id' => $post->id, 'depth' => 3]) --}}
+                        
+                                    @include('frontend.layouts.comment')
+                                    {{-- @include('frontend.layouts.comment', ['comments' => $post->comments, 'post_id' => $post->id_news, 'depth' => 3]) --}}
                                     <!-- End Single Comment -->
                                 </div>
                             </div>
