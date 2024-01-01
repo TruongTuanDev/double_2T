@@ -98,7 +98,7 @@
                                         <p><span><i class="fa-solid fa-location-dot"></i></span>{{ $job->address }}</p>
                                     </div>
                                 </div>
-                                <div class="col-md-4 col-sm-12">
+                                <div class="col-md-4 col-sm-12 pb-3">
                                     <div class="section-right mt-3">
                                         <div class="section-right-one">
                                             <div class="summary">

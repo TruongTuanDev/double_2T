@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Frontend;
 use App\Http\Controllers\Controller;
 use App\Models\Employer;
 use App\Models\Follow;
+use App\Models\Favjob;
 use App\Models\User;
 use App\Services\UserService;
 use App\Models\Settings;
@@ -291,11 +292,13 @@ class EmployerController extends Controller
          $follow = Follow::where('status', 'active')->where('employer_id_emp',$company->id_emp)
                         ->where('student_id_stu', $student->id_stu)
                         ->first();
-      
+         $jobfavs = Favjob::where('status', 'active')
+                        ->where('student_id_stu', $student->id_stu)
+                        ->get();
          $template = 'frontend.pages.companys-detail';
          $job = $company->posts->all();
          $historySearch = $this->postService->historyBySearch();
-         return view('index',compact('config','provinces','job','template','company','historySearch','follow'));
+         return view('index',compact('config','provinces','job','template','company','historySearch','follow','jobfavs'));
      }
      public function listFollower(){
         $id_user = Auth()->id();
