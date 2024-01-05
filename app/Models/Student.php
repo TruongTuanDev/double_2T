@@ -20,7 +20,7 @@ class Student extends Model
     protected $primaryKey = 'id_stu';
 
     public function users() {
-        return $this->hasOne(User::class, 'id','id_stu');
+        return $this->hasOne(User::class, 'id','id_user');
     }
     public function applyPosts()
     {
@@ -33,4 +33,5 @@ class Student extends Model
     public function employerFollows(){
         return $this->belongsToMany(Employer::class,'follow','student_id_stu','employer_id_emp');
     }
+    
 }
