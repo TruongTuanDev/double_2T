@@ -55,9 +55,14 @@ class StudentController extends Controller
     }
     public function home()
     {
+        $iduser = Auth()->id();
+        $student = $this->studentService->findStudentByIdUser($iduser);
+        $countPostsFav = $this->favouriteJob->getFavouriteJob($student->id_stu)->count();
+        $countPostsApply = $this->studentService->applyListOfStudent($student->id_stu)->count();
+        $countFollower = $student->employerFollows->count();
         $config = $this->config();
         $template = "frontend.dashboard.home.student";
-        return view('frontend.dashboard.layout',compact('template','config'));
+        return view('frontend.dashboard.layout',compact('template','config','countPostsFav','countPostsApply','countFollower'));
     }
     private function config(){
         return [

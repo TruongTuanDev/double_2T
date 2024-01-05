@@ -26,7 +26,7 @@ class Employer extends Model
     protected $primaryKey = 'id_emp';
 
     public function users() {
-        return $this->belongsTo(User::class, 'id','id_emp');
+        return $this->belongsTo(User::class, 'id','id_user');
     }
     public function posts(){
         return $this->hasMany(Post::class,'id_emp','id_emp');

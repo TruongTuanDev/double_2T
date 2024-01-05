@@ -48,7 +48,7 @@
                         width="25px">
                 </a>
                   <a class="nav-link mx-4 mx-lg-2" href="{!! route('user.change-language', ['en']) !!}">
-                    <img src="https://png.pngtree.com/png-vector/20190616/ourlarge/pngtree-united-states-flag-png-image_1502587.jpg" alt=""
+                    <img src="https://cdn-icons-png.flaticon.com/128/206/206626.png" alt=""
                         width="25px">
                 </a>
               </li>
@@ -159,7 +159,7 @@
                         </div>
                         <hr class="m-0">
                         <div class="account-item">
-                            <a href="{{route('auth.logout')}}" class="d-block account-link">
+                            <a href="{{route('user.logout')}}" class="d-block account-link">
                                 <svg width="25" height="25" fill="#555555" class="" stroke="unset"
                                     xmlns="http://www.w3.org/2000/svg" viewBox="0 0 50 50">
                                     <path
