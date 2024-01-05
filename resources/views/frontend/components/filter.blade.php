@@ -5,7 +5,7 @@
       <input value="{{$historySearch->data_search}}" type="text" aria-label="First name" name="data_search" class="form-control"
           placeholder="Nhập vào công ty,nghề nghiệp,kỹ năng">
           <select name="province_id" class="form-control setupSelect2 province" id="">
-              <option value="0">[Chọn Thành Phố]</option>
+              <option value="0">[{{ trans('hello.choosecity') }}]</option>
               @foreach($provinces as $province)
                 <option value="{{$province->code}}" 
                     {{ $province->code == $historySearch->province_id ? 'selected' : '' }}>
@@ -16,6 +16,6 @@
                 <option value="{{$province->code}}">{{$province->name}}</option>
               @endforeach --}}
           </select>
-      <button class="btn btn-search text-decoration-none" type="submit" id="button-addon2">Search</button>
+      <button class="btn btn-search text-decoration-none" type="submit" id="button-addon2">{{ trans('hello.search') }}</button>
   </form>
 </div>

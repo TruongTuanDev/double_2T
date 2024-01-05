@@ -2,34 +2,33 @@
   <div class="container footer-container mb-2">
       <div class="row">
           <div class="col-12 col-md-3 my-2">
-              <h5 class="footer-column__title">TuanWorks</h5>
+              <h5 class="footer-column__title">DOUBLE2T</h5>
               <ul class="navbar-nav">
-                  <li class="footer-column__item"><a href="#" class="footer-column__link">About Us</a></li>
-                  <li class="footer-column__item"><a href="#" class="footer-column__link">Contact</a></li>
+                  <li class="footer-column__item"><a href="#" class="footer-column__link">{{ trans('hello.about') }}</a></li>
+                  <li class="footer-column__item"><a href="#" class="footer-column__link">{{ trans('hello.contact') }}</a></li>
                   <li class="footer-column__item"><a href="#" class="footer-column__link">FAQ</a></li>
-                  <li class="footer-column__item"><a href="#" class="footer-column__link">Terms Of Use</a></li>
-                  <li class="footer-column__item"><a href="#" class="footer-column__link">Privacy Statement</a>
+                  <li class="footer-column__item"><a href="#" class="footer-column__link">{{ trans('hello.term') }}</a></li>
+                  <li class="footer-column__item"><a href="#" class="footer-column__link">{{ trans('hello.privacy') }}</a>
                   </li>
               </ul>
           </div>
           <div class="col-12 col-md-3 my-2">
-              <h5 class="footer-column__title">For Employers</h5>
+              <h5 class="footer-column__title">{{ trans('hello.emp') }}</h5>
               <ul class="navbar-nav">
-                  <li class="footer-column__item"><a href="#" class="footer-column__link">Post Job</a></li>
-                  <li class="footer-column__item"><a href="#" class="footer-column__link">Search Resume</a></li>
-                  <li class="footer-column__item"><a href="#" class="footer-column__link">Other Products and
-                          Services</a></li>
-                  <li class="footer-column__item"><a href="#" class="footer-column__link">Contact</a></li>
+                  <li class="footer-column__item"><a href="#" class="footer-column__link">{{ trans('hello.pjob') }}</a></li>
+                  <li class="footer-column__item"><a href="#" class="footer-column__link">{{ trans('hello.resume') }}</a></li>
+                  <li class="footer-column__item"><a href="#" class="footer-column__link">{{ trans('hello.product') }}</a></li>
+                  <li class="footer-column__item"><a href="#" class="footer-column__link">{{ trans('hello.contact') }}</a></li>
               </ul>
           </div>
           <div class="col-12 col-md-3 d-none d-md-block my-2">
               <h5 class="footer-column__title">Jobs by location</h5>
               <ul class="navbar-nav">
-                  <li class="footer-column__item"><a href="#" class="footer-column__link">Ho Chi Minh</a></li>
-                  <li class="footer-column__item"><a href="#" class="footer-column__link">Ha Noi</a></li>
-                  <li class="footer-column__item"><a href="#" class="footer-column__link">Hai Phong</a></li>
-                  <li class="footer-column__item"><a href="#" class="footer-column__link">Da Nang</a></li>
-                  <li class="footer-column__item"><a href="#" class="footer-column__link">Can Tho</a></li>
+                  <li class="footer-column__item"><a href="#" class="footer-column__link">{{ trans('hello.hcm') }}</a></li>
+                  <li class="footer-column__item"><a href="#" class="footer-column__link">{{ trans('hello.hn') }}</a></li>
+                  <li class="footer-column__item"><a href="#" class="footer-column__link">{{ trans('hello.hp') }}</a></li>
+                  <li class="footer-column__item"><a href="#" class="footer-column__link">{{ trans('hello.dn') }}</a></li>
+                  <li class="footer-column__item"><a href="#" class="footer-column__link">{{ trans('hello.ct') }}</a></li>
               </ul>
           </div>
           <div class="col-12 col-md-3 my-2">
@@ -52,8 +51,8 @@
                   </a>
               </div>
               <div class="nav-bar__footer">
-                  <a href="#" class="mx-1 text-decoration-none" style="color: #6b6b6b;">Terms</a>
-                  <a href="#" class="mx-1 text-decoration-none" style="color: #6b6b6b;">Privacy</a>
+                  <a href="#" class="mx-1 text-decoration-none" style="color: #6b6b6b;">{{ trans('hello.term') }}</a>
+                  <a href="#" class="mx-1 text-decoration-none" style="color: #6b6b6b;">{{ trans('hello.privacy') }}</a>
                   <a href="#" class="mx-1 text-decoration-none" style="color: #6b6b6b;">Site Map</a>
                   <a href="#" class="mx-1 text-decoration-none" style="color: #6b6b6b;"><i class="fa-brands fa-facebook-f"></i></a>
                   <a href="#" class="mx-1 text-decoration-none" style="color: #6b6b6b;"><i class="fa-brands fa-linkedin-in"></i></a>

@@ -60,7 +60,7 @@
                     <td>{{$job->position}}</td>
                     <td>{{$job->salary}}</td>
                     <td>
-                      @if($job->studentApplys()->withPivot('status')->first()->pivot->status==='active')
+                      @if($job->studentApplys()->withPivot('file_CV')->first()->pivot->file_CV==='active')
                       <span class="badge badge-success">{{$job->studentApplys()->withPivot('status')->first()->pivot->status}}</span>
                   @else
                       <span class="badge badge-warning">{{$job->studentApplys()->withPivot('status')->first()->pivot->status}}</span>

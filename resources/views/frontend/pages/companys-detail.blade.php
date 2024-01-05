@@ -40,10 +40,10 @@
                     <div class="nav-bar container">
                         <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
                             <li class="nav-item" role="presentation">
-                              <button class="nav-link active" id="pills-home-tab" data-bs-toggle="pill" data-bs-target="#pills-home" type="button" role="tab" aria-controls="pills-home" aria-selected="true">Thông tin công ty</button>
+                              <button class="nav-link active" id="pills-home-tab" data-bs-toggle="pill" data-bs-target="#pills-home" type="button" role="tab" aria-controls="pills-home" aria-selected="true">{{ trans('hello.inforcompn') }}</button>
                             </li>
                             <li class="nav-item" role="presentation">
-                              <button class="nav-link" id="pills-profile-tab" data-bs-toggle="pill" data-bs-target="#pills-profile" type="button" role="tab" aria-controls="pills-profile" aria-selected="false">Công việc đến từ công ty</button>
+                              <button class="nav-link" id="pills-profile-tab" data-bs-toggle="pill" data-bs-target="#pills-profile" type="button" role="tab" aria-controls="pills-profile" aria-selected="false">{{ trans('hello.jobcompn') }}</button>
                             </li>
                           </ul>
                     </div>
@@ -53,8 +53,7 @@
                         <div class="tab-pane fade show active container " id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab" tabindex="0">
                             <div class="row bg-white">
                                 <div class="col-md-8 col-sm-12">
-                                    <p class="mt-3"><a href="#" class="me-2">Xem toàn bộ hồ sơ công
-                                            ty</a><i class="fa-solid fa-arrow-up-right-from-square text-primary"></i>
+                                    <p class="mt-3"><a href="#" class="me-2"> {{ trans('hello.doc') }}</a><i class="fa-solid fa-arrow-up-right-from-square text-primary"></i>
                                     </p>
                                     <!-- Swiper -->
 
@@ -70,11 +69,11 @@
                                     <div class="section-right mt-4">
                                         <div class="section-right-one mt-2">
                                             <div class="summary">
-                                                <p><span><i class="fa-solid fa-location-dot"></i></span>ĐỊA ĐIỂM</p>
+                                                <p><span><i class="fa-solid fa-location-dot"></i></span>{{ trans('hello.jobaddress') }}</p>
                                                 <p>{{ $company->address }}</p>
                                             </div>
                                             <div class="summary">
-                                                <p><span><i class="fa-solid fa-user"></i></i></span>LIÊN HỆ</p>
+                                                <p><span><i class="fa-solid fa-user"></i></i></span>{{ trans('hello.contact') }}</p>
                                                 <p>HR department</p>
                                             </div>
                                             <div class="summary d-flex justify-content-center">
@@ -154,7 +153,7 @@
                                                                     {{ $job->address }}</div>
                                                                 <div class="job-location">
                                                                     {{ $job->address }}</div>
-                                                                <div class="job-location">Ngày đăng:
+                                                                <div class="job-location">{{  trans('hello.date')}}:
                                                                     {{ $job->created_at }}</div>
                                                             </div>
                                                         </div>

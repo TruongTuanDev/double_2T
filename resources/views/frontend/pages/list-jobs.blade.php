@@ -21,18 +21,18 @@
                                                                 <div class="job-info mx-2">
                                                                     <div class="job-name job-item">
                                                                         <a href="{{ route('job-detail', $job->id_post) }}"
-                                                                            class="job-link">{{ $job->title }}</a>
+                                                                            class="job-link">{{ $job->title}}</a>
                                                                     </div>
                                                                     <div class="company-name job-item">
                                                                         <a href="{{ 'companydetail', $job->companys->id_emp }}"
-                                                                            class="job-conpany">{{ $job->companys->name_compn }}</a>
+                                                                            class="job-conpany">{{$job->companys->name_compn}}</a>
                                                                     </div>
                                                                     <div class="job-salary job-item">
                                                                         {{ $job->salary }} |
-                                                                        {{ $job->address }}</div>
+                                                                        {{ $job->address}}</div>
                                                                     <div class="job-location">
-                                                                        {{ $job->address }}</div>
-                                                                    <div class="job-location">Ngày đăng:
+                                                                        {{ $job->address}}</div>
+                                                                    <div class="job-location">{{trans('hello.date')}}
                                                                         {{ $job->created_at }}</div>
                                                                 </div>
                                                             </div>

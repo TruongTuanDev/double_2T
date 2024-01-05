@@ -21,17 +21,17 @@
                                                                 <div class="job-info mx-2">
                                                                     <div class="job-name job-item">
                                                                         <a href="{{route('companydetail', $emp->id_emp)}}"
-                                                                            class="job-conpany">{{ $emp->name_compn }}</a>
+                                                                            class="job-conpany">{{ $emp->name_compn}}</a>
                                                                     </div>
                                                                     <div class="company-name job-item">
                                                                         <a href="#"
-                                                                            class="job-conpany">{{ $emp->address }}</a>
+                                                                            class="job-conpany">{{$emp->address}}</a>
                                                                     </div>
                                                                     <div class="job-salary job-item">
-                                                                        Nhân viên:
+                                                                        {{ trans('hello.employee')}}
                                                                         {{ $emp->staff_number }}</div>
                                                                     <div class="job-location">
-                                                                        Công việc:
+                                                                        {{ trans('hello.jobs')}}
                                                                         {{ $emp->job_quantity }}</div>
                                                             </div>
                                                             </div>
