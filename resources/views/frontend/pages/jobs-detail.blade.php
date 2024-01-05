@@ -9,7 +9,7 @@
                             <div class="card-body">
                                 <div class="view_job_item d-flex align-items-center justify-content-start">
                                     <div class="job-img me-3">
-                                        <img class="w-100" src="{{ $company->logo }}" alt="logo" width="78px">
+                                        <img class="" src="{{ $company->logo }}" alt="logo" width="78px">
                                     </div>
                                     <div class="job-info">
                                         <div class="job-name job-item">
@@ -167,7 +167,7 @@
                                                             <div
                                                                 class="view_job_item col-md-10 d-flex align-items-center justify-content-start">
                                                                 <div class="job-img">
-                                                                    <img src="" alt="logo"
+                                                                    <img src="{{$company->logo}}" alt="logo"
                                                                         width="78px">
                                                                 </div>
                                                                 <div class="job-info mx-2">
@@ -234,7 +234,7 @@
                                                 <div
                                                     class="view_job_item  d-flex align-items-center justify-content-start">
                                                     <div class="job-img">
-                                                        <img src="" alt="logo" width="78px">
+                                                        <img src="{{$company->logo}}" alt="logo" width="78px">
                                                     </div>
                                                     <div class="job-info mx-2">
                                                         <div class="job-name job-item">
@@ -330,7 +330,7 @@
                     <div class="card-body">
                         <div class="view_job_item d-flex align-items-center justify-content-start">
                             <div class="job-img me-3">
-                                <img class="w-100" src="{{ $company->logo }}" alt="logo" width="78px">
+                                <img  src="{{ $company->logo }}" alt="logo" width="100px" height="100px">
                             </div>
                             <div class="job-info">
                                 <div class="job-name job-item">

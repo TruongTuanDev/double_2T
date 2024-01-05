@@ -168,7 +168,7 @@
             title="Quy định bảo mật"
             >Quy&nbsp;định bảo&nbsp;mật</a
           >
-          của 2t.</label
+          của 2T.</label
         >
       </div>
 
@@ -188,7 +188,7 @@
     </form>
 
     <p class="text-center m-b-none register">
-      Bạn là thành viên VietnamWorks?
+      Bạn là thành viên của chúng tôi?
       <a href="">
         <strong>Đăng Nhập</strong>
       </a>
@@ -196,11 +196,11 @@
     <hr class="hidden-xs" />
     <div class="login__footer">
       <div class="text-center register-as-employer">
-        Nếu bạn đang có nhu cầu tuyển dụng, <br />
+        Nếu bạn đang có nhu cầu tim việc, <br />
         vui lòng đăng ký tại
         <a
-          href=""
-          title="Trang Tuyển Dụng"
+          href="{{route('user.register')}}"
+          title="Đăng ký tìm việc"
           >đây</a
         >.
       </div>

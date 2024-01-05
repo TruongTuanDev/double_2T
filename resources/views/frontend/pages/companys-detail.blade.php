@@ -136,7 +136,7 @@
                                                         <div
                                                             class="view_job_item col-md-10 d-flex align-items-center justify-content-start">
                                                             <div class="job-img">
-                                                                <img src="" alt="logo"
+                                                                <img src="{{$company->logo}}" alt="logo"
                                                                     width="78px">
                                                             </div>
                                                             <div class="job-info mx-2">

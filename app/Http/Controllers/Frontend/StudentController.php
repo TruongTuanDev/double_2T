@@ -111,7 +111,7 @@ class StudentController extends Controller
             request()->session()->flash('error','Cập nhật thất bại');
         }
         $config=$this->config();
-        $template = "frontend.dashboard.home.index";
+        $template = "frontend.dashboard.home.student";
         return view('frontend.dashboard.layout',compact('template','config'));
     
     }

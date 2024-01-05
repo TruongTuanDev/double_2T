@@ -6,9 +6,12 @@ use App\Http\Controllers\Controller;
 use App\Models\Employer;
 use App\Services\DistrictService;
 use App\Services\EmployerService;
+use App\Services\PostService;
 use App\Services\provinceService;
+use App\Services\UserService;
 use App\Services\WardService;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
 
 class EmployerController extends Controller
 {
@@ -16,18 +19,24 @@ class EmployerController extends Controller
     protected $provinceService;
     protected $districtService;
     protected $wardsService;
+    protected $userService;
+    protected $postService;
 
     public function __construct
     (EmployerService $employerService,
     ProvinceService $provinceService,
     DistrictService $districtService,
-    WardService $wardsService
+    WardService $wardsService,
+    UserService $userService,
+    PostService $postService,
     )
     {
         $this->employerService = $employerService;
         $this->provinceService = $provinceService;
         $this->districtService = $districtService;
         $this->wardsService = $wardsService;
+        $this->userService = $userService;
+        $this->postService = $postService;
     }
     /**
      * Display a listing of the resource.
@@ -167,4 +176,27 @@ class EmployerController extends Controller
         }
         return redirect()->route('employer.index');
     }
+    // public function sendMail(){
+    //     $id_user = Auth()->id();
+    //     $employer = $this->employerService->findCompanyByIdUser($id_user);
+    //     $user = $this->userService->findById($id_user);
+    //     $jobs = $this->postService->findJobByIdempListHandle($employer->id_emp);
+    //    $config =  [
+    //     'js' => [
+    //         'js/option_two/plugins/switchery/switchery.js'
+    //     ],
+    //     'css' => [
+    //         'css/option_two/plugins/switchery/switchery.css'
+    //     ]
+    //    ];
+    //    $config['seo'] = config('apps.post');
+    //    $sidebar = 'frontend.dashboard.layouts.sidebaremp';
+    //    $template = 'backend.post.apply';
+    //    $name = "Tuấn đẹp trai";
+    //    Mail::send('frontend.mails.notice-pass',compact('name'), function($email) use ($name) {
+    //        $email->subject('Thư mời phỏng vấn');
+    //        $email->to('tuanhulonhat@gmail.com',$name);
+    //     });
+    //     return view('frontend.dashboard.index',compact('template','config','sidebar','jobs','user'));
+    // }
 }

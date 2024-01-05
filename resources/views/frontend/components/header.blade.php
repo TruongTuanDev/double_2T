@@ -17,10 +17,12 @@
                   <a class="nav-link" href="{{ route('listAllEmp') }}">{{ trans('hello.company') }}</a>
               </li>
  
+
               <li class="nav-item mx-lg-1 mx-xl-3 dropdown">
                   <a class="nav-link" href="#">
 
                     {{ trans('hello.myjobs') }}
+
                   </a>
               </li>
               <li class="nav-item mx-lg-1 mx-xl-3 dropdown">
