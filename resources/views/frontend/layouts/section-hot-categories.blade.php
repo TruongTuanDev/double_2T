@@ -1,6 +1,6 @@
 <section class="section-hot-categories mb-4">
   <div class="container-fluid px-lg-5">
-      <h4 class="sectionBlock__title mb-2" style="font-weight: 700; color: #333;">Hot Categories</h4>
+      <h4 class="sectionBlock__title mb-2" style="font-weight: 700; color: #333;">{{ GoogleTranslate::trans('Chuyên ngành nổi bật', app()->getLocale())}}</h4>
       <div>
           <div class="row flex-nowrap overflow-auto" style="height: 14rem;">
             @foreach($majors as $major) 
@@ -11,7 +11,7 @@
                               <img src="{{ $major->logo }}"
                                   alt="category icon">
                               <div class="wrap-name">
-                                  <h5 class="title truncate-text-2-line">{{ $major->name }}</h5>
+                                  <h5 class="title truncate-text-2-line">{{$major->name}}</h5>
                               </div>
                               <p class="total">{{ $major->traffic_volume }}<span></span></p>
                           </a>

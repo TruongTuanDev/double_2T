@@ -1,7 +1,7 @@
 <div class=" container  content-job-details mt-3 p-3 mb-3">
     @if(count($jobs) > 0)
     @foreach ($jobs as $job)
-    <h3 class="mt-3">CÓ {{$loop->iteration}} VIỆC LÀM PHÙ HỢP VỚI BẠN</h3>
+    <h3 class="mt-3">{{ $loop->iteration }}{{ trans('hello.jobsuitable')}}</h3>
     <div class="row">
         <div class="row p-3">
                 <div class="col-lg-4 col-md-6">
@@ -16,16 +16,16 @@
                                     <div class="job-info mx-2">
                                         <div class="job-name job-item">
                                             <a href="{{ route('job-detail', $job->id_post) }}"
-                                                class="job-link">{{ $job->title }}</a>
+                                                class="job-link">{{ $job->title}}</a>
                                         </div>
                                         <div class="company-name job-item">
                                             <a href="{{ 'companydetail',  $job->companys->id_emp }}"
-                                                class="job-conpany">{{  $job->companys->name_compn }}</a>
+                                                class="job-conpany">{{ $job->companys->name_compn}} </a>
                                         </div>
                                         <div class="job-salary job-item">{{ $job->salary }} |
                                             {{ $job->address }}</div>
-                                        <div class="job-location">{{ $job->address }}</div>
-                                        <div class="job-location">Ngày đăng:
+                                        <div class="job-location">{{$job->address}} </div>
+                                        <div class="job-location">{{ trans('hello.date' )}} 
                                             {{ $job->created_at }}</div>
                                     </div>
                                     <div class="featured">
@@ -48,7 +48,7 @@
         </div>
     </div>
 <div class=" container  content-job-details mt-3 p-3 mb-3">
-    <h3 class="mt-3">CÔNG TI BẠN SẼ THÍCH</h3>
+    <h3 class="mt-3">{{trans('hello.favcompn')}}</h3>
     <div class="row">
 
         <div class="row p-3">
@@ -65,12 +65,11 @@
                                 <div class="job-info mx-2">
                                     <div class="job-name job-item">
                                         <a href="{{ route('companydetail',  $job->companys->id_emp) }}"
-                                            class="job-link">{{  $job->companys->name_compn }}</a>
+                                            class="job-link">{{$job->companys->name_compn }}</a>
                                         </div>
-                                        <div class="job-salary job-item">{{  $job->address }} |
-                                            {{ $job->address }}</div>
-                                            <div class="job-location">{{  $job->companys->job_quantity }} việc
-                                            làm</div>
+                                        <div class="job-salary job-item">{{ $job->address}} |
+                                        </div>
+                                            <div class="job-location">{{  $job->companys->job_quantity }} {{ trans('hello.jobs' )}} </div>
 
                                     </div>
                                     <div class="featured">
@@ -93,6 +92,6 @@
     </div>
     @endforeach
     @else
-    <h4 class="mt-3 text-center">Không tìm thấy việc làm phù hợp với bạn</h4>
+    <h4 class="mt-3 text-center">{{ trans("hello.nothing")}} </h4>
     @endif
 </div>
