@@ -124,8 +124,11 @@ class NewsController extends Controller
         // dd('ưgwgwgwg');
         $template = 'frontend.pages.blog-detail';
         $post= $this->newsService->findNewsBySlug($slug);
+        $post->view+=1;
+        $post->save();
         // dd($post);
         $recent_posts=News::where('status','active')->orderBy('id_news','DESC')->limit(3)->get();
+        
         return view('index',compact('config','provinces', 'template','historySearch','post','recent_posts','comments'));
     }
 
