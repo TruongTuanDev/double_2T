@@ -1,6 +1,6 @@
 <section class="section-company-spotlight mb-4">
   <div class="container-fluid px-lg-5">
-      <h4 class="sectionBlock__title" style="font-weight: 700; color: #333;">Công ty nổi bật</h4>
+      <h4 class="sectionBlock__title" style="font-weight: 700; color: #333;">{{ trans('hello.outstand')}}</h4>
       <div class="container-fluid px-0">
           <!-- Swiper -->
           <div class="swiper mySwiper">

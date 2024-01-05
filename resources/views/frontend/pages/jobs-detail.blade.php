@@ -13,15 +13,15 @@
                                     </div>
                                     <div class="job-info">
                                         <div class="job-name job-item">
-                                            <a href="" class="job-link">{{ $job->title }}</a>
+                                            <a href="" class="job-link">{{ $job->title}}</a>
                                         </div>
                                         <div class="company-name job-item">
-                                            <a href="" class="job-company">{{ $company->name_compn }}</a>
+                                            <a href="" class="job-company">{{ $company->name_compn}}</a>
                                         </div>
-                                        <div class="job-location job-fs">{{ $job->address }}</div>
+                                        <div class="job-location job-fs">{{ $job->address}}</div>
                                         <div class="job-salary job-item job-fs">{{ $job->salary }}$</div>
                                         <div class="bonus job-fs">
-                                            <p>{{ $job->traffic_volume }} lượt xem</p>
+                                            <p>{{ $job->traffic_volume }} {{ trans('hello.view') }}</p>
                                         </div>
                                     </div>
                                     <div class="featured d-flex justify-content-end ms-4">
@@ -37,9 +37,8 @@
                                             @endif
                                         </a>
                                         <button id="submitBtn" onclick="showForm()" class="btn-two">
-                                            Nộp đơn
+                                            {{ trans("hello.submit")}}
                                         </button>
-
                                     </div>
                                 </div>
                             </div>
@@ -53,18 +52,18 @@
                             <li class="nav-item" role="presentation">
                                 <button class="nav-link active" id="pills-home-tab" data-bs-toggle="pill"
                                     data-bs-target="#pills-home" type="button" role="tab"
-                                    aria-controls="pills-home" aria-selected="true">Thông tin công việc</button>
+                                    aria-controls="pills-home" aria-selected="true">{{ trans('hello.inforjob') }}</button>
                             </li>
                             <li class="nav-item" role="presentation">
                                 <button class="nav-link" id="pills-profile-tab" data-bs-toggle="pill"
                                     data-bs-target="#pills-profile" type="button" role="tab"
-                                    aria-controls="pills-profile" aria-selected="false">Thông tin công ty</button>
+                                    aria-controls="pills-profile" aria-selected="false">{{ trans('hello.inforcompn') }}</button>
                             </li>
                             <li class="nav-item" role="presentation">
                                 <button class="nav-link" id="pills-contact-tab" data-bs-toggle="pill"
                                     data-bs-target="#pills-contact" type="button" role="tab"
-                                    aria-controls="pills-contact" aria-selected="false">Công việc đến từ công
-                                    ty</button>
+                                    aria-controls="pills-contact" aria-selected="false">{{ trans('hello.jobcompn') }}
+                                    </button>
                             </li>
                         </ul>
 
@@ -77,24 +76,24 @@
                             <div class="row bg-white">
                                 <div class="col-md-8 col-sm-12">
                                     <div class="description-1 mt-3">
-                                        <p class="title-description">Ưu đãi dành cho bạn</p>
-                                        <p>{{ $job->treatment }}</p>
+                                        <p class="title-description">{{ trans('hello.offer') }}</p>
+                                        <p>{!! $company->treatment!!}</p>
 
                                     </div>
                                     <div class="description-1 mt-3">
-                                        <p class="title-description">Mô tải công việc</p>
+                                        <p class="title-description">{{ trans('hello.deps') }}</p>
                                         <p>
-                                            {!! $job->description !!}
+                                            {!! $job->description!!}
                                         </p>
                                     </div>
                                     <div class="description-1 mt-3">
-                                        <p class="title-description">YÊU CẦU CÔNG VIỆC</p>
+                                        <p class="title-description">{{ trans('hello.request') }}</p>
                                         <p>
-                                            {{ $job->requiment }}
+                                         {{ $job->requiment}}
                                         </p>
                                     </div>
                                     <div class="description-1 mt-3">
-                                        <p class="title-description">Địa điểm làm việc</p>
+                                        <p class="title-description">{{ trans('hello.jobaddress') }}</p>
                                         <p><span><i class="fa-solid fa-location-dot"></i></span>{{ $job->address }}</p>
                                     </div>
                                 </div>
@@ -102,17 +101,16 @@
                                     <div class="section-right mt-3">
                                         <div class="section-right-one">
                                             <div class="summary">
-                                                <p><span><i class="fa-regular fa-calendar-days"></i></span>Ngày đăng
-                                                    tuyển</p>
+                                                <p><span><i class="fa-regular fa-calendar-days"></i></span>{{ trans('hello.date') }}</p>
                                                 <p>{{ $job->post_date }}</p>
                                             </div>
                                             <div class="summary">
-                                                <p><span><i class="fa-solid fa-layer-group"></i></span>CẤP BẬC</p>
-                                                <p>{{ $job->position }}</p>
+                                                <p><span><i class="fa-solid fa-layer-group"></i></span>{{ trans('hello.major') }}</p>
+                                                <p>{{ $job->position}}</p>
                                             </div>
                                             <div class="summary">
-                                                <p><span><i class="fa-solid fa-business-time"></i></span>NGÀNH NGHỀ</p>
-                                                <p>Cấp quản lý điều hành, Bán hàng, Ngân hàng</p>
+                                                <p><span><i class="fa-solid fa-business-time"></i></span>{{ trans('hello.major') }}</p>
+                                                <p>{{ trans('hello.mana') }}</p>
                                             </div>
                                             <div class="summary d-flex justify-content-center">
                                                 <img class="w-25" src="img/vnw-logo-inTECH.png" alt="">
@@ -126,13 +124,13 @@
                             aria-labelledby="pills-profile-tab" tabindex="0">
                             <div class="row bg-white">
                                 <div class="col-md-8 col-sm-12">
-                                    <p class="mt-3"><a href="#" class="me-2">Xem toàn bộ hồ sơ công
-                                            ty</a><i class="fa-solid fa-arrow-up-right-from-square text-primary"></i>
+                                    <p class="mt-3"><a href="#" class="me-2">{{ trans('hello.doc') }}
+                                            </a><i class="fa-solid fa-arrow-up-right-from-square text-primary"></i>
                                     </p>
                                     <!-- Swiper -->
 
                                     <p class="mt-4 cty-description card-text">
-                                        {!! $company->description !!}
+                                        {{ trans('hello.doc') }}
 
                                         <br>
                                     </p>
@@ -141,12 +139,12 @@
                                     <div class="section-right mt-4">
                                         <div class="section-right-one mt-2">
                                             <div class="summary">
-                                                <p><span><i class="fa-solid fa-location-dot"></i></span>ĐỊA ĐIỂM</p>
-                                                <p>{{ $company->address }}</p>
+                                                <p><span><i class="fa-solid fa-location-dot"></i></span>{{ trans('hello.jobaddress') }}</p>
+                                                <p>{{ $company->address}}</p>
                                             </div>
                                             <div class="summary">
-                                                <p><span><i class="fa-solid fa-user"></i></i></span>LIÊN HỆ</p>
-                                                <p>HR department</p>
+                                                <p><span><i class="fa-solid fa-user"></i></i></span>{{ trans('hello.contact') }}</p>
+                                                <p>HR Department</p>
                                             </div>
                                             <div class="summary d-flex justify-content-center">
                                                 <img class="w-25" src="img/vnw-logo-inTECH.png" alt="">
@@ -175,18 +173,18 @@
                                                                 <div class="job-info mx-2">
                                                                     <div class="job-name job-item">
                                                                         <a href="{{ route('job-detail', $job_company->id_post) }}"
-                                                                            class="job-link">{{ $job_company->title }}</a>
+                                                                            class="job-link">{{ $job_company->title}}</a>
                                                                     </div>
                                                                     <div class="company-name job-item">
                                                                         <a href="{{ 'companydetail', $company->id_emp }}"
-                                                                            class="job-conpany">{{ $company->name_compn }}</a>
+                                                                            class="job-conpany">{{ $company->name_compn}}</a>
                                                                     </div>
                                                                     <div class="job-salary job-item">
                                                                         {{ $job_company->salary }} |
-                                                                        {{ $job_company->address }}</div>
+                                                                        {{ $job_company->address}}</div>
                                                                     <div class="job-location">
-                                                                        {{ $job_company->address }}</div>
-                                                                    <div class="job-location">Ngày đăng:
+                                                                        {{ $job_company->address}}</div>
+                                                                    <div class="job-location"> {{ trans('hello.date') }}
                                                                         {{ $job_company->created_at }}</div>
                                                                 </div>
                                                             </div>
@@ -220,143 +218,11 @@
                                     @endforeach
                                 </div>
                             </div>
-                            {{-- <div class="container-fluid content-job-details tab-pane active" id="job-info">
-                  <div class="row">
-                    <div class="col-md-8 col-sm-12">
-                      <div class="description-1 mt-3">
-                        <p class="title-description">Ưu đãi dành cho bạn</p>
-                        <p>{{$job->treatment}}</p>
-                  
-                      </div>
-                      <div class="description-1 mt-3">
-                        <p class="title-description">Mô tải công việc</p>
-                        <p>
-                         {!!$job->description!!}
-                        </p>
-                      </div>
-                      <div class="description-1 mt-3">
-                        <p class="title-description">YÊU CẦU CÔNG VIỆC</p>
-                        <p>
-                          {{$job->requiment}}
-                        </p>
-                      </div>
-                      <div class="description-1 mt-3">
-                        <p class="title-description">Địa điểm làm việc</p>
-                        <p><span><i class="fa-solid fa-location-dot"></i></span>{{$job->address}}</p>
-                      </div>
-                    </div>
-                    <div class="col-md-4 col-sm-12">
-                      <div class="section-right mt-3">
-                        <div class="section-right-one">
-                          <div class="summary">
-                            <p><span><i class="fa-regular fa-calendar-days"></i></span>Ngày đăng tuyển</p>
-                            <p>{{$job->post_date}}</p>
-                          </div>
-                          <div class="summary">
-                            <p><span><i class="fa-solid fa-layer-group"></i></span>CẤP BẬC</p>
-                            <p>{{$job->position}}</p>
-                          </div>
-                          <div class="summary">
-                            <p><span><i class="fa-solid fa-business-time"></i></span>NGÀNH NGHỀ</p>
-                            <p>Cấp quản lý điều hành, Bán hàng, Ngân hàng</p>
-                          </div>
-                          <div class="summary d-flex justify-content-center">
-                            <img class="w-25" src="img/vnw-logo-inTECH.png" alt="">
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div class="tab-pane container fade content-job-details" id="companyInfo">
-                  <div class="row">
-                    <div class="col-md-8 col-sm-12">
-                      <p class="mt-3"><a href="#" class="me-2">Xem toàn bộ hồ sơ công ty</a><i class="fa-solid fa-arrow-up-right-from-square text-primary"></i></p>
-                    <!-- Swiper -->
-                    
-                    <p class="mt-4 cty-description card-text">
-                      {!!($company->description)!!}
-                      
-                      <br>
-                    </p>                   
-                    </div>
-                    <div class="col-md-4 col-sm-12 mt-3">
-                      <div class="section-right mt-4">
-                        <div class="section-right-one mt-2">
-                          <div class="summary">
-                            <p><span><i class="fa-solid fa-location-dot"></i></span>ĐỊA ĐIỂM</p>
-                            <p>{{$company->address}}</p>
-                          </div>
-                          <div class="summary">
-                            <p><span><i class="fa-solid fa-user"></i></i></span>LIÊN HỆ</p>
-                            <p>HR department</p>
-                          </div>
-                          <div class="summary d-flex justify-content-center">
-                            <img class="w-25" src="img/vnw-logo-inTECH.png" alt="">
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div class="tab-pane container fade content-job-details" id="job-company">
-                  <div class="row">
-                    <div class="row p-3" style="overflow: auto;">
-                      @foreach ($job_company as $job_company)
-                      @if ($job_company->id_post != $job->id_post && $job_company->status == 'active')
-                      <div class="col-lg-12 col-md-12">
-                          <div class="product-item mb-4">
-                              <div class="card jobs-card">
-                                  <div class="card-body row">
-                                      <div class="view_job_item col-md-10 d-flex align-items-center justify-content-start">
-                                          <div class="job-img">
-                                              <img src=""
-                                                  alt="logo" width="78px">
-                                          </div>
-                                          <div class="job-info mx-2">
-                                              <div class="job-name job-item">
-                                                  <a href="{{route('job-detail',$job_company->id_post)}}" class="job-link">{{$job_company->title}}</a>
-                                              </div>
-                                              <div class="company-name job-item">
-                                                  <a href="{{ 'companydetail',$company->id_emp }}" class="job-conpany">{{ $company->name_compn }}</a>
-                                              </div>
-                                              <div class="job-salary job-item">{{$job_company->salary}} | {{$job_company->address}}</div>
-                                              <div class="job-location">{{$job_company->address}}</div>
-                                              <div class="job-location">Ngày đăng: {{$job_company->created_at}}</div>
-                                          </div>
-                                      </div>
-                                      <div class="featured  col-md-2 mt-2" >
-                                        <a class="btn-one job" id="post_id" href="{{route('cart.add',['post' => $job_company->id_post])}}" data-post-id="{{$job_company->id_post}}">
-                                          @php
-                                           $count = 0;
-                                           @endphp
-                                           @foreach ($jobfavs as $jobfav)
-                                           @if ($jobfav->post_id === $job_company->id_post)
-                                           <i class="fa-solid fa-heart" style="color: rgb(255, 136, 0)"></i>
-                                           @php
-                                           $count = $count + 1;
-                                           @endphp
-                                           @elseif($jobfav->post_id != $job_company->id_post)
-                                           @endif
-                                           @endforeach
-                                           @if ($count === 0)
-                                           <i class="fa-regular fa-heart"></i>
-                                           @endif
-                                        </a>
-                                    </div>
-                                  </div>
-                              </div>
-                          </div>
-                      </div>
-                      @endif
-                      @endforeach
-                  </div>
-                </div> --}}
                         </div>
                     </div>
                 </div>
                 <div class=" container  content-job-details mt-3 p-3 mb-3">
-                    <h3 class="mt-3">VIỆC LÀM BẠN SẼ THÍCH</h3>
+                    <h3 class="mt-3">{{ trans('hello.favjobs') }}</h3>
                     <div class="row">
 
                         <div class="row p-3">
@@ -373,16 +239,16 @@
                                                     <div class="job-info mx-2">
                                                         <div class="job-name job-item">
                                                             <a href="{{ route('job-detail', $job_company->id_post) }}"
-                                                                class="job-link">{{ $job_company->title }}</a>
+                                                                class="job-link">{{ $job_company->title}}</a>
                                                         </div>
                                                         <div class="company-name job-item">
                                                             <a href="{{ 'companydetail', $company->id_emp }}"
-                                                                class="job-conpany">{{ $company->name_compn }}</a>
+                                                                class="job-conpany">{{$company->name_compn}}</a>
                                                         </div>
                                                         <div class="job-salary job-item">{{ $job_company->salary }} |
-                                                            {{ $job_company->address }}</div>
-                                                        <div class="job-location">{{ $job_company->address }}</div>
-                                                        <div class="job-location">Ngày đăng:
+                                                           {{ $job_company->address}}</div>
+                                                        <div class="job-location">{{ $job_company->address}}</div>
+                                                        <div class="job-location">{{ trans('hello.date') }}:
                                                             {{ $job_company->created_at }}</div>
                                                     </div>
                                                     <div class="featured">
@@ -398,7 +264,7 @@
                                                     </div>
                                                 </div>
                                             </div>
-                                        </div>
+                                        </div>   
                                     </div>
                                 </div>
                             @endforeach
@@ -406,7 +272,7 @@
                     </div>
                 </div>
                 <div class=" container  content-job-details mt-3 p-3 mb-3">
-                    <h3 class="mt-3">CÔNG TI BẠN SẼ THÍCH</h3>
+                    <h3 class="mt-3">{{ trans('hello.favcompn') }}</h3>
                     <div class="row">
 
                         <div class="row p-3">
@@ -424,12 +290,11 @@
                                                     <div class="job-info mx-2">
                                                         <div class="job-name job-item">
                                                             <a href="{{ route('companydetail', $company->id_emp) }}"
-                                                                class="job-link">{{ $company->name_compn }}</a>
+                                                                class="job-link">{{ $company->name_compn}}</a>
                                                         </div>
-                                                        <div class="job-salary job-item">{{ $company->address }} |
-                                                            {{ $job_company->address }}</div>
-                                                        <div class="job-location">{{ $company->job_quantity }} việc
-                                                            làm</div>
+                                                        <div class="job-salary job-item"> {{ $company->address}} |
+                                                            {{ $job_company->address}}</div>
+                                                        <div class="job-location">{{ $company->job_quantity }} {{ trans('hello.jobs') }}</div>
 
                                                     </div>
                                                     <div class="featured">
@@ -469,12 +334,12 @@
                             </div>
                             <div class="job-info">
                                 <div class="job-name job-item">
-                                    <a href="" class="job-link">{{ $job->title }}</a>
+                                    <a href="" class="job-link">{{$job->title}}</a>
                                 </div>
                                 <div class="company-name job-item">
-                                    <a href="" class="job-company">{{ $company->name_compn }}</a>
+                                    <a href="" class="job-company">{{  $company->name_compn}}</a>
                                 </div>
-                                <div class="job-location job-fs">{{ $job->address }}</div>
+                                <div class="job-location job-fs">{{  $job->address}}</div>
                             </div>
                         </div>
                     </div>
@@ -494,10 +359,9 @@
                     <input type="file" name="file_CV">
                     <label for="email">Email:</label>
                     <input type="email" id="email" name="email" required>
-
-                    <label for="message">Nội dung đơn:</label>
+                    <label for="message">{{ trans('hello.content') }}</label>
                     <textarea id="message" name="message" required></textarea>
-                    <button type="submit" class="btn btn-success" id="submitBtn">Gửi đơn</button>
+                    <button type="submit" class="btn btn-success" id="submitBtn">{{ trans('hello.submit') }}</button>
                 </form>
             </div>
         </div>

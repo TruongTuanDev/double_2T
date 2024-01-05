@@ -11,7 +11,7 @@ use App\Services\provinceService;
 use App\Services\NewsService;
 use App\Services\UserService;
 use Illuminate\Http\Request;
-
+use Illuminate\Support\Facades\Session;
 class HomePageController extends Controller
 {
     protected $provinceService;
@@ -52,7 +52,6 @@ class HomePageController extends Controller
        $user = $this->userService->findById($id_user);
        $news=$this->newsService->featuredNews();
        $historySearch = $this->postService->historyBySearch();
-       
     //    dd($jobs);
     //    dd($user);
        $config = [
@@ -67,6 +66,11 @@ class HomePageController extends Controller
        $template = "frontend.pages.home";
        return view('index',
        compact('config','provinces','template','banners','companys','jobs','majors','user','news','historySearch'));
+    }
+    public function changeLanguage($language)
+    {
+        Session::put('website_language', $language);
+        return redirect()->back();
     }
     
     /**

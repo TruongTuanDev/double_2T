@@ -21,7 +21,7 @@ use App\Http\Controllers\PostCommentController;
 use Illuminate\Http\Request;
 use Illuminate\Foundation\Auth\EmailVerificationRequest;
 use Illuminate\Support\Facades\Route;
-
+use Stichoza\GoogleTranslate\GoogleTranslate;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -32,6 +32,10 @@ use Illuminate\Support\Facades\Route;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
+Route::get('/translate', function () {
+    $lang= new GoogleTranslate('en');
+    return $lang->setSource('vi')->setTarget('en')->translate("Hòa Quý tỉnh");
+});
 
 // Route::get('/',[HomePageController::class,'index'])->name('home.index');
     Route::get('/email/verify', function () {
@@ -52,6 +56,7 @@ use Illuminate\Support\Facades\Route;
     Route::get('dashboard/index',[DashboardController::class,'index'])->name('dashboard.index')->middleware('admin');
     // ->middleware('admin');
     Route::get('/', [HomePageController::class, 'index'])->name('home')->middleware('home');
+    Route::get('change-language/{language}', [HomePageController::class, 'changeLanguage'])->name('user.change-language');
 
 
 

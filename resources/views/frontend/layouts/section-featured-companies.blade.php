@@ -2,7 +2,7 @@
 <section class="section-featured-companies mb-4">
   <div class="featured-companies-container">
       <div class="container-fluid p-2 p-sm-3 p-lg-5">
-          <h4 class="mb-3" style="font-size: 22px; font-weight: 600; color: #fff;">Công Ty Hàng Đầu</h4>
+          <h4 class="mb-3" style="font-size: 22px; font-weight: 600; color: #fff;">{{ trans('hello.topcompn')}}</h4>
           <div class="row flex-nowrap overflow-auto">
             @foreach($companys as $company) 
               <div class="col-6 col-sm-4 col-md-3 col-lg-2">
@@ -16,7 +16,7 @@
                               <div class="companyBlock__content">
                                   <div class="companyBlock__name">{{$company->name_compn}}</div>
                               </div>
-                              <div class="companyBlock__tag" >New Jobs</div>
+                              <div class="companyBlock__tag" >{{ trans('hello.new')}}</div>
                           </a>
                       </div>
                   </div>
