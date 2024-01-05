@@ -24,6 +24,7 @@ use App\Services\WardService;
 use Carbon\Carbon;
 use CloudinaryLabs\CloudinaryLaravel\Facades\Cloudinary;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
 
 class PostController extends Controller
 {
@@ -358,7 +359,7 @@ class PostController extends Controller
     
         if ($request->hasFile('file_CV')) {
             $file = $request->file('file_CV');
-            // $folder = 'double-2t';
+            
             $imageUrl = $file->storeOnCloudinary()->getSecurePath();
     
             $data = $request->except('file_CV');
@@ -369,12 +370,13 @@ class PostController extends Controller
             if ($jobApply) {
                 return redirect()->route('home')->with('success', 'Nộp CV thành công');
             } else {
-                return redirect()->route('home')->with('error', 'Nộp CV thất bại');
+                return redirect()->back()->with('error', 'Nộp CV thất bại');
             }
         } else {
-            return redirect()->route('home')->with('error', 'Vui lòng điền đầy đủ thông tin');
+            return redirect()->back()->with('error', 'Vui lòng điền đầy đủ thông tin');
         }
     }
+    
     public function removeApplicant($id_job, $id_student)
 {
         $job=JobApply::where('student_id_stu',$id_student)->where('post_id_post',$id_job)->first();
@@ -392,9 +394,20 @@ class PostController extends Controller
    public function updatestatus($id_job, $id_student)
    {
         $job=JobApply::where('student_id_stu',$id_student)->where('post_id_post',$id_job)->first();
+        $student = $this->studentService->findStudentById($id_student);
+        $user = $this->userService->findUserById($student->id_user);
+        $job_pass = $this->postService->findJobById($id_job);
+        $user_emp = $this->userService->findUserById($job_pass->companys->id_user);
         $job->status='active';
         $status=$job->save();
         if($status){
+            $name = $user->name;
+            $mail = $user->email;
+            Mail::send('frontend.mails.notice-pass',compact('name','user','student','job_pass','user_emp'), function($email) use ($name,$mail) {
+                $email->subject('Thư mời phỏng vấn');
+                $email->to($mail,$name);
+            });
+            // dd($true);
             request()->session()->flash('success','Duyệt thành công');
         }
         else{

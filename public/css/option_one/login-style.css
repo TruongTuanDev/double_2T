@@ -12168,10 +12168,12 @@ input[type='submit'] {
   width: 90%;
   padding: 40px 70px;
   margin-top: -90px;
+  /* background-color: #fff !important; */
 }
 
 .grid.main {
   padding: 40px 70px 20px 70px;
+  
 }
 
 .grid.main .vnw-title {
@@ -13289,7 +13291,7 @@ transform: rotate(45deg);
 }
 .register-box.grid.main { 
 padding: 24px 64px;
-margin-left: 200px !important;
+/* margin-left: 200px !important; */
 }
 
 .register-box .vnw-title .title {

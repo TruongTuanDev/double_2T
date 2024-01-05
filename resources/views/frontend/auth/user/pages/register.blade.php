@@ -159,7 +159,7 @@
 
     <p class="text-center m-b-none register">
       Bạn là thành viên chúng tôi?
-      <a href="">
+      <a href="{{route('user.login')}}">
         <strong>Đăng Nhập</strong>
       </a>
     </p>
@@ -169,7 +169,7 @@
         Nếu bạn đang có nhu cầu tuyển dụng, <br />
         vui lòng đăng ký tại
         <a
-          href=""
+          href="{{route('employer.register')}}"
           title="Trang Tuyển Dụng"
           >đây</a
         >.

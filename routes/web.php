@@ -52,13 +52,12 @@ use Illuminate\Support\Facades\Route;
     Route::get('dashboard/index',[DashboardController::class,'index'])->name('dashboard.index')->middleware('admin');
     // ->middleware('admin');
     Route::get('/', [HomePageController::class, 'index'])->name('home')->middleware('home');
-
-
-
     
+    Route::get('/send-mail', [EmployerController::class, 'sendMail'])->name('send.mail');
 
-    Route::get('job-detail/{id}', [PostController::class, 'jobDetail'])->name('job-detail')->middleware('login');
-    Route::get('companydetail/{id}', [FrontendEmployerController::class,'jobDetail'])->name('companydetail')->middleware('login');
+
+    Route::get('job-detail/{id}', [PostController::class, 'jobDetail'])->name('job-detail');
+    Route::get('companydetail/{id}', [FrontendEmployerController::class,'jobDetail'])->name('companydetail');
     Route::get('add-to-favorites', 'FavJobController@addToCart');
 
     Route::group(['prefix' => 'admin'], function(){
@@ -121,7 +120,7 @@ Route::group(['prefix' => 'user'], function(){
     Route::post('register',[AAuthController::class,'register'])->name('user.register');
     Route::get('register',[AAuthController::class,'index'])->name('user.register');
     Route::get('dashboard',[StudentController::class,'home'])->name('user.dashboard');
-    Route::get('apply/list',[StudentController::class,'applyList'])->name('job.apply');
+    Route::get('apply/list',[StudentController::class,'applyList'])->name('job.apply')->middleware('student.status');
     Route::get('favourite',[StudentController::class,'favourite'])->name('job.fav');
     Route::get('dashboard/information/{iduser}',[StudentController::class,'UpdateInfor'])->name('user.information');
     Route::post('dashboard/store',[StudentController::class,'store'])->name('user.store');
@@ -136,9 +135,10 @@ Route::post('/blog/filter', [FrontendNewsController::class, 'blogFilter'])->name
 Route::get('blog-cat/{slug}', [FrontendNewsController::class, 'blogByCategory'])->name('blog.category');
 Route::get('blog-tag/{slug}', [FrontendNewsController::class, 'blogByTag'])->name('blog.tag');
 
+Route::get('/preview-pdf/{id}', 'PreviewController@previewPdf')->name('preview.pdf');
 
-// Post Comment
-// Route::post('post/{slug}/comment', [FrontendPostCommentController::class, 'store'])->name('post-comment.store');
+
+
 Route::resource('/comment', 'PostCommentController');
 
 Route::get('listAlljobs', [PostController::class, 'listAllJobs'])->name('listAlljobs');

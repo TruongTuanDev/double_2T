@@ -17,9 +17,8 @@
                   <a class="nav-link" href="{{ route('listAllEmp') }}">Công ty</a>
               </li>
  
-              <li class="nav-item mx-lg-1 mx-xl-3 dropdown">
-                  <a class="nav-link" href="#">
-
+              <li class="nav-item mx-lg-1 mx-xl-3">
+                  <a class="nav-link" href="{{route('job.apply')}}">
                       Việc làm của tôi
                   </a>
               </li>

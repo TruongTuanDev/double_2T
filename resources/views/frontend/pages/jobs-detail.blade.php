@@ -9,7 +9,7 @@
                             <div class="card-body">
                                 <div class="view_job_item d-flex align-items-center justify-content-start">
                                     <div class="job-img me-3">
-                                        <img class="w-100" src="{{ $company->logo }}" alt="logo" width="78px">
+                                        <img class="" src="{{ $company->logo }}" alt="logo" width="78px">
                                     </div>
                                     <div class="job-info">
                                         <div class="job-name job-item">
@@ -169,7 +169,7 @@
                                                             <div
                                                                 class="view_job_item col-md-10 d-flex align-items-center justify-content-start">
                                                                 <div class="job-img">
-                                                                    <img src="" alt="logo"
+                                                                    <img src="{{$company->logo}}" alt="logo"
                                                                         width="78px">
                                                                 </div>
                                                                 <div class="job-info mx-2">
@@ -220,138 +220,6 @@
                                     @endforeach
                                 </div>
                             </div>
-                            {{-- <div class="container-fluid content-job-details tab-pane active" id="job-info">
-                  <div class="row">
-                    <div class="col-md-8 col-sm-12">
-                      <div class="description-1 mt-3">
-                        <p class="title-description">Ưu đãi dành cho bạn</p>
-                        <p>{{$job->treatment}}</p>
-                  
-                      </div>
-                      <div class="description-1 mt-3">
-                        <p class="title-description">Mô tải công việc</p>
-                        <p>
-                         {!!$job->description!!}
-                        </p>
-                      </div>
-                      <div class="description-1 mt-3">
-                        <p class="title-description">YÊU CẦU CÔNG VIỆC</p>
-                        <p>
-                          {{$job->requiment}}
-                        </p>
-                      </div>
-                      <div class="description-1 mt-3">
-                        <p class="title-description">Địa điểm làm việc</p>
-                        <p><span><i class="fa-solid fa-location-dot"></i></span>{{$job->address}}</p>
-                      </div>
-                    </div>
-                    <div class="col-md-4 col-sm-12">
-                      <div class="section-right mt-3">
-                        <div class="section-right-one">
-                          <div class="summary">
-                            <p><span><i class="fa-regular fa-calendar-days"></i></span>Ngày đăng tuyển</p>
-                            <p>{{$job->post_date}}</p>
-                          </div>
-                          <div class="summary">
-                            <p><span><i class="fa-solid fa-layer-group"></i></span>CẤP BẬC</p>
-                            <p>{{$job->position}}</p>
-                          </div>
-                          <div class="summary">
-                            <p><span><i class="fa-solid fa-business-time"></i></span>NGÀNH NGHỀ</p>
-                            <p>Cấp quản lý điều hành, Bán hàng, Ngân hàng</p>
-                          </div>
-                          <div class="summary d-flex justify-content-center">
-                            <img class="w-25" src="img/vnw-logo-inTECH.png" alt="">
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div class="tab-pane container fade content-job-details" id="companyInfo">
-                  <div class="row">
-                    <div class="col-md-8 col-sm-12">
-                      <p class="mt-3"><a href="#" class="me-2">Xem toàn bộ hồ sơ công ty</a><i class="fa-solid fa-arrow-up-right-from-square text-primary"></i></p>
-                    <!-- Swiper -->
-                    
-                    <p class="mt-4 cty-description card-text">
-                      {!!($company->description)!!}
-                      
-                      <br>
-                    </p>                   
-                    </div>
-                    <div class="col-md-4 col-sm-12 mt-3">
-                      <div class="section-right mt-4">
-                        <div class="section-right-one mt-2">
-                          <div class="summary">
-                            <p><span><i class="fa-solid fa-location-dot"></i></span>ĐỊA ĐIỂM</p>
-                            <p>{{$company->address}}</p>
-                          </div>
-                          <div class="summary">
-                            <p><span><i class="fa-solid fa-user"></i></i></span>LIÊN HỆ</p>
-                            <p>HR department</p>
-                          </div>
-                          <div class="summary d-flex justify-content-center">
-                            <img class="w-25" src="img/vnw-logo-inTECH.png" alt="">
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div class="tab-pane container fade content-job-details" id="job-company">
-                  <div class="row">
-                    <div class="row p-3" style="overflow: auto;">
-                      @foreach ($job_company as $job_company)
-                      @if ($job_company->id_post != $job->id_post && $job_company->status == 'active')
-                      <div class="col-lg-12 col-md-12">
-                          <div class="product-item mb-4">
-                              <div class="card jobs-card">
-                                  <div class="card-body row">
-                                      <div class="view_job_item col-md-10 d-flex align-items-center justify-content-start">
-                                          <div class="job-img">
-                                              <img src=""
-                                                  alt="logo" width="78px">
-                                          </div>
-                                          <div class="job-info mx-2">
-                                              <div class="job-name job-item">
-                                                  <a href="{{route('job-detail',$job_company->id_post)}}" class="job-link">{{$job_company->title}}</a>
-                                              </div>
-                                              <div class="company-name job-item">
-                                                  <a href="{{ 'companydetail',$company->id_emp }}" class="job-conpany">{{ $company->name_compn }}</a>
-                                              </div>
-                                              <div class="job-salary job-item">{{$job_company->salary}} | {{$job_company->address}}</div>
-                                              <div class="job-location">{{$job_company->address}}</div>
-                                              <div class="job-location">Ngày đăng: {{$job_company->created_at}}</div>
-                                          </div>
-                                      </div>
-                                      <div class="featured  col-md-2 mt-2" >
-                                        <a class="btn-one job" id="post_id" href="{{route('cart.add',['post' => $job_company->id_post])}}" data-post-id="{{$job_company->id_post}}">
-                                          @php
-                                           $count = 0;
-                                           @endphp
-                                           @foreach ($jobfavs as $jobfav)
-                                           @if ($jobfav->post_id === $job_company->id_post)
-                                           <i class="fa-solid fa-heart" style="color: rgb(255, 136, 0)"></i>
-                                           @php
-                                           $count = $count + 1;
-                                           @endphp
-                                           @elseif($jobfav->post_id != $job_company->id_post)
-                                           @endif
-                                           @endforeach
-                                           @if ($count === 0)
-                                           <i class="fa-regular fa-heart"></i>
-                                           @endif
-                                        </a>
-                                    </div>
-                                  </div>
-                              </div>
-                          </div>
-                      </div>
-                      @endif
-                      @endforeach
-                  </div>
-                </div> --}}
                         </div>
                     </div>
                 </div>
@@ -368,7 +236,7 @@
                                                 <div
                                                     class="view_job_item  d-flex align-items-center justify-content-start">
                                                     <div class="job-img">
-                                                        <img src="" alt="logo" width="78px">
+                                                        <img src="{{$company->logo}}" alt="logo" width="78px">
                                                     </div>
                                                     <div class="job-info mx-2">
                                                         <div class="job-name job-item">
@@ -465,7 +333,7 @@
                     <div class="card-body">
                         <div class="view_job_item d-flex align-items-center justify-content-start">
                             <div class="job-img me-3">
-                                <img class="w-100" src="{{ $company->logo }}" alt="logo" width="78px">
+                                <img  src="{{ $company->logo }}" alt="logo" width="100px" height="100px">
                             </div>
                             <div class="job-info">
                                 <div class="job-name job-item">

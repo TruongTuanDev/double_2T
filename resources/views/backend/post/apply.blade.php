@@ -18,6 +18,7 @@
               <th>STT</th>
               <th>Ảnh đại diện</th>
               <th>Họ tên</th>
+              <th>CV</th>
               <th>Ngày sinh</th>
               <th>Trường</th>
               <th>Địa điểm</th>
@@ -33,6 +34,7 @@
               <th>STT</th>
               <th>Ảnh đại diện</th>
               <th>Họ tên</th>
+              <th>CV</th>
               <th>Ngày sinh</th>
               <th>Trường</th>
               <th>Địa điểm</th>
@@ -52,7 +54,9 @@
                     <td>
                       <img height="100px" width="100px" src="{{$student->avatar}}" alt="">
                     </td>
-                    <td>{{$student->major}}</td>
+                    <td>{{$student->users->name}}</td>
+                  
+                    <td><a href="{{$job->studentApplys()->withPivot('file_CV')->first()->pivot->file_CV}}">fileCV</a></td>
                     <td>{{$student->birthday}}</td>
                     <td>{{$student->university}}</td>
                     <td>{{$job->address}}</td>
