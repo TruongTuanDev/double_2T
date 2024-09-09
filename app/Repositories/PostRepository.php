@@ -57,7 +57,7 @@ class PostRepository extends BaseRepository implements PostRepositoryInterface
     return $job;
   }
   public function findJobByIdempListHandel($id_emp){
-    $jobs = Post::where('id_emp',$id_emp)->get();  
+    $jobs = Post::where('id_emp',$id_emp)->orderBy('salary','desc')->get();  
     return $jobs;
   }
   public function getRecommentFavouriteJob($id_major,$address){

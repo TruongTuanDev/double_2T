@@ -61,7 +61,6 @@
                               <button class="btn btn-danger dltBtn" data-id={{$post->id}}  data-toggle="tooltip" data-placement="bottom" title="Delete"><i class="fa fa-trash"></i></button>
                         </form>
                     </td>
-                   
                 </tr>  
             @endforeach
           </tbody>

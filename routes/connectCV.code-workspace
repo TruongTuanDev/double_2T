@@ -1,0 +1,13 @@
+{
+	"folders": [
+		{
+			"path": ".."
+		}
+	],
+	"settings": {
+		"java.project.sourcePaths": [
+			"resources"
+		],
+		"liveServer.settings.multiRootWorkspaceName": "tuan7php"
+	}
+}

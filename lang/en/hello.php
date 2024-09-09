@@ -28,7 +28,7 @@ return[
     "hp" => "Hai Phong",
     "dn" => "Da Nang",
     "ct" => "Can Tho",
-    "submit" => "Submit",
+    "submit" => "Apply",
     "nothing" => "No suitable job found",
     "date" => "Date Of Post",
     "jobsuitable" => "Suitable job",
